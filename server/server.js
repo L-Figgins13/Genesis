@@ -1,4 +1,6 @@
 //server placeholder
+const SourceMapSupport = require('source-map-support');
+SourceMapSupport.install();
 
 const express = require('express');
 const bodyParser = require('body-parser');

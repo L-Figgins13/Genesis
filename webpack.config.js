@@ -3,14 +3,14 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         app: ['./src/App.jsx'],
-        vendor: ['react','react-dom','whatwg-fetch'],
+        vendor: ['react','react-dom','whatwg-fetch','babel-polyfill'],
     },
     output:{
         path: __dirname + './static',
         filename: 'app.bundle.js',
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
+        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'})
     ],
 
     module: {
@@ -29,9 +29,11 @@ module.exports = {
         port: 8000,
         contentBase: 'static',
         proxy: {
-            'api/*' : {
+            '/api/*' : {
                 target: 'http://localhost:3000'
             }
         }
-    }
+    },
+
+    devtool: 'source-map'
 }

@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'whatwg-fetch';
 
-const GameRow = (props) => {
+const GameRow = (props) => (
     <tr>
         <td> {props.game._id}   </td>
         <td> {props.game.owner} </td>
         <td> {props.game.title} </td>
     </tr>
-};
+);
 
 GameRow.propTypes = {
-    game: React.propTypes.object.isRequired,
+    game: PropTypes.object.isRequired,
 };
 
 function GameTable (props) {
@@ -30,7 +31,7 @@ function GameTable (props) {
 }
 
 GameTable.propTypes = {
-    games: React.propTypes.array.isRequired,
+    games: PropTypes.array.isRequired,
 }
 
 export default class GamesList extends React.Component {
@@ -50,6 +51,7 @@ export default class GamesList extends React.Component {
                 response.json()
                 .then(data => {
                     this.setState({games: data.records});
+                    console.log(data.records);
                 });
             } else {
                 response.json()
@@ -66,8 +68,8 @@ export default class GamesList extends React.Component {
         return(
             <div>
                 <h1>Games List</h1>
-                <GamesTable games={this.state.games} />
+                <GameTable games={this.state.games} />
             </div>
-        )
+        );
     }
 }

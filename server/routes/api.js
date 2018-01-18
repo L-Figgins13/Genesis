@@ -13,16 +13,18 @@ const games = [
     },
     {
         _id: 3,
-        ownder: 'derek',
+        owner: 'derek',
         title: 'Where am I'
     }
 ]
 
 
 router.get('/games', (req, res, next) => {
+    if(games) { 
     res.json({records: games})
-    .catch(err => {
-        console.log(err);
+  } else {
         res.status(500).json({message: `Internal Server Error: ${error}`});
-    });
+    }
 });
+
+module.exports = router;

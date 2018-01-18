@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import GamesList from './GamesList.jsx';
 
-const contentNode = docuemnt.getElementById('contents');
+const contentNode = document.getElementById('contents');
 
 
 
