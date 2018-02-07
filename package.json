@@ -8,6 +8,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
     "source-map-support": "^0.5.1"
   },
   "devDependencies": {
@@ -21,8 +24,6 @@
     "babel-preset-node8": "^1.2.0",
     "babel-preset-react": "^6.24.1",
     "nodemon": "^1.14.11",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-dev-server": "^2.11.0",
@@ -31,11 +32,11 @@
   },
   "scripts": {
     "test": "test",
-    "start": "nodemon -w dist dist/server.js",
-    "compile-server": "babel server --presets node8 --out-dir dist --source-maps",
+    "start": "nodemon -w dist dist/server.bundle.js",
+    "compile-server": "webpack --config webpack.server-config.js",
     "compile": "webpack",
     "watch": "webpack-dev-server --hot --inline",
-    "watch-server": "babel server --pressets es2015-node8 --out-dir dist --source-maps --watch",
+    "watch-server": "webpack --config webpack.server-config.js --watch",
     "dev-all": "npm run watch & npm run watch-server & npm start"
   },
   "author": "lfigs",
