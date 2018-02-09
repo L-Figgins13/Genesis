@@ -18,8 +18,11 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 //routes
+// app.get('*', (req, res) => {
+    
+// });
 app.use('/api', api );
-app.use('/', renderedPageRouter);
+// app.use('/', renderedPageRouter);
 
 //dev test
 if (process.env.NODE_ENV !== 'production') {

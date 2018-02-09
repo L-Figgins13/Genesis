@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,35 +73,29 @@ module.exports = require("express");
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 module.exports = require("webpack");
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _renderedPageRouter = __webpack_require__(4);
+var _renderedPageRouter = __webpack_require__(3);
 
 var _renderedPageRouter2 = _interopRequireDefault(_renderedPageRouter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //server placeholder
-const SourceMapSupport = __webpack_require__(8);
+const SourceMapSupport = __webpack_require__(4);
 SourceMapSupport.install();
 
 const express = __webpack_require__(0);
-const bodyParser = __webpack_require__(9);
+const bodyParser = __webpack_require__(5);
 
-const api = __webpack_require__(10);
+const api = __webpack_require__(6);
 
 let app = express();
 
@@ -110,16 +104,19 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 //routes
+// app.get('*', (req, res) => {
+
+// });
 app.use('/api', api);
-app.use('/', _renderedPageRouter2.default);
+// app.use('/', renderedPageRouter);
 
 //dev test
 if (process.env.NODE_ENV !== 'production') {
-    const webpack = __webpack_require__(2);
-    const webpackDevMiddleware = __webpack_require__(11);
-    const webpackHotMiddleware = __webpack_require__(12);
+    const webpack = __webpack_require__(1);
+    const webpackDevMiddleware = __webpack_require__(7);
+    const webpackHotMiddleware = __webpack_require__(8);
 
-    const config = __webpack_require__(13);
+    const config = __webpack_require__(9);
     config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
@@ -134,125 +131,73 @@ app.listen(3000, function () {
 });
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// import React from 'react';
+// import ReactDOMServer from 'react-dom/server';
+// import Router from 'express';
+// import {match, RouterContext} from 'react-router';
+
+
+// import HelloWorld from '../../src/HelloWorld.jsx';
+// import GamesList from '../../src/GamesList';
+
+// import template from '../template.js';
+// import routes from '../../src/Routes';
+
+// import ContextWrapper from '../../src/ContextWrapper';
+
+
+// const renderedPageRouter = new Router();
+
+// renderedPageRouter.get('*', (req,res) => {
+//     match({routes, location: req.url},
+//     (error, redirectLocation, renderProps) => {
+//         if(error) {
+//             res.status(500).send(error.message);
+//         } else if (redirectLocation) {
+//             res.redirect(302, redirectLocation.pathname, +redirectLocation.search);
+//         } else if (renderProps){
+//             fetch(`http://localhost:3000/api${req.url}`)
+//             .then(response => {
+//                 response.json()
+//                 .then(data => {
+//                     const initialState = {data};
+//                     const html = ReactDOMServer.renderToString(
+//                         <ContextWrapper initialState = {initialState} >
+//                             <RouterContext {...renderProps} />
+//                             </ContextWrapper>
+//                     );
+//                     res.status(200).send(template(html,initialState));
+//                 })
+//                 .catch(err => {
+//                     console.log(`Errror rendering to string: ${err}`);
+//                 });
+//             })
+//         } else {
+//             res.status(404).send('Not Found');
+//         }
+//     });
+// });
+// export default renderedPageRouter;
+
+
+/***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _server = __webpack_require__(5);
-
-var _server2 = _interopRequireDefault(_server);
-
-var _express = __webpack_require__(0);
-
-var _express2 = _interopRequireDefault(_express);
-
-var _HelloWorld = __webpack_require__(6);
-
-var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
-
-var _template = __webpack_require__(7);
-
-var _template2 = _interopRequireDefault(_template);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const renderedPageRouter = new _express2.default();
-
-renderedPageRouter.get('/', (req, res) => {
-    const html = _server2.default.renderToString(_react2.default.createElement(_HelloWorld2.default, null));
-    res.send((0, _template2.default)(html));
-});
-
-exports.default = renderedPageRouter;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom/server");
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = HelloWorld;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function HelloWorld() {
-    return _react2.default.createElement(
-        'h1',
-        null,
-        'HelloWorld'
-    );
-}
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = template;
-function template(body, initialState) {
-
-    return `<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset = "UTF-8" />
-    <title>Genesis</title>
-    <meta name= "viewport" content= "width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <div id ="contents">${body}</div>
-    <!-- this is where our component will appear -->
-    <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}; </script>
-    <script src="/vendor.bundle.js"></script>
-    <script src="/app.bundle.js"></script>
-</body>
-</html>
-`;
-}
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("source-map-support");
 
 /***/ }),
-/* 9 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 10 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -285,30 +230,30 @@ router.get('/games', (req, res, next) => {
 module.exports = router;
 
 /***/ }),
-/* 11 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-dev-middleware");
 
 /***/ }),
-/* 12 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-hot-middleware");
 
 /***/ }),
-/* 13 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
-const webpack = __webpack_require__(2);
+const webpack = __webpack_require__(1);
 
 module.exports = {
     entry: {
-        app: ['./client/Client.jsx'],
-        vendor: ['react', 'react-dom', 'whatwg-fetch', 'babel-polyfill']
+        app: ['./src/index.jsx'],
+        vendor: ['react', 'react-dom', 'react-router', 'isomorphic-fetch', 'babel-polyfill']
     },
     output: {
         path: __dirname + './static',

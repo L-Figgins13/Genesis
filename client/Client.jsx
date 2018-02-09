@@ -1,12 +1,23 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, broswerHistory} from 'react-router';
 
-import HelloWorld from '../src/HelloWorld.jsx';
+import routes from '../src/Routes.jsx'
+import ContextWrapper from '../src/ContextWrapper.jsx'
 
 const contentNode = document.getElementById('contents');
-ReactDOM.render(<HelloWorld {...window.__INITIAL_STATE__} />, contentNode);
 
-if (module.hot) {d
+const WrappedApp = (props) => {
+    <ContextWrapper {...props}>
+        <Router history = {broswerHistory}>
+            {routes}
+        </Router>
+    </ContextWrapper>
+}
+
+ReactDOM.render(<WrappedApp initialState={window.__INITIAL_STATE___} />, contentNode);
+
+if (module.hot) {
     module.hot.accept();
 }

@@ -2,8 +2,8 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: ['./client/Client.jsx'],
-        vendor: ['react','react-dom','whatwg-fetch','babel-polyfill'],
+        app: ['./src/index.jsx'],
+        vendor: ['react','react-dom','react-router','isomorphic-fetch','babel-polyfill'],
     },
     output:{
         path: __dirname + './static',

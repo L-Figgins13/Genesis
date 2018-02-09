@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'whatwg-fetch';
+import 'isomorphic-fetch';
+import {Route, Switch, BrowserRouter} from 'react-router-dom'
 
 const GameRow = (props) => (
     <tr>
@@ -15,7 +16,7 @@ GameRow.propTypes = {
 };
 
 function GameTable (props) {
-    const gameRows = props.games.map(game => <GameRow key = {game._id} game = {game} />);
+    const gameRows = props.games.map(game => <GameRow key = {game._id} game = {game}/>);
     return(
         <table className= "bordered-table">
             <thead>
@@ -35,9 +36,11 @@ GameTable.propTypes = {
 }
 
 export default class GamesList extends React.Component {
-    constructor() {
-        super();
-        this.state = {games:[]};
+    constructor(props, context) {
+        super(props, context);
+        const games = context.initialState.data.recrods;
+        this.state = {games,};
+        
     }
 
     componentDidMount(){
@@ -49,7 +52,7 @@ export default class GamesList extends React.Component {
         .then(response => {
             if(response.ok){
                 response.json()
-                .then(data => {
+                .then(data => { 
                     this.setState({games: data.records});
                     console.log(data.records);
                 });
@@ -73,3 +76,7 @@ export default class GamesList extends React.Component {
         );
     }
 }
+
+GamesList.contextTypes = {
+    initialState: PropTypes.object,
+};

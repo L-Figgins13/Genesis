@@ -7,10 +7,12 @@
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "source-map-support": "^0.5.1"
   },
   "devDependencies": {
@@ -27,8 +29,7 @@
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-dev-server": "^2.11.0",
-    "webpack-hot-middleware": "^2.21.0",
-    "whatwg-fetch": "^2.0.3"
+    "webpack-hot-middleware": "^2.21.0"
   },
   "scripts": {
     "test": "test",
