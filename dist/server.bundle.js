@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,29 +73,35 @@ module.exports = require("express");
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("webpack");
+module.exports = require("mongoose");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _renderedPageRouter = __webpack_require__(3);
+var _renderedPageRouter = __webpack_require__(4);
 
 var _renderedPageRouter2 = _interopRequireDefault(_renderedPageRouter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //server placeholder
-const SourceMapSupport = __webpack_require__(4);
+const SourceMapSupport = __webpack_require__(5);
 SourceMapSupport.install();
 
 const express = __webpack_require__(0);
-const bodyParser = __webpack_require__(5);
+const bodyParser = __webpack_require__(6);
 
-const api = __webpack_require__(6);
+const api = __webpack_require__(7);
 
 let app = express();
 
@@ -112,11 +118,11 @@ app.use('/api', api);
 
 //dev test
 if (process.env.NODE_ENV !== 'production') {
-    const webpack = __webpack_require__(1);
-    const webpackDevMiddleware = __webpack_require__(7);
-    const webpackHotMiddleware = __webpack_require__(8);
+    const webpack = __webpack_require__(2);
+    const webpackDevMiddleware = __webpack_require__(10);
+    const webpackHotMiddleware = __webpack_require__(11);
 
-    const config = __webpack_require__(9);
+    const config = __webpack_require__(12);
     config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
@@ -131,7 +137,7 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -185,70 +191,155 @@ app.listen(3000, function () {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("source-map-support");
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _Games = __webpack_require__(8);
+
+var _Games2 = _interopRequireDefault(_Games);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const express = __webpack_require__(0);
 const router = express.Router();
 
-const games = [{
-    _id: 1,
-    owner: 'logan',
-    title: 'Best Game Ever' }, {
-    _id: 2,
-    owner: 'zach',
-    title: 'Jeez i suck'
-}, {
-    _id: 3,
-    owner: 'derek',
-    title: 'Where am I'
-}];
+
+const game = {
+    _id: '5a84d940441f6514587f40aa',
+    players: [{
+        _id: 1,
+        username: 'Logan'
+    }, {
+        _id: 2,
+        username: 'Zach'
+    }, {
+        _id: 3,
+        username: 'James'
+    }]
+};
 
 router.get('/games', (req, res, next) => {
-    if (games) {
-        res.json({ records: games });
+    _Games2.default.find({}).then(function (games) {
+        console.log(games);
+        res.json(games);
+    });
+});
+
+router.get('/games/:id', (req, res, next) => {
+    if (req.params.id === game._id) {
+        console.log('found the game mother fucker');
+        res.json(game);
     } else {
-        res.status(500).json({ message: `Internal Server Error: ${error}` });
+        console.log('gameID does not match');
+        res.status(500).send('game not found');
     }
+});
+
+router.post('/games/create', (req, res, next) => {
+    const newGame = new _Games2.default({ owner: req.body.owner, title: req.body.title });
+    console.log('fuck me sideways');
+    newGame.save().then(doc => {
+        console.log(doc);
+        res.json({ msg: 'ok' });
+    }).catch(err => {
+        console.log(err);
+    });
 });
 
 module.exports = router;
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("webpack-dev-middleware");
-
-/***/ }),
 /* 8 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("webpack-hot-middleware");
+"use strict";
+
+
+var _db = __webpack_require__(9);
+
+var _db2 = _interopRequireDefault(_db);
+
+var _mongoose = __webpack_require__(1);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Schema = _mongoose2.default.Schema;
+
+var gameSchema = new Schema({
+    owner: String,
+    title: String
+});
+
+// gameSchema.statics.createGame = function(cb) {
+//     return this.model('Game').
+// }
+
+var Game = _mongoose2.default.model('Game', gameSchema);
+
+module.exports = Game;
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(1);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_mongoose2.default.connect('mongodb://localhost/genesis').then(() => {
+    console.log('mongodb connected');
+}).catch(err => {
+    console.log('error connecting: ', err);
+});
+
+exports.default = _mongoose2.default;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack-dev-middleware");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack-hot-middleware");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
-const webpack = __webpack_require__(1);
+const webpack = __webpack_require__(2);
 
 module.exports = {
     entry: {

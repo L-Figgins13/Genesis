@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'isomorphic-fetch';
-import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import {Route, Switch,Redirect, BrowserRouter} from 'react-router-dom';
+
 
 const GameRow = (props) => (
     <tr>
         <td> {props.game._id}   </td>
         <td> {props.game.owner} </td>
         <td> {props.game.title} </td>
+        <td><button id={props.game._id} onClick={props.joinGame}/></td>
     </tr>
 );
 
@@ -16,7 +18,7 @@ GameRow.propTypes = {
 };
 
 function GameTable (props) {
-    const gameRows = props.games.map(game => <GameRow key = {game._id} game = {game}/>);
+    const gameRows = props.games.map(game => <GameRow key = {game._id} game = {game} joinGame={props.joinGame}/>);
     return(
         <table className= "bordered-table">
             <thead>
@@ -36,25 +38,32 @@ GameTable.propTypes = {
 }
 
 export default class GamesList extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        const games = context.initialState.data.recrods;
-        this.state = {games,};
-        
+    constructor(props) {
+        super(props);
+        this.state = {games:[],join:-1}; 
+        this.joinGame = this.joinGame.bind(this);
     }
 
     componentDidMount(){
         this.loadData();
     }
 
+    joinGame(event) {
+        const target = event.target;
+        console.log(target.id);
+        this.setState({join:target.id});
+    }
+
     loadData() {
         fetch('/api/games')
         .then(response => {
             if(response.ok){
+                console.log(response);
                 response.json()
                 .then(data => { 
-                    this.setState({games: data.records});
-                    console.log(data.records);
+                    console.log('logging data',data);
+                    this.setState({games: data});
+                    
                 });
             } else {
                 response.json()
@@ -67,16 +76,24 @@ export default class GamesList extends React.Component {
         });
     }
 
+    
+
     render() {
+        
+        if(this.state.join != -1){
+            const url = 'games/' + this.state.join;
+            return(
+                <Redirect to={url} push />
+            )
+        }
+        
         return(
             <div>
                 <h1>Games List</h1>
-                <GameTable games={this.state.games} />
+                <GameTable games={this.state.games} joinGame={this.joinGame} />
             </div>
         );
     }
+    
 }
 
-GamesList.contextTypes = {
-    initialState: PropTypes.object,
-};

@@ -1,11 +1,17 @@
-const db = require('../db.js');
+import db from '../db.js';
+import mongoose from 'mongoose';
+
+const Schema = mongoose.Schema;
 
 var gameSchema = new Schema({
-    _id: Number,
     owner: String,
     title: String
 });
 
-var Games = mongoose.model('Games', gameSchema);
+// gameSchema.statics.createGame = function(cb) {
+//     return this.model('Game').
+// }
 
-module.exports = Games;
+var Game = mongoose.model('Game', gameSchema);
+
+module.exports = Game;

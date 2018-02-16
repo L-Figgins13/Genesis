@@ -11,7 +11,7 @@ module.exports = {
     resolve: {
       extensions: [ '.js', '.jsx'],
     },
-    externals: [/^[a-z]/],
+    externals: [/^[a-z]/,'./db.js' ],
     module: {
       loaders: [
         {

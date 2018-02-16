@@ -1,4 +1,4 @@
-const mongoose = require ('mongoose');
+import mongoose from 'mongoose';
 
 mongoose.connect('mongodb://localhost/genesis')
 .then( () => {
@@ -7,4 +7,4 @@ mongoose.connect('mongodb://localhost/genesis')
     console.log('error connecting: ', err);
 });
 
-module.exports = mongoose;
+export default mongoose;
