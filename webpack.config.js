@@ -3,7 +3,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         app: ['./src/index.jsx'],
-        vendor: ['react','react-dom','react-router','isomorphic-fetch','babel-polyfill'],
+        vendor: ['react','react-dom','react-router','isomorphic-fetch','babel-polyfill', 'socket.io-client'],
     },
     output:{
         path: __dirname + './static',
@@ -19,7 +19,8 @@ module.exports = {
                 test: /\.jsx$/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['react', 'es2015'],
+                    plugins: ['transform-es2015-destructuring', 'transform-object-rest-spread']
                 }
             },
         ]

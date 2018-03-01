@@ -1,28 +1,39 @@
-import renderedPageRouter from './routes/renderedPageRouter';
+import socket from 'socket.io';
 
-//server placeholder
-const SourceMapSupport = require('source-map-support');
+import passport from 'passport';
+import localSignupStrategy from './passport/local-signup.js';
+import localLoginStrategy from './passport/local-signup.js';
+
+import express from 'express';
+import bodyParser from 'body-parser';
+import SourceMapSupport from 'source-map-support';
+
+import authCheck from './auth-check.js';
+import api from './routes/api.js';
+import auth from './routes/auth.js';
+
+
+
 SourceMapSupport.install();
-
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const api = require('./routes/api');
-
-
 
 let app = express();
 
 //middleware
 app.use(express.static('static'));
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use('./api', authCheck);
 
-//routes
-// app.get('*', (req, res) => {
-    
-// });
+
+//load strategies
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
+
+
+//load routes
 app.use('/api', api );
-// app.use('/', renderedPageRouter);
+app.use('/auth', auth);
+
 
 //dev test
 if (process.env.NODE_ENV !== 'production') {
@@ -40,6 +51,16 @@ if (process.env.NODE_ENV !== 'production') {
     app.use(webpackHotMiddleware(bundler, {log: console.log }))
 }
 
-app.listen(3000, function () {
+var server = app.listen(3000, function () {
     console.log('App started at port 3000');
+});
+
+var io = socket(server);
+
+io.on('connection' , (socket) => {
+    console.log('-----SOCKET PRINTING----');
+    console.log(socket.id);
+    socket.on('SEND_MESSAGE', function(data) {
+        io.emit('RECIEVE_MESSAGE', data);
+    })
 });

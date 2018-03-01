@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'whatwg-fetch';
+import Chat from './Chat.jsx';
 
 
 function PlayerArea (props) {
@@ -51,7 +52,7 @@ export default class GameLobby extends React.Component {
             <div>
                 <h2>DA GAMEEEEE></h2>
                 <PlayerArea players = {this.state.players} />
-                <h3>DIS IS WHERE DA CHAT AREA GOES NEXT </h3>
+                <Chat />
             </div>
         )
     }

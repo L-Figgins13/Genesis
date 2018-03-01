@@ -1,6 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 import Game from '../Models/Games.js';
+
+const router = express.Router();
 
 const game = {
     _id: '5a84d940441f6514587f40aa',
@@ -55,4 +56,4 @@ router.post('/games/create' , (req, res, next) => {
     })
 })
 
-module.exports = router;
+export default router;

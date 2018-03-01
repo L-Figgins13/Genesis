@@ -4,17 +4,26 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.1.1",
     "mongoose": "^5.0.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "source-map-support": "^0.5.1"
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4",
+    "source-map-support": "^0.5.1",
+    "validator": "^9.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.38",
