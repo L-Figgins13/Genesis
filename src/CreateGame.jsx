@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'isomorphic-fetch';
 import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
+import Auth from '../client/auth.js';
 
 export default class CreateGame extends React.Component {
     constructor(props){
@@ -12,7 +13,8 @@ export default class CreateGame extends React.Component {
         this.state = {
             owner: '',
             title:'',
-            redirect: false
+            redirect: false,
+            game_id: null
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -39,7 +41,8 @@ export default class CreateGame extends React.Component {
         fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${Auth.getToken()}`
             },
             body: JSON.stringify({
                 owner: this.state.owner,
@@ -51,17 +54,18 @@ export default class CreateGame extends React.Component {
             console.log('logging response object ' + JSON.stringify(response));
             if(response.msg === 'ok') {
             console.log('Success:', response);
-            this.setState({redirect:true});
+            this.setState({redirect:true, game_id: response.game_id});
             }
         });
     }
 
     render() {
         const redirect = this.state.redirect;
-        const url = '/games';
+        const game_id = this.state.game_id;
+        const url = '/games/';
 
         if(redirect) {
-        return ( <Redirect to={url} push /> )
+        return ( <Redirect to={url+game_id} push /> )
         }
 
         return (

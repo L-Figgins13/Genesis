@@ -3,14 +3,14 @@
 import User from '../Models/Users';
 import {Strategy as PassportLocalStrategy}  from 'passport-local';
 
-const strat = new PassportLocalStrategy({
+const LocalStrategy = new PassportLocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     session: false,
     passReqToCallback: true
 },(req, username, password, done) => {
     const newUser = new User({username: username, password: password});
-
+    console.log('Creating New user', newUser);
     newUser.save((err) => {
         if (err) {return done(err);}
 
@@ -18,4 +18,4 @@ const strat = new PassportLocalStrategy({
     });
 });
 
-export default strat;
+export default LocalStrategy;

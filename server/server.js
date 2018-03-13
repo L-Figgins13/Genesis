@@ -2,7 +2,7 @@ import socket from 'socket.io';
 
 import passport from 'passport';
 import localSignupStrategy from './passport/local-signup.js';
-import localLoginStrategy from './passport/local-signup.js';
+import localLoginStrategy from './passport/local-login.js';
 
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -11,6 +11,7 @@ import SourceMapSupport from 'source-map-support';
 import authCheck from './auth-check.js';
 import api from './routes/api.js';
 import auth from './routes/auth.js';
+import path from 'path';
 
 
 
@@ -22,7 +23,7 @@ let app = express();
 app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(passport.initialize());
-app.use('./api', authCheck);
+app.use('/api', authCheck);
 
 
 //load strategies
@@ -56,6 +57,10 @@ var server = app.listen(3000, function () {
 });
 
 var io = socket(server);
+
+app.get('/*', function(req,res){
+    res.sendFile(path.join(__dirname, '../static/index.html'))
+})
 
 io.on('connection' , (socket) => {
     console.log('-----SOCKET PRINTING----');

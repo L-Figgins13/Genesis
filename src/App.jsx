@@ -83,7 +83,7 @@ export default class App extends React.Component {
          <Switch>
              <PropsRoute exact path="/" component={HelloWorld} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
              <PrivateRoute exact path = "/games" component={GamesList} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
-             <PrivateRoute exact path = "/games/create" component={GamesList} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
+             <PrivateRoute exact path = "/games/create" component={CreateGame} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <PrivateRoute path = '/games/:id' component={GameLobby} />
              <LoggedOutRoute path="/login" component={Login} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <LoggedOutRoute path="/signup" component={Signup} toggleAuthenticateStatus={()=>this.toggleAuthenticateStatus()} />

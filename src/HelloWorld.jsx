@@ -18,7 +18,7 @@ export default class HelloWorld extends React.Component {
                 </ul>
 
                 {Auth.isUserAuthenticated() ? (
-                    <h1> YOU ARE LOGGED IN </h1>
+                    <li><Link to='/games'>Games</Link></li>
                 ) : (
                     <h1> YOU NEED TO LOG IN </h1>
                 )}

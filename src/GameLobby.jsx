@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Auth from '../client/auth.js';
 import 'whatwg-fetch';
 import Chat from './Chat.jsx';
 
@@ -19,7 +20,7 @@ function PlayerArea (props) {
 function Player (props) {
     return (
         <div>
-            <div>{props.player._id}</div>
+            <div>{props.player.user_id}</div>
             <div>{props.player.username}</div>
         </div>
     )
@@ -37,7 +38,11 @@ export default class GameLobby extends React.Component {
     }
 
     loadData() {
-        fetch(`/api/games/${this.props.match.params.id}`)
+        fetch(`/api/games/${this.props.match.params.id}`,{
+            headers:{
+                'Authorization': `bearer ${Auth.getToken()}`
+            }
+    })
         .then(response =>{
             if(response.ok){
                 response.json().then(game => {

@@ -1,5 +1,6 @@
 import express from 'express';
 import Game from '../Models/Games.js';
+import User from '../Models/Users.js';
 
 const router = express.Router();
 
@@ -23,8 +24,6 @@ const game = {
     ]
 }
 
-
-
 router.get('/games', (req, res, next) => {
    Game.find({}).then( function(games) {
        console.log(games);
@@ -33,23 +32,55 @@ router.get('/games', (req, res, next) => {
 });
 
 router.get('/games/:id', (req,res,next) => {
-    if (req.params.id === game._id){
-        console.log('found the game mother fucker');
+
+    Game.findById(req.params.id)
+    
+    .then( game => {
+
+        // if(err) { console.log(err)};
+
+        console.log('-------------- Logging Game After Populate Call -------------')
+        console.log(game);
+        console.log();
+
+        console.log('-----Attempting to log username directly from game.player object---------');
+        console.log(game.players[0].username);
+
+        if(!game) {res.status(400).send('game not found')}
+
         res.json(game);
-     } else {
-         console.log('gameID does not match');
-         res.status(500).send('game not found');
-     }
+    })
+    .catch( err => {
+        console.log(err);
+    })
+
+
+
+    // if (req.params.id === game._id){
+    //     console.log('found the game mother fucker');
+    //     res.json(game);
+    //  } else {
+    //      console.log('gameID does not match');
+    //      res.status(500).send('game not found');
+    //  }
 
 });
 
 router.post('/games/create' , (req, res, next) => {
-   const newGame = new Game({owner: req.body.owner, title: req.body.title});
-    console.log('fuck me sideways');
+    const newGame = new Game({owner: req.body.owner, title: req.body.title});
+
+    console.log('------------logging player before save----------');
+    console.log(req.user);
+    console.log();
+
+
+    newGame.players.push({user_id:req.user._id, username: req.user.username});
+    console.log('logging new Game', newGame);
+
     newGame.save()
     .then(doc => {
         console.log(doc);
-        res.json({msg:'ok'});
+        res.json({msg:'ok', game_id: doc._id});
     })
     .catch(err => {
         console.log(err);

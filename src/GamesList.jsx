@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Auth from '../client/auth.js';
 import 'isomorphic-fetch';
-import {Route, Switch,Redirect, BrowserRouter} from 'react-router-dom';
+import {Route, Switch,Redirect, BrowserRouter, Link} from 'react-router-dom';
 
 
 const GameRow = (props) => (
@@ -55,22 +56,26 @@ export default class GamesList extends React.Component {
     }
 
     loadData() {
-        fetch('/api/games')
-        .then(response => {
-            if(response.ok){
-                console.log(response);
-                response.json()
-                .then(data => { 
-                    console.log('logging data',data);
-                    this.setState({games: data});
-                    
-                });
-            } else {
-                response.json()
-                .then(error => {
-                    alert(`Failed to Fetch Games ${error.message}`)
-                });
+        fetch('/api/games', {
+            headers:{
+                'Authorization': `bearer ${Auth.getToken()}`
             }
+    })
+    .then(response => {
+        if(response.ok){
+            console.log(response);
+            response.json()
+            .then(data => { 
+                console.log('logging data',data);
+                this.setState({games: data});
+                
+            });
+        } else {
+            response.json()
+            .then(error => {
+                alert(`Failed to Fetch Games ${error.message}`)
+            });
+        }
         }).catch(err => {
             alert(`Error fetching data from server: ${err}`)
         });
@@ -91,6 +96,7 @@ export default class GamesList extends React.Component {
             <div>
                 <h1>Games List</h1>
                 <GameTable games={this.state.games} joinGame={this.joinGame} />
+                <li><Link to= '/games/create'>Create Game </Link></li>
             </div>
         );
     }

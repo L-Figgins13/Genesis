@@ -15,6 +15,7 @@ export default class Login extends React.Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange(event) {
@@ -28,7 +29,8 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('Name Submitted: ' + this.state.username + ' Password Submitted: ' +this.state.password);
+        event.preventDefault();
+        alert('Name Submitted: ' + this.state.username + ' Password Submitted: ' +  this.state.password);
         const url = '/auth/login'
 
         fetch(url, {
@@ -70,6 +72,7 @@ export default class Login extends React.Component {
                     password:
                     <input name="password" type="password" value={this.state.password} onChange= {this.handleInputChange} />
                 </label>
+                <input type = "submit" value = "Login"/>
             </form>
             <ul>
                 <li><Link to= '/games/create'>Create a Game</Link></li>

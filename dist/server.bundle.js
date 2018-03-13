@@ -60,17 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = require("mongoose");
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80,197 +74,15 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _mongoose = __webpack_require__(0);
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_mongoose2.default.connect('mongodb://localhost/genesis').then(() => {
-    console.log('mongodb connected');
-    _mongoose2.default.Promse = global.Promise;
-}).catch(err => {
-    console.log('error connecting: ', err);
-});
-
-exports.default = _mongoose2.default;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("webpack");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _socket = __webpack_require__(5);
-
-var _socket2 = _interopRequireDefault(_socket);
-
-var _passport = __webpack_require__(6);
-
-var _passport2 = _interopRequireDefault(_passport);
-
-var _localSignup = __webpack_require__(7);
-
-var _localSignup2 = _interopRequireDefault(_localSignup);
-
-var _express = __webpack_require__(2);
-
-var _express2 = _interopRequireDefault(_express);
-
-var _bodyParser = __webpack_require__(12);
-
-var _bodyParser2 = _interopRequireDefault(_bodyParser);
-
-var _sourceMapSupport = __webpack_require__(11);
-
-var _sourceMapSupport2 = _interopRequireDefault(_sourceMapSupport);
-
-var _authCheck = __webpack_require__(20);
-
-var _authCheck2 = _interopRequireDefault(_authCheck);
-
-var _api = __webpack_require__(13);
-
-var _api2 = _interopRequireDefault(_api);
-
-var _auth = __webpack_require__(18);
-
-var _auth2 = _interopRequireDefault(_auth);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_sourceMapSupport2.default.install();
-
-let app = (0, _express2.default)();
-
-//middleware
-app.use(_express2.default.static('static'));
-app.use(_bodyParser2.default.json());
-app.use(_passport2.default.initialize());
-app.use('./api', _authCheck2.default);
-
-//load strategies
-_passport2.default.use('local-signup', _localSignup2.default);
-_passport2.default.use('local-login', _localSignup2.default);
-
-//load routes
-app.use('/api', _api2.default);
-app.use('/auth', _auth2.default);
-
-//dev test
-if (process.env.NODE_ENV !== 'production') {
-    const webpack = __webpack_require__(3);
-    const webpackDevMiddleware = __webpack_require__(15);
-    const webpackHotMiddleware = __webpack_require__(16);
-
-    const config = __webpack_require__(17);
-    config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-
-    const bundler = webpack(config);
-
-    app.use(webpackDevMiddleware(bundler, { noInfo: true }));
-    app.use(webpackHotMiddleware(bundler, { log: console.log }));
-}
-
-var server = app.listen(3000, function () {
-    console.log('App started at port 3000');
-});
-
-var io = (0, _socket2.default)(server);
-
-io.on('connection', socket => {
-    console.log('-----SOCKET PRINTING----');
-    console.log(socket.id);
-    socket.on('SEND_MESSAGE', function (data) {
-        io.emit('RECIEVE_MESSAGE', data);
-    });
-});
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("socket.io");
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("passport");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _Users = __webpack_require__(8);
-
-var _Users2 = _interopRequireDefault(_Users);
-
-var _passportLocal = __webpack_require__(10);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// check to make sure i am doing somethign twice.. later after this is done
-const strat = new _passportLocal.Strategy({
-    usernameField: 'username',
-    passwordField: 'password',
-    session: false,
-    passReqToCallback: true
-}, (req, username, password, done) => {
-    const newUser = new _Users2.default({ username: username, password: password });
-
-    newUser.save(err => {
-        if (err) {
-            return done(err);
-        }
-
-        return done(null);
-    });
-});
-
-exports.default = strat;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _db = __webpack_require__(1);
+var _db = __webpack_require__(4);
 
 var _db2 = _interopRequireDefault(_db);
 
-var _mongoose = __webpack_require__(0);
+var _mongoose = __webpack_require__(1);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _bcryptjs = __webpack_require__(9);
+var _bcryptjs = __webpack_require__(12);
 
 var _bcryptjs2 = _interopRequireDefault(_bcryptjs);
 
@@ -285,6 +97,7 @@ UserSchema.methods.comparePassword = function comparePassword(password, callback
     _bcryptjs2.default.compare(password, this.password, callback);
 };
 
+// a very cool way to gen salts /hash << using mongoose middleware
 UserSchema.pre('save', function saveHook(next) {
     const user = this;
 
@@ -312,31 +125,373 @@ UserSchema.pre('save', function saveHook(next) {
 exports.default = _mongoose2.default.model('User', UserSchema);
 
 /***/ }),
-/* 9 */
+/* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("bcryptjs");
+module.exports = require("mongoose");
 
 /***/ }),
-/* 10 */
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("passport");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(1);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_mongoose2.default.connect('mongodb://localhost/genesis').then(() => {
+    console.log('mongodb connected');
+    _mongoose2.default.Promse = global.Promise;
+}).catch(err => {
+    console.log('error connecting: ', err);
+});
+
+exports.default = _mongoose2.default;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-local");
 
 /***/ }),
-/* 11 */
+/* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("source-map-support");
+module.exports = require("jsonwebtoken");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = {"jwtSecret":"zack and logan"}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(__dirname) {
+
+var _socket = __webpack_require__(10);
+
+var _socket2 = _interopRequireDefault(_socket);
+
+var _passport = __webpack_require__(3);
+
+var _passport2 = _interopRequireDefault(_passport);
+
+var _localSignup = __webpack_require__(11);
+
+var _localSignup2 = _interopRequireDefault(_localSignup);
+
+var _localLogin = __webpack_require__(13);
+
+var _localLogin2 = _interopRequireDefault(_localLogin);
+
+var _express = __webpack_require__(2);
+
+var _express2 = _interopRequireDefault(_express);
+
+var _bodyParser = __webpack_require__(14);
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _sourceMapSupport = __webpack_require__(15);
+
+var _sourceMapSupport2 = _interopRequireDefault(_sourceMapSupport);
+
+var _authCheck = __webpack_require__(16);
+
+var _authCheck2 = _interopRequireDefault(_authCheck);
+
+var _api = __webpack_require__(17);
+
+var _api2 = _interopRequireDefault(_api);
+
+var _auth = __webpack_require__(19);
+
+var _auth2 = _interopRequireDefault(_auth);
+
+var _path = __webpack_require__(24);
+
+var _path2 = _interopRequireDefault(_path);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_sourceMapSupport2.default.install();
+
+let app = (0, _express2.default)();
+
+//middleware
+app.use(_express2.default.static('static'));
+app.use(_bodyParser2.default.json());
+app.use(_passport2.default.initialize());
+app.use('/api', _authCheck2.default);
+
+//load strategies
+_passport2.default.use('local-signup', _localSignup2.default);
+_passport2.default.use('local-login', _localLogin2.default);
+
+//load routes
+app.use('/api', _api2.default);
+app.use('/auth', _auth2.default);
+
+//dev test
+if (process.env.NODE_ENV !== 'production') {
+    const webpack = __webpack_require__(8);
+    const webpackDevMiddleware = __webpack_require__(21);
+    const webpackHotMiddleware = __webpack_require__(22);
+
+    const config = __webpack_require__(23);
+    config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+    const bundler = webpack(config);
+
+    app.use(webpackDevMiddleware(bundler, { noInfo: true }));
+    app.use(webpackHotMiddleware(bundler, { log: console.log }));
+}
+
+var server = app.listen(3000, function () {
+    console.log('App started at port 3000');
+});
+
+var io = (0, _socket2.default)(server);
+
+app.get('/*', function (req, res) {
+    res.sendFile(_path2.default.join(__dirname, '../static/index.html'));
+});
+
+io.on('connection', socket => {
+    console.log('-----SOCKET PRINTING----');
+    console.log(socket.id);
+    socket.on('SEND_MESSAGE', function (data) {
+        io.emit('RECIEVE_MESSAGE', data);
+    });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, "/"))
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("socket.io");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Users = __webpack_require__(0);
+
+var _Users2 = _interopRequireDefault(_Users);
+
+var _passportLocal = __webpack_require__(5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// check to make sure i am doing somethign twice.. later after this is done
+const LocalStrategy = new _passportLocal.Strategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    session: false,
+    passReqToCallback: true
+}, (req, username, password, done) => {
+    const newUser = new _Users2.default({ username: username, password: password });
+    console.log('Creating New user', newUser);
+    newUser.save(err => {
+        if (err) {
+            return done(err);
+        }
+
+        return done(null);
+    });
+});
+
+exports.default = LocalStrategy;
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("body-parser");
+module.exports = require("bcryptjs");
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _jsonwebtoken = __webpack_require__(6);
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
+var _Users = __webpack_require__(0);
+
+var _Users2 = _interopRequireDefault(_Users);
+
+var _passportLocal = __webpack_require__(5);
+
+var _index = __webpack_require__(7);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const strat = new _passportLocal.Strategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    session: false,
+    passReqToCallback: true
+}, (req, username, password, done) => {
+
+    const userData = {
+        username: username.trim(),
+        password: password.trim()
+    };
+
+    _Users2.default.findOne({ username: userData.username }).then(user => {
+        if (!user) {
+            const error = new Error('Incorrect Email or Password');
+            error.name = 'fuck you';
+
+            console.log(user);
+            done(error);
+        }
+
+        const payload = {
+            sub: user._id
+        };
+
+        const token = _jsonwebtoken2.default.sign(payload, _index2.default.jwtSecret);
+
+        console.log("Logging Token:", token);
+
+        const data = {
+            name: user.username
+        };
+
+        done(null, token, data);
+    }).catch(err => {
+        done(err);
+    });
+});
+
+exports.default = strat;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("source-map-support");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _jsonwebtoken = __webpack_require__(6);
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
+var _Users = __webpack_require__(0);
+
+var _Users2 = _interopRequireDefault(_Users);
+
+var _index = __webpack_require__(7);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const authCheck = (req, res, next) => {
+    if (!req.headers.authorization) {
+        res.status(401).send();
+    }
+
+    // this splits the value(token) part of the Authorization header
+    const token = req.headers.authorization.split(' ')[1];
+
+    _jsonwebtoken2.default.verify(token, _index2.default.jwtSecret, function (err, decodedToken) {
+
+        if (err) {
+            console.log(err);
+        }
+        const userId = decodedToken.sub;
+
+        _Users2.default.findById(userId).then(user => {
+            if (!user) {
+                res.status(401).send();
+            }
+
+            //saves the decoded token information on the request object
+            //for user later on in the request life cycle
+
+            req.user = user;
+            console.log('-------logging user from token-------');
+            console.log(user);
+
+            next();
+        }).catch(error => {
+            console.log(error);
+        });
+    });
+};
+
+exports.default = authCheck;
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -350,9 +505,13 @@ var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _Games = __webpack_require__(14);
+var _Games = __webpack_require__(18);
 
 var _Games2 = _interopRequireDefault(_Games);
+
+var _Users = __webpack_require__(0);
+
+var _Users2 = _interopRequireDefault(_Users);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -380,21 +539,49 @@ router.get('/games', (req, res, next) => {
 });
 
 router.get('/games/:id', (req, res, next) => {
-    if (req.params.id === game._id) {
-        console.log('found the game mother fucker');
+
+    _Games2.default.findById(req.params.id).then(game => {
+
+        // if(err) { console.log(err)};
+
+        console.log('-------------- Logging Game After Populate Call -------------');
+        console.log(game);
+        console.log();
+
+        console.log('-----Attempting to log username directly from game.player object---------');
+        console.log(game.players[0].username);
+
+        if (!game) {
+            res.status(400).send('game not found');
+        }
+
         res.json(game);
-    } else {
-        console.log('gameID does not match');
-        res.status(500).send('game not found');
-    }
+    }).catch(err => {
+        console.log(err);
+    });
+
+    // if (req.params.id === game._id){
+    //     console.log('found the game mother fucker');
+    //     res.json(game);
+    //  } else {
+    //      console.log('gameID does not match');
+    //      res.status(500).send('game not found');
+    //  }
 });
 
 router.post('/games/create', (req, res, next) => {
     const newGame = new _Games2.default({ owner: req.body.owner, title: req.body.title });
-    console.log('fuck me sideways');
+
+    console.log('------------logging player before save----------');
+    console.log(req.user);
+    console.log();
+
+    newGame.players.push({ user_id: req.user._id, username: req.user.username });
+    console.log('logging new Game', newGame);
+
     newGame.save().then(doc => {
         console.log(doc);
-        res.json({ msg: 'ok' });
+        res.json({ msg: 'ok', game_id: doc._id });
     }).catch(err => {
         console.log(err);
     });
@@ -403,17 +590,17 @@ router.post('/games/create', (req, res, next) => {
 exports.default = router;
 
 /***/ }),
-/* 14 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _db = __webpack_require__(1);
+var _db = __webpack_require__(4);
 
 var _db2 = _interopRequireDefault(_db);
 
-var _mongoose = __webpack_require__(0);
+var _mongoose = __webpack_require__(1);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
@@ -421,39 +608,141 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Schema = _mongoose2.default.Schema;
 
-var gameSchema = new Schema({
-    owner: String,
-    title: String
+const ImgSchema = new Schema({
+    name: String,
+    url: String
 });
 
-// gameSchema.statics.createGame = function(cb) {
-//     return this.model('Game').
+const CardSchema = new Schema({
+    name: String,
+    ruleText: String,
+    value: Number,
+    suit: String,
+    image: ImgSchema
+});
+
+const PlayerSchema = new Schema({
+    user_id: String,
+    username: String,
+    health: { type: Number, default: 100 }
+});
+
+// const Player = mongoose.model('Player', PlayerSchema);
+
+const GameSchema = new Schema({
+    owner: String,
+    title: String,
+    gameCards: [CardSchema],
+    players: [PlayerSchema]
+});
+
+// G
+// ameSchema.methods.createGame = function createGame(user, title) {
+//     this.model('Game').create({owner:user.username, title: title, players: players.pus})
 // }
 
-var Game = _mongoose2.default.model('Game', gameSchema);
+
+var Game = _mongoose2.default.model('Game', GameSchema);
 
 module.exports = Game;
 
 /***/ }),
-/* 15 */
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _express = __webpack_require__(2);
+
+var _express2 = _interopRequireDefault(_express);
+
+var _validator = __webpack_require__(20);
+
+var _validator2 = _interopRequireDefault(_validator);
+
+var _passport = __webpack_require__(3);
+
+var _passport2 = _interopRequireDefault(_passport);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const router = new _express2.default.Router();
+
+//probably a syntatical error here (fixed)
+
+router.post('/signup', (req, res, next) => {
+    _passport2.default.authenticate('local-signup', err => {
+
+        console.log('Code executing in server side /signup route');
+
+        if (err) {
+            console.log(err);
+
+            return res.status(400).json({
+                success: false,
+                message: 'error in signup post'
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: 'You have created a user'
+        });
+    })(req, res, next);
+});
+
+router.post('/login', (req, res, next) => {
+    _passport2.default.authenticate('local-login', (err, token, userData) => {
+        if (err) {
+            console.log(err);
+            res.status(400).json({
+                success: false,
+                message: err.message
+            });
+        }
+
+        res.json({
+            success: true,
+            message: 'You have logged in',
+            token,
+            user: userData
+        });
+    })(req, res, next);
+});
+
+exports.default = router;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = require("validator");
+
+/***/ }),
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-dev-middleware");
 
 /***/ }),
-/* 16 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-hot-middleware");
 
 /***/ }),
-/* 17 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
-const webpack = __webpack_require__(3);
+const webpack = __webpack_require__(8);
 
 module.exports = {
     entry: {
@@ -492,146 +781,10 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _express = __webpack_require__(2);
-
-var _express2 = _interopRequireDefault(_express);
-
-var _validator = __webpack_require__(19);
-
-var _validator2 = _interopRequireDefault(_validator);
-
-var _passport = __webpack_require__(6);
-
-var _passport2 = _interopRequireDefault(_passport);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const router = new _express2.default.Router();
-
-//probably a syntatical error here
-
-router.post('/signup', (req, res, next) => {
-    _passport2.default.authenticate('local-signup', err => {
-        if (err) {
-            console.log(err);
-
-            res.status(400).json({
-                success: false,
-                message: 'error in signup post'
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: 'You have created a user'
-        });
-    });
-});
-
-_passport2.default.authenticate('local-login', _passport2.default.authenticate('local-login', (err, token, userData) => {
-    if (err) {
-        console.log(err);
-        res.status(400).json({
-            success: false,
-            message: err.message
-        });
-    }
-
-    res.json({
-        success: true,
-        message: 'You have logged in',
-        token,
-        user: userData
-    });
-}));
-
-exports.default = router;
-
-/***/ }),
-/* 19 */
+/* 24 */
 /***/ (function(module, exports) {
 
-module.exports = require("validator");
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _jsonwebtoken = __webpack_require__(21);
-
-var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
-
-var _Users = __webpack_require__(8);
-
-var _Users2 = _interopRequireDefault(_Users);
-
-var _index = __webpack_require__(22);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const authCheck = (req, res, next) => {
-    if (!req.headers.authorization) {
-        res.status(401).send();
-    }
-
-    // this splits the value(token) part of the Authorization header
-    const token = req.headers.authorization.split(' ')[1];
-
-    _jsonwebtoken2.default.verify(token, _index2.default.jwtSecret).then(decodedToken => {
-        const userId = decodedToken.sub;
-
-        _Users2.default.findById(userId).then(user => {
-            if (!user) {
-                res.status(401).send();
-            }
-
-            //saves the decoded token information on the request object
-            //for user later on in the request life cycle
-
-            req.user = user;
-            console.log(user);
-
-            next();
-        }).catch(error => {
-            console.log(error);
-        });
-    }).catch(error => {
-        res.status(401).send();
-    });
-};
-
-exports.default = authCheck;
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-module.exports = require("jsonwebtoken");
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports) {
-
-module.exports = {"jwtSecret":"zack and logan"}
+module.exports = require("path");
 
 /***/ })
 /******/ ])));

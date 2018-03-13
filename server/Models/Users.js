@@ -13,7 +13,7 @@ UserSchema.methods.comparePassword = function comparePassword(password,callback)
 };
 
 
-
+// a very cool way to gen salts /hash << using mongoose middleware
 UserSchema.pre('save', function saveHook(next) { 
     const user = this;
 

@@ -42,8 +42,8 @@ export default class Signup extends React.Component {
             })
         })
         .then(res=>res.json())
-        .catch(error=> console.error('Error:',error))
-            .then(data => {
+        
+        .then(data => {
                 console.log('Response:',JSON.stringify(data));
 
                 if(data.success === true) {
@@ -53,7 +53,8 @@ export default class Signup extends React.Component {
                 } else {
                     console.log(data.message);
                 }
-            })      
+            })
+            .catch(error=> console.error('Error:',error))      
     }
 
     render() {

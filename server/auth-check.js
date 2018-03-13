@@ -11,8 +11,11 @@ const authCheck = (req, res, next) => {
     // this splits the value(token) part of the Authorization header
     const token = req.headers.authorization.split(' ')[1];
 
-    jwt.verify(token, config.jwtSecret)
-    .then(decodedToken => {
+    jwt.verify(token, config.jwtSecret, function( err, decodedToken) {
+
+        if(err){
+            console.log(err);
+        }
         const userId = decodedToken.sub;
         
         User.findById(userId)
@@ -25,6 +28,7 @@ const authCheck = (req, res, next) => {
             //for user later on in the request life cycle
             
             req.user = user;
+            console.log('-------logging user from token-------');
             console.log(user);
 
             next();
@@ -33,9 +37,6 @@ const authCheck = (req, res, next) => {
             console.log(error);
         })
 
-    })
-    .catch(error => {
-        res.status(401).send();
     })    
 }
 
