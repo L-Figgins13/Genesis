@@ -48,15 +48,16 @@ export default class CreateGame extends React.Component {
                 owner: this.state.owner,
                 title: this.state.title
             })
-        }).then(res =>  res.json())
+        })
+        .then(res =>  res.json())
         .catch(error => console.error('Error:', error))
-        .then(response => {
-            console.log('logging response object ' + JSON.stringify(response));
-            if(response.msg === 'ok') {
-            console.log('Success:', response);
-            this.setState({redirect:true, game_id: response.game_id});
-            }
-        });
+            .then(response => {
+                console.log('logging response object ' + JSON.stringify(response));
+                if(response.msg === 'ok') {
+                console.log('Success:', response);
+                this.setState({redirect:true, game_id: response.game_id});
+                }
+            });
     }
 
     render() {

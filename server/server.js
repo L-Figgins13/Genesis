@@ -71,6 +71,17 @@ app.get('/*', function(req,res){
 io.on('connection' , (socket) => {
     console.log('-----SOCKET PRINTING----');
     console.log(socket.id);
+
+    socket.on('JOIN', data => {
+        console.log('Socket joining gameId:', data.game_id);
+        socket.join(data.game_id);
+        
+        socket.to(data.game_id).broadcast.emit('USER_JOINED');
+        
+    })
+
+
+
     socket.on('SEND_MESSAGE', function(data) {
         io.emit('RECIEVE_MESSAGE', data);
     })

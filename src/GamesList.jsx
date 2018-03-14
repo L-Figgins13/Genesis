@@ -49,6 +49,9 @@ export default class GamesList extends React.Component {
         this.loadData();
     }
 
+    
+
+
     joinGame(event) {
         const target = event.target;
         console.log(target.id);

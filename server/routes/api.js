@@ -32,6 +32,7 @@ router.get('/games', (req, res, next) => {
    })
 });
 
+
 router.get('/games/:id', (req,res,next) => {
 
     Game.findById(req.params.id)

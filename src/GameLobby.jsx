@@ -37,13 +37,17 @@ export default class GameLobby extends React.Component {
 
         this.socket = io('localhost:3000');
 
-        this.socket.join()
+       //
 
         //socket is expecting a player object to update the state
         this.socket.on('PLAYER_JOINED', data => {
             console.log('Player: ' + data.username + ' has joined the game');
             this.setState({players: [...this.state.players, data]});
             console.log(this.state.players);
+        })
+
+        this.socket.on('USER_JOINED', data =>{
+            this.loadData();
         })
 
 
@@ -61,7 +65,8 @@ export default class GameLobby extends React.Component {
 
     componentDidMount () {
         this.loadData();
-        this.socket.join(this.state.gameID);
+        const data = {game_id: this.state.gameID};
+        this.socket.emit('JOIN', data);
     }
 
     loadData() {
