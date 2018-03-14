@@ -56,7 +56,13 @@ var server = app.listen(3000, function () {
     console.log('App started at port 3000');
 });
 
-var io = socket(server);
+const io = socket(server);
+
+
+//this allows me to access io in the request response cycle
+app.set('io', io);
+
+
 
 app.get('/*', function(req,res){
     res.sendFile(path.join(__dirname, '../static/index.html'))

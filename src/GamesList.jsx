@@ -10,7 +10,7 @@ const GameRow = (props) => (
         <td> {props.game._id}   </td>
         <td> {props.game.owner} </td>
         <td> {props.game.title} </td>
-        <td><button id={props.game._id} onClick={props.joinGame}/></td>
+        <td><button id={props.game._id} onClick={props.joinGame}>Join</button></td>
     </tr>
 );
 
@@ -52,7 +52,26 @@ export default class GamesList extends React.Component {
     joinGame(event) {
         const target = event.target;
         console.log(target.id);
-        this.setState({join:target.id});
+
+        fetch('/api/games/join',{
+            method: 'POST',
+            headers: {
+                'Authorization' : `bearer ${Auth.getToken()}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                game_id: target.id
+            })
+        })
+        .then(response => {
+            response.json()
+            .then(game => {
+             
+                this.setState({join:target.id});
+            })
+        })
+
+        
     }
 
     loadData() {

@@ -36,6 +36,15 @@ const GameSchema = new Schema({
 //     this.model('Game').create({owner:user.username, title: title, players: players.pus})
 // }
 
+GameSchema.statics.join = function join(game_id, user) {
+    const player = {
+        user_id: user._id,
+        username: user.username,
+    }
+
+    return this.model('Game').findByIdAndUpdate(game_id, { $push: {players: player }})
+
+}
 
 var Game = mongoose.model('Game', GameSchema);
 

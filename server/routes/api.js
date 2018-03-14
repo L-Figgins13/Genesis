@@ -1,6 +1,7 @@
 import express from 'express';
 import Game from '../Models/Games.js';
 import User from '../Models/Users.js';
+import broadcast from '../broadcast.js';
 
 const router = express.Router();
 
@@ -84,6 +85,20 @@ router.post('/games/create' , (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
+    })
+})
+
+router.post('/games/join', (req,res,next) => {
+    //expects a game id and a user object <<<< (not just an id)
+    console.log('-------checking req.user ---------');
+    console.log(req.user);
+    console.log();
+    
+    Game.join(req.body.game_id, req.user)
+    .then(updatedGame => {
+        console.log(updatedGame);
+        broadcast(req.app.get('io'),req.body.game_id, 'PLAYER_JOINED', updatedGame);
+        res.json(updatedGame);
     })
 })
 

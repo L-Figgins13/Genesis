@@ -283,7 +283,10 @@ var server = app.listen(3000, function () {
     console.log('App started at port 3000');
 });
 
-var io = (0, _socket2.default)(server);
+const io = (0, _socket2.default)(server);
+
+//this allows me to access io in the request response cycle
+app.set('io', io);
 
 app.get('/*', function (req, res) {
     res.sendFile(_path2.default.join(__dirname, '../static/index.html'));
@@ -513,6 +516,10 @@ var _Users = __webpack_require__(0);
 
 var _Users2 = _interopRequireDefault(_Users);
 
+var _broadcast = __webpack_require__(25);
+
+var _broadcast2 = _interopRequireDefault(_broadcast);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const router = _express2.default.Router();
@@ -587,6 +594,19 @@ router.post('/games/create', (req, res, next) => {
     });
 });
 
+router.post('/games/join', (req, res, next) => {
+    //expects a game id and a user object <<<< (not just an id)
+    console.log('-------checking req.user ---------');
+    console.log(req.user);
+    console.log();
+
+    _Games2.default.join(req.body.game_id, req.user).then(updatedGame => {
+        console.log(updatedGame);
+        (0, _broadcast2.default)(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', updatedGame);
+        res.json(updatedGame);
+    });
+});
+
 exports.default = router;
 
 /***/ }),
@@ -641,6 +661,14 @@ const GameSchema = new Schema({
 //     this.model('Game').create({owner:user.username, title: title, players: players.pus})
 // }
 
+GameSchema.statics.join = function join(game_id, user) {
+    const player = {
+        user_id: user._id,
+        username: user.username
+    };
+
+    return this.model('Game').findByIdAndUpdate(game_id, { $push: { players: player } });
+};
 
 var Game = _mongoose2.default.model('Game', GameSchema);
 
@@ -785,6 +813,24 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = require("path");
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+const broadcast = (io, room, message, data) => {
+    console.log('broadcast', room, message, data);
+
+    io.in(room).emit(message, data);
+};
+
+exports.default = broadcast;
 
 /***/ })
 /******/ ])));

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Auth from '../client/auth.js';
 import 'whatwg-fetch';
 import Chat from './Chat.jsx';
+import io from "socket.io-client";
 
 
 function PlayerArea (props) {
@@ -20,8 +21,11 @@ function PlayerArea (props) {
 function Player (props) {
     return (
         <div>
+            <div>-----------------------------------------</div>
             <div>{props.player.user_id}</div>
             <div>{props.player.username}</div>
+            <div>-----------------------------------------</div>
+
         </div>
     )
 }
@@ -30,11 +34,34 @@ export default class GameLobby extends React.Component {
     constructor(props) {
         super(props);
         this.state = {players:[], gameID:null};
+
+        this.socket = io('localhost:3000');
+
+        this.socket.join()
+
+        //socket is expecting a player object to update the state
+        this.socket.on('PLAYER_JOINED', data => {
+            console.log('Player: ' + data.username + ' has joined the game');
+            this.setState({players: [...this.state.players, data]});
+            console.log(this.state.players);
+        })
+
+
+        //you are not suppose to change the array directly in react
+        // so this essentially makes a copy of the array missing one element
+        this.socket.on('PLAYER_LEFT', data => {
+            console.log('Player: ' + data.username + ' has left the game');
+            this.setState(prevState => ({ players: prevState.players.filter(player => {
+                player.user_id !== data.user_id;
+            })}))
+            console.log(this.state.players);
+        })
         
     }
 
     componentDidMount () {
         this.loadData();
+        this.socket.join(this.state.gameID);
     }
 
     loadData() {
