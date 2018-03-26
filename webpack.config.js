@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const extractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -23,6 +24,21 @@ module.exports = {
                     plugins: ['transform-es2015-destructuring', 'transform-object-rest-spread']
                 }
             },
+            {
+                test: /\.css$/,
+                loader: 'style-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader',
+                query: {
+                    modules: true,
+                    localIdentName: '[name]__[local]___[hash:base64:5]',
+                    plugins: [
+                        new extractTextPlugin('./src/css/styles.css')
+                    ]
+                }
+            }
         ]
     },
 
