@@ -53,6 +53,12 @@ export default class Login extends React.Component {
                     Auth.authenticateUser(data.token);
                     this.props.toggleAuthenticateStatus();
 
+                    console.log();
+                    console.log(`-----------Storing Username ${data.user.username} in local storage----------------`);
+                    console.log();
+
+                    localStorage.setItem('username', data.user.username);
+
                     this.props.history.push('/games');
                 }
             })

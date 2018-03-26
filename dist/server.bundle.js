@@ -197,7 +197,7 @@ module.exports = require("webpack");
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(__dirname) {
+
 
 var _socket = __webpack_require__(10);
 
@@ -245,6 +245,8 @@ var _path2 = _interopRequireDefault(_path);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+const ABSPATH = 'C:\\Users\\lfigg\\Documents\\GitHub\\Genesis\\static\\index.html';
+
 _sourceMapSupport2.default.install();
 
 let app = (0, _express2.default)();
@@ -289,7 +291,7 @@ const io = (0, _socket2.default)(server);
 app.set('io', io);
 
 app.get('/*', function (req, res) {
-    res.sendFile(_path2.default.join(__dirname, '../static/index.html'));
+    res.sendFile(ABSPATH);
 });
 
 io.on('connection', socket => {
@@ -302,12 +304,29 @@ io.on('connection', socket => {
 
         socket.to(data.game_id).broadcast.emit('USER_JOINED');
     });
+});
+
+var chat = io.of('/chat');
+
+chat.on('connection', socket => {
+    console.log(`--------Chat Socket ID:${socket.id} connecting--------`);
+
+    socket.on('JOIN', data => {
+        socket.join(data.chat_id);
+
+        console.log('---------------------Chat socket joining room -----------------');
+        console.log(data.chat_id);
+        console.log();
+
+        socket.username = data.username;
+    });
 
     socket.on('SEND_MESSAGE', function (data) {
-        io.emit('RECIEVE_MESSAGE', data);
+        console.log('sending message');
+        console.log(data);
+        io.to(data.chat_id).emit('RECIEVE_MESSAGE', data);
     });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
 /* 10 */
@@ -402,8 +421,6 @@ const strat = new _passportLocal.Strategy({
     _Users2.default.findOne({ username: userData.username }).then(user => {
         if (!user) {
             const error = new Error('Incorrect Email or Password');
-            error.name = 'fuck you';
-
             console.log(user);
             done(error);
         }
@@ -417,7 +434,7 @@ const strat = new _passportLocal.Strategy({
         console.log("Logging Token:", token);
 
         const data = {
-            name: user.username
+            username: user.username
         };
 
         done(null, token, data);
@@ -532,20 +549,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const router = _express2.default.Router();
 
-const game = {
-    _id: '5a84d940441f6514587f40aa',
-    players: [{
-        _id: 1,
-        username: 'Logan'
-    }, {
-        _id: 2,
-        username: 'Zach'
-    }, {
-        _id: 3,
-        username: 'James'
-    }]
-};
-
 router.get('/games', (req, res, next) => {
     _Games2.default.find({}).then(function (games) {
         console.log(games);
@@ -609,8 +612,12 @@ router.post('/games/join', (req, res, next) => {
     console.log();
 
     _Games2.default.join(req.body.game_id, req.user).then(updatedGame => {
+        const data = {
+            newGameState: updatedGame,
+            newPlayer: updatedGame.players[players.length - 1]
+        };
         console.log(updatedGame);
-        (0, _broadcast2.default)(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', updatedGame);
+        (0, _broadcast2.default)(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
         res.json(updatedGame);
     });
 });

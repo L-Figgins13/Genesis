@@ -5,26 +5,6 @@ import broadcast from '../broadcast.js';
 
 const router = express.Router();
 
-const game = {
-    _id: '5a84d940441f6514587f40aa',
-    players: [
-        {
-            _id: 1,
-            username: 'Logan',
-        },
-
-        {
-            _id: 2,
-            username: 'Zach',
-        },
-
-        {
-            _id: 3,
-            username: 'James',
-        }
-    ]
-}
-
 router.get('/games', (req, res, next) => {
    Game.find({}).then( function(games) {
        console.log(games);
@@ -97,8 +77,12 @@ router.post('/games/join', (req,res,next) => {
     
     Game.join(req.body.game_id, req.user)
     .then(updatedGame => {
+        const data = {
+            newGameState: updatedGame,
+            newPlayer: updatedGame.players[players.length-1]
+        }
         console.log(updatedGame);
-        broadcast(req.app.get('io'),req.body.game_id, 'PLAYER_JOINED', updatedGame);
+        broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
         res.json(updatedGame);
     })
 })

@@ -20,8 +20,6 @@ const strat = new PassportLocalStrategy({
     .then(user => {
         if(!user) {
             const error = new Error('Incorrect Email or Password');
-            error.name = 'fuck you';
-            
             console.log(user);
             done(error);
         }
@@ -35,7 +33,7 @@ const strat = new PassportLocalStrategy({
         console.log("Logging Token:", token);
 
         const data = {
-            name: user.username
+            username: user.username
         };
 
         done(null, token, data);

@@ -41,13 +41,16 @@ export default class GameLobby extends React.Component {
 
         //socket is expecting a player object to update the state
         this.socket.on('PLAYER_JOINED', data => {
-            console.log('Player: ' + data.username + ' has joined the game');
-            this.setState({players: [...this.state.players, data]});
+            console.log('Player: ' + data.newPlayer + ' has joined the game');
+            this.setState({players: data.newGameState.players});
             console.log(this.state.players);
         })
 
         this.socket.on('USER_JOINED', data =>{
-            this.loadData();
+            this.loadData()
+            .then(gameID => {
+                console.log('User Joined GameID: ', gameID);
+            })
         })
 
 
@@ -63,33 +66,47 @@ export default class GameLobby extends React.Component {
         
     }
 
+    //TODO: REDO THIS ENTIRE FUCKING WORKFLOW WHAT KIND OF STONED SHIT WAS THIS
     componentDidMount () {
-        this.loadData();
-        const data = {game_id: this.state.gameID};
-        this.socket.emit('JOIN', data);
+        this.loadData().then(gameID => {
+            localStorage.setItem('gameID', this.state.gameID);
+            const data = {game_id: this.state.gameID};
+            this.socket.emit('JOIN', data);
+        })
     }
 
     loadData() {
-        fetch(`/api/games/${this.props.match.params.id}`,{
-            headers:{
-                'Authorization': `bearer ${Auth.getToken()}`
-            }
-    })
-        .then(response =>{
+
+        let promise = new Promise( (resolve,reject)=> {
+            fetch(`/api/games/${this.props.match.params.id}`, {
+                headers:{
+                    'Authorization': `bearer ${Auth.getToken()}`
+                }
+        })
+        .then(response=> {
             if(response.ok){
                 response.json().then(game => {
                     this.setState({players: game.players, gameID: game._id});
+                    resolve(game._id);
                 })
             }
         })
-    }
+
+    });
+
+    return promise
+}
+
+
+
+    
 
     render(){
         return(
             <div>
                 <h2>DA GAMEEEEE></h2>
                 <PlayerArea players = {this.state.players} />
-                <Chat />
+                <Chat gameID={this.state.gameID} username={localStorage.getItem('username')}/>
             </div>
         )
     }

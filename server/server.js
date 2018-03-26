@@ -1,3 +1,5 @@
+const ABSPATH = 'C:\\Users\\lfigg\\Documents\\GitHub\\Genesis\\static\\index.html'
+
 import socket from 'socket.io';
 
 import passport from 'passport';
@@ -65,8 +67,10 @@ app.set('io', io);
 
 
 app.get('/*', function(req,res){
-    res.sendFile(path.join(__dirname, '../static/index.html'))
+    res.sendFile(ABSPATH);
 })
+
+
 
 io.on('connection' , (socket) => {
     console.log('-----SOCKET PRINTING----');
@@ -79,10 +83,27 @@ io.on('connection' , (socket) => {
         socket.to(data.game_id).broadcast.emit('USER_JOINED');
         
     })
+});
 
 
+
+var chat = io.of('/chat');
+chat.on('connection', socket => {
+    console.log(`--------Chat Socket ID:${socket.id} connecting--------`);
+
+    socket.on('JOIN', data => {
+        socket.join(data.chat_id);
+
+        console.log('---------------------Chat socket joining room -----------------');
+        console.log(data.chat_id);
+        console.log();
+        
+        socket.username = data.username;
+    })
 
     socket.on('SEND_MESSAGE', function(data) {
-        io.emit('RECIEVE_MESSAGE', data);
+        console.log('sending message');
+        console.log(data);
+        io.to(data.chat_id).emit('RECIEVE_MESSAGE', data);
     })
-});
+})

@@ -41,17 +41,19 @@ export default class Chat extends React.Component {
         super(props);
 
         this.state = {
-            username: 'ZACK',
+            username: props.username,
             messageInput: '',
             messages: [],
+            chat_id: null
         };
 
-        this.socket = io('localhost:3000');
+        this.socket = io('localhost:3000/chat');
+
         this.handleInputChange = this.handleInputChange.bind(this);
         
 
         this.socket.on('RECIEVE_MESSAGE', function(data) {
-            // console.log(data);
+            console.log('RECIEVE MESSAGE EVENT: ', data);
             // console.log(this.state);
             // // console.log(JSON.parse(JSON.stringify(this.state)));
             // // console.log(...this.state.messages);
@@ -72,10 +74,29 @@ export default class Chat extends React.Component {
             event.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
                 username: this.state.username,
-                message: this.state.messageInput
+                message: this.state.messageInput,
+                chat_id: this.state.chat_id
+
             });
             this.setState({messageInput: ''});
             }
+    }
+
+    componentDidMount() {
+      //mb not needed at any point
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let data= {
+            chat_id: nextProps.gameID,
+            username: nextProps.username
+        }
+
+        this.setState({
+            chat_id: nextProps.gameID,
+            username: nextProps.username
+        });
+        this.socket.emit('JOIN', data);
     }
    
 
