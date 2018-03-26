@@ -235,11 +235,11 @@ var _api = __webpack_require__(17);
 
 var _api2 = _interopRequireDefault(_api);
 
-var _auth = __webpack_require__(19);
+var _auth = __webpack_require__(20);
 
 var _auth2 = _interopRequireDefault(_auth);
 
-var _path = __webpack_require__(21);
+var _path = __webpack_require__(22);
 
 var _path2 = _interopRequireDefault(_path);
 
@@ -268,10 +268,10 @@ app.use('/auth', _auth2.default);
 //dev test
 if (process.env.NODE_ENV !== 'production') {
     const webpack = __webpack_require__(8);
-    const webpackDevMiddleware = __webpack_require__(22);
-    const webpackHotMiddleware = __webpack_require__(23);
+    const webpackDevMiddleware = __webpack_require__(23);
+    const webpackHotMiddleware = __webpack_require__(24);
 
-    const config = __webpack_require__(24);
+    const config = __webpack_require__(25);
     config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
@@ -540,7 +540,7 @@ var _Users = __webpack_require__(0);
 
 var _Users2 = _interopRequireDefault(_Users);
 
-var _broadcast = __webpack_require__(26);
+var _broadcast = __webpack_require__(19);
 
 var _broadcast2 = _interopRequireDefault(_broadcast);
 
@@ -698,12 +698,30 @@ module.exports = Game;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+const broadcast = (io, room, message, data) => {
+    console.log('broadcast', room, message, data);
+
+    io.in(room).emit(message, data);
+};
+
+exports.default = broadcast;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _validator = __webpack_require__(20);
+var _validator = __webpack_require__(21);
 
 var _validator2 = _interopRequireDefault(_validator);
 
@@ -760,38 +778,38 @@ router.post('/login', (req, res, next) => {
 exports.default = router;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("validator");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-dev-middleware");
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-hot-middleware");
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
 const webpack = __webpack_require__(8);
-const extractTextPlugin = __webpack_require__(25);
+const extractTextPlugin = __webpack_require__(26);
 
 module.exports = {
     entry: {
@@ -841,28 +859,10 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("extract-text-webpack-plugin");
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-const broadcast = (io, room, message, data) => {
-    console.log('broadcast', room, message, data);
-
-    io.in(room).emit(message, data);
-};
-
-exports.default = broadcast;
 
 /***/ })
 /******/ ])));
