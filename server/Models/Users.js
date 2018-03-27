@@ -2,10 +2,15 @@ import db from '../db.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
+const StatsSchema = new Schema({
+    wins: {type:Number, default: 0},
+    losses: {type: Number, default: 0}
+})
 
 const UserSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    stats: StatsSchema 
 });
 
 UserSchema.methods.comparePassword = function comparePassword(password,callback) {

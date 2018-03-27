@@ -11,6 +11,7 @@ export default (
     <Route path = "/" component = {App}>
         <indexRedirect to="/helloworld" />
         <Route path = "helloworld" component={HelloWorld} />
+        <Route path = "profile" component={Profile} />
         <Route path = "games" component={withRouter(GamesList)} />
         <Route path = "*" component = {NoMatch} />
     </Route>
