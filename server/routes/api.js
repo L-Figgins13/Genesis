@@ -31,17 +31,6 @@ router.get('/games/:id', (req,res,next) => {
     .catch( err => {
         console.log(err);
     })
-
-
-
-    // if (req.params.id === game._id){
-    //     console.log('found the game mother fucker');
-    //     res.json(game);
-    //  } else {
-    //      console.log('gameID does not match');
-    //      res.status(500).send('game not found');
-    //  }
-
 });
 
 router.post('/games/create' , (req, res, next) => {
