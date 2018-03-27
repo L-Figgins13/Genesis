@@ -555,6 +555,10 @@ var _broadcast = __webpack_require__(19);
 
 var _broadcast2 = _interopRequireDefault(_broadcast);
 
+var _logger = __webpack_require__(27);
+
+var _logger2 = _interopRequireDefault(_logger);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const router = _express2.default.Router();
@@ -640,7 +644,7 @@ router.get('/users/:id', (req, res, next) => {
     // Logger(req.params.id, 'URL PARAMS');
 
     _Users2.default.findById(req.params.id).then(user => {
-        // Logger(JSON.stringify(user), 'User returned from database');
+        (0, _logger2.default)(JSON.stringify(user), 'User returned from database');
 
         res.status(200).json(user);
     });
@@ -888,6 +892,26 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = require("extract-text-webpack-plugin");
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+
+var Logger = function logger(text, name) {
+    console.log(`---------Logging ${name}------------`);
+    console.log(text);
+    console.log(`---------- END ${name}--------------`);
+};
+
+exports.default = Logger;
 
 /***/ })
 /******/ ])));

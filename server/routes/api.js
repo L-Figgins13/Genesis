@@ -2,6 +2,7 @@ import express from 'express';
 import Game from '../Models/Games.js';
 import User from '../Models/Users.js';
 import broadcast from '../broadcast.js';
+import Logger from '../logger.js'
 
 
 const router = express.Router();
@@ -97,11 +98,16 @@ router.get('/users/:id', (req, res, next) => {
 
     User.findById(req.params.id)
     .then(user => {
-        // Logger(JSON.stringify(user), 'User returned from database');
+        Logger(JSON.stringify(user), 'User returned from database');
+
+        console.log('testing webpack');
 
         res.status(200).json(user);
     })
+    .catch(err => {
+        Logger(err, 'error in users/:id route');
 
+    })
    
 })
 
