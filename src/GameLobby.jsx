@@ -40,11 +40,7 @@ export default class GameLobby extends React.Component {
        //
 
         //socket is expecting a player object to update the state
-        this.socket.on('PLAYER_JOINED', data => {
-            console.log('Player: ' + data.newPlayer + ' has joined the game');
-            this.setState({players: data.newGameState.players});
-            console.log(this.state.players);
-        })
+        
 
         this.socket.on('USER_JOINED', data =>{
             this.loadData()

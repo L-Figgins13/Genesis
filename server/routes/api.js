@@ -22,12 +22,7 @@ router.get('/games/:id', (req,res,next) => {
 
         // if(err) { console.log(err)};
 
-        console.log('-------------- Logging Game After Populate Call -------------')
-        console.log(game);
-        console.log();
-
-        console.log('-----Attempting to log username directly from game.player object---------');
-        console.log(game.players[0].username);
+       Logger(JSON.stringify(game), 'GET /games/:id');
 
         if(!game) {res.status(400).send('game not found')}
 
@@ -75,16 +70,18 @@ router.post('/games/join', (req,res,next) => {
     console.log('-------checking req.user ---------');
     console.log(req.user);
     console.log();
+
+    Logger(req.body.game_id, 'Game ID FROM REQUEST');
     
     Game.join(req.body.game_id, req.user)
     .then(updatedGame => {
-        const data = {
-            newGameState: updatedGame,
-            newPlayer: updatedGame.players[players.length-1]
-        }
-        console.log(updatedGame);
-        broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
+        
+        console.log(JSON.stringify(updatedGame));
+        // broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
         res.status(200).json(updatedGame);
+    })
+    .catch(error => {
+        Logger(error, 'Error in /games/join');
     })
 })
 

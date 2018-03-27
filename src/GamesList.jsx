@@ -73,6 +73,9 @@ export default class GamesList extends React.Component {
                 this.setState({join:target.id});
             })
         })
+        .catch(error => {
+            console.log(error);
+        })
 
         
     }
@@ -88,7 +91,7 @@ export default class GamesList extends React.Component {
             console.log(response);
             response.json()
             .then(data => { 
-                console.log('logging data',data);
+                // console.log('logging data',data);
                 this.setState({games: data});
                 
             });

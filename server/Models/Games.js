@@ -42,6 +42,7 @@ GameSchema.statics.join = function join(game_id, user) {
         username: user.username,
     }
 
+    console.log('Hello from inside Games Model');
     return this.model('Game').findByIdAndUpdate(game_id, { $push: {players: player }})
 
 }

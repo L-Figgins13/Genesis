@@ -245,11 +245,11 @@ var _api = __webpack_require__(17);
 
 var _api2 = _interopRequireDefault(_api);
 
-var _auth = __webpack_require__(20);
+var _auth = __webpack_require__(21);
 
 var _auth2 = _interopRequireDefault(_auth);
 
-var _path = __webpack_require__(22);
+var _path = __webpack_require__(23);
 
 var _path2 = _interopRequireDefault(_path);
 
@@ -278,10 +278,10 @@ app.use('/auth', _auth2.default);
 //dev test
 if (process.env.NODE_ENV !== 'production') {
     const webpack = __webpack_require__(8);
-    const webpackDevMiddleware = __webpack_require__(23);
-    const webpackHotMiddleware = __webpack_require__(24);
+    const webpackDevMiddleware = __webpack_require__(24);
+    const webpackHotMiddleware = __webpack_require__(25);
 
-    const config = __webpack_require__(25);
+    const config = __webpack_require__(26);
     config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
@@ -555,7 +555,7 @@ var _broadcast = __webpack_require__(19);
 
 var _broadcast2 = _interopRequireDefault(_broadcast);
 
-var _logger = __webpack_require__(27);
+var _logger = __webpack_require__(20);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -576,12 +576,7 @@ router.get('/games/:id', (req, res, next) => {
 
         // if(err) { console.log(err)};
 
-        console.log('-------------- Logging Game After Populate Call -------------');
-        console.log(game);
-        console.log();
-
-        console.log('-----Attempting to log username directly from game.player object---------');
-        console.log(game.players[0].username);
+        (0, _logger2.default)(JSON.stringify(game), 'GET /games/:id');
 
         if (!game) {
             res.status(400).send('game not found');
@@ -625,14 +620,15 @@ router.post('/games/join', (req, res, next) => {
     console.log(req.user);
     console.log();
 
+    (0, _logger2.default)(req.body.game_id, 'Game ID FROM REQUEST');
+
     _Games2.default.join(req.body.game_id, req.user).then(updatedGame => {
-        const data = {
-            newGameState: updatedGame,
-            newPlayer: updatedGame.players[players.length - 1]
-        };
-        console.log(updatedGame);
-        (0, _broadcast2.default)(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
+
+        console.log(JSON.stringify(updatedGame));
+        // broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
         res.status(200).json(updatedGame);
+    }).catch(error => {
+        (0, _logger2.default)(error, 'Error in /games/join');
     });
 });
 
@@ -646,7 +642,11 @@ router.get('/users/:id', (req, res, next) => {
     _Users2.default.findById(req.params.id).then(user => {
         (0, _logger2.default)(JSON.stringify(user), 'User returned from database');
 
+        console.log('testing webpack');
+
         res.status(200).json(user);
+    }).catch(err => {
+        (0, _logger2.default)(err, 'error in users/:id route');
     });
 });
 
@@ -710,6 +710,7 @@ GameSchema.statics.join = function join(game_id, user) {
         username: user.username
     };
 
+    console.log('Hello from inside Games Model');
     return this.model('Game').findByIdAndUpdate(game_id, { $push: { players: player } });
 };
 
@@ -746,11 +747,32 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+
+var Logger = function logger(text, name) {
+    console.log(`---------Logging ${name}------------`);
+    console.log(text);
+    console.log(`---------- END ${name}--------------`);
+    console.log();
+};
+
+exports.default = Logger;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _validator = __webpack_require__(21);
+var _validator = __webpack_require__(22);
 
 var _validator2 = _interopRequireDefault(_validator);
 
@@ -807,38 +829,38 @@ router.post('/login', (req, res, next) => {
 exports.default = router;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("validator");
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-dev-middleware");
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-hot-middleware");
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
 const webpack = __webpack_require__(8);
-const extractTextPlugin = __webpack_require__(26);
+const extractTextPlugin = __webpack_require__(27);
 
 module.exports = {
     entry: {
@@ -888,30 +910,10 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("extract-text-webpack-plugin");
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-
-var Logger = function logger(text, name) {
-    console.log(`---------Logging ${name}------------`);
-    console.log(text);
-    console.log(`---------- END ${name}--------------`);
-};
-
-exports.default = Logger;
 
 /***/ })
 /******/ ])));
