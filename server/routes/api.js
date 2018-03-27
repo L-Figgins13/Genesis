@@ -16,7 +16,6 @@ router.get('/games', (req, res, next) => {
 router.get('/games/:id', (req,res,next) => {
 
     Game.findById(req.params.id)
-    
     .then( game => {
 
         // if(err) { console.log(err)};
@@ -86,5 +85,45 @@ router.post('/games/join', (req,res,next) => {
         res.json(updatedGame);
     })
 })
+
+
+//----------- Start User (Profile) Routes-------------------
+
+router.get('/users/:id', (req, res, next) =>{
+
+    // console.log('logging request parameters', req.params.id)
+
+    // User.findById(req.params.id)
+    // .populate('stats')
+    // .exec( function( err, user ) {
+    //     console.log('---------logging User from Profile Route----------');
+    //     console.log(JSON.stringify(user));
+    //     console.log();
+    //     user.stats = stats;
+    //     console.log(JSON.stringify(user.stats));
+
+    //     res.json(user);
+    // })
+
+  
+    User.findById(req.params.id)
+    .then(user => {
+        user.stats = stats;
+        console.log('-------------------------')
+        console.log(JSON.stringify('logging user stats', user.stats));
+        console.log();
+        res.json(user);
+    })
+       
+
+  
+    
+})
+
+
+
+
+
+
 
 export default router;

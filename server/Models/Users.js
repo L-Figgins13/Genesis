@@ -2,16 +2,21 @@ import db from '../db.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
+const Schema = mongoose.Schema;
+
+
 const StatsSchema = new Schema({
     wins: {type:Number, default: 0},
     losses: {type: Number, default: 0}
 })
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
     username: String,
     password: String,
-    stats: StatsSchema 
+    stats: {type:StatsSchema, default: StatsSchema}
 });
+
+
 
 UserSchema.methods.comparePassword = function comparePassword(password,callback) {
     bcrypt.compare(password, this.password, callback);
@@ -37,7 +42,9 @@ UserSchema.pre('save', function saveHook(next) {
     });
 });
 
-export default mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+
+export default User;
 
 
 
