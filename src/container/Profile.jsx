@@ -10,6 +10,7 @@ export default class Profile extends React.Component {
     constructor(props) {
         //init state
         super(props);
+        
         this.state = {
             user: {
                 username: '',
