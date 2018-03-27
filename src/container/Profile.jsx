@@ -23,14 +23,9 @@ export default class Profile extends React.Component {
 
 
     componentDidMount() {
-    
-       // 1 .fetch /api/user/:id
-
-        //expects a user object {} user.username expect user.imageurl user.stats.wins
-
-        //2. "THEN PART"  .then(user=> { do stuff here })
-
-        //3. setState({username:})
+            console.log('-----------loggings match params-----------');
+            console.log(this.props.match.params.id);
+            console.log('-------------------------------------------');
 
             fetch(`/api/users/${this.props.match.params.id}`, {
                 headers:{
@@ -38,6 +33,7 @@ export default class Profile extends React.Component {
                 }
             })
             .then(response =>{
+                console.log(response);
                 response.json()
                 .then(user => {
 
@@ -58,6 +54,8 @@ export default class Profile extends React.Component {
                     console.log(err);
                 })
                 
+            }).catch(err => {
+                console.log(err);
             })
         }
 

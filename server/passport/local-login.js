@@ -4,6 +4,7 @@ import {Strategy as PassportLocalStrategy} from 'passport-local';
 import config from '../../config/index.json';
 
 
+
 const strat = new PassportLocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -23,18 +24,19 @@ const strat = new PassportLocalStrategy({
             console.log(user);
             done(error);
         }
-
+        
         const payload = {
             sub: user._id
         };
 
         const token = jwt.sign(payload, config.jwtSecret);
 
-        console.log("Logging Token:", token);
-
         const data = {
+            id: user._id,
             username: user.username
         };
+        console.log('hello from local-login');
+        // Logger(data, 'user passed to login.jsx');
 
         done(null, token, data);
     })

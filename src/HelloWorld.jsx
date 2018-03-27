@@ -11,7 +11,7 @@ export default class HelloWorld extends React.Component {
 
     render(){
         return (
-            <div className={styles.hello}>
+            <div>
                 <h1>HelloWorld</h1>
                 <ul>
                     <li><Link to="/login">Login</Link></li>

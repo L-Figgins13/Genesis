@@ -119,6 +119,7 @@ export default class GamesList extends React.Component {
                 <h1>Games List</h1>
                 <GameTable games={this.state.games} joinGame={this.joinGame} />
                 <li><Link to= '/games/create'>Create Game </Link></li>
+                
             </div>
         );
     }

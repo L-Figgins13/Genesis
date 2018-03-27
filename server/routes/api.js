@@ -3,6 +3,7 @@ import Game from '../Models/Games.js';
 import User from '../Models/Users.js';
 import broadcast from '../broadcast.js';
 
+
 const router = express.Router();
 
 router.get('/games', (req, res, next) => {
@@ -82,42 +83,26 @@ router.post('/games/join', (req,res,next) => {
         }
         console.log(updatedGame);
         broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
-        res.json(updatedGame);
+        res.status(200).json(updatedGame);
     })
 })
 
 
 //----------- Start User (Profile) Routes-------------------
 
-router.get('/users/:id', (req, res, next) =>{
+router.get('/users/:id', (req, res, next) => {
+    
+    console.log('this route even being touched');
+    // Logger(req.params.id, 'URL PARAMS');
 
-    // console.log('logging request parameters', req.params.id)
-
-    // User.findById(req.params.id)
-    // .populate('stats')
-    // .exec( function( err, user ) {
-    //     console.log('---------logging User from Profile Route----------');
-    //     console.log(JSON.stringify(user));
-    //     console.log();
-    //     user.stats = stats;
-    //     console.log(JSON.stringify(user.stats));
-
-    //     res.json(user);
-    // })
-
-  
     User.findById(req.params.id)
     .then(user => {
-        user.stats = stats;
-        console.log('-------------------------')
-        console.log(JSON.stringify('logging user stats', user.stats));
-        console.log();
-        res.json(user);
-    })
-       
+        // Logger(JSON.stringify(user), 'User returned from database');
 
-  
-    
+        res.status(200).json(user);
+    })
+
+   
 })
 
 

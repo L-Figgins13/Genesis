@@ -440,11 +440,12 @@ const strat = new _passportLocal.Strategy({
 
         const token = _jsonwebtoken2.default.sign(payload, _index2.default.jwtSecret);
 
-        console.log("Logging Token:", token);
-
         const data = {
+            id: user._id,
             username: user.username
         };
+        console.log('hello from local-login');
+        // Logger(data, 'user passed to login.jsx');
 
         done(null, token, data);
     }).catch(err => {
@@ -627,7 +628,7 @@ router.post('/games/join', (req, res, next) => {
         };
         console.log(updatedGame);
         (0, _broadcast2.default)(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
-        res.json(updatedGame);
+        res.status(200).json(updatedGame);
     });
 });
 
@@ -635,27 +636,13 @@ router.post('/games/join', (req, res, next) => {
 
 router.get('/users/:id', (req, res, next) => {
 
-    // console.log('logging request parameters', req.params.id)
-
-    // User.findById(req.params.id)
-    // .populate('stats')
-    // .exec( function( err, user ) {
-    //     console.log('---------logging User from Profile Route----------');
-    //     console.log(JSON.stringify(user));
-    //     console.log();
-    //     user.stats = stats;
-    //     console.log(JSON.stringify(user.stats));
-
-    //     res.json(user);
-    // })
-
+    console.log('this route even being touched');
+    // Logger(req.params.id, 'URL PARAMS');
 
     _Users2.default.findById(req.params.id).then(user => {
-        user.stats = stats;
-        console.log('-------------------------');
-        console.log(JSON.stringify('logging user stats', user.stats));
-        console.log();
-        res.json(user);
+        // Logger(JSON.stringify(user), 'User returned from database');
+
+        res.status(200).json(user);
     });
 });
 

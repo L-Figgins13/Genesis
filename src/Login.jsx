@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Auth from '../client/auth.js';
+import 'isomorphic-fetch';
 
 
 
@@ -49,17 +50,14 @@ export default class Login extends React.Component {
                 console.log('Response:', JSON.stringify(data));
 
                 if(data.success === true) {
-                    console.log('Storing token');
+                    console.log('Storing user_Id', data.user.id);
+                    localStorage.setItem('username', data.user.username);
+                    localStorage.setItem('user_Id', data.user.id);
+
                     Auth.authenticateUser(data.token);
                     this.props.toggleAuthenticateStatus();
 
-                    console.log();
-                    console.log(`-----------Storing Username ${data.user.username} in local storage----------------`);
-                    console.log();
-
-                    localStorage.setItem('username', data.user.username);
-
-                    this.props.history.push('/games');
+                    this.props.history.push(`/games`);
                 }
             })
 
