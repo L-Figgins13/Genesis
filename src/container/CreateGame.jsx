@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'isomorphic-fetch';
 import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
-import Auth from '../client/auth.js';
+
+import Auth from '../../client/auth.js';
+import CreateGameForm from '../component/CreateGameForm.jsx'
+
 
 export default class CreateGame extends React.Component {
     constructor(props){
@@ -70,19 +73,12 @@ export default class CreateGame extends React.Component {
         }
 
         return (
-        <div>
-            <h2>CREATE A GAME FUCKTARD </h2>
-            <form onSubmit = {this.handleSubmit}>
-                <label>Owner:
-                    <input name = "owner" type = "text" value = {this.state.owner} onChange={this.handleInputChange} />
-                    </label>
-                    <br />
-                    <label>Title:
-                        <input name = "title" type="text" value = {this.state.title} onChange = {this.handleInputChange} onSubmit= {this.handeSubmit} />
-                    </label>
-                    <input type= "submit"/> 
-            </form>
-        </div>
+            <CreateGameForm 
+                owner={this.state.owner} 
+                title={this.state.title} 
+                handleInputChange={this.handleInputChange} 
+                handleSubmit={this.handleSubmit}
+            />
         )
     }
 }
