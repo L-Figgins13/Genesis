@@ -10,7 +10,7 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import GamesList from './GamesList.jsx';
 import CreateGame from './CreateGame.jsx';
-import GameLobby from './GameLobby.jsx';
+import Game from './container/Game.jsx';
 import Profile from './container/Profile.jsx';
 
 
@@ -85,7 +85,7 @@ export default class App extends React.Component {
              <PropsRoute exact path="/" component={HelloWorld} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
              <PrivateRoute exact path = "/games" component={GamesList} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <PrivateRoute exact path = "/games/create" component={CreateGame} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
-             <PrivateRoute path = '/games/:id' component={GameLobby} />
+             <PrivateRoute path = '/games/:id' component={Game} />
              <PrivateRoute path = '/users/:id' component={Profile} />
              
              <LoggedOutRoute path="/login" component={Login} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />

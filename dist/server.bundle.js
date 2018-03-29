@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -82,7 +82,7 @@ var _mongoose = __webpack_require__(1);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _bcryptjs = __webpack_require__(12);
+var _bcryptjs = __webpack_require__(13);
 
 var _bcryptjs2 = _interopRequireDefault(_bcryptjs);
 
@@ -198,18 +198,39 @@ module.exports = {"jwtSecret":"zack and logan"}
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports) {
-
-module.exports = require("webpack");
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _socket = __webpack_require__(10);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+
+var Logger = function logger(text, name) {
+    console.log(`---------Logging ${name}------------`);
+    console.log(text);
+    console.log(`---------- END ${name}--------------`);
+    console.log();
+};
+
+exports.default = Logger;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack");
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _socket = __webpack_require__(11);
 
 var _socket2 = _interopRequireDefault(_socket);
 
@@ -217,31 +238,35 @@ var _passport = __webpack_require__(3);
 
 var _passport2 = _interopRequireDefault(_passport);
 
-var _localSignup = __webpack_require__(11);
+var _localSignup = __webpack_require__(12);
 
 var _localSignup2 = _interopRequireDefault(_localSignup);
 
-var _localLogin = __webpack_require__(13);
+var _localLogin = __webpack_require__(14);
 
 var _localLogin2 = _interopRequireDefault(_localLogin);
+
+var _logger = __webpack_require__(8);
+
+var _logger2 = _interopRequireDefault(_logger);
 
 var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _bodyParser = __webpack_require__(14);
+var _bodyParser = __webpack_require__(15);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _sourceMapSupport = __webpack_require__(15);
+var _sourceMapSupport = __webpack_require__(16);
 
 var _sourceMapSupport2 = _interopRequireDefault(_sourceMapSupport);
 
-var _authCheck = __webpack_require__(16);
+var _authCheck = __webpack_require__(17);
 
 var _authCheck2 = _interopRequireDefault(_authCheck);
 
-var _api = __webpack_require__(17);
+var _api = __webpack_require__(18);
 
 var _api2 = _interopRequireDefault(_api);
 
@@ -277,7 +302,7 @@ app.use('/auth', _auth2.default);
 
 //dev test
 if (process.env.NODE_ENV !== 'production') {
-    const webpack = __webpack_require__(8);
+    const webpack = __webpack_require__(9);
     const webpackDevMiddleware = __webpack_require__(24);
     const webpackHotMiddleware = __webpack_require__(25);
 
@@ -316,35 +341,39 @@ io.on('connection', socket => {
     });
 });
 
+io.on('disconnect', socket => {
+    console.log('Socket ID:', socket.id, 'disconnecting');
+});
+
 var chat = io.of('/chat');
 chat.on('connection', socket => {
     console.log(`--------Chat Socket ID:${socket.id} connecting--------`);
 
     socket.on('JOIN', data => {
-        socket.join(data.chat_id);
-
-        console.log('---------------------Chat socket joining room -----------------');
-        console.log(data.chat_id);
-        console.log();
-
+        socket.join(data.game_id);
+        (0, _logger2.default)(data.game_id, 'Joining Chat with game ID');
         socket.username = data.username;
     });
 
     socket.on('SEND_MESSAGE', function (data) {
         console.log('sending message');
         console.log(data);
-        io.to(data.chat_id).emit('RECIEVE_MESSAGE', data);
+        chat.in(data.chat_id).emit('RECIEVE_MESSAGE', data);
     });
 });
 
+chat.on('disconnect', socket => {
+    console.log('Socket ID:', socket.id, 'disconnecting');
+});
+
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("socket.io");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -383,13 +412,13 @@ const LocalStrategy = new _passportLocal.Strategy({
 exports.default = LocalStrategy;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("bcryptjs");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -456,19 +485,19 @@ const strat = new _passportLocal.Strategy({
 exports.default = strat;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("source-map-support");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -529,7 +558,7 @@ const authCheck = (req, res, next) => {
 exports.default = authCheck;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -543,7 +572,7 @@ var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _Games = __webpack_require__(18);
+var _Games = __webpack_require__(19);
 
 var _Games2 = _interopRequireDefault(_Games);
 
@@ -551,11 +580,11 @@ var _Users = __webpack_require__(0);
 
 var _Users2 = _interopRequireDefault(_Users);
 
-var _broadcast = __webpack_require__(19);
+var _broadcast = __webpack_require__(20);
 
 var _broadcast2 = _interopRequireDefault(_broadcast);
 
-var _logger = __webpack_require__(20);
+var _logger = __webpack_require__(8);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -645,7 +674,7 @@ router.get('/users/:id', (req, res, next) => {
 exports.default = router;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -711,7 +740,7 @@ var Game = _mongoose2.default.model('Game', GameSchema);
 module.exports = Game;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -727,27 +756,6 @@ const broadcast = (io, room, message, data) => {
 };
 
 exports.default = broadcast;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-
-var Logger = function logger(text, name) {
-    console.log(`---------Logging ${name}------------`);
-    console.log(text);
-    console.log(`---------- END ${name}--------------`);
-    console.log();
-};
-
-exports.default = Logger;
 
 /***/ }),
 /* 21 */
@@ -851,7 +859,7 @@ module.exports = require("webpack-hot-middleware");
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
-const webpack = __webpack_require__(8);
+const webpack = __webpack_require__(9);
 const extractTextPlugin = __webpack_require__(27);
 
 module.exports = {

@@ -4,7 +4,6 @@ import User from '../Models/Users.js';
 import broadcast from '../broadcast.js';
 import Logger from '../logger.js'
 
-
 const router = express.Router();
 
 router.get('/games', (req, res, next) => {

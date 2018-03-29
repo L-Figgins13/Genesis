@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Auth from '../client/auth.js';
+import Auth from '/../../client/auth.js';
 import 'whatwg-fetch';
 import Chat from './Chat.jsx';
 import io from "socket.io-client";
@@ -87,7 +87,6 @@ export default class GameLobby extends React.Component {
                 })
             }
         })
-
     });
 
     return promise

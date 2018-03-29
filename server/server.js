@@ -5,6 +5,7 @@ import socket from 'socket.io';
 import passport from 'passport';
 import localSignupStrategy from './passport/local-signup.js';
 import localLoginStrategy from './passport/local-login.js';
+import Logger from './logger.js';
 
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -85,6 +86,11 @@ io.on('connection' , (socket) => {
     })
 });
 
+io.on('disconnect', socket => {
+    console.log('Socket ID:', socket.id, 'disconnecting');
+
+})
+
 
 
 var chat = io.of('/chat');
@@ -92,18 +98,18 @@ chat.on('connection', socket => {
     console.log(`--------Chat Socket ID:${socket.id} connecting--------`);
 
     socket.on('JOIN', data => {
-        socket.join(data.chat_id);
-
-        console.log('---------------------Chat socket joining room -----------------');
-        console.log(data.chat_id);
-        console.log();
-        
+        socket.join(data.game_id);
+        Logger(data.game_id, 'Joining Chat with game ID');
         socket.username = data.username;
     })
 
     socket.on('SEND_MESSAGE', function(data) {
         console.log('sending message');
         console.log(data);
-        io.to(data.chat_id).emit('RECIEVE_MESSAGE', data);
+        chat.in(data.chat_id).emit('RECIEVE_MESSAGE', data);
     })
+})
+
+chat.on('disconnect', socket => {
+    console.log('Socket ID:', socket.id, 'disconnecting');
 })
