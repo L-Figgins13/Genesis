@@ -111,7 +111,7 @@ export default class GamesList extends React.Component {
     render() {
         
         if(this.state.join != -1){
-            const url = 'games/' + this.state.join;
+            const url = '/games/' + this.state.join;
             return(
                 <Redirect to={url} push />
             )
