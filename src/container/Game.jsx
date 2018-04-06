@@ -56,25 +56,16 @@ export default class Game extends React.Component {
         })
 
         this.chatIO.on('RECIEVE_MESSAGE', data => {
-            console.log('RECIEVE MESSAGE EVENT: ', data);
-            console.log(data);
-
-            const chat = {...this.state.chat};
-
+            const chat = this.state.chat;
             chat.messages.push(data);
-
             this.setState({chat});
-
-            console .log('logging temp chat object before  setting state');
-        
-
-            this.setState({chat}); 
         })
 
        
-
+        //now it updates the state itself so for a cleaner user experience
+        //and only sends messages to the other sockets so the user typing the message
+        // does not experience latency
          this.sendMessage = event => {
-            console.log('attempting to send message');
             event.preventDefault();
             this.chatIO.emit('SEND_MESSAGE', {
                 username: this.state.chat.username,
@@ -83,7 +74,14 @@ export default class Game extends React.Component {
 
             });
 
-            let chat = {...this.state.chat};
+            const chat = this.state.chat
+            const msg = {
+                username:this.state.chat.username,
+                message:this.state.chat.messageInput,
+                chat_id: this.state.gameID
+                };
+
+            chat.messages.push(msg);
             chat.messageInput = '';
             this.setState({chat});
             }
@@ -101,7 +99,7 @@ export default class Game extends React.Component {
     }
 
     loadData() {
-        let promise = new Promise( (resolve,reject)=> {
+        let promise = new Promise((resolve,reject)=> {
             fetch(`/api/games/${this.props.match.params.id}`, {
                 headers:{
                     'Authorization': `bearer ${Auth.getToken()}`

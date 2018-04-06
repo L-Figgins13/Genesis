@@ -359,7 +359,7 @@ chat.on('connection', socket => {
     socket.on('SEND_MESSAGE', function (data) {
         console.log('sending message');
         console.log(data);
-        chat.in(data.chat_id).emit('RECIEVE_MESSAGE', data);
+        socket.to(data.chat_id).emit('RECIEVE_MESSAGE', data);
     });
 });
 

@@ -12,7 +12,7 @@ function Message(props) {
 }
 
 function ChatMessages(props){
-    const messages = props.messages.map(message => <Message username={message.username} message={message.message} />);
+    const messages = props.messages.map((message, index) => <Message key={index} username={message.username} message={message.message} />);
 
 
     return(
@@ -36,9 +36,6 @@ function ChatInput(props) {
 }
 
 const Chat = function Chat(props) {
-
-    console.log(JSON.stringify(props));
-
     return (
         <div>
             <ChatMessages messages = {props.messages} username={props.username} />
