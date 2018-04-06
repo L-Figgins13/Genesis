@@ -54,22 +54,20 @@ router.post('/games/create' , (req, res, next) => {
 })
 
 router.post('/games/join', (req,res,next) => {
-    //expects a game id and a user object <<<< (not just an id)
-    console.log('-------checking req.user ---------');
-    console.log(req.user);
-    console.log();
-
     Logger(req.body.game_id, 'Game ID FROM REQUEST');
     
     Game.join(req.body.game_id, req.user)
-    .then(updatedGame => {
-        
-        console.log(JSON.stringify(updatedGame));
+    .then(result => {
+     
+        console.log(JSON.stringify(result));
         // broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
-        res.status(200).json(updatedGame);
+        res.status(200).json(result);
     })
     .catch(error => {
-        Logger(error, 'Error in /games/join');
+        Logger(JSON.stringify(error), 'Error in /games/join');
+        res.json(error);
+
+        
     })
 })
 
@@ -90,7 +88,7 @@ router.get('/users/:id', (req, res, next) => {
         res.status(200).json(user);
     })
     .catch(err => {
-        Logger(err, 'error in users/:id route');
+        Logger(err, 'Error Object in route /users/:id');
 
     })
    

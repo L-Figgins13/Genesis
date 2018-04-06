@@ -49,9 +49,6 @@ export default class GamesList extends React.Component {
         this.loadData();
     }
 
-    
-
-
     joinGame(event) {
         const target = event.target;
         console.log(target.id);
@@ -68,12 +65,21 @@ export default class GamesList extends React.Component {
         })
         .then(response => {
             response.json()
-            .then(game => {
-             
-                this.setState({join:target.id});
-            })
+            .then(result => {
+                if(result.errCode === 0) {
+                    console.log(result.message);
+                    this.setState({join:target.id});
+                } else if (result.errCode === 1 || result.errCode === 2) {
+                    console.error(result.message);
+                    alert(result.message);
+                } else if (result.errcode === 3) {
+                    console.error(result.message);
+                    this.setState({join:target.id});
+                }
+            })     
         })
         .catch(error => {
+            console.log('error caught inside what i think is')
             console.log(error);
         })
 

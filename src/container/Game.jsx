@@ -140,7 +140,7 @@ export default class Game extends React.Component {
                 <GameLobby 
                     players={this.state.players} 
                 />
-                
+
                 <Chat 
                     handleInputChange={this.handleInputChange} 
                     sendMessage={this.sendMessage}  

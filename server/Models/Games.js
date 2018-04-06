@@ -1,5 +1,8 @@
 import db from '../db.js';
 import mongoose from 'mongoose';
+import Logger from '../logger.js';
+import constants from '../constants.js';
+
 
 const Schema = mongoose.Schema;
 
@@ -27,23 +30,64 @@ const PlayerSchema = new Schema({
 const GameSchema = new Schema({
     owner: String,
     title: String,
+    hasStarted: {type:Boolean, default: false},
     gameCards: [CardSchema],
-    players:[PlayerSchema]
-});
+    players:[PlayerSchema] 
+})
 
-// G
-// ameSchema.methods.createGame = function createGame(user, title) {
-//     this.model('Game').create({owner:user.username, title: title, players: players.pus})
-// }
-
-GameSchema.statics.join = function join(game_id, user) {
+GameSchema.statics.join = function join(gameID, user) {
+    //stages player to be added to the game
     const player = {
         user_id: user._id,
         username: user.username,
     }
 
-    console.log('Hello from inside Games Model');
-    return this.model('Game').findByIdAndUpdate(game_id, { $push: {players: player }})
+    
+
+   
+    //creates a promise to be returned so that the final .then() will be in the route
+    const promise = new Promise ((resolve, reject) => {
+        this.model('Game').findById(gameID)
+        .then(game => {
+            const data = {
+                message: '',
+                errCode: 0,
+                success: false,
+                player: {},
+            }
+
+            Logger(constants.MAX_PLAYERS, 'MAX_PLAYER CONSTANT');
+
+            if(game.players.length >= constants.MAX_PLAYERS) {
+                data.message = 'Game is Full';
+                data.errCode = 1;
+                return reject(data);
+                Logger(data, 'Data: ');
+            } else if (game.hasStarted) {
+                data.message = 'Sorry the Game Has Already Started';
+                data.errCode = 2;
+                reject(data);
+                Logger(data, 'Data: ');
+            } else if (game.players.some(x => x.user_id === player.user_id)) {
+                data.message = 'ERROR: Player already exists in game';
+                data.errCode = 3;
+                reject(data);
+                Logger(data, 'Data: ');
+            } else { 
+                this.model('Game').findByIdAndUpdate(gameID, {$push: {players: player}})
+                    .then(updatedGame => {
+                        data.message = `Player ${player.username} has succesfully joined the game`;
+                        data.success = true;
+                        data.player = player;
+
+                        resolve(data);
+                        Logger(data, 'Data: ');
+                    })
+            }   
+        })
+    });
+
+   return promise;
 
 }
 
