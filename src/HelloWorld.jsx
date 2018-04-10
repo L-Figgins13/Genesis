@@ -11,6 +11,8 @@ export default class HelloWorld extends React.Component {
         this.props.toggleAuthenticateStatus();
     }
 
+
+    //todo remove the ternary operator stuff because it doesn't make sense at all
     render(){
         return (
             <div>
@@ -20,7 +22,8 @@ export default class HelloWorld extends React.Component {
                         <Col lg={8}>
                         <div className={home.loginBox}>
                             <ul>
-                                {Auth.isUserAuthenticated() ? (<li><Link to ='/login'>Login</Link></li>):(<li><Link to ='/signup'>Signup</Link></li>)}
+                                <li><Link to ='/login'>Login</Link></li>
+                                <li><Link to ='/signup'>Signup</Link></li>
                             </ul>
                         </div>
                         </Col>

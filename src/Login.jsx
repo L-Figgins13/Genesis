@@ -5,7 +5,7 @@ import 'isomorphic-fetch';
 
 
 
-
+//TODO NEEDS BOTH FRONT END FORM VALIDATION AND BACK END
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -57,7 +57,9 @@ export default class Login extends React.Component {
                     Auth.authenticateUser(data.token);
                     this.props.toggleAuthenticateStatus();
 
-                    this.props.history.push(`/games`);
+                    this.props.history.push(`/users/${data.user.id}`);
+                } else {
+                    alert(data.message);
                 }
             })
 
