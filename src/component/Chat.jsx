@@ -53,9 +53,14 @@ function ChatInput(props) {
 const Chat = function Chat(props) {
     return (
         <div>
-            <div className={chat.container}>
-                <ChatMessages messages = {props.messages} username={props.username} />
-                <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
+            <div className={chat.container}>    
+                <div className={chat.messagearea}>
+                    <ChatMessages   messages = {props.messages} username={props.username} />
+                </div>
+
+                <div className={chat.chatinput}>
+                    <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
+                </div>
             </div>
         </div>
     )
