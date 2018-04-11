@@ -6,7 +6,7 @@ import Auth from '../client/auth.js';
 import {Route, Switch, BrowserRouter,Link, Redirect, withRouter} from 'react-router-dom';
 
 import HelloWorld from './HelloWorld.jsx';
-import Login from './Login.jsx';
+import Login from './container/Login.jsx';
 import Signup from './Signup.jsx';
 import GamesList from './GamesList.jsx';
 import CreateGame from './container/CreateGame.jsx';
@@ -45,20 +45,6 @@ const PropsRoute = ({component: Component, ...rest}) => (
         <Component {...props} {...rest} />
     )} />
 )
-
-// function Main() {
-//     return (
-//     <main>
-//         <Switch>
-//             <Route exact path = '/' component = {HelloWorld} />
-//             <Route exact path='/login' component = {Login}  />
-//             <Route exact path = '/games' component = {GamesList} />
-//             <Route exact path = '/games/create' component = {CreateGame} />
-//             <Route path = '/games/:id' component = {GameLobby} />      
-//         </Switch>
-//     </main>
-//     )
-// }
 
 export default class App extends React.Component {
     constructor(props) {
