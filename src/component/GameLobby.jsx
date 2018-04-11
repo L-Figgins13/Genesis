@@ -1,4 +1,9 @@
 import React from 'react';
+import Main from '../css/Main.css';
+
+import gameLobby from '../css/GameLobby.css';
+import player from '../css/Player.css';
+import {Container, Row, Col} from 'react-grid-system';
 
 function PlayerArea (props) {
     const players = props.players; // place holder
@@ -7,7 +12,9 @@ function PlayerArea (props) {
 
     return(
         <div>
-           {playerRows}     
+            <Col lg={6}>
+                {playerRows}
+            </Col>
         </div>
     )
 }
@@ -15,10 +22,10 @@ function PlayerArea (props) {
 function Player (props) {
     return (
         <div>
-            <div>-----------------------------------------</div>
-            <div>{props.player.user_id}</div>
-            <div>{props.player.username}</div>
-            <div>-----------------------------------------</div>
+            <div className={player.profileBadge}>
+                <div>{props.player.user_id}</div>
+                <div>{props.player.username}</div>
+            </div>
 
         </div>
     )
@@ -27,10 +34,22 @@ function Player (props) {
 const GameLobby = function(props) {
     return(
         <div>
-            <h3> Game Lobby </h3>
-            <PlayerArea players={props.players} />
+                <Row>
+                    <Col lg={12}>
+                    <div className={gameLobby.titleArea}>
+                        <h1 className={gameLobby.title}> Game Lobby </h1>
+                    </div>
+                    </Col>
+
+                    <Col lg={12}>
+                    <div className={gameLobby.playerArea}>
+                        <PlayerArea players={props.players} />
+                    </div>
+                    </Col>
+                </Row>
         </div>
     )
 }
+
 
 export default GameLobby

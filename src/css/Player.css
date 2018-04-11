@@ -1,0 +1,8 @@
+.profileBadge{
+    padding: 1rem;
+    border: 3px solid black;
+    color: black;
+    background-color: white;
+    /* 
+    background-image: url("../../static/img/playerBadgeBG.jpg"); */
+}

@@ -281,7 +281,7 @@ var _path2 = _interopRequireDefault(_path);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const ABSPATH = 'C:\\Users\\lfigg\\Documents\\GitHub\\Genesis\\static\\index.html';
+const ABSPATH = 'C:\\Users\\zmachine\\Desktop\\ReactProjects\\Development\\Genesis\\static\\index.html';
 
 _sourceMapSupport2.default.install();
 
