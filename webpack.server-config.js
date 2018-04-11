@@ -1,12 +1,16 @@
 const webpack = require ('webpack');
+const path = require('path');
 
 module.exports = {
     target: 'node',
-    entry: './server/server.js',
+    entry: path.resolve(__dirname, 'server/server.js'),
     output: {
-      path: __dirname + '/dist',
+      path: path.join(__dirname,'/dist'),
       filename: 'server.bundle.js',
       libraryTarget: 'commonjs',
+    },
+    node:{
+      __dirname:false
     },
     resolve: {
       extensions: [ '.js', '.jsx'],
