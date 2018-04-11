@@ -23,6 +23,7 @@ export default class CreateGame extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         
     }
+    
     handleInputChange(event){
         const target = event.target;
         const value = target.value;

@@ -1,7 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import Auth from '../client/auth.js';
+import Auth from '../../client/auth.js';
 import 'isomorphic-fetch';
+
+//import components
+import LoginForm from '../component/LoginForm.jsx';
 
 
 
@@ -67,22 +69,13 @@ export default class Login extends React.Component {
 
     render() {
         return (
-        <div>
-            <form onSubmit= {this.handleSubmit}>
-                <label>
-                    Username:
-                    <input name = "username" type = "text" value = {this.state.username} onChange= {this.handleInputChange} />
-                </label>
-                <br />
-                <label>
-                    password:
-                    <input name="password" type="password" value={this.state.password} onChange= {this.handleInputChange} />
-                </label>
-                <input type = "submit" value = "Login"/>
-            </form>
-            <ul>
-                <li><Link to= '/games/create'>Create a Game</Link></li>
-            </ul>
+        <div> 
+            <LoginForm
+                username= {this.state.username}
+                password= {this.state.password}
+                handleInputChange= {this.handleInputChange}
+                handleSubmit= {this.handleSubmit}
+            />
         </div>
         );
     }

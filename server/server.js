@@ -68,7 +68,9 @@ app.set('io', io);
 
 
 app.get('/*', function(req,res){
-    res.sendFile(ABSPATH);
+    console.log(path.join(path.resolve(__dirname, '..'),'static/index.html')); 
+
+    res.sendFile(path.join(path.resolve(__dirname, '..'),'static/index.html'));
 })
 
 
