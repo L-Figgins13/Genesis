@@ -7,6 +7,20 @@
     padding: .5rem;
 }
 .username{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    padding-left:1.25rem;
+    font-weight: bold;
     color: green;
+}
+.usermessage{
+    font-size: 1rem;
+    padding: 1.5rem;
+    line-height: 1.75rem;
+    color: purple;
+}
+
+.chatinput{
+    padding: 1rem;
+    Margin-top: 3rem;
+    background-color: teal;
 }

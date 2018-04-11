@@ -9,8 +9,12 @@ function Message(props) {
     return (
         <div>
             <div className={chatMessages.messages}>
-                <div className={chatMessages.username}>{props.username}</div>
-                :{props.message}
+                <div className={chatMessages.username}>
+                    {props.username + ":"}
+                </div>
+                <div className={chatMessages.usermessage}>
+                    {" " + props.message}
+                </div>
             </div>
         </div>
     )
@@ -39,7 +43,7 @@ function ChatInput(props) {
     return (
         <div>
             <form onSubmit ={props.sendMessage}>
-                <label>Input Message: </label>
+                <label >Input Message: </label>
                 <input type="text" onChange={props.onChange} value={props.value} />
             </form>
         </div>

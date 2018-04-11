@@ -5,6 +5,8 @@ import gameLobby from '../css/GameLobby.css';
 import player from '../css/Player.css';
 import {Container, Row, Col} from 'react-grid-system';
 
+import img from './../../static/img/playerBadgeBG.jpg';
+
 function PlayerArea (props) {
     const players = props.players; // place holder
     
@@ -26,7 +28,6 @@ function Player (props) {
                 <div>{props.player.user_id}</div>
                 <div>{props.player.username}</div>
             </div>
-
         </div>
     )
 }

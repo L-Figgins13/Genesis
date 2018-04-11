@@ -931,6 +931,7 @@ module.exports = {
     plugins: [new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' })],
 
     module: {
+
         loaders: [{
             test: /\.jsx$/,
             loader: 'babel-loader',
@@ -949,6 +950,26 @@ module.exports = {
                 localIdentName: '[name]__[local]___[hash:base64:5]',
                 plugins: [new extractTextPlugin('./src/css/styles.css')]
             }
+        }, {
+            test: /\.(jpe?g|png|gif|svg|ico)$/i,
+            loaders: ['file-loader?hash=sha512&digest=hex&name=[hash].[ext]', {
+                loader: "image-webpack-loader",
+                query: {
+                    mozjpeg: {
+                        progressive: true
+                    },
+                    gifsicle: {
+                        interlaced: false
+                    },
+                    optipng: {
+                        optimizationLevel: 4
+                    },
+                    pngquant: {
+                        quality: '75-90',
+                        speed: 3
+                    }
+                }
+            }]
         }]
     },
 
