@@ -5,6 +5,8 @@ import 'isomorphic-fetch';
 //import components
 import LoginForm from '../component/LoginForm.jsx';
 
+//tiny style alterations
+
 
 
 //TODO NEEDS BOTH FRONT END FORM VALIDATION AND BACK END

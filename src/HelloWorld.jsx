@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 import home from './css/Home.css';
 import main from './css/Main.css';
 import {Container, Row, Col} from 'react-grid-system';
+import styled from 'styled-components';
+
+
 
 export default class HelloWorld extends React.Component {
 
