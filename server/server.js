@@ -1,4 +1,4 @@
-const ABSPATH = 'C:\\Users\\lfigg\\Documents\\GitHub\\Genesis\\static\\index.html'
+const ABSPATH = 'C:\\Users\\zmachine\\Desktop\\ReactProjects\\Development\\Genesis\\static\\index.html'
 
 import socket from 'socket.io';
 

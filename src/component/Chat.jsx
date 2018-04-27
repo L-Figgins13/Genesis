@@ -1,19 +1,34 @@
 import React from 'react';
+import chat from '../css/Chat.css';
+import chatMessages from '../css/ChatMessages.css';
+import {Container, Row, Col} from 'react-grid-system';
 
 
 function Message(props) {
 
     return (
         <div>
-            {props.username}: {props.message}
+            <div className={chatMessages.messages}>
+                <div className={chatMessages.username}>
+                    {props.username + ":"}
+                </div>
+                <div className={chatMessages.usermessage}>
+                    {" " + props.message}
+                </div>
+            </div>
         </div>
     )
     
 }
 
 function ChatMessages(props){
-    const messages = props.messages.map((message, index) => <Message key={index} username={message.username} message={message.message} />);
-
+    const messages = props.messages.map((message, index) => 
+        <Message 
+            key={index} 
+            username={message.username} 
+            message={message.message} 
+        />
+    );
 
     return(
         <div>
@@ -28,7 +43,7 @@ function ChatInput(props) {
     return (
         <div>
             <form onSubmit ={props.sendMessage}>
-                <label>Ftw</label>
+                <label >Input Message: </label>
                 <input type="text" onChange={props.onChange} value={props.value} />
             </form>
         </div>
@@ -38,8 +53,15 @@ function ChatInput(props) {
 const Chat = function Chat(props) {
     return (
         <div>
-            <ChatMessages messages = {props.messages} username={props.username} />
-            <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
+            <div className={chat.container}>    
+                <div className={chat.messagearea}>
+                    <ChatMessages   messages = {props.messages} username={props.username} />
+                </div>
+
+                <div className={chat.chatinput}>
+                    <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
+                </div>
+            </div>
         </div>
     )
 }

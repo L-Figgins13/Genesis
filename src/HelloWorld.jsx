@@ -1,8 +1,8 @@
 import React from 'react';
 import Auth from '../client/auth.js'
 import {Link} from 'react-router-dom';
-import home from './css/home.css';
-import main from './css/main.css';
+import home from './css/Home.css';
+import main from './css/Main.css';
 import {Container, Row, Col} from 'react-grid-system';
 
 export default class HelloWorld extends React.Component {

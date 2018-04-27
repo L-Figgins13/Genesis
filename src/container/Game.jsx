@@ -4,6 +4,10 @@ import Auth from '../../client/auth.js';
 import 'whatwg-fetch';
 import io from "socket.io-client";
 
+//Styles
+import Main from '../css/Main.css';
+import {Container, Row, Col} from 'react-grid-system';
+
 //components
 import Chat from '../component/Chat.jsx';
 import GameLobby from '../component/GameLobby.jsx';
@@ -135,16 +139,20 @@ export default class Game extends React.Component {
                 <h1>{this.state.gameName}</h1>
                 <h2>ID: {this.state.gameID} </h2>
 
-                <GameLobby 
-                    players={this.state.players} 
-                />
-
-                <Chat 
-                    handleInputChange={this.handleInputChange} 
-                    sendMessage={this.sendMessage}  
-                    messages={this.state.chat.messages} 
-                    username={this.state.chat.username} value={this.state.chat.messageInput} 
-                />          
+                <Container fluid className={Main.container}>
+                    <Row>
+                        <Col lg={12}>
+                            <GameLobby players={this.state.players} />
+                       
+                            <Chat 
+                                handleInputChange={this.handleInputChange} 
+                                sendMessage={this.sendMessage}  
+                                messages={this.state.chat.messages} 
+                                username={this.state.chat.username} value={this.state.chat.messageInput} 
+                            />
+                        </Col>
+                    </Row>
+                </Container>          
             </div>
         )
     }

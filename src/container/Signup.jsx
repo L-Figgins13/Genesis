@@ -1,6 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Auth from '../client/auth.js';
+import Auth from '../../client/auth.js';
+
+//import components
+import SignupForm from '../component/SignupForm.jsx';
+
 
 
 export default class Signup extends React.Component {
@@ -60,19 +64,13 @@ export default class Signup extends React.Component {
     render() {
         return (
             <div>
-            <form onSubmit= {this.handleSubmit}>
-                <label>
-                    Username:
-                    <input name = "username" type = "text" value = {this.state.username} onChange= {this.handleInputChange} />
-                </label>
-                <br />
-                <label>
-                    password:
-                    <input name="password" type="password" value={this.state.password} onChange= {this.handleInputChange} />
-                </label>
-                <input type="submit" value="Create User"/>
-            </form>
-        </div>
-        )
+                <SignupForm
+                    username = {this.state.username}
+                    password = {this.state.password}
+                    handleInputChange = {this.handleInputChange}
+                    handleSubmit = {this.handleSubmit}
+                />
+            </div>
+        );
     }
 }
