@@ -1,11 +1,13 @@
 import React from 'react';
-import Main from '../css/Main.css';
-
-import gameLobby from '../css/GameLobby.css';
-import player from '../css/Player.css';
-import {Container, Row, Col} from 'react-grid-system';
-
+import styled from 'styled-components';
+import { Flex, Box } from 'grid-styled';
 import img from './../../static/img/playerBadgeBG.jpg';
+
+const ImageTest = styled.div`
+  width: 100%;
+  height: 500px;
+  background-image: url(${img});
+`;
 
 function PlayerArea (props) {
     const players = props.players; // place holder
@@ -14,9 +16,7 @@ function PlayerArea (props) {
 
     return(
         <div>
-            <Col lg={6}>
-                {playerRows}
-            </Col>
+           {playerRows}
         </div>
     )
 }
@@ -24,7 +24,7 @@ function PlayerArea (props) {
 function Player (props) {
     return (
         <div>
-            <div className={player.profileBadge}>
+            <div>
                 <div>{props.player.user_id}</div>
                 <div>{props.player.username}</div>
             </div>
@@ -35,19 +35,13 @@ function Player (props) {
 const GameLobby = function(props) {
     return(
         <div>
-                <Row>
-                    <Col lg={12}>
-                    <div className={gameLobby.titleArea}>
-                        <h1 className={gameLobby.title}> Game Lobby </h1>
-                    </div>
-                    </Col>
-
-                    <Col lg={12}>
-                    <div className={gameLobby.playerArea}>
-                        <PlayerArea players={props.players} />
-                    </div>
-                    </Col>
-                </Row>
+            <div>
+                <h1> Game Lobby </h1>
+                <ImageTest></ImageTest>
+            </div>
+            <div>
+                <PlayerArea players={props.players} />
+            </div>
         </div>
     )
 }

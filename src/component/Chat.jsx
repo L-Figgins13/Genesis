@@ -1,18 +1,17 @@
 import React from 'react';
-import chat from '../css/Chat.css';
-import chatMessages from '../css/ChatMessages.css';
-import {Container, Row, Col} from 'react-grid-system';
+import { Flex, Box } from 'grid-styled';
+import styled from 'styled-components';
 
 
 function Message(props) {
 
     return (
         <div>
-            <div className={chatMessages.messages}>
-                <div className={chatMessages.username}>
+            <div>
+                <div>
                     {props.username + ":"}
                 </div>
-                <div className={chatMessages.usermessage}>
+                <div>
                     {" " + props.message}
                 </div>
             </div>
@@ -53,12 +52,12 @@ function ChatInput(props) {
 const Chat = function Chat(props) {
     return (
         <div>
-            <div className={chat.container}>    
-                <div className={chat.messagearea}>
+            <div>    
+                <div>
                     <ChatMessages   messages = {props.messages} username={props.username} />
                 </div>
 
-                <div className={chat.chatinput}>
+                <div>
                     <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
                 </div>
             </div>

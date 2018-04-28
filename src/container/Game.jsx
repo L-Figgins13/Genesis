@@ -138,21 +138,16 @@ export default class Game extends React.Component {
             <div>
                 <h1>{this.state.gameName}</h1>
                 <h2>ID: {this.state.gameID} </h2>
-
-                <Container fluid className={Main.container}>
-                    <Row>
-                        <Col lg={12}>
-                            <GameLobby players={this.state.players} />
-                       
-                            <Chat 
-                                handleInputChange={this.handleInputChange} 
-                                sendMessage={this.sendMessage}  
-                                messages={this.state.chat.messages} 
-                                username={this.state.chat.username} value={this.state.chat.messageInput} 
-                            />
-                        </Col>
-                    </Row>
-                </Container>          
+                    
+                <GameLobby players={this.state.players} />
+            
+                <Chat 
+                    handleInputChange={this.handleInputChange} 
+                    sendMessage={this.sendMessage}  
+                    messages={this.state.chat.messages} 
+                    username={this.state.chat.username} value={this.state.chat.messageInput} 
+                />
+                              
             </div>
         )
     }
