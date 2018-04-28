@@ -1,3 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Flex, Box } from 'grid-styled';
+import styled from 'styled-components';
+import GameRow from './GameRow';
 
 function GameTable (props) {
     const gameRows = props.games.map(game => <GameRow key = {game._id} game = {game} joinGame={props.joinGame}/>);
@@ -12,6 +17,7 @@ function GameTable (props) {
             </thead>
             <tbody>{gameRows}</tbody>
         </table>
+
     )
 }
 
