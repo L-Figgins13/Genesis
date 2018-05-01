@@ -5,6 +5,8 @@ import 'isomorphic-fetch';
 //import components
 import LoginForm from '../blocks/LoginForm';
 
+//tiny style alterations
+
 
 
 //TODO NEEDS BOTH FRONT END FORM VALIDATION AND BACK END
