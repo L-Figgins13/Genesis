@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
+import {H1, H2} from '../../elements';
 
 const SignupForm = function(props) {
     return (
         <div>
+            <H1>Elements index.jsx file is behaving as intented</H1>
+            <H2>Still working</H2>
             <form onSubmit= {props.handleSubmit}>
                 <label>
                     Username:
