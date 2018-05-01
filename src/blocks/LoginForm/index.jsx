@@ -6,108 +6,76 @@ import { Flex, Box } from 'grid-styled';
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
 
-
-
-
-
-
-
-
 const Label = styled.label`
-    color: blue;
+    color: white;
     display: block;
+    padding: .5rem;
 `;
 const Input = styled.input`
     color: purple;
     background: papayawhip;
+    padding: .25rem;
+    margin: .5rem;
 `;
 
 const Button = styled.button`
-    color:gold;
+    color:black;
 `
 
 const Bar = styled.div`
     border: 1px solid purple;
 `
 
-const Background = styled(Box)`
-    background-image: url(${backgroundImg});
+const Background = styled.div`
+    background: url(${backgroundImg})  no-repeat center center fixed;
     background-size: cover;
-    background-attachment: fixed;
-    background-position: center center;
-    background-repeat: no-repeat;
     overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding:0;
+    border: 2px solid blue;
 `
 
 const LoginPlate = styled(Box)`
-   
-   
     border : 2px solid white;
-    height: 600px;
+    min-height: 600px;
     width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
     background-image: url(${plateImg});
     background-repeat: no-repeat;
     background-position: center center;
-
-
-
-   
-    
-   
+    background-size: contain;
 `;
 
 const LoginForm = function (props) {
     return (
-        
-        <Flex flexWrap= 'wrap' mx={0} my={0}>
-            <Background>
-                <Flex justifyContent= 'center' alignItems= 'center'>
-                <LoginPlate>
-                            
-                            <Flex justifyContent= 'center' alignItems= 'center'>
-                            <form onSubmit= {props.handleSubmit}>
-                            
-                                <Box p={2}>
-
-                                    <Bar />
-                                    <Label>Username</Label>
-                                    <Input
-                                        name = "username" 
-                                        type="text" 
-                                        value = {props.username} 
-                                        onChange= {props.handleInputChange}
-                                    />
-                                    <Bar />
-                                    <Label>Password</Label>
-                                    <Input 
-                                        name = "password" 
-                                        type="text" 
-                                        value={props.password} 
-                                        onChange= {props.handleInputChange}
-                                    />
-                                     <Button type = "submit">Submit </Button>   
-                                </Box>
-                                
-                               
-                                
-                            </form>
-                            </Flex>
-                            
-                            
-                            
-
-                    </LoginPlate>
+    <Background>
+        <LoginPlate>
+            <form onSubmit= {props.handleSubmit}>
+                <Box>
+                    <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
+                        <Bar />
+                        <Label>Username</Label>
+                        <Input
+                            name = "username" 
+                            type="text" 
+                            value = {props.username} 
+                            onChange= {props.handleInputChange}
+                        />
+                        <Bar />
+                        <Label>Password</Label>
+                        <Input 
+                            name = "password" 
+                            type="text" 
+                            value={props.password} 
+                            onChange= {props.handleInputChange}
+                        />
+                        <Button type = "submit">Submit </Button>
                     </Flex>
-                    
-                    
-                
-            </Background>
-        </Flex>
-        
+                </Box>  
+            </form>
+        </LoginPlate>  
+    </Background> 
     )
 }
 

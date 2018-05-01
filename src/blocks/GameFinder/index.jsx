@@ -3,19 +3,17 @@ import styled from 'styled-components';
 import React from 'react';
 import {Flex, Box} from 'grid-styled';
 import {Link} from 'react-router-dom';
-import {styles} from '../../elements/Styles.jsx';
 
 const Bar = styled.div`
     border: 1px solid red;
 `
 
 const StyledLink = styled(Link)`
-color: palevioletred;
-font-weight: bold;
-text-decoration: none;
-padding: 2rem;
+    color: palevioletred;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2rem;
 `;
-
 
 const GameFinder = (props) =>  {
     return( 
