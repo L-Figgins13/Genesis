@@ -7,8 +7,8 @@ import {Route, Switch, BrowserRouter,Link, Redirect, withRouter} from 'react-rou
 
 
 //need to be refractored still
-import HelloWorld from './HelloWorld.jsx';
-import GamesList from './GamesList.jsx';
+import Home from './blocks/Home';
+import GamesList from './container/GamesList.jsx';
 
 //import containers
 import CreateGame from './container/CreateGame.jsx';
@@ -72,7 +72,7 @@ export default class App extends React.Component {
        return(
        <div>
          <Switch>
-             <PropsRoute exact path="/" component={HelloWorld} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
+             <PropsRoute exact path="/" component={Home} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
              
              <PrivateRoute exact path = "/games" component={GamesList} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <PrivateRoute exact path = "/games/create" component={CreateGame} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />

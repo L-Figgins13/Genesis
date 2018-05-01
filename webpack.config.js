@@ -23,23 +23,11 @@ module.exports = {
                 query: {
                     presets: ['react', 'es2015'],
                     plugins: ['transform-es2015-destructuring', 'transform-object-rest-spread']
-                }
+                },
+               
             },
-            {
-                test: /\.css$/,
-                loader: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'css-loader',
-                query: {
-                    modules: true,
-                    localIdentName: '[name]__[local]___[hash:base64:5]',
-                    plugins: [
-                        new extractTextPlugin('./src/css/styles.css')
-                    ]
-                }
-            },
+            
+           
             {
                 test: /\.(jpe?g|png|gif|svg|ico)$/i,
                 loaders: [
@@ -66,6 +54,11 @@ module.exports = {
         ]
     },
 
+    resolve: {
+        extensions: [ '.js' , '.jsx']
+    },
+
+    
     devServer: {
         port: 8000,
         contentBase: 'static',

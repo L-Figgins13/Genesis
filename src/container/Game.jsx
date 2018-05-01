@@ -5,12 +5,11 @@ import 'whatwg-fetch';
 import io from "socket.io-client";
 
 //Styles
-import Main from '../css/Main.css';
 import {Container, Row, Col} from 'react-grid-system';
 
 //components
-import Chat from '../component/Chat.jsx';
-import GameLobby from '../component/GameLobby.jsx';
+import Chat from '../blocks/Chat';
+import GameLobby from '../blocks/GameLobby';
 
 export default class Game extends React.Component {
     constructor(props) {

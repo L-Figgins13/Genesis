@@ -22,3 +22,5 @@ const GameRow = (props) => (
 GameRow.propTypes = {
     game: PropTypes.object.isRequired,
 };
+
+export default GameRow;

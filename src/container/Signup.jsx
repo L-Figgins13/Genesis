@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Auth from '../../client/auth.js';
 
 //import components
-import SignupForm from '../component/SignupForm.jsx';
+import SignupForm from '../blocks/SignupForm';
 
 
 

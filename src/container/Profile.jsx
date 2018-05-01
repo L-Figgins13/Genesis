@@ -1,7 +1,6 @@
 
 import React from 'react';
-import styles from '../css/Stats.css';
-import Stats from '../component/Stats.jsx';
+import Stats from '../blocks/Stats';
 import Auth from '../../client/auth.js';
 
 
