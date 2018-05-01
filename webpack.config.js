@@ -15,6 +15,7 @@ module.exports = {
     ],
 
     module: {
+        
         loaders:[
             {
                 test: /\.jsx$/,
@@ -22,26 +23,42 @@ module.exports = {
                 query: {
                     presets: ['react', 'es2015'],
                     plugins: ['transform-es2015-destructuring', 'transform-object-rest-spread']
-                }
+                },
+               
             },
+            
+           
             {
-                test: /\.css$/,
-                loader: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'css-loader',
-                query: {
-                    modules: true,
-                    localIdentName: '[name]__[local]___[hash:base64:5]',
-                    plugins: [
-                        new extractTextPlugin('./src/css/styles.css')
-                    ]
-                }
+                test: /\.(jpe?g|png|gif|svg|ico)$/i,
+                loaders: [
+                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]', {
+                        loader: "image-webpack-loader",
+                        query: {
+                            mozjpeg: {
+                              progressive: true,
+                            },
+                            gifsicle: {
+                              interlaced: false,
+                            },
+                            optipng: {
+                              optimizationLevel: 4,
+                            },
+                            pngquant: {
+                              quality: '75-90',
+                              speed: 3,
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
 
+    resolve: {
+        extensions: [ '.js' , '.jsx']
+    },
+
+    
     devServer: {
         port: 8000,
         contentBase: 'static',

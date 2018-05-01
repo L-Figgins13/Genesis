@@ -5,13 +5,17 @@ import PropTypes from 'prop-types';
 import Auth from '../client/auth.js';
 import {Route, Switch, BrowserRouter,Link, Redirect, withRouter} from 'react-router-dom';
 
-import HelloWorld from './HelloWorld.jsx';
-import Login from './Login.jsx';
-import Signup from './Signup.jsx';
-import GamesList from './GamesList.jsx';
+
+//need to be refractored still
+import Home from './blocks/Home';
+import GamesList from './container/GamesList.jsx';
+
+//import containers
 import CreateGame from './container/CreateGame.jsx';
 import Game from './container/Game.jsx';
 import Profile from './container/Profile.jsx';
+import Login from './container/Login.jsx';
+import Signup from './container/Signup.jsx';
 
 
 const PrivateRoute = ({component: Component, ...rest}) => (
@@ -46,20 +50,6 @@ const PropsRoute = ({component: Component, ...rest}) => (
     )} />
 )
 
-// function Main() {
-//     return (
-//     <main>
-//         <Switch>
-//             <Route exact path = '/' component = {HelloWorld} />
-//             <Route exact path='/login' component = {Login}  />
-//             <Route exact path = '/games' component = {GamesList} />
-//             <Route exact path = '/games/create' component = {CreateGame} />
-//             <Route path = '/games/:id' component = {GameLobby} />      
-//         </Switch>
-//     </main>
-//     )
-// }
-
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -82,7 +72,7 @@ export default class App extends React.Component {
        return(
        <div>
          <Switch>
-             <PropsRoute exact path="/" component={HelloWorld} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
+             <PropsRoute exact path="/" component={Home} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
              
              <PrivateRoute exact path = "/games" component={GamesList} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <PrivateRoute exact path = "/games/create" component={CreateGame} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
