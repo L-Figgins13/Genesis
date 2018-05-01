@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import React from 'react';
 import {Flex, Box} from 'grid-styled';
 import {Link} from 'react-router-dom';
-import {styles} from '../../elements/Styles.jsx';
+
 
 const Bar = styled.div`
     border: 1px solid red;
