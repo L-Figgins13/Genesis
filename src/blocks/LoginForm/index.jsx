@@ -12,14 +12,21 @@ const Label = styled.label`
     padding: .5rem;
 `;
 const Input = styled.input`
-    color: purple;
-    background: papayawhip;
-    padding: .25rem;
-    margin: .5rem;
+   width: 100%;
+  width: 20vw;
+  height: 3vh;
+  background-color: #120600;
+  color: #fff;
+  border: 2px solid #e9e9e9;
+  -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
+  -moz-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
+  box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
 `;
 
 const Button = styled.button`
     color:black;
+    display:block;
+    padding: .25rem;
 `
 
 const Bar = styled.div`
@@ -30,15 +37,15 @@ const Background = styled.div`
     background: url(${backgroundImg})  no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
-    border: 2px solid blue;
+    height: 100vh;
+    width: 100vw;
 `
 
-const LoginPlate = styled(Box)`
-    border : 2px solid white;
+const LoginPlate = styled(Flex)`
+    
     min-height: 600px;
     width: 100vw;
     height: 100vh;
-    display:flex;
     justify-content: center;
     align-items: center;
     background-image: url(${plateImg});
@@ -51,6 +58,7 @@ const LoginForm = function (props) {
     return (
     <Background>
         <LoginPlate>
+            {/* <Flex flexDirection= 'column' justifyContent = 'center' alignItems = 'center'> */}
             <form onSubmit= {props.handleSubmit}>
                 <Box>
                     <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
@@ -74,6 +82,7 @@ const LoginForm = function (props) {
                     </Flex>
                 </Box>  
             </form>
+            {/* </Flex> */}
         </LoginPlate>  
     </Background> 
     )
