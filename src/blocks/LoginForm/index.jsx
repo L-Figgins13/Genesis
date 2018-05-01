@@ -6,8 +6,16 @@ import { Flex, Box } from 'grid-styled';
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
 
+
+
+
+
+
+
+
 const Label = styled.label`
     color: blue;
+    display: block;
 `;
 const Input = styled.input`
     color: purple;
@@ -19,55 +27,84 @@ const Button = styled.button`
 `
 
 const Bar = styled.div`
-    border: 1px solid red;
+    border: 1px solid purple;
 `
 
-const Background = styled.div`
+const Background = styled(Box)`
     background-image: url(${backgroundImg});
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
     overflow: hidden;
-    height: 100%;
+    height: 100vh;
     width: 100vw;
     margin: 0;
     padding:0;
 `
 
-const LoginPlate = styled.div`
-    height: 60vh;
-    min-height: 75vh;
-    border : solid 1px rgba(0,0,0,0.0);
+const LoginPlate = styled(Box)`
+   
+   
+    border : 2px solid white;
+    height: 600px;
+    width: 100vw;
     background-image: url(${plateImg});
     background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: 920px 685px;
-    max-height:685px;
+    background-position: center center;
+
+
+
+   
+    
+   
 `;
 
 const LoginForm = function (props) {
     return (
         
-        <Flex mx={0} my={0}>
+        <Flex flexWrap= 'wrap' mx={0} my={0}>
             <Background>
-                <Box>
-                    <LoginPlate>
-                        <form onSubmit= {props.handleSubmit}>
-                            <Box>
-                                <Bar />
-                                <Label>Username</Label>
-                                <Input name = "username" type="text" value = {props.username} onChange= {props.handleInputChange}  />
-                            </Box>
-                            <Box>
-                                <Bar />
-                                <Label>Password</Label>
-                                <Input name = "password" type="text" value={props.password} onChange= {props.handleInputChange} />
-                            </Box>
-                            <Button type = "submit">Submit </Button>
-                        </form>
+                <Flex justifyContent= 'center' alignItems= 'center'>
+                <LoginPlate>
+                            
+                            <Flex justifyContent= 'center' alignItems= 'center'>
+                            <form onSubmit= {props.handleSubmit}>
+                            
+                                <Box p={2}>
+
+                                    <Bar />
+                                    <Label>Username</Label>
+                                    <Input
+                                        name = "username" 
+                                        type="text" 
+                                        value = {props.username} 
+                                        onChange= {props.handleInputChange}
+                                    />
+                                    <Bar />
+                                    <Label>Password</Label>
+                                    <Input 
+                                        name = "password" 
+                                        type="text" 
+                                        value={props.password} 
+                                        onChange= {props.handleInputChange}
+                                    />
+                                     <Button type = "submit">Submit </Button>   
+                                </Box>
+                                
+                               
+                                
+                            </form>
+                            </Flex>
+                            
+                            
+                            
+
                     </LoginPlate>
-                </Box>
+                    </Flex>
+                    
+                    
+                
             </Background>
         </Flex>
         
