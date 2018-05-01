@@ -4,7 +4,7 @@ import 'isomorphic-fetch';
 import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
 
 import Auth from '../../client/auth.js';
-import CreateGameForm from '../component/CreateGameForm.jsx'
+import CreateGameForm from '../blocks/CreateGameForm'
 
 
 export default class CreateGame extends React.Component {

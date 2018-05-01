@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+import { Flex, Box } from 'grid-styled';
 
-const LoginForm = function (props) {
+const SignupForm = function(props) {
     return (
         <div>
             <form onSubmit= {props.handleSubmit}>
@@ -15,20 +17,17 @@ const LoginForm = function (props) {
                     password:
                     <input name="password" type="password" value={props.password} onChange= {props.handleInputChange} />
                 </label>
-                <input type = "submit" value = "Login"/>
+                <input type="submit" value="Create User"/>
             </form>
-            <ul>
-                <li><Link to= '/games/create'>Create a Game</Link></li>
-            </ul>
         </div>
-    )
+    );
 }
 
-LoginForm.propTypes = {
+SignupForm.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     handleInputChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired
 }
 
-export default LoginForm;
+export default SignupForm;

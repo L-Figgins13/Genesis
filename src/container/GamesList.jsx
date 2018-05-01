@@ -1,42 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Auth from '../client/auth.js';
+import Auth from '../../client/auth.js';
 import 'isomorphic-fetch';
-import {Route, Switch,Redirect, BrowserRouter, Link} from 'react-router-dom';
+import {Route, Switch, Redirect, BrowserRouter, Link} from 'react-router-dom';
 
-
-const GameRow = (props) => (
-    <tr>
-        <td> {props.game._id}   </td>
-        <td> {props.game.owner} </td>
-        <td> {props.game.title} </td>
-        <td><button id={props.game._id} onClick={props.joinGame}>Join</button></td>
-    </tr>
-);
-
-GameRow.propTypes = {
-    game: PropTypes.object.isRequired,
-};
-
-function GameTable (props) {
-    const gameRows = props.games.map(game => <GameRow key = {game._id} game = {game} joinGame={props.joinGame}/>);
-    return(
-        <table className= "bordered-table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Owner</th>
-                    <th>Title</th>
-                </tr>
-            </thead>
-            <tbody>{gameRows}</tbody>
-        </table>
-    )
-}
-
-GameTable.propTypes = {
-    games: PropTypes.array.isRequired,
-}
+import GameFinder from '../blocks/GameFinder';
 
 export default class GamesList extends React.Component {
     constructor(props) {
@@ -79,7 +47,6 @@ export default class GamesList extends React.Component {
             })     
         })
         .catch(error => {
-            console.log('error caught inside what i think is')
             console.log(error);
         })
 
@@ -124,12 +91,10 @@ export default class GamesList extends React.Component {
         }
         
         return(
-            <div>
-                <h1>Games List</h1>
-                <GameTable games={this.state.games} joinGame={this.joinGame} />
-                <li><Link to= '/games/create'>Create Game </Link></li>
-                
-            </div>
+            <GameFinder 
+                games={this.state.games} 
+                joinGame={this.state.joinGame} 
+            />
         );
     }
     

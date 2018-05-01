@@ -3,7 +3,9 @@ import Auth from '../../client/auth.js';
 import 'isomorphic-fetch';
 
 //import components
-import LoginForm from '../component/LoginForm.jsx';
+import LoginForm from '../blocks/LoginForm';
+
+//tiny style alterations
 
 
 
