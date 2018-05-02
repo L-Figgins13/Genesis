@@ -1,18 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const H1 = styled.h1`
     color: red;
 `
-export {H1};
+export { H1 };
 
 const H2 = styled.h2`
     color: blue;
 `
-export {H2};
+export { H2 };
 
 const LI = styled.li`
     padding: 1rem;
 `
-export {LI};
+export { LI };
 
+const Button = styled.button`
+  background: #8f34d9;
+  background-image: linear-gradient(to bottom, #8f34d9, #44009e);
+  box-shadow: 0px 3px 8px #666666;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 8px 15px 8px 15px;
+  border: solid #3500a6 2px;
+  text-decoration: none;
+`
+export { Button };
+
+const StyledLink = styled(Link)`
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2rem;
+    &:hover{
+        color: #ffb700;
+    }
+`
+export { StyledLink };
