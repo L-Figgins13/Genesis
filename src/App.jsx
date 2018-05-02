@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 import Auth from '../client/auth.js';
 import {Route, Switch, BrowserRouter,Link, Redirect, withRouter} from 'react-router-dom';
-import {Provider} from 'rebass';
+
 
 
 //need to be refractored still
