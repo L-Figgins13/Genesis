@@ -18,3 +18,17 @@ const Table = styled.div`
 `
 export {Table}
 
+const Input = styled.input`
+  width: 100%;
+  width: 20vw;
+  height: 3vh;
+  background-color: #120600;
+  color: #fff;
+  border: 2px solid #e9e9e9;
+  -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
+  -moz-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
+  box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
+`;
+
+export {Input}
+
