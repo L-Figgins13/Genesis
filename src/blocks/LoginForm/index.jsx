@@ -16,18 +16,9 @@ const Label = styled.label`
     color: white;
     display: block;
     padding: .5rem;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
 `;
-// const Input = styled.input`
-//   /* width: 100%;
-//   width: 20vw;
-//   height: 3vh;
-//   background-color: #120600;
-//   color: #fff;
-//   border: 2px solid #e9e9e9;
-//   -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-//   -moz-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-//   box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-// `; */
 
 const Button = styled.button`
     color:black;
@@ -70,23 +61,31 @@ const LoginForm = function (props) {
                 <form onSubmit= {props.handleSubmit}>
                     <Box>
                         <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-                            <Bar />
-                            <Label>Username</Label>
-                            <Input
-                                name = "username" 
-                                type="text" 
-                                value = {props.username} 
-                                onChange= {props.handleInputChange}
-                            />
-                            <Bar />
-                            <Label>Password</Label>
-                            <Input 
-                                name = "password" 
-                                type="text" 
-                                value={props.password} 
-                                onChange= {props.handleInputChange}
-                            />
-                            <Button type = "submit">Submit </Button>
+                            <Box mt={2} mb={2}>
+                                <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
+                                    <Label>Username</Label>
+                                    <Input
+                                        name = "username" 
+                                        type= "text" 
+                                        value = {props.username} 
+                                        onChange= {props.handleInputChange}
+                                    />
+                                </Flex>
+                            </Box>
+                            <Box mt={2} mb={2}>
+                                <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
+                                    <Label>Password</Label>
+                                    <Input 
+                                        name = "password" 
+                                        type= "text" 
+                                        value= {props.password} 
+                                        onChange= {props.handleInputChange}
+                                    />
+                                </Flex>
+                            </Box>
+                            <Box>
+                                <Button type = "submit">Submit </Button>
+                            </Box>
                         </Flex>
                     </Box>  
                 </form>
