@@ -13,12 +13,17 @@ const StyledLink = styled(Link)`
     font-weight: bold;
     text-decoration: none;
     padding: 2rem;
-`;
+`
+
+const Test = styled(Box)`
+    border: 1px solid red;
+`
 
 const GameFinder = (props) =>  {
     return( 
             <Flex flexWrap='wrap'>
                 <Box px={4} py={4} width={1}>
+                <Test>                
                     <Flex flexDirection='column' justifyContent='center' alignItems='center'>
                         <Bar />
                         <h1>Games Lobby</h1>
@@ -27,6 +32,7 @@ const GameFinder = (props) =>  {
                         
                         <GameTable games={props.games} joinGame={props.joinGame} />
                     </Flex>
+                </Test>
                 </Box>
 
                 <Box px={2} py={2} width={1/2}>

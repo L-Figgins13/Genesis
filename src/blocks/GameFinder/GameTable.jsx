@@ -4,17 +4,18 @@ import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 import GameRow from './GameRow.jsx';
 
-const Table = styled.table`
+const Table = styled.div`
     border: 1px solid red;
     padding: 3rem;
 `
-const TableHead = styled.th`
-`
-const TableRow = styled.tr`
-`
-const TableHeading = styled.th`
-`
-const TableBody = styled.tbody`
+
+const Title = styled.h1`
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+    padding-left: 5rem;
+    padding-right: 5rem;
 `
 
 function GameTable (props) {
@@ -25,18 +26,15 @@ function GameTable (props) {
             joinGame={props.joinGame}
         />
     );
-    return(
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <TableHeading>Id</TableHeading>
-                    <TableHeading>Owner</TableHeading>
-                    <TableHeading>Title</TableHeading>
-                </TableRow>
-            </TableHead>
-            <tbody>{gameRows}</tbody>
-        </Table>
-
+    return(  
+        <Flex>
+            <Box>
+                <Title>Game ID:</Title>
+                <Title>Game Owner:</Title>
+                <Title>Game Name:</Title>
+                {gameRows}
+            </Box>
+        </Flex>
     )
 }
 

@@ -9,12 +9,10 @@ export {H1};
 const H2 = styled.h2`
     color: blue;
 `
-export {H2}
+export {H2};
 
-
-const Table = styled.div`
-    border:1px solid red;
-    padding: 3rem;
+const LI = styled.li`
+    padding: 1rem;
 `
-export {Table}
+export {LI};
 

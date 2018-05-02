@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import Auth from '../client/auth.js';
 import {Route, Switch, BrowserRouter,Link, Redirect, withRouter} from 'react-router-dom';
 
-
-
 //need to be refractored still
 import Home from './blocks/Home';
 import GamesList from './container/GamesList.jsx';
