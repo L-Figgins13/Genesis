@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
 const H1 = styled.h1`
     color: red;
 `
@@ -29,7 +30,6 @@ const Button = styled.button`
 `
 export { Button };
 
-<<<<<<< HEAD
 const Input = styled.input`
   width: 100%;
   width: 20vw;
@@ -44,7 +44,6 @@ const Input = styled.input`
 
 export {Input}
 
-=======
 const StyledLink = styled(Link)`
     color: #ffffff;
     font-weight: bold;
@@ -55,4 +54,3 @@ const StyledLink = styled(Link)`
     }
 `
 export { StyledLink };
->>>>>>> 0117430b99053fd1a440c69dcab4a068cf9088c2

@@ -7,7 +7,7 @@ import { Flex, Box } from 'grid-styled';
 import {BackgroundImage} from 'rebass';
 
 
-import {Input} from '../../elements';
+import {Input, H1} from '../../elements';
 
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
@@ -57,7 +57,7 @@ const LoginForm = function (props) {
         <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
         <Background>
             <LoginPlate>
-                {/* <Flex flexDirection= 'column' justifyContent = 'center' alignItems = 'center'> */}
+                <H1>Login</H1>
                 <form onSubmit= {props.handleSubmit}>
                     <Box>
                         <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
