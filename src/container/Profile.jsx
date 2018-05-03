@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Stats from '../blocks/Stats';
 import Auth from '../../client/auth.js';
@@ -63,10 +62,8 @@ export default class Profile extends React.Component {
     render(){
         return (
            <div>
-               <h1>Profile</h1>
                <Stats user={this.state.user} />
            </div>
-        
         )
     }
 }   

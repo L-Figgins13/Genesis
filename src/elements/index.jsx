@@ -1,23 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const H1 = styled.h1`
     color: red;
 `
-export {H1};
+export { H1 };
 
 const H2 = styled.h2`
     color: blue;
 `
-export {H2}
+export { H2 };
 
-
-const Table = styled.div`
-    border:1px solid red;
-    padding: 3rem;
+const LI = styled.li`
+    padding: 1rem;
 `
-export {Table}
+export { LI };
 
+const Button = styled.button`
+  background: #8f34d9;
+  background-image: linear-gradient(to bottom, #8f34d9, #44009e);
+  box-shadow: 0px 3px 8px #666666;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 8px 15px 8px 15px;
+  border: solid #3500a6 2px;
+  text-decoration: none;
+`
+export { Button };
+
+<<<<<<< HEAD
 const Input = styled.input`
   width: 100%;
   width: 20vw;
@@ -32,3 +44,15 @@ const Input = styled.input`
 
 export {Input}
 
+=======
+const StyledLink = styled(Link)`
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2rem;
+    &:hover{
+        color: #ffb700;
+    }
+`
+export { StyledLink };
+>>>>>>> 0117430b99053fd1a440c69dcab4a068cf9088c2
