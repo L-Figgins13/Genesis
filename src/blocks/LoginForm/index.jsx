@@ -57,7 +57,7 @@ const LoginForm = function (props) {
         <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
         <Background>
             <LoginPlate>
-                <H1>Login</H1>
+                <Box><H1>Login</H1></Box>
                 <form onSubmit= {props.handleSubmit}>
                     <Box>
                         <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>

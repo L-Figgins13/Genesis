@@ -32,6 +32,8 @@ router.get('/games/:id', (req,res,next) => {
     })
 });
 
+
+//maybe move most of this logic to the model????
 router.post('/games/create' , (req, res, next) => {
     const newGame = new Game({owner: req.body.owner, title: req.body.title});
 
