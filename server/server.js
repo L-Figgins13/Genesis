@@ -14,6 +14,7 @@ import SourceMapSupport from 'source-map-support';
 import authCheck from './auth-check.js';
 import api from './routes/api.js';
 import auth from './routes/auth.js';
+import test from './routes/test.js';
 import path from 'path';
 
 
