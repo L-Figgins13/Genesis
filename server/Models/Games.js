@@ -43,7 +43,7 @@ GameSchema.statics.join = function join(gameID, user) {
     }
 
     
-
+    
    
     //creates a promise to be returned so that the final .then() will be in the route
     const promise = new Promise ((resolve, reject) => {
