@@ -21,7 +21,7 @@ router.get('/games/:id', (req,res,next) => {
 
         // if(err) { console.log(err)};
 
-       Logger(JSON.stringify(game), 'GET /games/:id');
+        Logger(JSON.stringify(game), 'GET /games/:id');
 
         if(!game) {res.status(400).send('game not found')}
 
