@@ -45,11 +45,12 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "image-webpack-loader": "^4.2.0",
-    "nodemon": "^1.14.11",
+    "nodemon": "^1.17.4",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-dev-server": "^2.11.0",
-    "webpack-hot-middleware": "^2.21.0"
+    "webpack-hot-middleware": "^2.21.0",
+    "winston": "^2.4.2"
   },
   "scripts": {
     "test": "test",

@@ -1,15 +1,8 @@
-const shuffle = cards => {
-    let currentIndex = cards.length, temp, randomIndex;
-
-    while(currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temp = cards[currentIndex];
-        cards[currentIndex] = cards[randomIndex];
-        cards[randomIndex] = temp;
-    }
-    return cards;
-};
+const shuffle = arr => (
+    arr
+      .map(a => [Math.random(), a])
+      .sort((a, b) => a[0] - b[0])
+      .map(a => a[1])
+  )
 
 export default shuffle;

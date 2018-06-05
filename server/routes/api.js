@@ -2,13 +2,14 @@ import express from 'express';
 import Game from '../Models/Games.js';
 import User from '../Models/Users.js';
 import broadcast from '../broadcast.js';
-import Logger from '../logger.js'
+import Logger from '../logger.js';
 
 const router = express.Router();
 
 router.get('/games', (req, res, next) => {
    Game.find({}).then( function(games) {
-       console.log(games);
+    //    console.log(games);
+    console.log('/api/games');
        res.json(games);
    })
 });
@@ -21,7 +22,7 @@ router.get('/games/:id', (req,res,next) => {
 
         // if(err) { console.log(err)};
 
-        Logger(JSON.stringify(game), 'GET /games/:id');
+        // Logger(JSON.stringify(game), 'GET /games/:id');
 
         if(!game) {res.status(400).send('game not found')}
 

@@ -17,8 +17,6 @@ import auth from './routes/auth.js';
 import test from './routes/test.js';
 import path from 'path';
 
-
-
 SourceMapSupport.install();
 
 let app = express();
@@ -38,6 +36,7 @@ passport.use('local-login', localLoginStrategy);
 //load routes
 app.use('/api', api );
 app.use('/auth', auth);
+app.use('/test', test);
 
 
 //dev test
@@ -69,9 +68,9 @@ app.set('io', io);
 
 
 app.get('/*', function(req,res){
-    console.log(path.join(path.resolve(__dirname, '..'),'static/index.html')); 
+    // console.log(path.join(path.resolve(__dirname, '..'),'static/index.html')); 
 
-    res.sendFile(path.join(path.resolve(__dirname, '..'),'static/index.html'));
+    // res.sendFile(path.join(path.resolve(__dirname, '..'),'static/index.html'));
 })
 
 

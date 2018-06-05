@@ -15,6 +15,7 @@ import Game from './container/Game.jsx';
 import Profile from './container/Profile.jsx';
 import Login from './container/Login.jsx';
 import Signup from './container/Signup.jsx';
+import Test from './container/Test.jsx';
 
 
 const PrivateRoute = ({component: Component, ...rest}) => (
@@ -72,7 +73,7 @@ export default class App extends React.Component {
        <div>
          <Switch>
              <PropsRoute exact path="/" component={Home} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
-             
+             <LoggedOutRoute exect path= "/deck" component = {Test} />
              <PrivateRoute exact path = "/games" component={GamesList} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <PrivateRoute exact path = "/games/create" component={CreateGame} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <PrivateRoute path = '/games/:id' component={Game} />

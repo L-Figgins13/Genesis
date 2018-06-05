@@ -11,18 +11,25 @@ const cardSchema = new Schema({
     imageURL: {type: String}
 })
 
-cardSchema.statics.getShuffledDeck = function getShuffledDeck() {
+// cardSchema.statics.getShuffledDeck = function getShuffledDeck() {
 
-    const promise = new Promise ((resolve,reject) => {
-        this.model('Card').find({})
-        .then(deck =>{
-            const shuffledDeck = shuffle(deck);
-            console.log(deck);
-        })
-    })
-}
+//     const promise = new Promise ((resolve,reject) => {
+//         this.model('Card').find({})
+//         .then(deck =>{
+//             shuffle(deck);
+//             console.log(deck);
+//             resolve(shuffledDeck);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             reject(err);
+//         })
+//     })
 
-let Card = mongoose.model('Card', cardSchema);
+//     return promise;
+// }
+
+var Card = mongoose.model('Card', cardSchema);
 
 export default Card;
 
