@@ -19,10 +19,11 @@ export default class Test extends React.Component {
     }
 
     loadData() {
-        fetch('/test/deck', {
+        fetch('/api/test/deck', {
             method: "GET",
             headers: {
-                "Accept": "application/json"
+                "Accept": "application/json",
+                'Authorization': `bearer ${Auth.getToken()}`
             }
         })
         .then(response => {

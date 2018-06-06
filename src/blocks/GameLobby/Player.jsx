@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import img from './../../static/img/playerBadgeBG.jpg';
 
 const Player = (props) => {
     return (

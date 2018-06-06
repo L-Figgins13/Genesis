@@ -1,17 +1,22 @@
+import React from 'react';
 import ChatMessages from './ChatMessages.jsx';
+import styled from 'styled-components';
 
-const Chat = function Chat(props) {
+const CINPUT = styled.input`
+width: 200px;
+`
+
+const ChatInput= function ChatInput(props) {
     return (
-        <div>
-            <div>    
-                <div>
-                    <ChatMessages   messages = {props.messages} username={props.username} />
-                </div>
-
-                <div>
-                    <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
-                </div>
-            </div>
-        </div>
+     <form onSubmit = {props.sendMessage}>
+        <CINPUT 
+            type = "text"
+            value = {props.value}
+            onChange={props.handleInputChange}
+             
+        />
+     </form>
     )
 }
+
+export default ChatInput;

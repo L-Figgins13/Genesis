@@ -32,6 +32,7 @@ export default class Game extends React.Component {
         //bind methods
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        
 
 
         //create sockets
@@ -129,6 +130,7 @@ export default class Game extends React.Component {
     handleInputChange(event) {
         let chat = {...this.state.chat};
         chat.messageInput = event.target.value;
+        console.log(chat.messageInput);
         this.setState({chat});
     }
 

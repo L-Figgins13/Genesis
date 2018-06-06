@@ -21,13 +21,17 @@ const GameItem = styled.div`
     border: 1px solid black;
 `
 
+const Button = styled.button`
+    color: green;
+`
+
 const GameRow = (props) => (
     <div>
         <GameDetails>
             <GameItem> {props.game._id} </GameItem>
             <GameItem> {props.game.owner} </GameItem>
             <GameItem> {props.game.title} </GameItem>
-            <GameItem> <button id={props.game._id} onClick={props.joinGame}>Join</button> </GameItem>
+            <GameItem> <Button id={props.game._id} onClick={props.joinGame}>Join</Button> </GameItem>
         </GameDetails>
     </div>
 );

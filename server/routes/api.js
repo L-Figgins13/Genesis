@@ -3,6 +3,7 @@ import Game from '../Models/Games.js';
 import User from '../Models/Users.js';
 import broadcast from '../broadcast.js';
 import Logger from '../logger.js';
+import Card from '../Models/Cards.js';
 
 const router = express.Router();
 
@@ -96,6 +97,18 @@ router.get('/users/:id', (req, res, next) => {
     })
    
 })
+
+// router.get('/test/deck', (req,res,next) => {
+//     Card.find({}).then(cards => {
+//         // THIS NEVER LOGS FOR SOME FUCKING REASON
+//         console.log('hello');
+//         data = {
+//             testString: 'hello from test route'
+//         }
+        
+//         res.json(data);
+//     })
+// })
 
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import img from '../../../static/img/playerBadgeBG.jpg';
+
+import Player from './Player.jsx';
 
 const PlayerArea = (props) => {
     const players = props.players; // place holder

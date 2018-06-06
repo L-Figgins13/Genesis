@@ -93,7 +93,7 @@ export default class GamesList extends React.Component {
         return(
             <GameFinder 
                 games={this.state.games} 
-                joinGame={this.state.joinGame} 
+                joinGame={this.joinGame} 
             />
         );
     }
