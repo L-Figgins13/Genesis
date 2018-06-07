@@ -4,8 +4,14 @@ import User from '../Models/Users.js';
 import broadcast from '../broadcast.js';
 import Logger from '../logger.js';
 import Card from '../Models/Cards.js';
+import shuffle from '../lib/fisher-yates-shuffle.js';
 
 const router = express.Router();
+
+const player = {
+    user_id: '5aeb8d9636e1e22ce07e8f29' ,
+    username: 'logan',
+}
 
 router.get('/games', (req, res, next) => {
    Game.find({}).then( function(games) {
@@ -38,13 +44,8 @@ router.get('/games/:id', (req,res,next) => {
 //maybe move most of this logic to the model????
 router.post('/games/create' , (req, res, next) => {
     const newGame = new Game({owner: req.body.owner, title: req.body.title});
-
-    console.log('------------logging player before save----------');
-    console.log(req.user);
-    console.log();
-
-
     newGame.players.push({user_id:req.user._id, username: req.user.username});
+
     console.log('logging new Game', newGame);
 
     newGame.save()
@@ -98,21 +99,30 @@ router.get('/users/:id', (req, res, next) => {
    
 })
 
-// router.get('/test/deck', (req,res,next) => {
-//     Card.find({}).then(cards => {
-//         // THIS NEVER LOGS FOR SOME FUCKING REASON
-//         console.log('hello');
-//         data = {
-//             testString: 'hello from test route'
-//         }
-        
-//         res.json(data);
-//     })
-// })
+router.get('/test/deck', (req,res,next) => {
+    Card.find({}).then(cards => {
+        console.log('attempting shuffle');console.log('attempting shuffle');
+        let shuffled = shuffle(cards);
+        res.locals.shuffledDeck = shuffled;
+        next();
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:'mongoose error in /test/deck'})
+    })
+}, (req, res, next) => {
 
+    console.log('loggings res.locals', res.locals.shuffledDeck);
+    const newGame = new Game({owner:'logan', title: 'shuffle test', gameCards: res.locals.shuffledDeck });
 
+    console.log('saving new game with shuffled deck');
 
-
+    newGame.save()
+    .then(doc => {
+        console.log(doc);
+        res.json(doc);
+    })
+})
 
 
 

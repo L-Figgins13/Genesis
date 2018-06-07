@@ -21,6 +21,7 @@ export default class Game extends React.Component {
             playerTurn: null,
             gameCards:[],
             players:[],
+            hasStarted: false,
             chat:{
                 username: localStorage.getItem('username'),
                 messageInput: '',
@@ -87,7 +88,7 @@ export default class Game extends React.Component {
 
             chat.messages.push(msg);
             chat.messageInput = '';
-            this.setState({chat});
+            this.setState({chat:chat});
             }
 
             this.sendMessage = this.sendMessage.bind(this);    
@@ -129,9 +130,11 @@ export default class Game extends React.Component {
     //rember to check here if there is an error
     handleInputChange(event) {
         let chat = {...this.state.chat};
+        console.log(chat);
+        console.log(event.target.value);
         chat.messageInput = event.target.value;
         console.log(chat.messageInput);
-        this.setState({chat});
+        this.setState({chat:chat});
     }
 
     render() {
@@ -146,7 +149,8 @@ export default class Game extends React.Component {
                     handleInputChange={this.handleInputChange} 
                     sendMessage={this.sendMessage}  
                     messages={this.state.chat.messages} 
-                    username={this.state.chat.username} value={this.state.chat.messageInput} 
+                    username={this.state.chat.username} 
+                    value={this.state.chat.messageInput} 
                 />
                               
             </div>

@@ -1,12 +1,11 @@
 import React from 'react';
-import ChatMessages from './ChatMessages.jsx';
 import styled from 'styled-components';
 
 const CINPUT = styled.input`
 width: 200px;
 `
-
-const ChatInput= function ChatInput(props) {
+//bleh
+const ChatInput = function(props) {
     return (
      <form onSubmit = {props.sendMessage}>
         <CINPUT 

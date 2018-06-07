@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-
 import { Flex, Box } from 'grid-styled';
 import {BackgroundImage} from 'rebass';
-
 
 import {Input, H1} from '../../elements';
 

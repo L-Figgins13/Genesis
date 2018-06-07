@@ -6,18 +6,22 @@ import ChatMessages from './ChatMessages.jsx';
 import ChatInput from './ChatInput.jsx'; 
 
 
-const Chat = function Chat(props) {
+ const Chat = function(props) {
     return (
         <div>
-            <div>    
-                <div>
-                    <ChatMessages   messages = {props.messages} username={props.username} />
-                </div>
-
-                <div>
-                    <ChatInput username= {props.username} onChange={props.handleInputChange} sendMessage={props.sendMessage} value={props.value} />
-                </div>
-            </div>
+            <ChatMessages   
+                messages = {props.messages}
+                username={props.username} 
+            />
+                
+            <ChatInput
+                username= {props.username} 
+                handleInputChange={props.handleInputChange} 
+                sendMessage={props.sendMessage} 
+                value={props.value} 
+                />
+                
+            
         </div>
     )
 }
