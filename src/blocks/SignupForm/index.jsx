@@ -8,58 +8,6 @@ import {H1, H2, Input} from '../../elements';
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
 
-// OLD STYLES TO BE DELETED AFTER COMPLETION
-// const Label = styled.label`
-//     color: blue;
-//     display: block;
-// `;
-// const Input = styled.input`
-//     color: purple;
-//     background: papayawhip;
-// `;
-
-// const Button = styled.button`
-//     color:gold;
-// `
-
-// const Bar = styled.div`
-//     border: 1px solid purple;
-// `
-
-// const Background = styled(Box)`
-//     background-image: url(${backgroundImg});
-//     background-size: cover;
-//     background-attachment: fixed;
-//     background-position: center center;
-//     background-repeat: no-repeat;
-//     overflow: hidden;
-//     height: 100vh;
-//     width: 100vw;
-//     margin: 0;
-//     padding:0;
-// `
-
-// const LoginPlate = styled(Box)`
-   
-   
-//     border : 2px solid white;
-//     height: 600px;
-//     width: 100vw;
-//     background-image: url(${plateImg});
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     `
-
-//----------------------------------------END OLD STYLES --------------------------------------------------------------------------
-
-const Label = styled.label`
-    color: white;
-    display: block;
-    padding: .5rem;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-`;
-
 const Button = styled.button`
     color:black;
     display:block;
@@ -127,7 +75,7 @@ const SignupForm = (props) => {
                                     <Label>Password</Label>
                                     <Input 
                                         name = "password" 
-                                        type= "text" 
+                                        type= "password" 
                                         value= {props.password} 
                                         onChange= {props.handleInputChange}
                                     />
@@ -149,7 +97,7 @@ const SignupForm = (props) => {
                                     <Label>Password</Label>
                                     <Input 
                                         name = "password2" 
-                                        type= "text" 
+                                        type= "password" 
                                         value= {props.password2} 
                                         onChange= {props.handleInputChange}
                                     />

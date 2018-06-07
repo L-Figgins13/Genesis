@@ -1,44 +1,37 @@
 import React from 'react';
 import Auth from '../../../client/auth.js';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
-import img from '../../../static/img/playerBadgeBG.jpg';
-
-
-const ImageTest = styled.div`
-    color: blue;
-    background-image: url(${img});
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-`;
+import { StyledLink, Container, BG_Image } from '../../elements';
+import img from '../../../static/img/backgrounds/bg1.jpg';
+import plate from '../../../static/img/backgrounds/plate.png';
 
 export default class Home extends React.Component {
 
     componentDidMount() {
-        this.props.toggleAuthenticateStatus();
+      this.props.toggleAuthenticateStatus();
     }
 
-
-    //todo remove the ternary operator stuff because it doesn't make sense at all
+    //TODO: Remove Ternary
     render(){
-        return (
-            <div>
-                <div>
-                    <ul>
-                        <ImageTest>
-                            <Link to ='/login'>Login</Link>
-                            <Link to ='/signup'>Signup</Link>
-                        </ImageTest>
-                    </ul>
-                </div>
-
-                <div>
-                    {Auth.isUserAuthenticated() ? (<li><Link to ='/games'>Games Page Quicklink</Link></li>):(<li>YOU NEED TO LOGIN FIRST!</li>)}
-                </div>
-            </div>
-        );
+      return (
+        <div>
+          <BG_Image img={img}>
+            <Flex flexWrap='wrap'>
+              <Box px={4} py={4} width={1}>
+                <Wrapper>
+                    <Container plate={plate}>
+                      <StyledLink to ='/login'>Login</StyledLink>
+                      <StyledLink to ='/signup'>Signup</StyledLink>
+                      {Auth.isUserAuthenticated() ? (<StyledLink to ='/games'>Games Page Quick Link</StyledLink>):(<StyledLink to='/login'>"YOU NEED TO LOGIN FIRST!"</StyledLink>)}
+                    </Container>
+                </Wrapper>
+              </Box>
+            </Flex>
+          </BG_Image>
+        </div>
+      );
     }
 }
