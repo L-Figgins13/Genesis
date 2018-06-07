@@ -14,6 +14,8 @@ const Background = styled.div`
     height: 100vh;
     width: 100vw;
 `
+//you can apparently not but links inside of buttons da fuq
+// needs to be styled seperately and an onClick method implemented
 
 export default function Stats(props) {
     return(
@@ -21,10 +23,12 @@ export default function Stats(props) {
         <Flex justifyContent='center' alignItems='center'>
             <Box mt={120}>
                 <Flex flexDirection='column' justifyContent='center' alignItems='center'>
+
                 <Avatar
-                size={64}
-                src='https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20'
+                    size={64}
+                    src='https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20'
                 />
+
                 <h1>{props.user.username}'s Profile</h1>
                 <h2>Wins</h2> 
                 {props.user.stats.wins}
@@ -32,6 +36,7 @@ export default function Stats(props) {
                 {props.user.stats.losses}
 
                 <Box p={4}>
+                
                     <Button>
                         <StyledLink to='/games'>Find A Game</StyledLink>
                     </Button>
