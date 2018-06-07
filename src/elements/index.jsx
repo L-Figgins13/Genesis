@@ -13,24 +13,25 @@ const H2 = styled.h2`
 export { H2 };
 
 const Button = styled.button`
-  background: #8f34d9;
-  background-image: linear-gradient(to bottom, #8f34d9, #44009e);
-  color: #ffffff;
+  background: linear-gradient(to bottom, #8f34d9, #44009e);
+  color: #fff;
   border: solid #3500a6 2px;
   text-decoration: none;
   width: 100%;
-  height: 4vh;
+  padding: 1rem;
+  font-size: 1.5rem;
+  &:hover{
+    background: linear-gradient(to top, #8f34d9, #44009e);
+  }
+  &:active{
+   background: purple;
+  }
 `
 export { Button };
 
 const Label = styled.label`
   font-size: 1.5rem;
   color: #fff;
-  /* Small Screens */
-  @media only screen and (max-width : 320px) {
-    text-align: center;
-  }
-
 `;
 export { Label };
 
@@ -75,20 +76,28 @@ export { BG_Image };
 
 const Container = styled.div`
   color: #000;
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80vw;
-  height: 80vh;
-  background-image: url(${props => props.plate});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  border: 1px solid red;
+  width: 80%;
+  height: 60%;
 `
 export { Container };
 
 const Wrapper = styled.div`
-
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 800px;
+  background-image: url(${props => props.plate});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  border: 1px solid blue;
 `
+export { Wrapper };

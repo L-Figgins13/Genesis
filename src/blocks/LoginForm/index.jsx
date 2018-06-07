@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import { Label, Button, Input, H1, BG_Image, Container } from '../../elements';
+import { Wrapper, Container, Label, Button, Input, H1, BG_Image } from '../../elements';
 
 import img from '../../../static/img/backgrounds/bg1.jpg';
 import plate from '../../../static/img/backgrounds/plate.png';
@@ -12,36 +12,38 @@ import plate from '../../../static/img/backgrounds/plate.png';
 const LoginForm = function (props) {
   return (
     <BG_Image img={img}>
-      <Container plate={plate}>
-        <form onSubmit= {props.handleSubmit}>
-          <Flex flexDirection='column'>
-            <Box width={1} px={2} py={2}>
-              <Box py={2}><Label>Username</Label></Box>
-              <Input
-                  name = "username" 
-                  type= "text" 
-                  value = {props.username} 
-                  onChange= {props.handleInputChange}
-              />
-            </Box>
+      <Wrapper plate={plate}>
+        <Container>
+          <form onSubmit= {props.handleSubmit}>
+            <Flex flexDirection='column'>
+              <Box width={1} px={2} py={2}>
+                <Box py={2}><Label>Username</Label></Box>
+                <Input
+                    name = "username" 
+                    type = "text" 
+                    value = {props.username} 
+                    onChange = {props.handleInputChange}
+                />
+              </Box>
 
-            <Box width={1} px={2} py={2}>
-              <Label>Password</Label>
-              <Input 
-                  name = "password" 
-                  type= "password" 
-                  value= {props.password} 
-                  onChange= {props.handleInputChange}
-              />
-            </Box>
-            
-            <Box width={1} px={2} py={4}>
-              <Button type = "submit">Submit </Button>
-            </Box>
+              <Box width={1} px={2} py={2}>
+                <Box py={2}><Label>Password</Label></Box>
+                <Input 
+                    name = "password" 
+                    type = "password" 
+                    value = {props.password} 
+                    onChange = {props.handleInputChange}
+                />
+              </Box>
+              
+              <Box width={1} px={2} py={4}>
+                <Button type = "submit">Submit</Button>
+              </Box>
 
-            </Flex>
-          </form>
-      </Container>
+              </Flex>
+            </form>
+        </Container>
+      </Wrapper>
     </BG_Image>
   )
 }
