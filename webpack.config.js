@@ -1,57 +1,69 @@
 const webpack = require('webpack');
-const extractTextPlugin = require('extract-text-webpack-plugin');
+
 
 module.exports = {
+
+    mode: 'development',
+
     entry: {
-        app: ['./src/index.jsx'],
-        vendor: ['react','react-dom','react-router','isomorphic-fetch','babel-polyfill', 'socket.io-client'],
+        app: './src/index.jsx',
+        vendor: [ '@babel/polyfill', 'react', 'react-router', 'react-router-dom', 'socket.io-client' ,'styled-components']
     },
     output:{
         path: __dirname + './static',
-        filename: 'app.bundle.js',
+        filename: '[name].bundle.js',
+        publicPath: '/'
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'})
-    ],
+
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    name: 'vendor',
+                },
+                app: {
+                    name: 'app',
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    },
 
     module: {
-        
-        loaders:[
+
+        rules: [
             {
                 test: /\.jsx$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015'],
-                    plugins: ['transform-es2015-destructuring', 'transform-object-rest-spread']
-                },
-               
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        plugins: [require('@babel/plugin-proposal-object-rest-spread')]
+                    }
+                }
             },
-            
-           
+
             {
                 test: /\.(jpe?g|png|gif|svg|ico)$/i,
-                loaders: [
-                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]', {
-                        loader: "image-webpack-loader",
-                        query: {
-                            mozjpeg: {
-                              progressive: true,
-                            },
-                            gifsicle: {
-                              interlaced: false,
-                            },
-                            optipng: {
-                              optimizationLevel: 4,
-                            },
-                            pngquant: {
-                              quality: '75-90',
-                              speed: 3,
-                            }
-                        }
+                exclude: /node_modules/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: `[path][name].[ext]?[hash]`
                     }
-                ]
+                }
             }
-        ]
+
+        ],
+
+
+        
+        // 
     },
 
     resolve: {
@@ -62,12 +74,58 @@ module.exports = {
     devServer: {
         port: 8000,
         contentBase: 'static',
-        proxy: {
-            '/api/*' : {
-                target: 'http://localhost:3000'
+        proxy: [
+            {
+                context : ['/api', '/auth'],
+                target: 'http://localhost:3000',
+                secure: false
             }
-        }
+        ]    
     },
 
     devtool: 'source-map'
 }
+
+
+
+
+// OLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD CONFIG
+//loaders:[
+    //     {
+    //         test: /\.jsx$/,
+    //         loader: 'babel-loader',
+    //         exclude: /node_modules/,
+    //         query: {
+    //             presets: ['@babel/preset-env', '@babel/preset-react'],
+    //             plugins: [require('@babel/plugin-proposal-object-rest-spread')]
+    //         }
+           
+    //     },
+
+    //     Rules
+        
+       
+    //     {
+    //         test: /\.(jpe?g|png|gif|svg|ico)$/i,
+    //         loaders: [
+    //             'file-loader?hash=sha512&digest=hex&name=[hash].[ext]', {
+    //                 loader: "image-webpack-loader",
+    //                 query: {
+    //                     mozjpeg: {
+    //                       progressive: true,
+    //                     },
+    //                     gifsicle: {
+    //                       interlaced: false,
+    //                     },
+    //                     optipng: {
+    //                       optimizationLevel: 4,
+    //                     },
+    //                     pngquant: {
+    //                       quality: '75-90',
+    //                       speed: 3,
+    //                     }
+    //                 }
+    //             }
+    //         ]
+    //     }
+    // ]

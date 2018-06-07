@@ -18,6 +18,3 @@ ReactDOM.render((
         </BrowserRouter>
     </Provider>), contentNode);
 
-if (module.hot) {
-    module.hot.accept();
-}

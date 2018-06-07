@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
@@ -86,9 +85,7 @@ export default class App extends React.Component {
     }
 }
 
-if (module.hot) {
-    module.hot.accept();
-}
+
 
 
 

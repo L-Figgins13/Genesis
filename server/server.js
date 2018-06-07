@@ -11,6 +11,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import SourceMapSupport from 'source-map-support';
 
+
 import authCheck from './auth-check.js';
 import api from './routes/api.js';
 import auth from './routes/auth.js';
@@ -42,17 +43,13 @@ app.use('/auth', auth);
 //dev test
 if (process.env.NODE_ENV !== 'production') {
     const webpack = require('webpack');
-    const webpackDevMiddleware = require('webpack-dev-middleware');
-    const webpackHotMiddleware = require('webpack-hot-middleware');
-
     const config = require('../webpack.config');
-    config.entry.app.push('webpack-hot-middleware/client', 'webpack/hot/only-dev-server');
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-
+    const webpackMiddleware = require('webpack-dev-middleware');
     const bundler = webpack(config);
 
-    app.use(webpackDevMiddleware(bundler, {noInfo: true}));
-    app.use(webpackHotMiddleware(bundler, {log: console.log }))
+    app.use(webpackMiddleware(bundler, {
+        publicPath: config.output.publicPath
+    }))
 }
 
 var server = app.listen(3000, function () {

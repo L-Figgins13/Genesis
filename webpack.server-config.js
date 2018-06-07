@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
     target: 'node',
+    mode: 'development',
     entry: path.resolve(__dirname, 'server/server.js'),
     output: {
       path: path.join(__dirname,'/dist'),
@@ -17,22 +18,27 @@ module.exports = {
     },
     externals: [/^[a-z]/,'./db.js' ],
     module: {
-      loaders: [
+
+
+      rules: 
+      [
         {
           test: /\.jsx$/,
-          loader: 'babel-loader',
-          query: {
-            presets: ['react', 'node8'],
-          },
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets:['@babel/preset-env', '@babel/preset-react']
+            }
+          }
         },
+
         {
           test: /\.js$/,
-          exclude: /node_modules/,
           loader: 'babel-loader',
-          query: {
-            presets: ['node8'],
-          },
-        },
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       ],
     },
     devtool: 'source-map',
