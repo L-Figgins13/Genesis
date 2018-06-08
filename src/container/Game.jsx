@@ -152,7 +152,7 @@ export default class Game extends React.Component {
                 gameID: this.state.gameID,
             })
         })
-        .then( res = res.json())
+        .then( res => res.json())
             .then(updatedGame => {
                 console.log(updatedGame);
             })
