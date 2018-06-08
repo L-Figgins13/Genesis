@@ -8,29 +8,16 @@ import shuffle from '../lib/fisher-yates-shuffle.js';
 
 const router = express.Router();
 
-const player = {
-    user_id: '5aeb8d9636e1e22ce07e8f29' ,
-    username: 'logan',
-}
-
 router.get('/games', (req, res, next) => {
    Game.find({}).then( function(games) {
-    //    console.log(games);
     console.log('/api/games');
        res.json(games);
    })
 });
 
-
 router.get('/games/:id', (req,res,next) => {
-
     Game.findById(req.params.id)
     .then( game => {
-
-        // if(err) { console.log(err)};
-
-        // Logger(JSON.stringify(game), 'GET /games/:id');
-
         if(!game) {res.status(400).send('game not found')}
 
         res.json(game);
@@ -40,13 +27,10 @@ router.get('/games/:id', (req,res,next) => {
     })
 });
 
-
 //maybe move most of this logic to the model????
 router.post('/games/create' , (req, res, next) => {
     const newGame = new Game({owner: req.body.owner, title: req.body.title});
     newGame.players.push({user_id:req.user._id, username: req.user.username});
-
-    console.log('logging new Game', newGame);
 
     newGame.save()
     .then(doc => {
@@ -71,9 +55,20 @@ router.post('/games/join', (req,res,next) => {
     .catch(error => {
         Logger(JSON.stringify(error), 'Error in /games/join');
         res.json(error);
-
-        
     })
+})
+
+//we need to standardize coding style. i know its my fault
+router.post('/games/start', (req, res, next) => {
+        console.log('hello from games/start');
+        Game.start(req.body.gameID)
+        .then(updatedGame => {
+            res.json(updatedGame);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({err:err});
+        }) 
 })
 
 
@@ -123,7 +118,5 @@ router.get('/test/deck', (req,res,next) => {
         res.json(doc);
     })
 })
-
-
 
 export default router;

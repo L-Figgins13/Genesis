@@ -4,7 +4,7 @@ import { Flex, Box } from 'grid-styled';
 import img from '../../../static/img/playerBadgeBG.jpg';
 
 import PlayerArea from './PlayerArea.jsx';
-
+// import {Button} from '../../elements';
 
 const ImageTest = styled.div`
   width: 100%;
@@ -12,12 +12,13 @@ const ImageTest = styled.div`
   background-image: url(${img});
 `;
 
+
+
 const GameLobby = (props) => {
     return (
         <div>
             <div>
                 <h1> Game Lobby </h1>
-                <ImageTest></ImageTest>
             </div>
             <div>
                 <PlayerArea players={props.players} />

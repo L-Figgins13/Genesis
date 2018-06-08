@@ -42,9 +42,9 @@ GameSchema.statics.join = function join(gameID, user) {
         username: user.username,
     }
 
-    
-    
    
+   
+   //TODO fix this fucking mess
     //creates a promise to be returned so that the final .then() will be in the route
     const promise = new Promise ((resolve, reject) => {
         this.model('Game').findById(gameID)
@@ -86,9 +86,33 @@ GameSchema.statics.join = function join(gameID, user) {
             }   
         })
     });
-
    return promise;
+}
 
+GameSchema.statics.start = function start(gameID) {
+    console.log('game ID:', gameID);
+
+    const promise = new Promise ((resolve, reject) => {
+        this.model('Game').findById(gameID)
+        .then( game => {
+
+            console.log('before update:', game);
+          if(game.hasStarted === false) {
+              game.hasStarted = true;
+              game.save()
+              .then( updatedGame => {
+                  console.log('Updated Game:', updatedGame);
+                  resolve(updatedGame);
+              })
+          } else {
+              reject('Error: Game has already started');
+          }              
+        })
+        .catch(err => {
+            reject(err);
+        })
+    });
+    return promise;
 }
 
 var Game = mongoose.model('Game', GameSchema);

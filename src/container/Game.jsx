@@ -10,6 +10,7 @@ import {Container, Row, Col} from 'react-grid-system';
 //components
 import Chat from '../blocks/Chat';
 import GameLobby from '../blocks/GameLobby';
+import {Button} from '../elements';
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -33,6 +34,7 @@ export default class Game extends React.Component {
         //bind methods
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.startGame = this.startGame.bind(this);
         
 
 
@@ -137,6 +139,28 @@ export default class Game extends React.Component {
         this.setState({chat:chat});
     }
 
+    startGame(event) {
+        console.log('attempting to start');
+
+        fetch(`/api/games/start`, {
+            method: `POST`,
+            headers: {
+                'Authorization' : `bearer ${Auth.getToken()}`,
+                'Content-Type': `application/json`
+            },
+            body: JSON.stringify({
+                gameID: this.state.gameID,
+            })
+        })
+        .then( res = res.json())
+            .then(updatedGame => {
+                console.log(updatedGame);
+            })
+        .catch(err => {
+            console.log(err);
+        })    
+    }
+
     render() {
         return(
             <div>
@@ -144,7 +168,9 @@ export default class Game extends React.Component {
                 <h2>ID: {this.state.gameID} </h2>
                     
                 <GameLobby players={this.state.players} />
-            
+
+                <Button onClick={this.startGame}>Start</Button>
+
                 <Chat 
                     handleInputChange={this.handleInputChange} 
                     sendMessage={this.sendMessage}  
