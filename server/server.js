@@ -11,7 +11,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import SourceMapSupport from 'source-map-support';
 
-
 import authCheck from './auth-check.js';
 import api from './routes/api.js';
 import auth from './routes/auth.js';
