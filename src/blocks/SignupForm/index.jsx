@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import { H1, H2, Input, Label, BG_Image, Wrapper, Container } from '../../elements';
+import { Button, H1, H2, Input, Label, BG_Image, Wrapper, Container } from '../../elements';
 
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
-
-const Button = styled.button`
-    color:black;
-    display:block;
-    padding: .25rem;
-`
 
 const Bar = styled.div`
     border: 1px solid purple;
@@ -28,7 +22,6 @@ const Background = styled.div`
 `
 
 const LoginPlate = styled(Flex)`
-    
     min-height: 600px;
     width: 100vw;
     height: 100vh;
@@ -40,10 +33,29 @@ const LoginPlate = styled(Flex)`
     background-size: contain;
 `;
 
-const FormHint =  styled.span`
-    color:red;
+const FormHint =  styled.div`
+    color:#fff;
+    background-color: #B22222;
+    margin-top: .5rem;
+    padding: 1rem;
 `
 
+const Rotate = styled.div`
+  display: inline-block;
+  animation: ${rotate360} 2s linear infinite;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+`;
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 const SignupForm = (props) => {
     return (
@@ -53,6 +65,7 @@ const SignupForm = (props) => {
             <form onSubmit= {props.handleSubmit}>
               <Flex flexDirection='column'>
                 <Label fontSize={'2rem'} textAlign={'center'}>Sign Up</Label>
+                <Rotate>&lt; 💅&gt;</Rotate>
                 <Box width={1} px={2} py={2}>
                   <Box py={2}><Label>Username</Label></Box>
                   <Input
@@ -62,7 +75,7 @@ const SignupForm = (props) => {
                       onChange = {props.handleInputChange}
                   />
                   { props.showUsernameHint &&
-                    <FormHint>Hint Test Goes Here</FormHint>
+                    <FormHint>Your Username Is Not Unique, Please Try Again.</FormHint>
                   }
                 </Box>
 
@@ -74,9 +87,8 @@ const SignupForm = (props) => {
                       value= {props.password} 
                       onChange= {props.handleInputChange}
                   />
-
                   { props.showValidPasswordHint &&
-                      <FormHint>Hint Test Goes Here</FormHint>
+                      <FormHint>Please Enter a valid password</FormHint>
                   }
 
                   { props.showPasswordsDoNotMatchHint &&
