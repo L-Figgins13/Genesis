@@ -60,6 +60,19 @@ const Input = styled.input`
   -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
   -moz-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
   box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
+
+  -webkit-transition: border-bottom 1s ease;
+  -moz-transition: border-bottom 1s ease;
+  -ms-transition: border-bottom 1s ease;
+  -o-transition: border-bottom 1s ease;
+
+  &:focus, textarea:focus {
+    -webkit-transition: border-bottom 1s ease;
+    -moz-transition: border-bottom 1s ease;
+    -ms-transition: border-bottom 1s ease;
+    -o-transition: border-bottom 1s ease;
+    border: 6px solid purple;
+  }
 `;
 
 export {Input}
