@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import { H1, H2, Input, Label } from '../../elements';
+import { H1, H2, Input, Label, BG_Image, Wrapper, Container } from '../../elements';
 
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
@@ -47,72 +47,62 @@ const FormHint =  styled.span`
 
 const SignupForm = (props) => {
     return (
-        <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-        <Background>
-            <LoginPlate flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-                <Box><H1>Signup</H1></Box>
-                <form onSubmit= {props.handleSubmit}>
-                    <Box>
-                        <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-                            <Box mt={2} mb={2}>
-                                <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-                                    <Label>Username</Label>
-                                    <Input
-                                        name = "username" 
-                                        type= "text" 
-                                        value = {props.username} 
-                                        onChange= {props.handleInputChange}
-                                    />
-                                    
-                                    { props.showUsernameHint &&
-                                        <FormHint>Hint Test Goes Here</FormHint>
-                                    }
-                                </Flex>
-                            </Box>
+      <BG_Image img={backgroundImg}>
+        <Wrapper plate={plateImg}>
+          <Container>
+            <form onSubmit= {props.handleSubmit}>
+              <Flex flexDirection='column'>
+                <Label fontSize={'2rem'} textAlign={'center'}>Sign Up</Label>
+                <Box width={1} px={2} py={2}>
+                  <Box py={2}><Label>Username</Label></Box>
+                  <Input
+                      name = "username" 
+                      type = "text" 
+                      value = {props.username} 
+                      onChange = {props.handleInputChange}
+                  />
+                  { props.showUsernameHint &&
+                    <FormHint>Hint Test Goes Here</FormHint>
+                  }
+                </Box>
 
-                            <Box mt={2} mb={2}>
-                                <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-                                    <Label>Password</Label>
-                                    <Input 
-                                        name = "password" 
-                                        type= "password" 
-                                        value= {props.password} 
-                                        onChange= {props.handleInputChange}
-                                    />
+                <Box width={1} px={2} py={2}>
+                  <Box py={2}><Label>Password</Label></Box>
+                  <Input 
+                      name = "password" 
+                      type= "password" 
+                      value= {props.password} 
+                      onChange= {props.handleInputChange}
+                  />
 
-                                    { props.showValidPasswordHint &&
-                                        <FormHint>Hint Test Goes Here</FormHint>
-                                    }
+                  { props.showValidPasswordHint &&
+                      <FormHint>Hint Test Goes Here</FormHint>
+                  }
 
-                                    { props.showPasswordsDoNotMatchHint &&
-                                        <FormHint>Passwords Do Not Match</FormHint>
-                                    }           
+                  { props.showPasswordsDoNotMatchHint &&
+                      <FormHint>Passwords Do Not Match</FormHint>
+                  }
+                </Box>
 
-
-                                </Flex>
-                            </Box>
-
-                            <Box>
-                                <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
-                                    <Label>Password</Label>
-                                    <Input 
-                                        name = "password2" 
-                                        type= "password" 
-                                        value= {props.password2} 
-                                        onChange= {props.handleInputChange}
-                                    />
-                                </Flex>
-                            </Box>
-
-                            <Box>
-                                <Button type = "submit">Submit </Button>
-                            </Box>
-                        </Flex>
-                    </Box>  
-                </form>
-            </LoginPlate>  
-        </Background>
-    </Flex> 
+                <Box width={1} px={2} py={2}>
+                  <Box py={2}><Label>Re-Enter Password</Label></Box>
+                  <Input 
+                      name = "password2" 
+                      type= "password" 
+                      value= {props.password2} 
+                      onChange= {props.handleInputChange}
+                  />
+                </Box>
+                
+                <Box width={1} px={2} py={4}>
+                  <Button type = "submit">Submit</Button>
+                </Box>
+                
+                </Flex>
+              </form>
+          </Container>
+        </Wrapper>
+      </BG_Image>
     )
 }
 

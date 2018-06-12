@@ -35,7 +35,6 @@ export default class Login extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        alert('Name Submitted: ' + this.state.username + ' Password Submitted: ' +  this.state.password);
         const url = '/auth/login'
 
         fetch(url, {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import { Wrapper, Container, Label, Button, Input, H1, BG_Image } from '../../elements';
+import { Wrapper, Container, Label, Button, Input, H1, BG_Image, StyledLink } from '../../elements';
 
 import img from '../../../static/img/backgrounds/bg1.jpg';
 import plate from '../../../static/img/backgrounds/plate.png';
@@ -16,6 +16,7 @@ const LoginForm = function (props) {
         <Container>
           <form onSubmit= {props.handleSubmit}>
             <Flex flexDirection='column'>
+              <Label fontSize={'2rem'} textAlign={'center'}>Login</Label>
               <Box width={1} px={2} py={2}>
                 <Box py={2}><Label>Username</Label></Box>
                 <Input
@@ -39,6 +40,11 @@ const LoginForm = function (props) {
               <Box width={1} px={2} py={4}>
                 <Button type = "submit">Submit</Button>
               </Box>
+
+              <Label fontSize={'.75rem'} textAlign={'center'}>
+                Not Registered? 
+                <StyledLink to ='/signup'>Create An Account.</StyledLink>
+              </Label>
 
               </Flex>
             </form>
