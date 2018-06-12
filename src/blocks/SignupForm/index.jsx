@@ -40,32 +40,34 @@ const FormHint =  styled.div`
     padding: 1rem;
 `
 
-const Rotate = styled.div`
-  display: inline-block;
-  animation: ${rotate360} 2s linear infinite;
-  padding: 2rem 1rem;
-  font-size: 1.2rem;
-`;
-
 const rotate360 = keyframes`
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(0);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(2);
   }
 `;
+
+const Rotate = styled.div`
+  animation: ${rotate360} 2s linear infinite;
+  font-size: 1.2rem;
+`;
+
+
 
 const SignupForm = (props) => {
     return (
       <BG_Image img={backgroundImg}>
         <Wrapper plate={plateImg}>
           <Container>
+            <Rotate>Get Fucked, Player Three!</Rotate>
             <form onSubmit= {props.handleSubmit}>
               <Flex flexDirection='column'>
                 <Label fontSize={'2rem'} textAlign={'center'}>Sign Up</Label>
-                <Rotate>&lt; 💅&gt;</Rotate>
+                
+
                 <Box width={1} px={2} py={2}>
                   <Box py={2}><Label>Username</Label></Box>
                   <Input

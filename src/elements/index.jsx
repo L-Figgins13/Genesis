@@ -20,6 +20,24 @@ const Button = styled.button`
   width: 100%;
   padding: .5rem;
   font-size: 1.25rem;
+  -webkit-transition: box-shadow .5s ease;
+  -moz-transition: box-shadow .5s ease;
+  -ms-transition: box-shadow .5s ease;
+  -o-transition: box-shadow .5s ease;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(220,1,244,0.49);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(220,1,244,0.49);
+  box-shadow: 0px 0px 0px 0px rgba(220,1,244,0.49);
+    
+  &:focus {
+    -webkit-transition: box-shadow .5s ease;
+    -moz-transition: box-shadow .5s ease;
+    -ms-transition: box-shadow .5s ease;
+    -o-transition: box-shadow .5s ease;
+    -webkit-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
+    -moz-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
+    box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
+    
+  }
   &:hover{
     background: linear-gradient(to top, #8f34d9, #44009e);
   }
@@ -56,22 +74,22 @@ const Input = styled.input`
   color: #382f24;
   font-weight: bold;
   font-size: 1.5rem;
-  border: 2px solid #382f24;
   -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
   -moz-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
   box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-
-  -webkit-transition: border-bottom 1s ease;
-  -moz-transition: border-bottom 1s ease;
-  -ms-transition: border-bottom 1s ease;
-  -o-transition: border-bottom 1s ease;
+  -webkit-transition: box-shadow .5s ease;
+  -moz-transition: box-shadow .5s ease;
+  -ms-transition: box-shadow .5s ease;
+  -o-transition: box-shadow .5s ease;
 
   &:focus, textarea:focus {
-    -webkit-transition: border-bottom 1s ease;
-    -moz-transition: border-bottom 1s ease;
-    -ms-transition: border-bottom 1s ease;
-    -o-transition: border-bottom 1s ease;
-    border: 6px solid purple;
+    -webkit-transition: box-shadow .5s ease;
+    -moz-transition: box-shadow .5s ease;
+    -ms-transition: box-shadow .5s ease;
+    -o-transition: box-shadow .5s ease;
+    -webkit-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
+    -moz-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
+    box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
   }
 `;
 
