@@ -18,8 +18,8 @@ const Button = styled.button`
   border: solid #3500a6 2px;
   text-decoration: none;
   width: 100%;
-  padding: 1rem;
-  font-size: 1.5rem;
+  padding: .5rem;
+  font-size: 1.25rem;
   &:hover{
     background: linear-gradient(to top, #8f34d9, #44009e);
   }
@@ -30,9 +30,23 @@ const Button = styled.button`
 export { Button };
 
 const Label = styled.label`
-  font-size: 1.5rem;
+  font-size: ${props => props.fontSize? props.fontSize : '1rem'};
+  text-align: ${props => props.textAlign};
   color: #fff;
-`;
+
+  @media (min-width: 375px) {
+    background: red;
+  }
+  @media only screen and (min-width : 768px) {
+    background: violet;
+  }
+  @media only screen and (min-width : 992px) {
+    background: red;
+  }
+  @media only screen and (min-width : 1200px) {
+    background: black;
+  }
+`
 export { Label };
 
 const Input = styled.input`

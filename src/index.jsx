@@ -57,6 +57,9 @@ injectGlobal`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  ::-moz-selection { background: #111; }
+  ::selection { background: #111; }
 `
 
 const contentNode = document.getElementById('contents');
