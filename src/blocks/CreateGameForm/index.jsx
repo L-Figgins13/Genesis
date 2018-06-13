@@ -2,24 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
+import { Button, Input, Label, Wrapper, Container, StyledLink, BG_Image } from '../../elements/';
 
+
+import img from '../../../static/img/backgrounds/bg1.jpg';
+import plate from '../../../static/img/backgrounds/plate.png';
 
 
 const CreateGameForm = function (props) {
-    return (
-        <div>
-            <h2>CREATE A GAME</h2>
-                <form onSubmit = {props.handleSubmit}>
-                    <label>Owner:
-                        <input name = "owner" type = "text" value = {props.owner} onChange={props.handleInputChange} />
-                    </label>
-                        <br />
-                    <label>Title:
-                        <input name = "title" type="text" value = {props.title} onChange = {props.handleInputChange} />
-                    </label>
-                        <input type= "submit"/> 
-                </form>
-        </div>
+    return (    
+    <BG_Image img={img}>
+    <Wrapper plate={plate}>
+      <Container>
+          <Box width={1} px={2} py={2}>
+            <Flex flexDirection='column' justifyContent= 'center' alignItems= 'center'>
+              
+              <Box px={4} py={4}>
+                <Label textAlign={'center'} fontSize={'2rem'}>Create A Game</Label>
+              </Box>
+              
+              <Box>
+                <Label textAlign={'center'} fontSize={'2rem'}>Game Title</Label>
+              </Box>
+              
+              <Box px={4} py={4}>
+              <form onSubmit = {props.handleSubmit}>
+                  <Input
+                    name = "title" 
+                    type = "text" 
+                    value = {props.title} 
+                    onChange = {props.handleInputChange}
+                  />
+                  
+                  <Box px={2} py={4}>
+                    <Button type = "submit">Submit</Button>
+                  </Box>
+              </form>
+              </Box>
+            </Flex>
+
+          </Box>
+      </Container>
+    </Wrapper>
+    </BG_Image>
     )
 }
 

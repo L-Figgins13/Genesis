@@ -29,7 +29,7 @@ router.post('/signup', (req, res, next) => {
 
 
 router.post('/login', (req,res,next) => {
-    passport.authenticate('local-login', (err, token, userData)=>{
+    passport.authenticate('local-login', (err, token, message)=>{
     if (err) {
         console.log(err);
         res.status(400).json({
@@ -38,11 +38,22 @@ router.post('/login', (req,res,next) => {
         });
     }
 
+    if (!token) {
+        console.log('no token returned. incorrect password');
+        
+        //message.success should be false
+        res.json({
+            success: message.success,
+            user: message.userData
+        })
+    }
+
+    //code only makes it here if there has been a token created    
     res.json({
-        success:true,
+        success: message.success,
         message: 'You have logged in',
-        token,
-        user:userData
+        token: token,
+        user: message.userData
     });
     
 })(req,res,next);

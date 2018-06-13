@@ -7,7 +7,7 @@ module.exports = {
 
     entry: {
         app: [ '@babel/polyfill' ,'./src/index.jsx'],
-        vendor: [ 'react', 'react-router', 'react-router-dom', 'socket.io-client' ,'styled-components']
+        vendor: [ 'react', 'react-router', 'react-router-dom', 'socket.io-client' ,'styled-components' , 'rebass', 'grid-styled']
     },
     output:{
         path: __dirname + './static',
