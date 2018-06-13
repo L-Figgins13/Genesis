@@ -2,18 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const H1 = styled.h1`
-  color: red;
-`
-export { H1 };
-
-const H2 = styled.h2`
-  color: blue;
-`
-export { H2 };
-
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
+  cursor: pointer;
   color: #fff;
   border: solid #3500a6 2px;
   text-decoration: none;
@@ -52,7 +43,11 @@ const Label = styled.label`
   text-align: ${props => props.textAlign};
   color: #fff;
 
-  @media (min-width: 375px) {
+  a{
+    color: #73247C;
+  }
+
+  /* @media (min-width: 375px) {
     background: red;
   }
   @media only screen and (min-width : 768px) {
@@ -63,7 +58,7 @@ const Label = styled.label`
   }
   @media only screen and (min-width : 1200px) {
     background: black;
-  }
+  } */
 `
 export { Label };
 
@@ -71,7 +66,9 @@ const Input = styled.input`
   width: 100%;
   height: 4vh;
   background-color: wheat;
-  color: #382f24;
+  border-radius: .5rem;
+  border: 1px solid #111;
+  padding: .75rem .75rem;
   font-weight: bold;
   font-size: 1.5rem;
   -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);

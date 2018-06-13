@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import { Button, StyledLink, BG_Image, Wrapper, Container } from '../../elements';
+import { Label, Button, StyledLink, BG_Image, Wrapper, Container } from '../../elements';
 import { Avatar } from 'rebass';
 import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
@@ -47,21 +47,29 @@ export default function Stats(props) {
         <Wrapper plate={plateImg}>
           <Container>
             <form onSubmit= {props.handleSubmit}>
-              <Flex flexDirection='column'>
-                <Box width={1} px={2} py={2}>
+              <Flex flexDirection='column' justfiyContent={'center'} alignItems={'center'}>
+                <Box width={1}>
                   <Avatar
-                      size={64}
+                      size={164}
                       src='https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20'
                   />
-                  <h1>{props.user.username}'s Profile</h1>
-                  <h2>Wins</h2> 
+                </Box>
+                <Box width={1} px={4} py={4}>
+                  <Label>{props.user.username}'s Profile</Label>
+                </Box>
+                <Box width={1} px={4} py={4}>
+                  <Label>Wins</Label> 
                   {props.user.stats.wins}
-                  <h2>Losses</h2>
+
+                  <Label>Losses</Label>
                   {props.user.stats.losses}
+                </Box>
+                <Box width={1} px={2} py={2}>
                   <Button>
-                    <StyledLink to='/games'>Find A Game</StyledLink>
+                    <StyledLink to='/games'>Join A Game</StyledLink>
                   </Button>
                 </Box>
+                  
               </Flex>
             </form>
           </Container>
