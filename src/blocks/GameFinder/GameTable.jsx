@@ -28,12 +28,10 @@ function GameTable (props) {
     );
     return(  
         <Flex>
-            <Box>
-                <Title>Game ID:</Title>
-                <Title>Game Owner:</Title>
-                <Title>Game Name:</Title>
-                {gameRows}
-            </Box>
+            <Title>Game ID:</Title>
+            <Title>Game Owner:</Title>
+            <Title>Game Name:</Title>
+            {gameRows}
         </Flex>
     )
 }

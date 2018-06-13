@@ -62,7 +62,6 @@ const SignupForm = (props) => {
       <BG_Image img={backgroundImg}>
         <Wrapper plate={plateImg}>
           <Container>
-            <Rotate>Get Fucked, Player Three!</Rotate>
             <form onSubmit= {props.handleSubmit}>
               <Flex flexDirection='column'>
                 <Label fontSize={'2rem'} textAlign={'center'}>Sign Up</Label>

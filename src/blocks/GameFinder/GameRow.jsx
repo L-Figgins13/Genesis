@@ -4,7 +4,7 @@ import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
 const GameDetails = styled.div`
-    background-color: #dddddd;
+    background-color: beige;
     padding: .5rem;
     list-style-type: none;
     text-align: center;
@@ -22,14 +22,12 @@ const GameItem = styled.div`
 `
 
 const GameRow = (props) => (
-    <div>
         <GameDetails>
             <GameItem> {props.game._id} </GameItem>
             <GameItem> {props.game.owner} </GameItem>
             <GameItem> {props.game.title} </GameItem>
             <GameItem> <button id={props.game._id} onClick={props.joinGame}>Join</button> </GameItem>
         </GameDetails>
-    </div>
 );
 
 GameRow.propTypes = {
