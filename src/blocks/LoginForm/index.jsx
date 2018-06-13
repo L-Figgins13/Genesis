@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import { Wrapper, Container, Label, Button, Input, H1, BG_Image, StyledLink } from '../../elements';

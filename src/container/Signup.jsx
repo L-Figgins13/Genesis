@@ -40,7 +40,7 @@ export default class Signup extends React.Component {
             return false;
 
         } else if (form.password !== form.password2) {
-            console.log('3');                            
+            console.log('3 - Password Mismatch');                            
             this.setState({showPasswordsDoNotMatchHint:true});
             return false;
 

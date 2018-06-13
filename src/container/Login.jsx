@@ -5,10 +5,6 @@ import 'isomorphic-fetch';
 //import components
 import LoginForm from '../blocks/LoginForm';
 
-//tiny style alterations
-
-
-
 //TODO NEEDS BOTH FRONT END FORM VALIDATION AND BACK END
 
 export default class Login extends React.Component {
@@ -65,7 +61,6 @@ export default class Login extends React.Component {
                     alert(data.message);
                 }
             })
-
     }
 
     render() {
