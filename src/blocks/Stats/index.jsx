@@ -47,7 +47,7 @@ export default function Stats(props) {
         <Wrapper plate={plateImg}>
           <Container>
             <form onSubmit= {props.handleSubmit}>
-              <Flex flexDirection='column' justfiyContent={'center'} alignItems={'center'}>
+              <Flex flexDirection='column' justifyContent={'center'} alignItems={'center'}>
                 <Box width={1}>
                   <Avatar
                       size={164}

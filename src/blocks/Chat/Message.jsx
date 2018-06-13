@@ -7,14 +7,10 @@ function Message(props) {
 
     return (
         <div>
-            <div>
-                <div>
-                    {props.username + ":"}
-                </div>
-                <div>
-                    {" " + props.message}
-                </div>
-            </div>
+            
+                {props.username + ":"}
+            
+                {" " + props.message}
         </div>
     )
     

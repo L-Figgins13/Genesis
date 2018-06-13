@@ -3,50 +3,35 @@ import styled from 'styled-components';
 import React from 'react';
 import { Flex, Box } from 'grid-styled';
 import { Link } from 'react-router-dom';
-import { StyledLink } from '../../elements/';
+import { BG_Image, StyledLink, Label, Button } from '../../elements/';
 
-const Bar = styled.div`
-    border: 1px solid red;
+
+const TableContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: #6A6969;
 `
 
-const Test = styled(Box)`
-    border: 1px solid red;
-`
 
 const GameFinder = (props) =>  {
-    return( 
-        <Flex flexWrap='wrap'>
-            <Box px={4} py={4} width={1}>
-            <Test>                
-                <Flex flexDirection='column' justifyContent='center' alignItems='center'>
-                    <Bar />
-                    <h1>Games Lobby</h1>
-                    <h2>Select A Game Room To Play!</h2>
+    return(
+        <TableContainer>
+            <Box px={4} py={4}>  
+                <Flex justifyContent='center' alignItems='center' flexDirection='column'>  
+                    <Label fontSize='2rem' textAlign='center'>Games Lobby</Label>
                     <StyledLink to= '/games/create'>Create A New Game</StyledLink>
-                    
-                    <GameTable games={props.games} joinGame={props.joinGame} />
                 </Flex>
-            </Test>
+            </Box>
+           
+            <Box px={4} py={4}>
+                <GameTable games={props.games} joinGame={props.joinGame} />
             </Box>
 
-            <Box px={2} py={2} width={1/2}>
-            <Bar />
-            1/2
+            <Box px={4} py={4}>
+                <Button>Join</Button>
             </Box>
-
-            <Box px={2} py={2} width={1/2}>
-            <Bar />
-            1/2
-            </Box>
-
-        </Flex>
+        </TableContainer>
     );
 }
 
-
-// GameListArea.GameRow = GameRow;
-// GameListArea.GameTable = GameTable;
-// i have no idea what you were doing here please explain how this syntax works
-// i am not sayings its wrong i am literally asking where do you render it then?
-// until i know i just did it hte way i knew how .
 export default GameFinder;
