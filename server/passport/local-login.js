@@ -20,8 +20,8 @@ const strat = new PassportLocalStrategy({
     User.findOne({username: userData.username})
     .then(user => {
         if(!user) {
-            const error = new Error('Incorrect Email or Password');
-            console.log(user);
+            const error = new Error('User Could not be Located');
+            console.log('User Does Not Exist');
             done(error);
         }
 
@@ -31,22 +31,29 @@ const strat = new PassportLocalStrategy({
                 const payload = {
                     sub: user._id
                 }
-
+                console.log('Success! Passwords match for user', user.username);
+                console.log('Signing token with secret');
+                
                 const token = jwt.sign(payload, config.jwtSecret);
 
-                const data = {
-                    id: user._id,
-                    username: user.username
+                const message = {
+                    success: true,
+                    userData: {
+                        id: user._id,
+                        username: user.username
+                    }
                 };
 
-                console.log('local-login strategy executing');
+                console.log('local-login strategy finished executing with success');
 
-                done(null, token, data);
+                done(null, token, message);
             } else {
-                const data = {
+                const message = {
                     success: false, 
                 }
-                done(null, false);
+
+                console.log('Incorrect Password');
+                done(null, false, message);
             }
         })
 

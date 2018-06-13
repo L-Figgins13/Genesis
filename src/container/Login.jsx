@@ -90,7 +90,10 @@ export default class Login extends React.Component {
 
                         this.props.history.push(`/users/${data.user.id}`);
                     } else {
-                        this.setState({showIncorrectUsernameOrPasswordHint:true})
+                        this.setState({
+                            showIncorrectUsernameOrPasswordHint:true,
+                            password: ''
+                        })
                     }
                 })
             }
