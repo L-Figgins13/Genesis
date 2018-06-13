@@ -8,6 +8,12 @@ import { Wrapper, Container, Label, Button, Input, H1, BG_Image, StyledLink } fr
 import img from '../../../static/img/backgrounds/bg1.jpg';
 import plate from '../../../static/img/backgrounds/plate.png';
 
+const FormHint =  styled.div`
+    color:#fff;
+    background-color: #B22222;
+    margin-top: .5rem;
+    padding: 1rem;
+`
 
 const LoginForm = function (props) {
   return (
@@ -25,6 +31,10 @@ const LoginForm = function (props) {
                     value = {props.username} 
                     onChange = {props.handleInputChange}
                 />
+
+                {props.showIncorrectUsernameOrPasswordHint && 
+                  <FormHint>Incorrect Username or Password</FormHint>
+                } 
               </Box>
 
               <Box width={1} px={2} py={2}>

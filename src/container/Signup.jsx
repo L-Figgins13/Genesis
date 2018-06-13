@@ -25,32 +25,27 @@ export default class Signup extends React.Component {
     }
 
     validateForm(form) {
-        //TODO ONLY SHOW 1 hint per a row at a time dfa
-        
+        //TODO ONLY SHOW 1 hint per a row at a time dfa 
         console.log('username:',form.username,'password:',form.password,'password2:',form.password2)
 
         if (!validator.isAlphanumeric(form.username)){
-            console.log('1');
             this.setState({showUsernameHint:true});
             return false;
 
         } else if (!validator.isAlphanumeric(form.password) || !validator.isAlphanumeric(form.password2)) {
-            console.log('2');
             this.setState({showValidPasswordHint:true});
             return false;
 
-        } else if (form.password !== form.password2) {
-            console.log('3 - Password Mismatch');                            
+        } else if (form.password !== form.password2) {                            
             this.setState({showPasswordsDoNotMatchHint:true});
             return false;
 
         } else {
-            console.log('setting validated to true');
             this.setState({validated: true});
             return true;
         }
 
-        console.log('this should mb not print')
+        console.log('this should mb not print');
         return false;
     }
 

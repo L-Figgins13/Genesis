@@ -18,8 +18,8 @@ const UserSchema = new Schema({
 
 
 
-UserSchema.methods.comparePassword = function comparePassword(password,callback) {
-    bcrypt.compare(password, this.password, callback);
+UserSchema.methods.comparePassword = function comparePassword(password) {
+   return bcrypt.compare(password, this.password);
 };
 
 

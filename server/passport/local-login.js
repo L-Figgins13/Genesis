@@ -24,21 +24,48 @@ const strat = new PassportLocalStrategy({
             console.log(user);
             done(error);
         }
+
+        user.comparePassword(userData.password)
+        .then(result => {
+            if(result === true) {
+                const payload = {
+                    sub: user._id
+                }
+
+                const token = jwt.sign(payload, config.jwtSecret);
+
+                const data = {
+                    id: user._id,
+                    username: user.username
+                };
+
+                console.log('local-login strategy executing');
+
+                done(null, token, data);
+            } else {
+                const data = {
+                    success: false, 
+                }
+                done(null, false);
+            }
+        })
+
         
-        const payload = {
-            sub: user._id
-        };
+        
+        // const payload = {
+        //     sub: user._id
+        // };
 
-        const token = jwt.sign(payload, config.jwtSecret);
+        // const token = jwt.sign(payload, config.jwtSecret);
 
-        const data = {
-            id: user._id,
-            username: user.username
-        };
-        console.log('hello from local-login');
-        // Logger(data, 'user passed to login.jsx');
+        // const data = {
+        //     id: user._id,
+        //     username: user.username
+        // };
+        // console.log('hello from local-login');
+        // // Logger(data, 'user passed to login.jsx');
 
-        done(null, token, data);
+        // done(null, token, data);
     })
     .catch(err => {
         done(err);
