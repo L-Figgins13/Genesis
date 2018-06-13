@@ -3,31 +3,13 @@ import PropTypes from 'prop-types';
 import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
-const GameDetails = styled.div`
-    background-color: beige;
-    padding: .5rem;
-    list-style-type: none;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    border: 1px solid orange;
-`
-const GameItem = styled.div`
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-    padding: .5rem;
-    border: 1px solid black;
-`
-
 const GameRow = (props) => (
-        <GameDetails>
-            <GameItem> {props.game._id} </GameItem>
-            <GameItem> {props.game.owner} </GameItem>
-            <GameItem> {props.game.title} </GameItem>
-            <GameItem> <button id={props.game._id} onClick={props.joinGame}>Join</button> </GameItem>
-        </GameDetails>
+    <tr>
+        <td> {props.game._id} </td>
+        <td> {props.game.title} </td>
+        <td> {props.game.owner} </td>
+        {/* <button id={props.game._id} onClick={props.joinGame}>Join</button> */}
+    </tr>
 );
 
 GameRow.propTypes = {

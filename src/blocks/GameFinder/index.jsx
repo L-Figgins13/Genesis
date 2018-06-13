@@ -3,25 +3,34 @@ import styled from 'styled-components';
 import React from 'react';
 import { Flex, Box } from 'grid-styled';
 import { Link } from 'react-router-dom';
-import { StyledLink } from '../../elements/';
+import { BG_Image, StyledLink, Label, Button } from '../../elements/';
 
-const Bar = styled.div`
-    border: 1px solid red;
+
+const TableContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: #6A6969;
 `
 
+
 const GameFinder = (props) =>  {
-    return( 
-        <Flex flexWrap='wrap' justifyContent='center' alignItems='center'>
-            <Box px={4} py={4}>
-                <Bar />
-                <h1>Games Lobby</h1>
-                <h2>Select A Game Room To Play!</h2>
-                <StyledLink to= '/games/create'>Create A New Game</StyledLink>
-            </Box>       
+    return(
+        <TableContainer>
+            <Box px={4} py={4}>  
+                <Flex justifyContent='center' alignItems='center' flexDirection='column'>  
+                    <Label fontSize='2rem' textAlign='center'>Games Lobby</Label>
+                    <StyledLink to= '/games/create'>Create A New Game</StyledLink>
+                </Flex>
+            </Box>
+           
             <Box px={4} py={4}>
                 <GameTable games={props.games} joinGame={props.joinGame} />
             </Box>
-        </Flex>
+
+            <Box px={4} py={4}>
+                <Button>Join</Button>
+            </Box>
+        </TableContainer>
     );
 }
 
