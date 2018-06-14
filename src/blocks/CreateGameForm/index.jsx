@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Button, Input, Label, Wrapper, Container, StyledLink, BG_Image } from '../../elements/';
 
 
-import img from '../../../static/img/backgrounds/bg1.jpg';
+import img from '../../../static/img/backgrounds/Map_Borders.jpg';
 import plate from '../../../static/img/backgrounds/plate.png';
 
 

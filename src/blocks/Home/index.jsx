@@ -5,8 +5,9 @@ import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
 import { Wrapper, Container, StyledLink, BG_Image } from '../../elements';
-import img from '../../../static/img/backgrounds/bg1.jpg';
-import plate from '../../../static/img/backgrounds/plate.png';
+import splash from '../../../static/img/backgrounds/Splash_Screen_BG.jpg';
+import logo from '../../../static/img/logo/Logo_Large.png';
+import plate from '../../../static/img/gamelobby/Wood_BG_Plate.png';
 
 export default class Home extends React.Component {
 
@@ -18,7 +19,7 @@ export default class Home extends React.Component {
     render(){
       return (
         <div>
-          <BG_Image img={img}>
+          <BG_Image img={splash}>
             <Wrapper plate={plate}>
               <Container>
                   <Box width={1} px={2} py={2}>

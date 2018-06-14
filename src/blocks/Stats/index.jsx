@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import { Label, Button, StyledLink, BG_Image, Wrapper, Container } from '../../elements';
 import { Avatar } from 'rebass';
-import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
+import backgroundImg from '../../../static/img/backgrounds/Map_Borders.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
 
 //you can apparently not but links inside of buttons da fuq
@@ -47,7 +47,7 @@ export default function Stats(props) {
         <Wrapper plate={plateImg}>
           <Container>
             <form onSubmit= {props.handleSubmit}>
-              <Flex flexDirection='column' justifyContent={'center'} alignItems={'center'}>
+              <Flex flexDirection='column' justfiyContent={'center'} alignItems={'center'}>
                 <Box width={1}>
                   <Avatar
                       size={164}

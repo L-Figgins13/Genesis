@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import { Wrapper, Container, Label, Button, Input, H1, BG_Image, StyledLink } from '../../elements';
 
-import img from '../../../static/img/backgrounds/bg1.jpg';
-import plate from '../../../static/img/backgrounds/plate.png';
+import img from '../../../static/img/login/MapNoBorders.jpg';
+import plate from '../../../static/img/login/Wood_BG_Plate.png';
 
 const FormHint =  styled.div`
     color:#fff;

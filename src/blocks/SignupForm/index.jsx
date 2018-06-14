@@ -5,8 +5,8 @@ import styled, { keyframes } from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import { Button, H1, H2, Input, Label, BG_Image, Wrapper, Container } from '../../elements';
 
-import backgroundImg from '../../../static/img/backgrounds/bg1.jpg';
-import plateImg from '../../../static/img/login/login-plate.png';
+import bg from '../../../static/img/signup/MapNoBorders.jpg';
+import plateImg from '../../../static/img/signup/Wood_BG_Plate.png';
 
 const Bar = styled.div`
     border: 1px solid purple;
@@ -18,7 +18,7 @@ const Background = styled.div`
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-    background-image: url(${backgroundImg});
+    background-image: url(${bg});
 `
 
 const LoginPlate = styled(Flex)`
@@ -59,7 +59,7 @@ const Rotate = styled.div`
 
 const SignupForm = (props) => {
     return (
-      <BG_Image img={backgroundImg}>
+      <BG_Image img={bg}>
         <Wrapper plate={plateImg}>
           <Container>
             <form onSubmit= {props.handleSubmit}>
