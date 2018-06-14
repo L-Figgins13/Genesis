@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import { Label, Button, StyledLink, BG_Image, Wrapper, Container } from '../../elements';
-import { Avatar } from 'rebass';
 import backgroundImg from '../../../static/img/backgrounds/Map_Borders.jpg';
 import plateImg from '../../../static/img/login/login-plate.png';
 
@@ -49,10 +48,7 @@ export default function Stats(props) {
             <form onSubmit= {props.handleSubmit}>
               <Flex flexDirection='column' justfiyContent={'center'} alignItems={'center'}>
                 <Box width={1}>
-                  <Avatar
-                      size={164}
-                      src='https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20'
-                  />
+                  
                 </Box>
                 <Box width={1} px={4} py={4}>
                   <Label>{props.user.username}'s Profile</Label>

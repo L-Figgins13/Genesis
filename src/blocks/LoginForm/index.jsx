@@ -7,18 +7,39 @@ import { Wrapper, Container, Label, Button, Input, H1, BG_Image, StyledLink } fr
 
 import img from '../../../static/img/login/MapNoBorders.jpg';
 import plate from '../../../static/img/login/Wood_BG_Plate.png';
+import plate_sm from '../../../static/img/logo/Logo_Large.png';
 
 const FormHint =  styled.div`
-    color:#fff;
-    background-color: #B22222;
-    margin-top: .5rem;
-    padding: 1rem;
+  color:#fff;
+  background-color: #B22222;
+  margin-top: .5rem;
+  padding: 1rem;
+`
+
+const FormWrapper = styled.div`
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 800px;
+  background-image: url(${props => props.plate});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  border: 1px solid blue;
+
+  @media only screen and (max-width: 375px) {
+      background-image: url(${props => props.plate_sm});
+      border: 1px solid yellowgreen;
+  }
 `
 
 const LoginForm = function (props) {
   return (
     <BG_Image img={img}>
-      <Wrapper plate={plate}>
+      <FormWrapper plate={plate}>
         <Container>
           <form onSubmit= {props.handleSubmit}>
             <Flex flexDirection='column'>
@@ -59,7 +80,7 @@ const LoginForm = function (props) {
               </Flex>
             </form>
         </Container>
-      </Wrapper>
+      </FormWrapper>
     </BG_Image>
   )
 }
