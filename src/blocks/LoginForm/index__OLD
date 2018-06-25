@@ -1,0 +1,168 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Flex, Box } from 'grid-styled';
+import { Wrapper, Container, Label, Button, Input, H1, BG_Image, StyledLink } from '../../elements';
+
+import img from '../../../static/img/login/MapNoBorders.jpg';
+import plate from '../../../static/img/login/Full_Plate.png';
+import plate_sm from '../../../static/img/login/Wood_BG_Plate_SM.png';
+import input from '../../../static/img/login/Plank_Input.png';
+
+// const FormHint =  styled.div`
+//   color:#fff;
+//   background-color: #B22222;
+//   margin-top: .5rem;
+//   padding: 1rem;
+// `
+
+const Image = styled.div`
+  background-image: url(${input});
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  max-width: 1140px;
+  width: 65vw;
+  height: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid orange;
+`
+const LoginWrapper = styled.div`
+  color: #000;
+  width: 100%;
+  min-height:100%;
+  margin: 0px;
+  padding: 0px;
+  -webkit-text-size-adjust: none;
+  font-size:62.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(${props => props.plate});
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+`
+const LoginContainer = styled.div`
+  width:50%; 
+  border: 1px solid #7e599e;
+  
+  position:fixed;
+  height:50%;
+  z-index:1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const InputBox = styled.input`
+  width: 100%;
+  height: 0;
+  margin: 2.5rem;
+  border-radius: .5rem;
+  padding: .75rem 30%; 
+  background-color: #f9f4d6;
+  font-size: 1.5rem;
+  border: 2px solid brown;
+  z-index:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (max-width: 700px) {
+    border: 1px solid red;
+    height: .25%;
+    padding: .55rem .55rem;
+  }
+  @media only screen and (min-width: 1400px) {
+    width: 70%;
+  }
+`
+
+const LoginForm = function (props) {
+  return (
+    // <BG_Image img={img}>
+    //   <FormWrapper plate={plate}>
+    //     <Container>
+    //       <form onSubmit= {props.handleSubmit}>
+    //         <Flex flexDirection='column'>
+    //           <Label fontSize={'2rem'} textAlign={'center'}>Login</Label>
+    //           <Box width={1} px={2} py={2}>
+    //             <Box py={2}><Label>Username</Label></Box>
+    //             <Input
+    //                 name = "username" 
+    //                 type = "text" 
+    //                 value = {props.username} 
+    //                 onChange = {props.handleInputChange}
+    //             />
+
+    //             {props.showIncorrectUsernameOrPasswordHint && 
+    //               <FormHint>Incorrect Username or Password</FormHint>
+    //             } 
+    //           </Box>
+
+    //           <Box width={1} px={2} py={2}>
+    //             <Box py={2}><Label>Password</Label></Box>
+    //             <Input 
+    //                 name = "password" 
+    //                 type = "password" 
+    //                 value = {props.password} 
+    //                 onChange = {props.handleInputChange}
+    //             />
+    //           </Box>
+              
+    //           <Box width={1} px={2} py={4}>
+    //             <Button type = "submit">Submit</Button>
+    //           </Box>
+
+    //           <Label fontSize={'.75rem'} textAlign={'center'}>
+    //             Not Registered? 
+    //             <StyledLink to ='/signup'>Create An Account.</StyledLink>
+    //           </Label>
+
+    //           </Flex>
+    //         </form>
+    //     </Container>
+    //   </FormWrapper>
+    // </BG_Image>
+
+
+    
+    <BG_Image img={img}>
+      <LoginWrapper plate={plate}>
+        
+        <LoginContainer>
+          <InputBox 
+              name = "password" 
+              type = "password" 
+              value = {props.password} 
+              onChange = {props.handleInputChange}
+          />
+          <InputBox 
+              name = "password" 
+              type = "password" 
+              value = {props.password} 
+              onChange = {props.handleInputChange}
+          />
+        </LoginContainer>
+        
+      </LoginWrapper>
+
+        
+
+    </BG_Image>
+  )
+}
+
+LoginForm.propTypes = {
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+}
+
+export default LoginForm;

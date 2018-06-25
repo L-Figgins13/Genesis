@@ -11,6 +11,16 @@ injectGlobal`
    font-size: 62.5%;
   }
 
+  :root {
+    --ratio: 9 / 16;
+    --width: 98vmin;
+    --height: calc(var(--width) * var(--ratio));
+  }
+
+  * {
+      box-sizing: border-box;
+  }
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -58,7 +68,7 @@ injectGlobal`
   }
 
   ::-moz-selection { background: #111; }
-  ::selection { background: #111; }
+  ::selection { background: #111; border: none;}
 `
 
 const contentNode = document.getElementById('contents');

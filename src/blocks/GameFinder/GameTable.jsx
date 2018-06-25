@@ -6,21 +6,20 @@ import GameRow from './GameRow.jsx';
 
 
 const Table = styled.table`
-    width: 100%;
-    background-color: #fff;
-    th, tr, td{
+    width: 70%;
+    font-size: 1.5vmin;
+
+    tr, td{
         border: 1px solid #000;
     }
     th{
-        padding: 2rem;
+        padding: 1rem;
     }
     td{
-        padding: .75rem;
-        background-color: #D7D6D6;
+        padding: .50rem;
+        background-color: #ffebd8;
     }
     tbody{
-        overflow-x: hidden;
-        overflow-y: scroll;
     }
 `
 
@@ -35,11 +34,11 @@ function GameTable (props) {
 
     return(  
         <Table>
-            <thead>
-                <th>Game ID</th>
+            <div>
                 <th>Title</th>
                 <th>Player</th>
-            </thead>
+                <th>Game ID</th>
+            </div>
             <tbody>
                 {gameRows}
             </tbody>

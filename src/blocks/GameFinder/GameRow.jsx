@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 const GameRow = (props) => (
     <tr>
-        <td> {props.game._id} </td>
         <td> {props.game.title} </td>
         <td> {props.game.owner} </td>
+        <td> {props.game._id} </td>
         {/* <button id={props.game._id} onClick={props.joinGame}>Join</button> */}
     </tr>
 );
