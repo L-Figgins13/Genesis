@@ -15,20 +15,23 @@ const Table = styled.table`
         padding: 2rem;
     }
     td{
-        padding: .75rem;
-        background-color: #D7D6D6;
+        padding: .75rem; 
     }
+ 
     tbody{
         overflow-x: hidden;
         overflow-y: scroll;
+        
     }
+    
 `
 
 function GameTable (props) {
     const gameRows = props.games.map(game => 
         <GameRow 
             key = {game._id} 
-            game = {game} 
+            game = {game}
+            handleGameSelection={props.handleGameSelection}
             joinGame={props.joinGame}
         />
     );
@@ -36,9 +39,11 @@ function GameTable (props) {
     return(  
         <Table>
             <thead>
-                <th>Game ID</th>
-                <th>Title</th>
-                <th>Player</th>
+                <tr>
+                    <th>Game ID</th>
+                    <th>Title</th>
+                    <th>Player</th>
+                </tr>
             </thead>
             <tbody>
                 {gameRows}

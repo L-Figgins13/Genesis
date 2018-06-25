@@ -9,49 +9,68 @@ import GameFinder from '../blocks/GameFinder';
 export default class GamesList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {games:[],join:-1}; 
+        this.state = {
+            games:[],
+            activeIndex: -1,
+            join:-1}; 
         this.joinGame = this.joinGame.bind(this);
+        this.handleGameSelection = this.handleGameSelection.bind(this);
     }
 
     componentDidMount(){
         this.loadData();
     }
 
-    joinGame(event) {
-        const target = event.target;
-        console.log(target.id);
+    handleGameSelection(event) {
+        event.preventDefault();
 
-        fetch('/api/games/join',{
-            method: 'POST',
-            headers: {
-                'Authorization' : `bearer ${Auth.getToken()}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                game_id: target.id
-            })
-        })
-        .then(response => {
-            response.json()
-            .then(result => {
-                if(result.errCode === 0) {
-                    console.log(result.message);
-                    this.setState({join:target.id});
-                } else if (result.errCode === 1 || result.errCode === 2) {
-                    console.error(result.message);
-                    alert(result.message);
-                } else if (result.errcode === 3) {
-                    console.error(result.message);
-                    this.setState({join:target.id});
-                }
-            })     
-        })
-        .catch(error => {
-            console.log(error);
-        })
+        console.log(event.currentTarget.id);
+        
+
+
+        console.log('Active Game id');
+
+
+    }
+
+    joinGame(event) {
+        event.preventDefault();
+        const target = event.target;
+
+
+        console.log(focusedGame.id);
+
+    //     fetch('/api/games/join',{
+    //         method: 'POST',
+    //         headers: {
+    //             'Authorization' : `bearer ${Auth.getToken()}`,
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             game_id: target.id
+    //         })
+    //     })
+    //     .then(response => {
+    //         response.json()
+    //         .then(result => {
+    //             if(result.errCode === 0) {
+    //                 console.log(result.message);
+    //                 this.setState({join:target.id});
+    //             } else if (result.errCode === 1 || result.errCode === 2) {
+    //                 console.error(result.message);
+    //                 alert(result.message);
+    //             } else if (result.errcode === 3) {
+    //                 console.error(result.message);
+    //                 this.setState({join:target.id});
+    //             }
+    //         })     
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     })
 
         
-    }
+     }
 
     loadData() {
         fetch('/api/games', {
@@ -93,7 +112,8 @@ export default class GamesList extends React.Component {
         return(
             <GameFinder 
                 games={this.state.games} 
-                joinGame={this.joinGame} 
+                joinGame={this.joinGame}
+                handleGameSelection ={this.handleGameSelection} 
             />
         );
     }

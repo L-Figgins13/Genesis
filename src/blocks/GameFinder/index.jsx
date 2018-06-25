@@ -24,11 +24,11 @@ const GameFinder = (props) =>  {
             </Box>
            
             <Box px={4} py={4}>
-                <GameTable games={props.games} joinGame={props.joinGame} />
+                <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
             </Box>
 
             <Box px={4} py={4}>
-                <Button>Join</Button>
+                <Button onClick={props.joinGame}>Join</Button>
             </Box>
         </TableContainer>
     );
