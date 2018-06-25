@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import {Provider} from 'rebass';
 import {injectGlobal} from 'styled-components';
 
 injectGlobal`
@@ -10,6 +9,16 @@ injectGlobal`
    padding: 0;
    line-height: 1;
    font-size: 62.5%;
+  }
+
+  :root {
+    --ratio: 9 / 16;
+    --width: 98vmin;
+    --height: calc(var(--width) * var(--ratio));
+  }
+
+  * {
+      box-sizing: border-box;
   }
 
   html, body, div, span, applet, object, iframe,
@@ -59,16 +68,15 @@ injectGlobal`
   }
 
   ::-moz-selection { background: #111; }
-  ::selection { background: #111; }
+  ::selection { background: #111; border: none;}
 `
 
 const contentNode = document.getElementById('contents');
 
 import App from './App.jsx';
 ReactDOM.render((
-    <Provider>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>), contentNode);
+  <BrowserRouter>
+      <App />
+  </BrowserRouter>
+), contentNode);
 

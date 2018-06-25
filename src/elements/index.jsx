@@ -93,11 +93,12 @@ const Input = styled.input`
 export {Input}
 
 const StyledLink = styled(Link)`
-  color: #000;
+  color: #2d1e10;
   font-weight: bold;
   text-decoration: none;
   padding: .5rem;
   &:hover{
+      transition: scale(1.09);
       color: #ffb700;
   }
 `
@@ -110,36 +111,23 @@ const BG_Image = styled.div`
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
 `;
 export { BG_Image };
 
-const Container = styled.div`
-  color: #000;
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 60%;
-`
-export { Container };
-
 const Wrapper = styled.div`
-  color: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-height: 800px;
-  background-image: url(${props => props.plate});
+  width: 100vw;
+  height: 100vh;
+  position:fixed;
+  background-image: url(${props => props.img});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  border: 1px solid blue;
+  border: 1px solid red;
 `
 export { Wrapper };
