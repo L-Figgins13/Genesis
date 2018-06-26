@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
-import { Button, Input, Label, Wrapper, StyledLink, BG_Image } from '../../elements/';
 
 import img from '../../../static/img/backgrounds/Map_Borders.jpg';
 import button from '../../../static/img/login/Submit_Button.png';

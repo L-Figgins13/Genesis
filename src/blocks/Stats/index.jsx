@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { Flex, Box } from 'grid-styled';
-import { Label, StyledLink } from '../../elements';
-import img from '../../../static/img/backgrounds/Map_Borders.jpg';
 
+import { BG_Image } from '../../elements';
+import img from '../../../static/img/profile/MapBorders.jpg';
 import button from '../../../static/img/login/Submit_Button.png';
-import button_hover from '../../../static/img/login/Submit_Button.png';
+import button_hover from '../../../static/img/login/Submit_Button_Hover.png';
 import plate from '../../../static/img/profile/AspectRatioProfile.png';
 
 
@@ -21,70 +19,7 @@ const ScoreCard = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid blue;
   padding: 5vmin;
-`
-const BG_Image_Profile =  styled.div`
-  background-image: url(${img});
-  background-repeat: repeat;
-  background-position: center center;
-  background-size: cover;
-  position:fixed;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  -webkit-animation:100s scroll infinite linear;
-  -moz-animation:100s scroll infinite linear;
-  -o-animation:100s scroll infinite linear;
-  -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
-
-  @-webkit-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-moz-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-o-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-ms-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
 `
 
 const ProfileLabel =  styled.label`
@@ -156,7 +91,7 @@ const Profile = styled.div`
 
 export default function Stats(props) {
     return(
-      <BG_Image_Profile>
+      <BG_Image img={img}>
         <ProfileContainer>
           <Profile>
             <form onSubmit= {props.handleSubmit}>
@@ -169,6 +104,6 @@ export default function Stats(props) {
             </form>
           </Profile>
         </ProfileContainer>
-      </BG_Image_Profile>
+      </BG_Image>
     );
 }

@@ -1,13 +1,11 @@
 import React from 'react';
 import Auth from '../../../client/auth.js';
 import { Link } from 'react-router-dom';
-import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
-
 import { Wrapper, StyledLink, BG_Image } from '../../elements';
-import img from '../../../static/img/backgrounds/Splash_Screen_BG.jpg';
+import splash from '../../../static/img/backgrounds/Splash_Screen_BG.jpg';
 import logo from '../../../static/img/logo/Logo_Large.png';
-import plate from '../../../static/img/gamelobby/Wood_BG_Plate.png';
+import ReactPlayer from 'react-player';
 
 const LogoArea = styled.div`
   /* border: 1px solid blue; */
@@ -51,31 +49,36 @@ const StyledLinkWarn = styled(Link)`
 
 export default class Home extends React.Component {
 
+    constructor(props) {
+      super(props);
+
+      this.state = {
+
+      }
+    }
+
+    
+
     componentDidMount() {
       this.props.toggleAuthenticateStatus();
     }
 
-    //TODO: Remove Ternary
     render(){
       return (
-        <div>
-          <BG_Image img={img}>
+          <BG_Image img={splash}>
             <Wrapper>
-            <LogoArea><img width="100%" src="../../../static/img/logo/Logo_Large.png"></img></LogoArea>
-            <OptionsBox>
-              <h1>Developer Options:</h1>
-              <StyledLink to ='/login'>Login</StyledLink>
-              <StyledLink to ='/signup'>Signup</StyledLink>
-              {Auth.isUserAuthenticated() ? (<StyledLinkWarn to ='/games'>Games Page Quick Link</StyledLinkWarn>):(<StyledLinkWarn to='/login'>"YOU NEED TO LOGIN FIRST!"</StyledLinkWarn>)}
-              <h1>Audio Controls</h1>
-              <audio preload="auto" ref="audio_tag" src="../../../static/audio/Drums_Mix.mp3" type="audio/mpeg" controls loop autoPlay/>
-            </OptionsBox>
-              
-              </Wrapper> 
+              <LogoArea><img width="100%" src={logo} ></img></LogoArea>
+              <OptionsBox>
+                <h1>Developer Options:</h1>
+                <StyledLink to ='/login'>Login</StyledLink>
+                <StyledLink to ='/signup'>Signup</StyledLink>
+                {Auth.isUserAuthenticated() ? (<StyledLinkWarn to ='/games'>Games Page Quick Link</StyledLinkWarn>):(<StyledLinkWarn to='/login'>"YOU NEED TO LOGIN FIRST!"</StyledLinkWarn>)}
+                <h1>Audio Controls</h1>
+                {/* <audio preload="auto" ref="audio_tag" src="../../../static/audio/Drums_Mix.mp3" type="audio/mpeg" controls loop autoPlay/> */}
+                <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playing />
+              </OptionsBox>
+            </Wrapper> 
           </BG_Image>
-
-          
-        </div>
       );
     }
 }

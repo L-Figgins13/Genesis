@@ -1,7 +1,5 @@
 import React from 'react';
-import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
-
 import ChatMessages from './ChatMessages.jsx';
 import ChatInput from './ChatInput.jsx'; 
 
@@ -20,8 +18,6 @@ import ChatInput from './ChatInput.jsx';
                 sendMessage={props.sendMessage} 
                 value={props.value} 
                 />
-                
-            
         </div>
     )
 }

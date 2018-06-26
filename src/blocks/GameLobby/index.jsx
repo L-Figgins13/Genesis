@@ -1,18 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex, Box } from 'grid-styled';
-
+import PlayerArea from './PlayerArea.jsx';
 import { BG_Image } from '../../elements';
 import img from '../../../static/img/gamelobby/MapBorders.jpg';
-
 import plank from '../../../static/img/gamelobby/Aspect_Ratio_BG_Plate.png';
 
-import PlayerArea from './PlayerArea.jsx';
-// import {Button} from '../../elements';
-
 const GameArea = styled.div`
-  /* border: 1px solid blue; */
-
   width: var(--width);
   height: var(--height);
   background-image: url(${plank});

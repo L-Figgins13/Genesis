@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import mapNoBorders from '../../static/img/login/MapNoBorders.jpg';
+// import plate from '../../static/img/login/Aspect_Ratio_BG_Plate.png';
+import button from '../../static/img/login/Submit_Button.png';
+import button_hover from '../../static/img/login/Submit_Button_Hover.png';
 
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
@@ -104,18 +110,6 @@ const StyledLink = styled(Link)`
 `
 export { StyledLink };
 
-const BG_Image = styled.div`
-  background-image: url(${props => props.img});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-`;
-export { BG_Image };
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -124,10 +118,142 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   position:fixed;
-  background-image: url(${props => props.img});
+  background-image: url(${props => props.mapNoBorders});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  border: 1px solid red;
 `
 export { Wrapper };
+
+const BG_Image =  styled.div`
+  background-image: url(${props => props.img});
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: cover;
+  position:fixed;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+`
+export { BG_Image };
+
+const FormHint =  styled.div`
+  color:#fff;
+  background-color: #B22222;
+  margin-bottom: 3vmin;
+  padding: 1vmin;
+  position: absolute;
+  top: 43%;
+  left: 33%;
+  z-index: 2; 
+`
+export { FormHint };
+
+const FormLabel =  styled.label`
+  display: block;
+  margin: 0vmin auto;
+  font-size:3vmin;
+  font-weight: 700;
+`
+export { FormLabel };
+
+const FormButton =  styled.button`
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5vmin auto;
+  margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  border: none;
+  font-size: 3vmin;
+  padding: 6vmin 20vmin;
+  background-color: Transparent;
+  box-sizing: border-box;
+  background-image: url(${button});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all .2s ease-in-out;
+
+  &:hover{
+    transform: scale(1.1);
+    background-image: url(${button_hover});
+  }
+`
+FormButton.propTypes = {
+  marginTop: PropTypes.string
+}
+export { FormButton };
+
+const FormContainer = styled.div`
+  /* border: 1px solid blue; */
+  margin: 0vmin auto;
+  padding-top: 15vmin;
+  width: var(--width);
+  height: var(--height);
+  text-align: center;
+`
+export { FormContainer };
+
+const InputBox = styled.input`
+  margin: 2vmin auto;
+  font-size: 2vmin;
+  width: 50vmin;
+  height: 4vmin;
+  padding: 1vmin;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .5s ease;
+  transition: border .5s ease;
+  transition: box-shadow .25s ease;
+  background-color: #fff;
+  color: #2d1e10;
+  -webkit-box-shadow: inset 0px 0px 6px 3px rgba(0,0,0,0.0);
+    -moz-box-shadow: inset 0px 0px 6px 3px rgba(0,0,0,0.0);
+    box-shadow: inset 0px 0px 6px 3px rgba(0,0,0,0.0);
+
+  &:hover{
+    transition: background-color .5s ease;
+    transition: border .5s ease;
+    transition: box-shadow .25s ease;
+    background-color: #ffebd8;
+    border: .25vmin solid #2d1e10;
+    -webkit-box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.15);
+    -moz-box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.15);
+    box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.15);
+  }
+`
+export { InputBox };
+
+const FormBG = styled.div`
+  background-image: url(${props => props.img});
+  /* background: red; */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* border: 1px solid blue; */
+  font-size: 3.5vmin;
+  color: #280408;
+  margin: 5vmin auto;
+  padding-top: 5vmin;
+  padding-bottom: 5vmin;
+  width: var(--width);
+  height: var(--height);
+
+  form{
+    margin-top: 9vmin;
+  }
+
+  h3{
+    padding-top: 4vmin;
+    font-size: 2vmin;
+  }
+
+  @media only screen and (max-width: 670px) {
+    width: 90%;
+  }
+`
+export { FormBG };

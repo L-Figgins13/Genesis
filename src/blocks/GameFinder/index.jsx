@@ -1,9 +1,7 @@
 import GameTable from './GameTable.jsx';
 import styled from 'styled-components';
 import React from 'react';
-import { Flex, Box } from 'grid-styled';
 import { Link } from 'react-router-dom';
-import { BG_Image, StyledLink, Label, Button } from '../../elements/';
 
 import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
 import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
