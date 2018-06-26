@@ -57,6 +57,16 @@ module.exports = {
                         name: `[path][name].[ext]?[hash]`
                     }
                 }
+            },
+
+            {
+                test: /\.(mp3|wav)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: `[path][name].[ext]?[hash]`
+                    }
+                }
             }
 
         ],

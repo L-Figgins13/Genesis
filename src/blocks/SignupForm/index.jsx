@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { BG_Image, FormLabel, FormButton, FormContainer, InputBox, FormBG } from '../../elements';
+import { BG_Image, FormLabel, FormButton, FormContainer, InputBox, FormBG, FormHint } from '../../elements';
 
 import img from '../../../static/img/login/MapNoBorders.jpg';
 import plate from '../../../static/img/signup/AspectRatioSignup.png';
@@ -80,12 +80,12 @@ const SignupForm = function (props) {
                   value = {props.username} 
                   onChange = {props.handleInputChange}
               />
-              {/* { props.showUsernameHint &&
+              { props.showUsernameHint &&
                 <FormHint>Your Username Is Not Unique, Please Try Again.</FormHint>
               }
               {props.showIncorrectUsernameOrPasswordHint && 
                 <FormHint>Incorrect Username or Password</FormHint>
-              }  */}
+              }  
             <FormLabel>Password</FormLabel>
             <InputBox 
               name = "password" 
@@ -93,13 +93,13 @@ const SignupForm = function (props) {
               value= {props.password} 
               onChange= {props.handleInputChange}
             />
-            {/* { props.showValidPasswordHint &&
-              <FormHint>Please Enter a Valid Password</FormHint>
-            }
+             { props.showValidPasswordHint &&
+              <FormHint>Please Enter An Alphanumeric Password. No Symbols</FormHint>
+             }
 
             { props.showPasswordsDoNotMatchHint &&
                 <FormHint>Passwords Do Not Match</FormHint>
-            } */}
+            }
             <FormLabel>ReEnter Password</FormLabel>
             <InputBox 
               name = "password2" 
@@ -107,7 +107,7 @@ const SignupForm = function (props) {
               value= {props.password2} 
               onChange= {props.handleInputChange}
             />
-              <FormButton marginTop="0vmin" type="submit"></FormButton>
+              <FormButton marginTop="1.5vmin" type="submit"></FormButton>
           </form>
         </FormBG>
       </FormContainer>

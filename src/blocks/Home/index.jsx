@@ -1,11 +1,17 @@
 import React from 'react';
 import Auth from '../../../client/auth.js';
+import path from 'path';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Wrapper, StyledLink, BG_Image } from '../../elements';
+import { Wrapper, StyledLink, BG_Image, FormButton, Button } from '../../elements';
 import splash from '../../../static/img/backgrounds/Splash_Screen_BG.jpg';
 import logo from '../../../static/img/logo/Logo_Large.png';
 import ReactPlayer from 'react-player';
+
+import audioFile from '../../../static/audio/Drums_Mix.mp3';
+import fxBell from '../../../static/audio/SoundFX/bell.wav';
+
+
 
 const LogoArea = styled.div`
   /* border: 1px solid blue; */
@@ -22,7 +28,8 @@ const OptionsBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 55vmin;
+  margin-top: 10vmin;
+  margin-bottom: 10vmin;
   padding: 10vmin;
   border: 3px solid #280408;
   color: #280408;
@@ -53,11 +60,19 @@ export default class Home extends React.Component {
       super(props);
 
       this.state = {
-
+        music: true,
+        soundFXUrl: null,
+        fxPlaying: false,
+        volume: 0.8,
+        muted: false,
       }
     }
 
-    
+    loadSound(url) {
+      this.setState( {soundUrl:url})
+    }
+
+
 
     componentDidMount() {
       this.props.toggleAuthenticateStatus();
@@ -75,7 +90,38 @@ export default class Home extends React.Component {
                 {Auth.isUserAuthenticated() ? (<StyledLinkWarn to ='/games'>Games Page Quick Link</StyledLinkWarn>):(<StyledLinkWarn to='/login'>"YOU NEED TO LOGIN FIRST!"</StyledLinkWarn>)}
                 <h1>Audio Controls</h1>
                 {/* <audio preload="auto" ref="audio_tag" src="../../../static/audio/Drums_Mix.mp3" type="audio/mpeg" controls loop autoPlay/> */}
-                <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playing />
+                <ReactPlayer 
+                  url={audioFile}
+                  playing={this.state.music}
+                  onReady = {()=> {console.log('Should be Ready to play')}}
+                  onStart = {()=> {console.log('Starting Drums_Mix.mp3')}}
+                  controls
+                  volume = {0.8}
+                />
+
+                <ReactPlayer>
+                  url={this.state.url}
+                  playing= {this.fxPlaying}
+                  onReady = {() => console.log('Should be ready to Play') }
+                  onStart = {() => console.log('Bell fx playing')}
+                  volume = {1.0}
+                </ReactPlayer>
+
+
+                <FormButton onClick={
+                  () => {
+                    this.setState({soundFXUrl:fxBell});
+                    this.setState({fxPlaying:true});
+                    
+                  }
+                } />
+
+                <Button onClick={
+                  ()=> {
+                    this.setState({music:!this.state.music});
+                  }}>Mute
+                </Button>
+                 
               </OptionsBox>
             </Wrapper> 
           </BG_Image>

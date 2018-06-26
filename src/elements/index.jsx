@@ -14,9 +14,8 @@ const Button = styled.button`
   color: #fff;
   border: solid #3500a6 2px;
   text-decoration: none;
-  width: 100%;
-  padding: .5rem;
-  font-size: 1.25rem;
+  padding: 3vmin;
+  font-size: 2vmin;
   -webkit-transition: box-shadow .5s ease;
   -moz-transition: box-shadow .5s ease;
   -ms-transition: box-shadow .5s ease;
@@ -139,21 +138,21 @@ const BG_Image =  styled.div`
 export { BG_Image };
 
 const FormHint =  styled.div`
-  color:#fff;
-  background-color: #B22222;
+  color: #B22222;
   margin-bottom: 3vmin;
   padding: 1vmin;
   position: absolute;
-  top: 43%;
-  left: 33%;
-  z-index: 2; 
+  top: 41%;
+  left: 39%;
+  z-index: 2;
+  font-size: 2vmin; 
 `
 export { FormHint };
 
 const FormLabel =  styled.label`
   display: block;
   margin: 0vmin auto;
-  font-size:3vmin;
+  font-size: 2.5vmin;
   font-weight: 700;
 `
 export { FormLabel };
@@ -235,10 +234,10 @@ const FormBG = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   /* border: 1px solid blue; */
-  font-size: 3.5vmin;
+  font-size: 2vmin;
   color: #280408;
   margin: 5vmin auto;
-  padding-top: 5vmin;
+  padding-top: 4vmin;
   padding-bottom: 5vmin;
   width: var(--width);
   height: var(--height);
