@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { BG_Image, FormLabel, FormButton, FormContainer, InputBox, FormBG, FormHint } from '../../elements';
+import { BG_Image, FormLabel, FormButton, FormContainer, InputBox, FormBG, FormHint, LogoutButton } from '../../elements';
 
 import img from '../../../static/img/login/MapNoBorders.jpg';
 import plate from '../../../static/img/signup/AspectRatioSignup.png';

@@ -110,6 +110,8 @@ export default class Signup extends React.Component {
         
     }
 
+    
+
     render() {
         return (
             <div>
@@ -120,7 +122,7 @@ export default class Signup extends React.Component {
                     showUsernameHint = {this.state.showUsernameHint}
                     showValidPasswordHint = {this.state.showValidPasswordHint}
                     showPasswordsDoNotMatchHint = {this.state.showPasswordsDoNotMatchHint}
-                    handleInputChange = {this.handleInputChange}
+                    handleInputChange = {this.handleInputChange} 
                     handleSubmit = {this.handleSubmit}
                 />
             </div>

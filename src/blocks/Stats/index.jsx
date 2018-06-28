@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import { BG_Image } from '../../elements';
+import { BG_Image, LogoutButton } from '../../elements';
 import img from '../../../static/img/profile/MapBorders.jpg';
 import button from '../../../static/img/login/Submit_Button.png';
 import button_hover from '../../../static/img/login/Submit_Button_Hover.png';
@@ -94,6 +94,7 @@ export default function Stats(props) {
       <BG_Image img={img}>
         <ProfileContainer>
           <Profile>
+            <LogoutButton onClick={props.handleLogout}></LogoutButton>
             <form onSubmit= {props.handleSubmit}>
               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
               <ScoreCard>

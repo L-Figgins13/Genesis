@@ -98,14 +98,15 @@ export default class Home extends React.Component {
                   controls
                   volume = {0.8}
                 />
-
-                <ReactPlayer>
-                  url={this.state.url}
-                  playing= {this.fxPlaying}
+                <ReactPlayer
+                  url={this.state.soundFXUrl}
+                  playing= {this.state.fxPlaying}
                   onReady = {() => console.log('Should be ready to Play') }
                   onStart = {() => console.log('Bell fx playing')}
                   volume = {1.0}
-                </ReactPlayer>
+                />
+                  
+                
 
 
                 <FormButton onClick={

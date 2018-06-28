@@ -20,8 +20,11 @@ export default class Profile extends React.Component {
                 }
             }
         }
+
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
+    
 
     componentDidMount() {
             console.log('-----------loggings match params-----------');
@@ -60,11 +63,18 @@ export default class Profile extends React.Component {
             })
         }
 
+    handleLogout() {
+        localStorage.clear();
+        this.props.history.push('/');
+    }
 
     render(){
         return (
            <div>
-               <Stats user={this.state.user} />
+               <Stats 
+                    user={this.state.user}
+                    handleLogout = {this.handleLogout} 
+               />
            </div>
         )
     }
