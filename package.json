@@ -55,7 +55,8 @@
     "watch": "webpack-dev-server --open",
     "watch-server": "webpack --config webpack.server-config.js --watch",
     "dev-all": "npm run watch & npm run watch-server & npm start",
-    "populateCards": "node ./lib/populateCardDataBase.js"
+    "populateCards": "node ./lib/populateCardDataBase.js",
+    "populateAvatars": "node ./lib/populateAvatarDatabase.js"
   },
   "author": "lfigs",
   "license": "ISC"

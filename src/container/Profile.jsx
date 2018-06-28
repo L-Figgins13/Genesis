@@ -27,9 +27,7 @@ export default class Profile extends React.Component {
     
 
     componentDidMount() {
-            console.log('-----------loggings match params-----------');
-            console.log(this.props.match.params.id);
-            console.log('-------------------------------------------');
+            
 
             fetch(`/api/users/${this.props.match.params.id}`, {
                 headers:{
