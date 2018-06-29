@@ -7,11 +7,20 @@ import { BG_Image, FormLabel, FormButton, FormContainer, InputBox, FormBG, FormH
 
 import img from '../../../static/img/login/MapNoBorders.jpg';
 import plate from '../../../static/img/signup/AspectRatioSignup.png';
-import button from '../../../static/img/login/Submit_Button.png';
-import button_hover from '../../../static/img/login/Submit_Button.png';
+import button from '../../../static/img/signup/Create_Button.png';
+import button_hover from '../../../static/img/signup/Create_Button_Hover.png';
 
-const FormLabelSignup =  FormLabel.extend`
-  font-size:2vmin;
+const CreateButton =  FormButton.extend`
+  background-image: url(${button});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all .2s ease-in-out;
+
+  &:hover{
+    transform: scale(1.1);
+    background-image: url(${button_hover});
+  }
 `
 
 const BG_Image_Scroll = BG_Image.extend`
@@ -107,7 +116,7 @@ const SignupForm = function (props) {
               value= {props.password2} 
               onChange= {props.handleInputChange}
             />
-              <FormButton marginTop="1.5vmin" type="submit"></FormButton>
+              <CreateButton marginTop="1.5vmin" type="submit"></CreateButton>
           </form>
         </FormBG>
       </FormContainer>

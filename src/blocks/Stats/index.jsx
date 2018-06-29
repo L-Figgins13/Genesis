@@ -4,9 +4,11 @@ import styled from 'styled-components';
 
 import { BG_Image, LogoutButton } from '../../elements';
 import img from '../../../static/img/profile/MapBorders.jpg';
-import button from '../../../static/img/login/Submit_Button.png';
-import button_hover from '../../../static/img/login/Submit_Button_Hover.png';
+import button from '../../../static/img/profile/Join_Game_Button.png';
+import button_hover from '../../../static/img/profile/Join_Game_Button_Hover.png';
 import plate from '../../../static/img/profile/AspectRatioProfile.png';
+import logout from '../../../static/img/profile/Logout_Button.png';
+import logout_hover from '../../../static/img/profile/Logout_Button_Hover.png';
 
 
 const ScoreLabel = styled.label`
@@ -94,7 +96,7 @@ export default function Stats(props) {
       <BG_Image img={img}>
         <ProfileContainer>
           <Profile>
-            <LogoutButton onClick={props.handleLogout}></LogoutButton>
+            <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
             <form onSubmit= {props.handleSubmit}>
               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
               <ScoreCard>
