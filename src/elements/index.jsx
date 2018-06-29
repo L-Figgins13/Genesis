@@ -137,6 +137,77 @@ const BG_Image =  styled.div`
 `
 export { BG_Image };
 
+const BG_Image_Scroll = BG_Image.extend`
+  -webkit-animation:100s scroll infinite linear;
+  -moz-animation:100s scroll infinite linear;
+  -o-animation:100s scroll infinite linear;
+  -ms-animation:100s scroll infinite linear;
+  animation:100s scroll infinite linear;
+
+  @-webkit-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:0px 0px;
+    }
+    0%{
+      background-position:-2500px 0px;
+    }
+  }
+
+  @-moz-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:0px 0px;
+    }
+    0%{
+      background-position:-2500px 0px;
+    }
+  }
+
+  @-o-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:0px 0px;
+    }
+    0%{
+      background-position:-2500px 0px;
+    }
+  }
+
+  @-ms-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:0px 0px;
+    }
+    0%{
+      background-position:-2500px 0px;
+    }
+  }
+
+  @keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:0px 0px;
+    }
+    0%{
+      background-position:-2500px 0px;
+    }
+  }
+
+  `
+
+  export { BG_Image_Scroll };
+
 const FormHint =  styled.div`
   color: #B22222;
   margin-bottom: 3vmin;

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { BG_Image, FormLabel, FormButton, FormContainer, InputBox, FormBG, FormHint } from '../../elements';
+import { BG_Image_Scroll, FormLabel, FormButton, FormContainer, InputBox, FormBG, FormHint } from '../../elements';
 
 import img from '../../../static/img/login/MapNoBorders.jpg';
 import plate from '../../../static/img/signup/AspectRatioSignup.png';
@@ -13,59 +13,6 @@ import button_hover from '../../../static/img/login/Submit_Button.png';
 const FormLabelSignup =  FormLabel.extend`
   font-size:2vmin;
 `
-
-const BG_Image_Scroll = BG_Image.extend`
-  -webkit-animation:100s scroll infinite linear;
-  -moz-animation:100s scroll infinite linear;
-  -o-animation:100s scroll infinite linear;
-  -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
-
-  @-webkit-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-moz-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-o-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-ms-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-  `
 
 const SignupForm = function (props) {
   return (

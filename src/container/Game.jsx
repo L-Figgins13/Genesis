@@ -163,14 +163,9 @@ export default class Game extends React.Component {
 
     render() {
         return(
-            <div>
-                <h1>{this.state.gameName}</h1>
-                <h2>ID: {this.state.gameID} </h2>
-                    
+            <div>   
                 <GameLobby players={this.state.players} />
-
-                <Button onClick={this.startGame}>Start</Button>
-
+                <Button onClick={this.startGame}>Start Game</Button>
                 <Chat 
                     handleInputChange={this.handleInputChange} 
                     sendMessage={this.sendMessage}  
@@ -178,7 +173,6 @@ export default class Game extends React.Component {
                     username={this.state.chat.username} 
                     value={this.state.chat.messageInput} 
                 />
-                              
             </div>
         )
     }

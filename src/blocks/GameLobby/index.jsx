@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PlayerArea from './PlayerArea.jsx';
-import { BG_Image } from '../../elements';
+import { BG_Image, FormContainer } from '../../elements';
 import img from '../../../static/img/gamelobby/MapBorders.jpg';
 import plank from '../../../static/img/gamelobby/Aspect_Ratio_BG_Plate.png';
 
@@ -16,14 +16,23 @@ const GameArea = styled.div`
   padding: 0;
   text-align: center;
 `
+const GameContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+`
 
 const GameLobby = (props) => {
     return (
-        <BG_Image img={img}>       
+        <BG_Image img={img}>
+        <FormContainer>       
           <GameArea img={plank}>
-          <h1>GAME LOBBY</h1>
-           <PlayerArea players={props.players} />
+            
+            <PlayerArea players={props.players} />
+            
           </GameArea>
+          </FormContainer>
         </BG_Image>
     )
 }

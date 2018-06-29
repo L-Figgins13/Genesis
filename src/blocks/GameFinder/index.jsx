@@ -2,6 +2,7 @@ import GameTable from './GameTable.jsx';
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button, BG_Image_Scroll } from '../../elements';
 
 import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
 import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
@@ -73,69 +74,6 @@ const InnerContainer = styled.div`
   }
 `
 
-const BG_Image_GameFinder =  styled.div`
-  background-image: url(${img});
-  background-repeat: repeat;
-  background-position: center center;
-  background-size: cover;
-  position:fixed;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  -webkit-animation:100s scroll infinite linear;
-  -moz-animation:100s scroll infinite linear;
-  -o-animation:100s scroll infinite linear;
-  -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
-
-  @-webkit-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-moz-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-o-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-ms-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-`
-
 /* <TableContainer>    
           <Label fontSize='2rem' textAlign='center'>Games Lobby</Label>
             <StyledLink to= '/games/create'>Create A New Game</StyledLink>
@@ -146,15 +84,15 @@ const BG_Image_GameFinder =  styled.div`
 
 const GameFinder = (props) =>  {
     return(
-        <BG_Image_GameFinder>
+        <BG_Image_Scroll img={img}>
           <TableContainer>
             <InnerContainer>
                 <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
-                {/* <Button>Join Game</Button> */}
+                <Button>Join Game</Button>
                 <GamesLink to= '/games/create'></GamesLink>
             </InnerContainer>
           </TableContainer>
-        </BG_Image_GameFinder>
+        </BG_Image_Scroll>
     );
 }
 
