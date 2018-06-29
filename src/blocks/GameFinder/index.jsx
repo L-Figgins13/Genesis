@@ -56,12 +56,8 @@ const InnerContainer = styled.div`
   margin: 5vmin auto;
   width: var(--width);
   height: var(--height);
-
-  table{
-    margin-top: 20vmin;
-    overflow-y: scroll;
-    overflow-x: wrap;
-  }
+  overflow-y: scroll;
+  overflow-x: wrap;
 
   h3{
     padding-top: 4vmin;
@@ -141,7 +137,7 @@ const BG_Image_GameFinder =  styled.div`
             <StyledLink to= '/games/create'>Create A New Game</StyledLink>
             <GameTable games={props.games} joinGame={props.joinGame} />
             <Button>Join</Button>
-        </TableContainer> */
+   </TableContainer> */
 
 
 const GameFinder = (props) =>  {
@@ -151,8 +147,8 @@ const GameFinder = (props) =>  {
             <InnerContainer>
                 <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
                 {/* <Button>Join Game</Button> */}
-                <GamesLink to= '/games/create'></GamesLink>
             </InnerContainer>
+            <GamesLink to= '/games/create'></GamesLink>
           </TableContainer>
         </BG_Image_GameFinder>
     );
