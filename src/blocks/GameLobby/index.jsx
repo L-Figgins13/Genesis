@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PlayerArea from './PlayerArea.jsx';
-import { BG_Image } from '../../elements';
-import img from '../../../static/img/gamelobby/MapBorders.jpg';
+import img from '../../../static/img/gamelobby/BG.jpg';
 import plank from '../../../static/img/gamelobby/Aspect_Ratio_BG_Plate.png';
+import { BG_Image_Scroll } from '../../elements';
 
 const GameArea = styled.div`
   width: var(--width);
@@ -19,12 +19,12 @@ const GameArea = styled.div`
 
 const GameLobby = (props) => {
     return (
-        <BG_Image img={img}>       
+        <BG_Image_Scroll img={img}>       
           <GameArea img={plank}>
           <h1>GAME LOBBY</h1>
            <PlayerArea players={props.players} />
           </GameArea>
-        </BG_Image>
+        </BG_Image_Scroll>
     )
 }
 
