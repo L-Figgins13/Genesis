@@ -5,6 +5,9 @@ import img from '../../../static/img/gamelobby/BG.jpg';
 import gameMenu from '../../../static/img/gamelobby/Aspect_Ratio_GameLobby.png';
 import { BG_Image_Scroll } from '../../elements';
 
+import logout from '../../../static/img/profile/Logout_Button.png';
+import logout_hover from '../../../static/img/profile/Logout_Button_Hover.png';
+
 const GameArea = styled.div`
   background-image: url(${props => props.img});
   /* background: red; */
@@ -14,8 +17,8 @@ const GameArea = styled.div`
   /* border: 1px solid blue; */
   font-size: 2vmin;
   color: #280408;
-  margin: 5vmin auto;
-  padding-top: 4vmin;
+  margin: 20vmin auto;
+  padding-top: 5vmin;
   padding-bottom: 5vmin;
   width: var(--width);
   height: var(--height);
