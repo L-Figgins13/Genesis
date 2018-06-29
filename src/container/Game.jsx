@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 import io from "socket.io-client";
 
 //Styles
-import {Container, Row, Col} from 'react-grid-system';
+
 
 //components
 import Chat from '../blocks/Chat';

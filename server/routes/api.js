@@ -1,6 +1,7 @@
 import express from 'express';
 import Game from '../Models/Games.js';
 import User from '../Models/Users.js';
+import Avatar from '../Models/Avatars.js';
 import broadcast from '../broadcast.js';
 import Logger from '../logger.js';
 import Card from '../Models/Cards.js';
@@ -82,17 +83,41 @@ router.get('/users/:id', (req, res, next) => {
     User.findById(req.params.id)
     .then(user => {
         Logger(JSON.stringify(user), 'User returned from database');
+        console.log('fetching avatar imageURL');
 
-        console.log('testing webpack');
-
-        res.status(200).json(user);
+        res.locals.user = user;
+        next();  
     })
     .catch(err => {
         Logger(err, 'Error Object in route /users/:id');
-
     })
    
+}, (req, res, next) => { // retrieves avatar url and attaches it to user
+    Avatar.find({avatarNumber: res.locals.user.avatarID})
+    .then(avatar => {
+        console.log(avatar);
+        console.log(avatar.imageURL);
+        
+
+        const data = {
+            user: res.locals.user,
+            avatarUrl: avatar[0].imageURL
+        }
+
+    
+
+        console.log(data)
+        
+        res.json(data);
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(500).json({error: error});
+    })
 })
+
+
+//TODO shuffle shit to card model
 
 router.get('/test/deck', (req,res,next) => {
     Card.find({}).then(cards => {

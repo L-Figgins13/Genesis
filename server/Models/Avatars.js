@@ -1,6 +1,6 @@
 import db from '../db.js';
 import mongoose from 'mongoose';
-import constants from '../constats.js';
+
 
 const Schema = mongoose.Schema;
 
@@ -10,6 +10,6 @@ const AvatarSchema = new Schema({
       imageURL: {type: String}
 });
 
-const Avatar = mongoose.model('Game', GameSchema);
+const Avatar = mongoose.model('Avatar', AvatarSchema);
 
 export default  Avatar;

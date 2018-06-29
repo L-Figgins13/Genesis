@@ -7,11 +7,37 @@ import img from '../../../static/img/profile/MapBorders.jpg';
 import button from '../../../static/img/login/Submit_Button.png';
 import button_hover from '../../../static/img/login/Submit_Button_Hover.png';
 import plate from '../../../static/img/profile/AspectRatioProfile.png';
+import arrowLeft from '../../../static/img/icons/Arrow_Left_Button.png';
+import arrowLeftHover from '../../../static/img/icons/Arrow_Left_Button_Hover.png';
+
+import arrowRight from '../../../static/img/icons/Arrow_Right_Button.png';
+import arrowRightHover from '../../../static/img/icons/Arrow_Right_Button_Hover.png';
+
 
 
 const ScoreLabel = styled.label`
   background: brown;
   margin: 3vmin;
+`
+
+const Arrow = styled.div`
+  background-image: url(${props => { if(props.left) {arrowLeft}; if(props.right) { arrowRight};}});
+  padding: 5vmin 5vmin;
+
+  &:hover{
+    transform: scale(1.1);
+    background-image: url(${props => {if(props.left) { arrowLeftHover}; if(props.right) { arrowRightHover}}});
+  }
+`
+
+const Avatar = styled.div`
+  padding: 14vmin 14vmin;
+  /* background-image: url('/img/avatars/1_GeneralWu.jpg'); */
+  background-image: ${props => `url(${props.avatarUrl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
 `
 
 const ScoreCard = styled.div`
@@ -97,6 +123,9 @@ export default function Stats(props) {
             <LogoutButton onClick={props.handleLogout}></LogoutButton>
             <form onSubmit= {props.handleSubmit}>
               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+              <Avatar avatarUrl = {props.user.currentAvatarUrl} />
+              <Arrow right />
+              <Arrow left />
               <ScoreCard>
                 <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
                 <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 

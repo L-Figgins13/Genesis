@@ -17,39 +17,35 @@ export default class Profile extends React.Component {
                 stats:{
                     wins: null,
                     losses: null,
-                }
+                },
+                avatarID: 0,
+                currentAvatarUrl: ''
             }
         }
-
         this.handleLogout = this.handleLogout.bind(this);
     }
 
-    
-
     componentDidMount() {
-            
-
             fetch(`/api/users/${this.props.match.params.id}`, {
                 headers:{
                     'Authorization': `bearer ${Auth.getToken()}`
                 }
             })
             .then(response =>{
-                console.log(response);
                 response.json()
-                .then(user => {
-
-                    console.log('logging user' , JSON.stringify(user));
+                .then(data => {
                     const newState = {
                         user: {
-                            username: user.username,
+                            username: data.user.username,
                             stats:{
-                                wins: user.stats.wins,
-                                losses: user.stats.losses,
-                            }
+                                wins: data.user.stats.wins,
+                                losses: data.user.stats.losses,
+                            },
+                            avatarID: data.user.avatarID,
+                            currentAvatarUrl: data.avatarUrl
                         }
                     }
-
+                    console.log(newState);
                     this.setState(newState);
                 })
                 .catch(err => {
@@ -62,8 +58,9 @@ export default class Profile extends React.Component {
         }
 
     handleLogout() {
-        localStorage.clear();
-        this.props.history.push('/');
+        // localStorage.clear();
+        // this.props.history.push('/');
+        console.log(' la click');
     }
 
     render(){
@@ -71,7 +68,8 @@ export default class Profile extends React.Component {
            <div>
                <Stats 
                     user={this.state.user}
-                    handleLogout = {this.handleLogout} 
+                    handleLogout = {this.handleLogout}
+                    avatarUrl = {this.state.currentAvatarUrl} 
                />
            </div>
         )

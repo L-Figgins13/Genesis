@@ -25,8 +25,6 @@ const PlayerSchema = new Schema({
     health: {type:Number, default: 100},
 })
 
-// const Player = mongoose.model('Player', PlayerSchema);
-
 const GameSchema = new Schema({
     owner: String,
     title: String,
@@ -41,10 +39,7 @@ GameSchema.statics.join = function join(gameID, user) {
         user_id: user._id,
         username: user.username,
     }
-
-   
-   
-   //TODO fix this fucking mess
+    //TODO fix this fucking mess
     //creates a promise to be returned so that the final .then() will be in the route
     const promise = new Promise ((resolve, reject) => {
         this.model('Game').findById(gameID)

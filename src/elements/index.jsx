@@ -5,8 +5,13 @@ import PropTypes from 'prop-types';
 
 import mapNoBorders from '../../static/img/login/MapNoBorders.jpg';
 // import plate from '../../static/img/login/Aspect_Ratio_BG_Plate.png';
+
+//images
 import button from '../../static/img/login/Submit_Button.png';
 import button_hover from '../../static/img/login/Submit_Button_Hover.png';
+import logoutImg from '../../static/img/icons/Logout_Button.png';
+import logoutImg_hover from '../../static/img/icons/Logout_Hover_Button.png';
+
 
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
@@ -181,6 +186,7 @@ const FormButton =  styled.button`
 FormButton.propTypes = {
   marginTop: PropTypes.string
 }
+
 export { FormButton };
 
 const FormContainer = styled.div`
@@ -257,9 +263,26 @@ const FormBG = styled.div`
 `
 export { FormBG };
 
-const LogoutButton = FormButton.extend`
-   margin: .5vmin auto;
-   height: 1vmin;
+const LogoutButton = styled.button`
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: ${props => props.marginTop ? props.marginTop : '2vmin'};
+  margin-left: ${props => props.marginLeft ? props.marginLeft : '55vmin'};
+  border: none;
+  padding: 5vmin 5vmin;
+  background-color: Transparent;
+  box-sizing: border-box;
+  background-image: url(${logoutImg});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all .2s ease-in-out;
+
+  &:hover{
+    transform: scale(1.1);
+    background-image: url(${logoutImg_hover});
+  }
+
 `
 
 export {LogoutButton};
