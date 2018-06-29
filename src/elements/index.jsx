@@ -327,3 +327,10 @@ const FormBG = styled.div`
   }
 `
 export { FormBG };
+
+const LogoutButton = FormButton.extend`
+   margin: .5vmin auto;
+   height: 1vmin;
+`
+
+export {LogoutButton};

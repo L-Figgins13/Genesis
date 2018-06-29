@@ -20,13 +20,14 @@ export default class Profile extends React.Component {
                 }
             }
         }
+
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
+    
 
     componentDidMount() {
-            console.log('-----------loggings match params-----------');
-            console.log(this.props.match.params.id);
-            console.log('-------------------------------------------');
+            
 
             fetch(`/api/users/${this.props.match.params.id}`, {
                 headers:{
@@ -60,11 +61,18 @@ export default class Profile extends React.Component {
             })
         }
 
+    handleLogout() {
+        localStorage.clear();
+        this.props.history.push('/');
+    }
 
     render(){
         return (
            <div>
-               <Stats user={this.state.user} />
+               <Stats 
+                    user={this.state.user}
+                    handleLogout = {this.handleLogout} 
+               />
            </div>
         )
     }

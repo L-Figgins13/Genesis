@@ -100,14 +100,15 @@ export default class Home extends React.Component {
                   loop
                   volume = {0.8}
                 />
-
                 <ReactPlayer
-                  url={fxBell}
-                  playing= {this.fxPlaying}
+                  url={this.state.soundFXUrl}
+                  playing= {this.state.fxPlaying}
                   onReady = {() => console.log('Should be ready to Play') }
                   onStart = {() => console.log('Bell fx playing')}
                   volume = {1.0}
                 />
+                  
+                
 
 
                 <FormButton onClick={
