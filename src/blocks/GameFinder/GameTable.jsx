@@ -20,9 +20,7 @@ const Table = styled.table`
     }
  
     tbody{
-        overflow-x: hidden;
-        overflow-y: scroll;
-        
+      max-height: 100px;
     }
     
 `

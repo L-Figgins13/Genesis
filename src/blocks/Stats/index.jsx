@@ -87,7 +87,7 @@ const ProfileLink = styled(Link)`
 const ProfileContainer = styled.div`
   /* border: 1px solid blue; */
   margin: 0vmin auto;
-  padding-top: 15vmin;
+  margin-top: 20vmin;
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -95,11 +95,9 @@ const ProfileContainer = styled.div`
 
 const Profile = styled.div`
   background-image: url(${plate});
-  /* background: red; */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: 1px solid blue; */
   font-size: 3.5vmin;
   color: #280408;
   margin: 5vmin auto;
