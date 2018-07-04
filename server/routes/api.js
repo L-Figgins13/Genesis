@@ -41,7 +41,7 @@ router.post('/games/create' , (req, res, next) => {
     .catch(err => {
         console.log(err);
     })
-})
+});
 
 router.post('/games/join', (req,res,next) => {
     Logger(req.body.game_id, 'Game ID FROM REQUEST');
@@ -57,7 +57,7 @@ router.post('/games/join', (req,res,next) => {
         Logger(JSON.stringify(error), 'Error in /games/join');
         res.json(error);
     })
-})
+});
 
 //we need to standardize coding style. i know its my fault
 router.post('/games/start', (req, res, next) => {
@@ -70,7 +70,7 @@ router.post('/games/start', (req, res, next) => {
             console.log(err);
             res.status(500).json({err:err});
         }) 
-})
+});
 
 
 //----------- Start User (Profile) Routes-------------------
@@ -92,28 +92,54 @@ router.get('/users/:id', (req, res, next) => {
         Logger(err, 'Error Object in route /users/:id');
     })
    
-}, (req, res, next) => { // retrieves avatar url and attaches it to user
-    Avatar.find({avatarNumber: res.locals.user.avatarID})
-    .then(avatar => {
-        console.log(avatar);
-        console.log(avatar.imageURL);
-        
-
-        const data = {
+}, (req, res, next) => { // retrieves array of paths to avatars << for dynamic image loading upon selection
+    Avatar.find({}).sort({avatarNumber: 1})
+    .then(avatars => {
+        console.log(avatars);
+        const paths = avatars.map(avatar => avatar.imageURL);
+            const data = {
             user: res.locals.user,
-            avatarUrl: avatar[0].imageURL
+            paths: paths
         }
-
     
-
-        console.log(data)
-        
         res.json(data);
     })
     .catch(error => {
         console.log(error);
         res.status(500).json({error: error});
     })
+});
+
+router.post('/users/saveAvatarSelection', (req, res, next) => {
+    User.findById(req.user._id)
+    .then(user => {
+        console.log(user);
+        console.log( 'ID from Request' , req.body.avatarID)
+        user.avatarID = req.body.avatarID;
+        res.locals.user = user;
+        next();     
+    })
+    .catch(err => {
+        console.log(err);
+        res.json({msg:`error in find`});
+    })
+}, 
+
+(req, res, next) => {
+    res.locals.user.save()
+        .then(user => {
+        console.log('saved user');
+        
+        const data = {
+            msg: 'Avatar successly saved'
+        }
+
+        res.json(data);
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({msg: 'error during save'});
+        })   
 })
 
 
@@ -142,6 +168,6 @@ router.get('/test/deck', (req,res,next) => {
         console.log(doc);
         res.json(doc);
     })
-})
+});
 
 export default router;

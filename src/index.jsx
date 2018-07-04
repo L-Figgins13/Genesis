@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {injectGlobal} from 'styled-components';
 
 injectGlobal`
+ /* Aspect Ratio Responsive Method */
  body {
    margin: 0;
    padding: 0;
@@ -17,6 +18,7 @@ injectGlobal`
     --height: calc(var(--width) * var(--ratio));
   }
 
+  /* HTML & CSS RESET */
   * {
       box-sizing: border-box;
   }
@@ -67,8 +69,32 @@ injectGlobal`
     border-spacing: 0;
   }
 
+  /* Selection Styles */
   ::-moz-selection { background: #111; }
   ::selection { background: #111; border: none;}
+
+  /* Scroll Bar Styles */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: wheat; 
+      -moz-box-shadow:    inset 0 0 4px #000000;
+        -webkit-box-shadow: inset 0 0 4px #000000;
+        box-shadow:         inset 0 0 4px #000000;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #333333; 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #111; 
+  }
 `
 
 const contentNode = document.getElementById('contents');

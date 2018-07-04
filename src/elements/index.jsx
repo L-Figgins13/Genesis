@@ -12,6 +12,7 @@ import button_hover from '../../static/img/login/Submit_Button_Hover.png';
 import logoutImg from '../../static/img/icons/Logout_Button.png';
 import logoutImg_hover from '../../static/img/icons/Logout_Hover_Button.png';
 
+import logout_hover from '../../static/img/profile/Logout_Button_Hover.png';
 
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
@@ -142,6 +143,62 @@ const BG_Image =  styled.div`
 `
 export { BG_Image };
 
+
+const BG_Image_Scroll = BG_Image.extend`
+  
+  -webkit-animation:100s scroll infinite linear;
+  -moz-animation:100s scroll infinite linear;
+  -o-animation:100s scroll infinite linear;
+  -ms-animation:100s scroll infinite linear;
+  animation:100s scroll infinite linear;
+
+  @-webkit-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:2500px 0px;
+    }
+  }
+
+  @-moz-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:2500px 0px;
+    }
+  }
+
+  @-o-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:2500px 0px;
+    }
+  }
+
+  @-ms-keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:2500px 0px;
+    }
+  }
+
+  @keyframes scroll{
+    100%{
+      background-position:2500px 0px;
+    }
+    50%{
+      background-position:2500px 0px;
+    }
+  }
+`
+export { BG_Image_Scroll };
+
 const FormHint =  styled.div`
   color: #B22222;
   margin-bottom: 3vmin;
@@ -263,16 +320,17 @@ const FormBG = styled.div`
 `
 export { FormBG };
 
-const LogoutButton = styled.button`
+const LogoutButton = FormButton.extend`
+  margin: 5vmin auto;
+  background-image: url(${props => props.img});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
   cursor: pointer;
   text-decoration: none;
-  margin-top: ${props => props.marginTop ? props.marginTop : '2vmin'};
-  margin-left: ${props => props.marginLeft ? props.marginLeft : '55vmin'};
-  border: none;
-  padding: 5vmin 5vmin;
+  margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
   background-color: Transparent;
   box-sizing: border-box;
-  background-image: url(${logoutImg});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -280,9 +338,8 @@ const LogoutButton = styled.button`
 
   &:hover{
     transform: scale(1.1);
-    background-image: url(${logoutImg_hover});
+    background-image: url(${logout_hover});
   }
-
 `
 
 export {LogoutButton};
