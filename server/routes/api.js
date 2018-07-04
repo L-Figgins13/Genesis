@@ -11,7 +11,6 @@ const router = express.Router();
 
 router.get('/games', (req, res, next) => {
    Game.find({}).then( function(games) {
-    console.log('/api/games');
        res.json(games);
    })
 });
@@ -48,8 +47,6 @@ router.post('/games/join', (req,res,next) => {
     
     Game.join(req.body.game_id, req.user)
     .then(result => {
-     
-        console.log(JSON.stringify(result));
         // broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
         res.status(200).json(result);
     })
@@ -61,7 +58,6 @@ router.post('/games/join', (req,res,next) => {
 
 //we need to standardize coding style. i know its my fault
 router.post('/games/start', (req, res, next) => {
-        console.log('hello from games/start');
         Game.start(req.body.gameID)
         .then(updatedGame => {
             res.json(updatedGame);
@@ -76,15 +72,8 @@ router.post('/games/start', (req, res, next) => {
 //----------- Start User (Profile) Routes-------------------
 
 router.get('/users/:id', (req, res, next) => {
-    
-    console.log('this route even being touched');
-    // Logger(req.params.id, 'URL PARAMS');
-
     User.findById(req.params.id)
     .then(user => {
-        Logger(JSON.stringify(user), 'User returned from database');
-        console.log('fetching avatar imageURL');
-
         res.locals.user = user;
         next();  
     })
@@ -95,34 +84,28 @@ router.get('/users/:id', (req, res, next) => {
 }, (req, res, next) => { // retrieves array of paths to avatars << for dynamic image loading upon selection
     Avatar.find({}).sort({avatarNumber: 1})
     .then(avatars => {
-        console.log(avatars);
         const paths = avatars.map(avatar => avatar.imageURL);
             const data = {
             user: res.locals.user,
             paths: paths
-        }
-    
+        }   
         res.json(data);
     })
     .catch(error => {
-        console.log(error);
         res.status(500).json({error: error});
     })
 });
 
 router.post('/users/saveAvatarSelection', (req, res, next) => {
     User.findById(req.user._id)
-    .then(user => {
-        console.log(user);
-        console.log( 'ID from Request' , req.body.avatarID)
-        user.avatarID = req.body.avatarID;
-        res.locals.user = user;
-        next();     
-    })
-    .catch(err => {
-        console.log(err);
-        res.json({msg:`error in find`});
-    })
+        .then(user => {
+            user.avatarID = req.body.avatarID;
+            res.locals.user = user;
+            next();     
+        })
+        .catch(err => {
+            res.json({msg:`error in find`});
+        })
 }, 
 
 (req, res, next) => {
@@ -147,7 +130,6 @@ router.post('/users/saveAvatarSelection', (req, res, next) => {
 
 router.get('/test/deck', (req,res,next) => {
     Card.find({}).then(cards => {
-        console.log('attempting shuffle');console.log('attempting shuffle');
         let shuffled = shuffle(cards);
         res.locals.shuffledDeck = shuffled;
         next();
