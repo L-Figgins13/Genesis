@@ -38,7 +38,7 @@ const Arrow = styled.div`
 
 
 const Avatar = styled.div`
-  padding: 14vmin 14vmin;
+  padding: 10vmin 10vmin;
   /* background-image: url('/img/avatars/1_GeneralWu.jpg'); */
   background-image: ${props => `url(${props.avatarUrl})`};
   background-size: contain;
@@ -52,24 +52,24 @@ const ScoreCard = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 5vmin;
+  padding: 0vmin;
 `
 
 const ProfileLabel =  styled.label`
   display: block;
   margin: 0vmin auto;
-  font-size:2vmin;
+  font-size: 2vmin;
   font-weight: 700;
 `
 
 const ProfileLink = styled(Link)`
   cursor: pointer;
   text-decoration: none;
-  margin: 5vmin auto;
-  margin-top: 3vmin;
+  margin: 0vmin auto;
+  margin-top: 0vmin;
   border: none;
   font-size: 3vmin;
-  padding: 6vmin 20vmin;
+  padding: 0vmin 0vmin;
   background-color: Transparent;
   box-sizing: border-box;
   background-image: url(${button});
@@ -87,7 +87,7 @@ const ProfileLink = styled(Link)`
 const ProfileContainer = styled.div`
   /* border: 1px solid blue; */
   margin: 0vmin auto;
-  margin-top: 20vmin;
+  margin-top: 0vmin;
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -100,14 +100,14 @@ const Profile = styled.div`
   background-size: contain;
   font-size: 3.5vmin;
   color: #280408;
-  margin: 5vmin auto;
-  padding-top: 5vmin;
-  padding-bottom: 5vmin;
+  margin: 0vmin auto;
+  padding-top: 0vmin;
+  padding-bottom: 0vmin;
   width: var(--width);
   height: var(--height);
 
   form{
-    margin-top: 9vmin;
+    margin-top: 0vmin;
   }
 
   h3{
@@ -130,7 +130,7 @@ export default function Stats(props) {
               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
               <Avatar avatarUrl = {props.user.currentAvatarUrl} />
               <Arrow id= {1} right onClick={props.selectAvatar} />
-              <Arrow id= {2}left onClick={props.selectAvatar} />
+              <Arrow id= {2} left onClick={props.selectAvatar} />
               <ScoreCard>
                 <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
                 <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 

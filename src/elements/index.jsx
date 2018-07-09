@@ -321,7 +321,6 @@ const FormBG = styled.div`
 export { FormBG };
 
 const LogoutButton = FormButton.extend`
-  margin: 5vmin auto;
   background-image: url(${props => props.img});
   background-position: center center;
   background-repeat: no-repeat;
@@ -329,6 +328,7 @@ const LogoutButton = FormButton.extend`
   cursor: pointer;
   text-decoration: none;
   margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  margin-left: 6vmin;
   background-color: Transparent;
   box-sizing: border-box;
   background-position: center center;

@@ -111,13 +111,13 @@ router.post('/users/saveAvatarSelection', (req, res, next) => {
 (req, res, next) => {
     res.locals.user.save()
         .then(user => {
-        console.log('saved user');
+            console.log('saved user');
         
-        const data = {
+            const data = {
             msg: 'Avatar successly saved'
         }
 
-        res.json(data);
+            res.json(data);
         })
         .catch(err => {
             console.log(err);
