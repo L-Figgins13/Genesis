@@ -17,6 +17,21 @@ These instructions will get you a copy of the project up and running on your loc
 * [Documentation](www.mern-genesis.github.io)
 * [Discussions](www.mern-genesis.github.io)
 
+**Table Of Contents**
+* [Prerequisites](www.mern-genesis.github.io)
+* [Installing](www.mern-genesis.github.io)
+* [Available Commands](www.mern-genesis.github.io)
+* [Tests](www.mern-genesis.github.io)
+* [File Structure](www.mern-genesis.github.io)
+* [FrontEnd](www.mern-genesis.github.io)
+* [Deploying Your App](www.mern-genesis.github.io)
+* [Technologies Used](www.mern-genesis.github.io)
+* [Contributions](www.mern-genesis.github.io)
+* [Versioning](www.mern-genesis.github.io)
+* [Authors](www.mern-genesis.github.io)
+* [License](www.mern-genesis.github.io)
+* [Acknowledgements][1]
+
 
 ### Prerequisites
 For the project to work properly you will need:
@@ -108,8 +123,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 
 ## Authors
-* **Logan Figgins** - *Designer & Developer* - [MERN-GENESIS](https://github.com/L-Figgins13)
-* **Zack Watkins** - *Designer & Developer* - [MERN-GENESIS](https://github.com/TheByteForge)
+* **Logan Figgins** - *Designer & Developer* - @github/L-Figgins13 - [MERN-GENESIS](https://github.com/L-Figgins13)
+* **Zack Watkins** - *Designer & Developer* - @github/TheByteForge - [MERN-GENESIS](https://github.com/TheByteForge)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -119,4 +134,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 
 ## Acknowledgments
+[1]: [linked title]()
 * Coming Soon
