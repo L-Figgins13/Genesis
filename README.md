@@ -12,11 +12,11 @@ Genesis is a scaffolding tool which aims to create a starting point for developi
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-*![Website] (www.mern-genesis.github.io)
+[Website] (www.mern-genesis.github.io)
 
-*![Documentation] (www.mern-genesis.github.io)
+[Documentation] (www.mern-genesis.github.io)
 
-*![Discussions] (www.mern-genesis.github.io)
+[Discussions] (www.mern-genesis.github.io)
 
 ### Prerequisites
 What you will need to have installed for the project to work properly:
