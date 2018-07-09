@@ -17,21 +17,6 @@ These instructions will get you a copy of the project up and running on your loc
 * [Documentation](www.mern-genesis.github.io)
 * [Discussions](www.mern-genesis.github.io)
 
-**Table Of Contents**
-* [Prerequisites](www.mern-genesis.github.io)
-* [Installing](www.mern-genesis.github.io)
-* [Available Commands](www.mern-genesis.github.io)
-* [Tests](www.mern-genesis.github.io)
-* [File Structure](www.mern-genesis.github.io)
-* [FrontEnd](www.mern-genesis.github.io)
-* [Deploying Your App](www.mern-genesis.github.io)
-* [Technologies Used](www.mern-genesis.github.io)
-* [Contributions](www.mern-genesis.github.io)
-* [Versioning](www.mern-genesis.github.io)
-* [Authors](www.mern-genesis.github.io)
-* [License](www.mern-genesis.github.io)
-* [Acknowledgements](## Acknowledgments)
-
 
 ### Prerequisites
 For the project to work properly you will need:
@@ -44,23 +29,20 @@ For the project to work properly you will need:
 ### Installing
 A step by step series of examples that tell you how to get a development environment running
 
-```
+1. ```npm install -g mern-genesis```
 
-npm install -g mern-genesis
+2. ```genesis init my_app_name```
 
-genesis init my_app_name
+3. ```cd my_app_name```
 
-cd my_app_name
+4. ```npm install```
 
-npm install
+5. ```npm run watch-server```
 
-npm run watch-server
+6. ```npm run watch```
 
-npm run watch
+7. ```npm start```
 
-npm start
-
-```
 
 **Note :** Please make sure your MongoDB database is up and running first. For MongoDB installation guide, please reference this MongoDB
 [installation guide](https://docs.mongodb.org/v3.0/installation/).
@@ -82,6 +64,68 @@ npm start
 
 
 ## File Structure
+```
+.
+└── mern-genesis
+    ├── __tests__                    // all the tests for mern-genesis
+    |   ├── components               // sub components of this module
+    |   |   ├── Post.spec.js
+    |   |   ├── PostList.spec.js
+    |   |   ├── PostItem.spec.js
+    |   |   └── PostImage.spec.js
+    |   ├── pages
+    |   |   ├── PostPage.spec.js
+    |   |   └── PostViewPage.spec.js
+    |   ├── PostReducer.spec.js
+    |   └── PostActions.spec.js
+    ├── client                   
+    |   ├── auth.js
+    ├── config                   
+    |   ├── index.json
+    ├── dist                   
+    |   ├── server.bundle.js
+    |   ├── server.bundle.map.js
+    ├── server
+    |   ├── middleware
+    |   |   ├── auth-check.js
+    |   ├── models
+    |   |   ├── ExampleModel.js
+    |   ├── passport
+    |   |   ├── local-login.js
+    |   |   ├── local-signup.js
+    |   ├── routes
+    |   |   ├── api.js
+    |   |   ├── auth.js
+    |   ├── auth-check.js
+    |   ├── broadcast.js
+    |   ├── constants.js
+    |   ├── db.js
+    |   ├── logger.js
+    |   ├── server.js
+    |   └── template.js
+    ├── src
+    |   ├── blocks
+    |   |   ├── exampleblock.js
+    |   ├── container
+    |   |   ├── examplecontainer.js
+    |   ├── elements
+    |   |   ├── exampleelements.js
+    |   ├── App.jsx
+    |   ├── index.js
+    ├── static
+    |   └── img
+    |   └── audio
+    |   └── video
+    ├── .gitignore
+    ├── README.md
+    ├── CONTRIBUTING.md
+    ├── LICENSE.txt
+    ├── package-lock.json
+    ├── package.json
+    ├── webpack.config.js
+    └── webpack.server-config.js
+
+```
 
 **Webpack Configs**
 
