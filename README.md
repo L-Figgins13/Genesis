@@ -1,5 +1,6 @@
 ![mern-genesis](static/img/MernLogo1.jpg)
 
+
 # Project Genesis
 [![HitCount](http://hits.dwyl.com/{L-Figgins13}/{Genesis}.svg)](http://hits.dwyl.com/{L-Figgins13}/{Genesis})
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
@@ -15,6 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 [Documentation] (www.mern-genesis.github.io)
 
 [Discussions] (www.mern-genesis.github.io)
+
 
 ### Prerequisites
 For the project to work properly you will need:
@@ -43,6 +45,7 @@ npm start
 ```
 **Note :** Please make sure your MongoDB is running. For MongoDB installation guide see [this] (https://docs.mongodb.org/v3.0/installation/).
 
+
 ### Available Commands
 
 ```
@@ -51,12 +54,14 @@ npm start
    - **npm start** - starts the development application at localhost:3000 and the server at localhost:8000.
 ```
 
+
 ## Running the tests
 Coming Soon
 
 
 ### File Structure
-#Webpack Configs
+
+##Webpack Configs
 MERN uses Webpack for bundling modules. There are four types of Webpack configs provided:
  - **webpack.config.dev.js** for development
  - **webpack.config.prod.js** for production
@@ -65,28 +70,32 @@ MERN uses Webpack for bundling modules. There are four types of Webpack configs 
 
 The Webpack configuration is minimal and beginner-friendly. You can customise and add more features to it for production builds if you would like.
 
-#Server
+##Server
 MERN uses express web framework. Our app sits in server.js where we check for NODE_ENV.
 If NODE_ENV is development, we apply Webpack middlewares for bundling and Hot Module Replacement.
 
-### FrontEnd Technologies
+
+### Front End Development
 This scaffolding uses material UI for rapid design prototyping and styled components for modern web component styling. More information on this will be added shortly.
+
 
 ## Deployment
 Add additional notes about how to deploy this on a live system
 
 ## Built With
-* [MongoDB]( https://www.mongodb.com/) � NoSQL Database
-* [Express]( https://expressjs.com/) � Server Middleware
-* [React](https://reactjs.org/) � FrontEnd Web Technology
-* [NodeJS]( https://nodejs.org/en/) � npm and general project structure
+* [MongoDB]( https://www.mongodb.com/) - NoSQL Database
+* [Express]( https://expressjs.com/) - Server Middleware
+* [React](https://reactjs.org/) - FrontEnd Web Technology
+* [NodeJS]( https://nodejs.org/en/) - npm and general project structure
 
-## Contributing
+
 ## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
+
 ## Versioning
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
 
 ## Authors
 * **Logan Figgins** - *Initial work* - [MERN-GENESIS](https://github.com/L-Figgins13/Genesis/blob/master/README.md)
@@ -94,8 +103,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 
 ## Acknowledgments
 * Coming Soon
