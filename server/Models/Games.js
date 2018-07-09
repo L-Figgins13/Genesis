@@ -1,115 +1,117 @@
-import db from '../db.js';
-import mongoose from 'mongoose';
-import Logger from '../logger.js';
-import constants from '../constants.js';
-
+import db from "../db.js";
+import mongoose from "mongoose";
+import Logger from "../logger.js";
+import constants from "../constants.js";
 
 const Schema = mongoose.Schema;
 
 const ImgSchema = new Schema({
-    name: String,
-    url: String,
-})
+  name: String,
+  url: String
+});
 
 const CardSchema = new Schema({
-    name: String,
-    ruleText: String,
-    value: Number,
-    suit: String,
-    image: ImgSchema
-})
+  name: String,
+  ruleText: String,
+  value: Number,
+  suit: String,
+  image: ImgSchema
+});
 
 const PlayerSchema = new Schema({
-    user_id: String,
-    username: String,
-    health: {type:Number, default: 100},
-})
+  user_id: String,
+  username: String,
+  health: { type: Number, default: 100 }
+});
 
 const GameSchema = new Schema({
-    owner: String,
-    title: String,
-    hasStarted: {type:Boolean, default: false},
-    gameCards: [CardSchema],
-    players:[PlayerSchema] 
-})
+  owner: String,
+  title: String,
+  hasStarted: { type: Boolean, default: false },
+  gameCards: [CardSchema],
+  players: [PlayerSchema]
+});
 
 GameSchema.statics.join = function join(gameID, user) {
-    //stages player to be added to the game
-    const player = {
-        user_id: user._id,
-        username: user.username,
-    }
-    //TODO fix this fucking mess
-    //creates a promise to be returned so that the final .then() will be in the route
-    const promise = new Promise ((resolve, reject) => {
-        this.model('Game').findById(gameID)
-        .then(game => {
-            const data = {
-                message: '',
-                errCode: 0,
-                success: false,
-                player: {},
-            }
+  //stages player to be added to the game
+  const player = {
+    user_id: user._id,
+    username: user.username
+  };
+  //TODO fix this fucking mess
+  //creates a promise to be returned so that the final .then() will be in the route
+  const promise = new Promise((resolve, reject) => {
+    this.model("Game")
+      .findById(gameID)
+      .then(game => {
+        const data = {
+          message: "",
+          errCode: 0,
+          success: false,
+          player: {}
+        };
 
-            Logger(constants.MAX_PLAYERS, 'MAX_PLAYER CONSTANT');
+        Logger(constants.MAX_PLAYERS, "MAX_PLAYER CONSTANT");
 
-            if(game.players.length >= constants.MAX_PLAYERS) {
-                data.message = 'Game is Full';
-                data.errCode = 1;
-                return reject(data);
-                Logger(data, 'Data: ');
-            } else if (game.hasStarted) {
-                data.message = 'Sorry the Game Has Already Started';
-                data.errCode = 2;
-                reject(data);
-                Logger(data, 'Data: ');
-            } else if (game.players.some(x => x.user_id === player.user_id)) {
-                data.message = 'ERROR: Player already exists in game';
-                data.errCode = 3;
-                reject(data);
-                Logger(data, 'Data: ');
-            } else { 
-                this.model('Game').findByIdAndUpdate(gameID, {$push: {players: player}})
-                    .then(updatedGame => {
-                        data.message = `Player ${player.username} has succesfully joined the game`;
-                        data.success = true;
-                        data.player = player;
+        if (game.players.length >= constants.MAX_PLAYERS) {
+          data.message = "Game is Full";
+          data.errCode = 1;
+          return reject(data);
+          Logger(data, "Data: ");
+        } else if (game.hasStarted) {
+          data.message = "Sorry the Game Has Already Started";
+          data.errCode = 2;
+          reject(data);
+          Logger(data, "Data: ");
+        } else if (game.players.some(x => x.user_id === player.user_id)) {
+          data.message = "ERROR: Player already exists in game";
+          data.errCode = 3;
+          reject(data);
+          Logger(data, "Data: ");
+        } else {
+          this.model("Game")
+            .findByIdAndUpdate(gameID, { $push: { players: player } })
+            .then(updatedGame => {
+              data.message = `Player ${
+                player.username
+              } has succesfully joined the game`;
+              data.success = true;
+              data.player = player;
 
-                        resolve(data);
-                        Logger(data, 'Data: ');
-                    })
-            }   
-        })
-    });
-   return promise;
-}
+              resolve(data);
+              Logger(data, "Data: ");
+            });
+        }
+      });
+  });
+  return promise;
+};
 
 GameSchema.statics.start = function start(gameID) {
-    console.log('game ID:', gameID);
+  console.log("game ID:", gameID);
 
-    const promise = new Promise ((resolve, reject) => {
-        this.model('Game').findById(gameID)
-        .then( game => {
+  const promise = new Promise((resolve, reject) => {
+    this.model("Game")
+      .findById(gameID)
+      .then(game => {
+        console.log("before update:", game);
+        if (game.hasStarted === false) {
+          game.hasStarted = true;
+          game.save().then(updatedGame => {
+            console.log("Updated Game:", updatedGame);
+            resolve(updatedGame);
+          });
+        } else {
+          reject("Error: Game has already started");
+        }
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+  return promise;
+};
 
-            console.log('before update:', game);
-          if(game.hasStarted === false) {
-              game.hasStarted = true;
-              game.save()
-              .then( updatedGame => {
-                  console.log('Updated Game:', updatedGame);
-                  resolve(updatedGame);
-              })
-          } else {
-              reject('Error: Game has already started');
-          }              
-        })
-        .catch(err => {
-            reject(err);
-        })
-    });
-    return promise;
-}
-
-var Game = mongoose.model('Game', GameSchema);
+var Game = mongoose.model("Game", GameSchema);
 
 module.exports = Game;

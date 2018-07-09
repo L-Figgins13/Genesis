@@ -1,15 +1,15 @@
-import db from'../db.js';
-import mongoose from'mongoose';
-import shuffle from '../lib/fisher-yates-shuffle.js';
+import db from "../db.js";
+import mongoose from "mongoose";
+import shuffle from "../lib/fisher-yates-shuffle.js";
 
 const Schema = mongoose.Schema;
 
 const cardSchema = new Schema({
-    name: {type: String},
-    ruleText: {type: String},
-    suit: {type: String},
-    imageURL: {type: String}
-})
+  name: { type: String },
+  ruleText: { type: String },
+  suit: { type: String },
+  imageURL: { type: String }
+});
 
 // cardSchema.statics.getShuffledDeck = function getShuffledDeck() {
 
@@ -29,9 +29,6 @@ const cardSchema = new Schema({
 //     return promise;
 // }
 
-var Card = mongoose.model('Card', cardSchema);
+var Card = mongoose.model("Card", cardSchema);
 
 export default Card;
-
-
-

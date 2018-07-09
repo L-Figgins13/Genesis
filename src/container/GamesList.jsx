@@ -1,44 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Auth from '../../client/auth.js';
-import 'isomorphic-fetch';
-import {Route, Switch, Redirect, BrowserRouter, Link} from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import Auth from "../../client/auth.js";
+import "isomorphic-fetch";
+import { Route, Switch, Redirect, BrowserRouter, Link } from "react-router-dom";
 
-import GameFinder from '../blocks/GameFinder';
+import GameFinder from "../blocks/GameFinder";
 
 export default class GamesList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            games:[],
-            activeIndex: -1,
-            join:-1}; 
-        this.joinGame = this.joinGame.bind(this);
-        this.handleGameSelection = this.handleGameSelection.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      games: [],
+      activeIndex: -1,
+      join: -1
+    };
+    this.joinGame = this.joinGame.bind(this);
+    this.handleGameSelection = this.handleGameSelection.bind(this);
+  }
 
-    componentDidMount(){
-        this.loadData();
-    }
+  componentDidMount() {
+    this.loadData();
+  }
 
-    handleGameSelection(event) {
-        event.preventDefault();
+  handleGameSelection(event) {
+    event.preventDefault();
 
-        console.log(event.currentTarget.id);
-        
+    console.log(event.currentTarget.id);
 
+    console.log("Active Game id");
+  }
 
-        console.log('Active Game id');
+  joinGame(event) {
+    event.preventDefault();
+    const target = event.target;
 
-
-    }
-
-    joinGame(event) {
-        event.preventDefault();
-        const target = event.target;
-
-
-        console.log(focusedGame.id);
+    console.log(focusedGame.id);
 
     //     fetch('/api/games/join',{
     //         method: 'POST',
@@ -63,60 +59,49 @@ export default class GamesList extends React.Component {
     //                 console.error(result.message);
     //                 this.setState({join:target.id});
     //             }
-    //         })     
+    //         })
     //     })
     //     .catch(error => {
     //         console.log(error);
     //     })
+  }
 
-        
-     }
-
-    loadData() {
-        fetch('/api/games', {
-            headers:{
-                'Authorization': `bearer ${Auth.getToken()}`
-            }
+  loadData() {
+    fetch("/api/games", {
+      headers: {
+        Authorization: `bearer ${Auth.getToken()}`
+      }
     })
-    .then(response => {
-        if(response.ok){
-            console.log(response);
-            response.json()
-            .then(data => { 
-                // console.log('logging data',data);
-                this.setState({games: data});
-                
-            });
+      .then(response => {
+        if (response.ok) {
+          console.log(response);
+          response.json().then(data => {
+            // console.log('logging data',data);
+            this.setState({ games: data });
+          });
         } else {
-            response.json()
-            .then(error => {
-                alert(`Failed to Fetch Games ${error.message}`)
-            });
+          response.json().then(error => {
+            alert(`Failed to Fetch Games ${error.message}`);
+          });
         }
-        }).catch(err => {
-            alert(`Error fetching data from server: ${err}`)
-        });
+      })
+      .catch(err => {
+        alert(`Error fetching data from server: ${err}`);
+      });
+  }
+
+  render() {
+    if (this.state.join != -1) {
+      const url = "/games/" + this.state.join;
+      return <Redirect to={url} push />;
     }
 
-    
-
-    render() {
-        
-        if(this.state.join != -1){
-            const url = '/games/' + this.state.join;
-            return(
-                <Redirect to={url} push />
-            )
-        }
-        
-        return(
-            <GameFinder 
-                games={this.state.games} 
-                joinGame={this.joinGame}
-                handleGameSelection ={this.handleGameSelection} 
-            />
-        );
-    }
-    
+    return (
+      <GameFinder
+        games={this.state.games}
+        joinGame={this.joinGame}
+        handleGameSelection={this.handleGameSelection}
+      />
+    );
+  }
 }
-

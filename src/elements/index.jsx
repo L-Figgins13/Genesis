@@ -1,18 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import mapNoBorders from '../../static/img/login/MapNoBorders.jpg';
+import mapNoBorders from "../../static/img/login/MapNoBorders.jpg";
 // import plate from '../../static/img/login/Aspect_Ratio_BG_Plate.png';
 
 //images
-import button from '../../static/img/login/Submit_Button.png';
-import button_hover from '../../static/img/login/Submit_Button_Hover.png';
-import logoutImg from '../../static/img/icons/Logout_Button.png';
-import logoutImg_hover from '../../static/img/icons/Logout_Hover_Button.png';
+import button from "../../static/img/login/Submit_Button.png";
+import button_hover from "../../static/img/login/Submit_Button_Hover.png";
+import logoutImg from "../../static/img/icons/Logout_Button.png";
+import logoutImg_hover from "../../static/img/icons/Logout_Hover_Button.png";
 
-import logout_hover from '../../static/img/profile/Logout_Button_Hover.png';
+import logout_hover from "../../static/img/profile/Logout_Button_Hover.png";
 
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
@@ -22,40 +22,39 @@ const Button = styled.button`
   text-decoration: none;
   padding: 3vmin;
   font-size: 2vmin;
-  -webkit-transition: box-shadow .5s ease;
-  -moz-transition: box-shadow .5s ease;
-  -ms-transition: box-shadow .5s ease;
-  -o-transition: box-shadow .5s ease;
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(220,1,244,0.49);
-  -moz-box-shadow: 0px 0px 0px 0px rgba(220,1,244,0.49);
-  box-shadow: 0px 0px 0px 0px rgba(220,1,244,0.49);
-    
+  -webkit-transition: box-shadow 0.5s ease;
+  -moz-transition: box-shadow 0.5s ease;
+  -ms-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(220, 1, 244, 0.49);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(220, 1, 244, 0.49);
+  box-shadow: 0px 0px 0px 0px rgba(220, 1, 244, 0.49);
+
   &:focus {
-    -webkit-transition: box-shadow .5s ease;
-    -moz-transition: box-shadow .5s ease;
-    -ms-transition: box-shadow .5s ease;
-    -o-transition: box-shadow .5s ease;
-    -webkit-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
-    -moz-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
-    box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
-    
+    -webkit-transition: box-shadow 0.5s ease;
+    -moz-transition: box-shadow 0.5s ease;
+    -ms-transition: box-shadow 0.5s ease;
+    -o-transition: box-shadow 0.5s ease;
+    -webkit-box-shadow: 0px 0px 31px 0px rgba(220, 1, 244, 0.49);
+    -moz-box-shadow: 0px 0px 31px 0px rgba(220, 1, 244, 0.49);
+    box-shadow: 0px 0px 31px 0px rgba(220, 1, 244, 0.49);
   }
-  &:hover{
+  &:hover {
     background: linear-gradient(to top, #8f34d9, #44009e);
   }
-  &:active{
-   background: purple;
+  &:active {
+    background: purple;
   }
-`
+`;
 export { Button };
 
 const Label = styled.label`
-  font-size: ${props => props.fontSize? props.fontSize : '1rem'};
+  font-size: ${props => (props.fontSize ? props.fontSize : "1rem")};
   text-align: ${props => props.textAlign};
   color: #fff;
 
-  a{
-    color: #73247C;
+  a {
+    color: #73247c;
   }
 
   /* @media (min-width: 375px) {
@@ -70,49 +69,50 @@ const Label = styled.label`
   @media only screen and (min-width : 1200px) {
     background: black;
   } */
-`
+`;
 export { Label };
 
 const Input = styled.input`
   width: 100%;
   height: 4vh;
   background-color: wheat;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: 1px solid #111;
-  padding: .75rem .75rem;
+  padding: 0.75rem 0.75rem;
   font-weight: bold;
   font-size: 1.5rem;
-  -webkit-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-  -moz-box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-  box-shadow: 0px 9px 5px -1px rgba(0,0,0,0.59);
-  -webkit-transition: box-shadow .5s ease;
-  -moz-transition: box-shadow .5s ease;
-  -ms-transition: box-shadow .5s ease;
-  -o-transition: box-shadow .5s ease;
+  -webkit-box-shadow: 0px 9px 5px -1px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 0px 9px 5px -1px rgba(0, 0, 0, 0.59);
+  box-shadow: 0px 9px 5px -1px rgba(0, 0, 0, 0.59);
+  -webkit-transition: box-shadow 0.5s ease;
+  -moz-transition: box-shadow 0.5s ease;
+  -ms-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
 
-  &:focus, textarea:focus {
-    -webkit-transition: box-shadow .5s ease;
-    -moz-transition: box-shadow .5s ease;
-    -ms-transition: box-shadow .5s ease;
-    -o-transition: box-shadow .5s ease;
-    -webkit-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
-    -moz-box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
-    box-shadow: 0px 0px 31px 0px rgba(220,1,244,0.49);
+  &:focus,
+  textarea:focus {
+    -webkit-transition: box-shadow 0.5s ease;
+    -moz-transition: box-shadow 0.5s ease;
+    -ms-transition: box-shadow 0.5s ease;
+    -o-transition: box-shadow 0.5s ease;
+    -webkit-box-shadow: 0px 0px 31px 0px rgba(220, 1, 244, 0.49);
+    -moz-box-shadow: 0px 0px 31px 0px rgba(220, 1, 244, 0.49);
+    box-shadow: 0px 0px 31px 0px rgba(220, 1, 244, 0.49);
   }
 `;
 
-export {Input}
+export { Input };
 
 const StyledLink = styled(Link)`
   color: #2d1e10;
   font-weight: bold;
   text-decoration: none;
-  padding: .5rem;
-  &:hover{
-      transition: scale(1.09);
-      color: #ffb700;
+  padding: 0.5rem;
+  &:hover {
+    transition: scale(1.09);
+    color: #ffb700;
   }
-`
+`;
 export { StyledLink };
 
 const Wrapper = styled.div`
@@ -122,108 +122,106 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  position:fixed;
+  position: fixed;
   background-image: url(${props => props.mapNoBorders});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-`
+`;
 export { Wrapper };
 
-const BG_Image =  styled.div`
+const BG_Image = styled.div`
   background-image: url(${props => props.img});
   background-repeat: repeat;
   background-position: center center;
   background-size: cover;
-  position:fixed;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-`
+`;
 export { BG_Image };
 
-
 const BG_Image_Scroll = BG_Image.extend`
-  
-  -webkit-animation:100s scroll infinite linear;
-  -moz-animation:100s scroll infinite linear;
-  -o-animation:100s scroll infinite linear;
-  -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
+  -webkit-animation: 100s scroll infinite linear;
+  -moz-animation: 100s scroll infinite linear;
+  -o-animation: 100s scroll infinite linear;
+  -ms-animation: 100s scroll infinite linear;
+  animation: 100s scroll infinite linear;
 
-  @-webkit-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+  @-webkit-keyframes scroll {
+    100% {
+      background-position: 2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    50% {
+      background-position: 2500px 0px;
     }
   }
 
-  @-moz-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+  @-moz-keyframes scroll {
+    100% {
+      background-position: 2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
-    }
-  }
-
-  @-o-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
-    }
-    50%{
-      background-position:2500px 0px;
+    50% {
+      background-position: 2500px 0px;
     }
   }
 
-  @-ms-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+  @-o-keyframes scroll {
+    100% {
+      background-position: 2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    50% {
+      background-position: 2500px 0px;
     }
   }
 
-  @keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+  @-ms-keyframes scroll {
+    100% {
+      background-position: 2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    50% {
+      background-position: 2500px 0px;
     }
   }
-`
+
+  @keyframes scroll {
+    100% {
+      background-position: 2500px 0px;
+    }
+    50% {
+      background-position: 2500px 0px;
+    }
+  }
+`;
 export { BG_Image_Scroll };
 
-const FormHint =  styled.div`
-  color: #B22222;
+const FormHint = styled.div`
+  color: #b22222;
   margin-bottom: 3vmin;
   padding: 1vmin;
   position: absolute;
   top: 41%;
   left: 39%;
   z-index: 2;
-  font-size: 2vmin; 
-`
+  font-size: 2vmin;
+`;
 export { FormHint };
 
-const FormLabel =  styled.label`
+const FormLabel = styled.label`
   display: block;
   margin: 0vmin auto;
   font-size: 2.5vmin;
   font-weight: 700;
-`
+`;
 export { FormLabel };
 
-const FormButton =  styled.button`
+const FormButton = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 5vmin auto;
-  margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  margin-top: ${props => (props.marginTop ? props.marginTop : "5vmin")};
   border: none;
   font-size: 3vmin;
   padding: 6vmin 20vmin;
@@ -233,16 +231,16 @@ const FormButton =  styled.button`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
     background-image: url(${button_hover});
   }
-`
+`;
 FormButton.propTypes = {
   marginTop: PropTypes.string
-}
+};
 
 export { FormButton };
 
@@ -253,7 +251,7 @@ const FormContainer = styled.div`
   width: var(--width);
   height: var(--height);
   text-align: center;
-`
+`;
 export { FormContainer };
 
 const InputBox = styled.input`
@@ -268,26 +266,26 @@ const InputBox = styled.input`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color .5s ease;
-  transition: border .5s ease;
-  transition: box-shadow .25s ease;
+  transition: background-color 0.5s ease;
+  transition: border 0.5s ease;
+  transition: box-shadow 0.25s ease;
   background-color: #fff;
   color: #2d1e10;
-  -webkit-box-shadow: inset 0px 0px 6px 3px rgba(0,0,0,0.0);
-    -moz-box-shadow: inset 0px 0px 6px 3px rgba(0,0,0,0.0);
-    box-shadow: inset 0px 0px 6px 3px rgba(0,0,0,0.0);
+  -webkit-box-shadow: inset 0px 0px 6px 3px rgba(0, 0, 0, 0);
+  -moz-box-shadow: inset 0px 0px 6px 3px rgba(0, 0, 0, 0);
+  box-shadow: inset 0px 0px 6px 3px rgba(0, 0, 0, 0);
 
-  &:hover{
-    transition: background-color .5s ease;
-    transition: border .5s ease;
-    transition: box-shadow .25s ease;
+  &:hover {
+    transition: background-color 0.5s ease;
+    transition: border 0.5s ease;
+    transition: box-shadow 0.25s ease;
     background-color: #ffebd8;
-    border: .25vmin solid #2d1e10;
-    -webkit-box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.15);
-    -moz-box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.15);
-    box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.15);
+    border: 0.25vmin solid #2d1e10;
+    -webkit-box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.15);
   }
-`
+`;
 export { InputBox };
 
 const FormBG = styled.div`
@@ -305,11 +303,11 @@ const FormBG = styled.div`
   width: var(--width);
   height: var(--height);
 
-  form{
+  form {
     margin-top: 9vmin;
   }
 
-  h3{
+  h3 {
     padding-top: 4vmin;
     font-size: 2vmin;
   }
@@ -317,7 +315,7 @@ const FormBG = styled.div`
   @media only screen and (max-width: 670px) {
     width: 90%;
   }
-`
+`;
 export { FormBG };
 
 const LogoutButton = FormButton.extend`
@@ -328,19 +326,18 @@ const LogoutButton = FormButton.extend`
   background-size: contain;
   cursor: pointer;
   text-decoration: none;
-  margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  margin-top: ${props => (props.marginTop ? props.marginTop : "5vmin")};
   background-color: Transparent;
   box-sizing: border-box;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
     background-image: url(${logout_hover});
   }
-`
+`;
 
-
-export {LogoutButton};
+export { LogoutButton };

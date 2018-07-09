@@ -1,15 +1,14 @@
-import GameTable from './GameTable.jsx';
-import styled from 'styled-components';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { BG_Image_Scroll, LogoutButton } from '../../elements';
+import GameTable from "./GameTable.jsx";
+import styled from "styled-components";
+import React from "react";
+import { Link } from "react-router-dom";
+import { BG_Image_Scroll, LogoutButton } from "../../elements";
 
-import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
-import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
-import button from '../../../static/img/login/Submit_Button.png';
-import button_hover from '../../../static/img/login/Submit_Button.png';
-import logout from '../../../static/img/profile/Logout_Button.png';
-
+import img from "../../../static/img/gamesfinder/MapNoBorders.jpg";
+import plate from "../../../static/img/gamesfinder/AspectRatioGames.png";
+import button from "../../../static/img/login/Submit_Button.png";
+import button_hover from "../../../static/img/login/Submit_Button.png";
+import logout from "../../../static/img/profile/Logout_Button.png";
 
 const GamesLink = styled(Link)`
   cursor: pointer;
@@ -25,13 +24,13 @@ const GamesLink = styled(Link)`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
     background-image: url(${button_hover});
   }
-`
+`;
 
 const TableContainer = styled.div`
   /* border: 1px solid blue; */
@@ -46,7 +45,7 @@ const TableContainer = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   /* border: 1px solid blue; */
-`
+`;
 
 const InnerContainer = styled.div`
   display: flex;
@@ -61,10 +60,10 @@ const InnerContainer = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
 
-    max-height: 350px;
-    border: 1px solid red;
+  max-height: 350px;
+  border: 1px solid red;
 
-  h3{
+  h3 {
     padding-top: 4vmin;
     font-size: 2vmin;
   }
@@ -72,7 +71,7 @@ const InnerContainer = styled.div`
   @media only screen and (max-width: 670px) {
     width: 90%;
   }
-`
+`;
 
 /* <TableContainer>    
           <Label fontSize='2rem' textAlign='center'>Games Lobby</Label>
@@ -81,20 +80,23 @@ const InnerContainer = styled.div`
             <Button>Join</Button>
    </TableContainer> */
 
-
-const GameFinder = (props) =>  {
-    return(
-        <BG_Image_Scroll img={img}>
-          <TableContainer>
-          <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>  
-            <InnerContainer>
-                <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
-                {/* <Button>Join Game</Button> */}
-            </InnerContainer>
-            <GamesLink to= '/games/create'></GamesLink>
-          </TableContainer>
-        </BG_Image_Scroll>
-    );
-}
+const GameFinder = props => {
+  return (
+    <BG_Image_Scroll img={img}>
+      <TableContainer>
+        <LogoutButton img={logout} onClick={props.handleLogout} />
+        <InnerContainer>
+          <GameTable
+            handleGameSelection={props.handleGameSelection}
+            games={props.games}
+            joinGame={props.joinGame}
+          />
+          {/* <Button>Join Game</Button> */}
+        </InnerContainer>
+        <GamesLink to="/games/create" />
+      </TableContainer>
+    </BG_Image_Scroll>
+  );
+};
 
 export default GameFinder;

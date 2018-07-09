@@ -1,9 +1,5 @@
-import React from 'react';
+import React from "react";
 
 export default function TestArea(props) {
-    return (
-        <div>
-            {props.deck}
-        </div>
-    )
+  return <div>{props.deck}</div>;
 }

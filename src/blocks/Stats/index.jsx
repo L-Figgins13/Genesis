@@ -1,41 +1,40 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import { BG_Image, LogoutButton } from '../../elements';
-import img from '../../../static/img/profile/MapBorders.jpg';
-import button from '../../../static/img/profile/Join_Game_Button.png';
-import button_hover from '../../../static/img/profile/Join_Game_Button_Hover.png';
-import plate from '../../../static/img/profile/AspectRatioProfile.png';
-import arrowLeft from '../../../static/img/icons/Arrow_Left_Button.png';
-import arrowLeftHover from '../../../static/img/icons/Arrow_Left_Button_Hover.png';
+import { BG_Image, LogoutButton } from "../../elements";
+import img from "../../../static/img/profile/MapBorders.jpg";
+import button from "../../../static/img/profile/Join_Game_Button.png";
+import button_hover from "../../../static/img/profile/Join_Game_Button_Hover.png";
+import plate from "../../../static/img/profile/AspectRatioProfile.png";
+import arrowLeft from "../../../static/img/icons/Arrow_Left_Button.png";
+import arrowLeftHover from "../../../static/img/icons/Arrow_Left_Button_Hover.png";
 
-import arrowRight from '../../../static/img/icons/Arrow_Right_Button.png';
-import arrowRightHover from '../../../static/img/icons/Arrow_Right_Button_Hover.png';
+import arrowRight from "../../../static/img/icons/Arrow_Right_Button.png";
+import arrowRightHover from "../../../static/img/icons/Arrow_Right_Button_Hover.png";
 
-import logout from '../../../static/img/profile/Logout_Button.png';
-import logout_hover from '../../../static/img/profile/Logout_Button_Hover.png';
-
+import logout from "../../../static/img/profile/Logout_Button.png";
+import logout_hover from "../../../static/img/profile/Logout_Button_Hover.png";
 
 const ScoreLabel = styled.label`
   background: brown;
   margin: 3vmin;
-`
+`;
 
 const Arrow = styled.div`
   padding: 4vmin 4vmin;
   margin: 0vmin 0vmin;
-  background-image: ${props=> props.left ? `url(${arrowLeft})` : `url(${arrowRight})`};
+  background-image: ${props =>
+    props.left ? `url(${arrowLeft})` : `url(${arrowRight})`};
   background-repeat: no-repeat;
   background-size: contain;
 
   &:hover {
     transform: scale(1.1);
-    background-image: ${props=> props.left ? `url(${arrowLeftHover})` : `url(${arrowRightHover})`};
+    background-image: ${props =>
+      props.left ? `url(${arrowLeftHover})` : `url(${arrowRightHover})`};
   }
-`
-
-
+`;
 
 const Avatar = styled.div`
   padding: 14vmin 14vmin;
@@ -44,8 +43,7 @@ const Avatar = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  
-`
+`;
 
 const ScoreCard = styled.div`
   display: flex;
@@ -53,14 +51,14 @@ const ScoreCard = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 5vmin;
-`
+`;
 
-const ProfileLabel =  styled.label`
+const ProfileLabel = styled.label`
   display: block;
   margin: 0vmin auto;
-  font-size:2vmin;
+  font-size: 2vmin;
   font-weight: 700;
-`
+`;
 
 const ProfileLink = styled(Link)`
   cursor: pointer;
@@ -76,13 +74,13 @@ const ProfileLink = styled(Link)`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
     background-image: url(${button_hover});
   }
-`
+`;
 
 const ProfileContainer = styled.div`
   /* border: 1px solid blue; */
@@ -91,7 +89,7 @@ const ProfileContainer = styled.div`
   width: var(--width);
   height: var(--height);
   text-align: center;
-`
+`;
 
 const Profile = styled.div`
   background-image: url(${plate});
@@ -106,11 +104,11 @@ const Profile = styled.div`
   width: var(--width);
   height: var(--height);
 
-  form{
+  form {
     margin-top: 9vmin;
   }
 
-  h3{
+  h3 {
     padding-top: 4vmin;
     font-size: 2vmin;
   }
@@ -118,27 +116,27 @@ const Profile = styled.div`
   @media only screen and (max-width: 670px) {
     width: 90%;
   }
-`
+`;
 
 export default function Stats(props) {
-    return(
-      <BG_Image img={img}>
-        <ProfileContainer>
-          <Profile>
-            <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
-            <form onSubmit= {props.handleSubmit}>
-              <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
-              <Avatar avatarUrl = {props.user.currentAvatarUrl} />
-              <Arrow id= {1} right onClick={props.selectAvatar} />
-              <Arrow id= {2}left onClick={props.selectAvatar} />
-              <ScoreCard>
-                <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
-                <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 
-              </ScoreCard>
-              <ProfileLink to='/games'></ProfileLink>
-            </form>
-          </Profile>
-        </ProfileContainer>
-      </BG_Image>
-    );
+  return (
+    <BG_Image img={img}>
+      <ProfileContainer>
+        <Profile>
+          <LogoutButton img={logout} onClick={props.handleLogout} />
+          <form onSubmit={props.handleSubmit}>
+            <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+            <Avatar avatarUrl={props.user.currentAvatarUrl} />
+            <Arrow id={1} right onClick={props.selectAvatar} />
+            <Arrow id={2} left onClick={props.selectAvatar} />
+            <ScoreCard>
+              <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel>
+              <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel>
+            </ScoreCard>
+            <ProfileLink to="/games" />
+          </form>
+        </Profile>
+      </ProfileContainer>
+    </BG_Image>
+  );
 }

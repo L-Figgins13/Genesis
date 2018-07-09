@@ -1,6 +1,6 @@
-import db from '../db.js';
-import mongoose from 'mongoose';
+import db from "../db.js";
+import mongoose from "mongoose";
 
 const PlayerSchema = new mongoose.Schema({
-    user_id
-})
+  user_id
+});
