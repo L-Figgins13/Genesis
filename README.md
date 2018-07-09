@@ -47,8 +47,8 @@ npm start
 
 ```
 
-**Note :** Please make sure your MongoDB is running. For MongoDB installation guide see \
-[this](https://docs.mongodb.org/v3.0/installation/).
+**Note :** Please make sure your MongoDB database is up and running first. For MongoDB installation guide, please reference this MongoDB
+[installation guide](https://docs.mongodb.org/v3.0/installation/).
 
 
 ### Available Commands
