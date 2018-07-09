@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import {injectGlobal} from 'styled-components';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { injectGlobal } from "styled-components";
 
 injectGlobal`
  /* Aspect Ratio Responsive Method */
@@ -95,14 +95,14 @@ injectGlobal`
   ::-webkit-scrollbar-thumb:hover {
       background: #111; 
   }
-`
+`;
 
-const contentNode = document.getElementById('contents');
+const contentNode = document.getElementById("contents");
 
-import App from './App.jsx';
-ReactDOM.render((
+import App from "./App.jsx";
+ReactDOM.render(
   <BrowserRouter>
-      <App />
-  </BrowserRouter>
-), contentNode);
-
+    <App />
+  </BrowserRouter>,
+  contentNode
+);
