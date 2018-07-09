@@ -11,24 +11,23 @@ Genesis is a scaffolding tool which aims to create a starting point for developi
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-[Website] (www.mern-genesis.github.io)
-
-[Documentation] (www.mern-genesis.github.io)
-
-[Discussions] (www.mern-genesis.github.io)
+* [Website](www.mern-genesis.github.io)
+* [Documentation](www.mern-genesis.github.io)
+* [Discussions](www.mern-genesis.github.io)
 
 
 ### Prerequisites
 For the project to work properly you will need:
 
--[**MongoDB & (Optional) Mongoose**] (https://www.mongodb.com/)
--[**NodeJS (v8.11 or higher)**] (https://nodejs.org/en/)
+**-[MongoDB & (Optional) Mongoose](https://www.mongodb.com/)**
+**-[NodeJS (v8.11 or higher)](https://nodejs.org/en/)**
 
 
 ### Installing
 A step by step series of examples that tell you how to get a development environment running
 
 ```
+
 npm install -g mern-genesis
 
 genesis init my_app_name
@@ -42,16 +41,21 @@ npm run watch-server
 npm run watch
 
 npm start
+
 ```
-**Note :** Please make sure your MongoDB is running. For MongoDB installation guide see [this] (https://docs.mongodb.org/v3.0/installation/).
+
+**Note :** Please make sure your MongoDB is running. For MongoDB installation guide see \
+[this](https://docs.mongodb.org/v3.0/installation/).
 
 
 ### Available Commands
 
 ```
+
    - **npm run watch-server** -  will start the server with nodemon watching for changes
    - **npm run watch** - will start the frontend watch for changes
    - **npm start** - starts the development application at localhost:3000 and the server at localhost:8000.
+
 ```
 
 
@@ -59,9 +63,10 @@ npm start
 Coming Soon
 
 
-### File Structure
+## File Structure
 
 **Webpack Configs**
+
 MERN uses Webpack for bundling modules. There are four types of Webpack configs provided:
  - **webpack.config.dev.js** for development
  - **webpack.config.prod.js** for production
@@ -71,13 +76,13 @@ MERN uses Webpack for bundling modules. There are four types of Webpack configs 
 The Webpack configuration is minimal and beginner-friendly. You can customise and add more features to it for production builds if you would like.
 
 **Server**
+
 MERN uses express web framework. Our app sits in server.js where we check for NODE_ENV.
 If NODE_ENV is development, we apply Webpack middlewares for bundling and Hot Module Replacement.
 
 
-### Front End Development
+## Front End Development
 This scaffolding uses material UI for rapid design prototyping and styled components for modern web component styling. More information on this will be added shortly.
-
 
 
 ## Deployment
