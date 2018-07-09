@@ -30,7 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
 * [Versioning](www.mern-genesis.github.io)
 * [Authors](www.mern-genesis.github.io)
 * [License](www.mern-genesis.github.io)
-* [Acknowledgements][1]
+* [Acknowledgements](## Acknowledgments)
 
 
 ### Prerequisites
@@ -134,5 +134,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 
 ## Acknowledgments
-[1]: [linked title]()
 * Coming Soon
