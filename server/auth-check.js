@@ -10,7 +10,7 @@ const authCheck = (req, res, next) => {
   // this splits the value(token) part of the Authorization header
   const token = req.headers.authorization.split(" ")[1];
 
-  jwt.verify(token, config.jwtSecret, function(err, decodedToken) {
+  jwt.verify(token, config.jwtSecret, (err, decodedToken) => {
     if (err) {
       console.log(err);
     }

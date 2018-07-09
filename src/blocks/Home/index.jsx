@@ -6,7 +6,7 @@ import Auth from "../../../client/auth.js";
 import {
   Wrapper,
   StyledLink,
-  bgImage,
+  BGImage,
   FormButton,
   Button
 } from "../../elements";
@@ -79,7 +79,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <bgImage img={splash}>
+      <BGImage img={splash}>
         <Wrapper>
           <LogoArea>
             <img alt="Pirate Party Logo" width="100%" src={logo} />
@@ -133,7 +133,7 @@ export default class Home extends React.Component {
             </Button>
           </OptionsBox>
         </Wrapper>
-      </bgImage>
+      </BGImage>
     );
   }
 }

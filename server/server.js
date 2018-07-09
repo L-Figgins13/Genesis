@@ -1,6 +1,3 @@
-const ABSPATH =
-  "C:\\Users\\zmachine\\Desktop\\ReactProjects\\Development\\Genesis\\static\\index.html";
-
 import socket from "socket.io";
 
 import passport from "passport";
@@ -18,26 +15,29 @@ import auth from "./routes/auth.js";
 import test from "./routes/test.js";
 import path from "path";
 
+const ABSPATH =
+  "C:\\Users\\zmachine\\Desktop\\ReactProjects\\Development\\Genesis\\static\\index.html";
+
 SourceMapSupport.install();
 
-let app = express();
+const app = express();
 
-//middleware
+// middleware
 app.use(express.static("static"));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use("/api", authCheck);
 
-//load strategies
+// load strategies
 passport.use("local-signup", localSignupStrategy);
 passport.use("local-login", localLoginStrategy);
 
-//load routes
+// load routes
 app.use("/api", api);
 app.use("/auth", auth);
 app.use("/test", test);
 
-//dev test
+// dev test
 if (process.env.NODE_ENV !== "production") {
   const webpack = require("webpack");
   const config = require("../webpack.config");
@@ -51,16 +51,16 @@ if (process.env.NODE_ENV !== "production") {
   );
 }
 
-var server = app.listen(3000, function() {
+let server = app.listen(3000, () => {
   console.log("App started at port 3000");
 });
 
 const io = socket(server);
 
-//this allows me to access io in the request response cycle
+// this allows me to access io in the request response cycle
 app.set("io", io);
 
-app.get("/*", function(req, res) {
+app.get("/*", (req, res) => {
   // console.log(path.join(path.resolve(__dirname, '..'),'static/index.html'));
 
   res.sendFile(path.join(path.resolve(__dirname, ".."), "static/index.html"));
@@ -82,7 +82,7 @@ io.on("disconnect", socket => {
   console.log("Socket ID:", socket.id, "disconnecting");
 });
 
-var chat = io.of("/chat");
+let chat = io.of("/chat");
 chat.on("connection", socket => {
   console.log(`--------Chat Socket ID:${socket.id} connecting--------`);
 
@@ -92,7 +92,7 @@ chat.on("connection", socket => {
     socket.username = data.username;
   });
 
-  socket.on("SEND_MESSAGE", function(data) {
+  socket.on("SEND_MESSAGE", data => {
     console.log("sending message");
     console.log(data);
     socket.to(data.chat_id).emit("RECIEVE_MESSAGE", data);

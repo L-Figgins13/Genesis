@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PlayerArea from "./PlayerArea.jsx";
 import img from "../../../static/img/gamelobby/BG.jpg";
 import gameMenu from "../../../static/img/gamelobby/Aspect_Ratio_GameLobby.png";
-import { bgImageScroll } from "../../elements";
+import { BGImageScroll } from "../../elements";
 
 const GameArea = styled.div`
   background-image: url(${props => props.img});
@@ -40,12 +40,12 @@ const GameArea = styled.div`
 `;
 
 const GameLobby = props => (
-  <bgImageScroll img={img}>
+  <BGImageScroll img={img}>
     <GameArea img={gameMenu}>
       <h1>Waiting for more players to join...</h1>
       <PlayerArea players={props.players} />
     </GameArea>
-  </bgImageScroll>
+  </BGImageScroll>
 );
 
 export default GameLobby;

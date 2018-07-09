@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import {
   StyledLink,
-  bgImage,
+  BGImage,
   FormBG,
   FormHint,
   FormLabel,
@@ -17,7 +17,7 @@ import plate from "../../../static/img/login/Aspect_Ratio_BG_Plate.png";
 import button from "../../../static/img/login/Submit_Button.png";
 import buttonHover from "../../../static/img/login/Submit_Button_Hover.png";
 
-const bgImageScroll = bgImage.extend`
+const BGImageScroll = BGImage.extend`
   -webkit-animation: 100s scroll infinite linear;
   -moz-animation: 100s scroll infinite linear;
   -o-animation: 100s scroll infinite linear;
@@ -72,7 +72,7 @@ const bgImageScroll = bgImage.extend`
 
 const LoginForm = function(props) {
   return (
-    <bgImageScroll img={img}>
+    <BGImageScroll img={img}>
       <FormContainer>
         <FormBG img={plate}>
           <form onSubmit={props.handleSubmit}>
@@ -101,7 +101,7 @@ const LoginForm = function(props) {
           </form>
         </FormBG>
       </FormContainer>
-    </bgImageScroll>
+    </BGImageScroll>
   );
 };
 

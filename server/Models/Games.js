@@ -1,5 +1,5 @@
-import db from "../db.js";
 import mongoose from "mongoose";
+import db from "../db.js";
 import Logger from "../logger.js";
 import constants from "../constants.js";
 
@@ -33,13 +33,13 @@ const GameSchema = new Schema({
 });
 
 GameSchema.statics.join = function join(gameID, user) {
-  //stages player to be added to the game
+  // stages player to be added to the game
   const player = {
     user_id: user._id,
     username: user.username
   };
-  //TODO fix this fucking mess
-  //creates a promise to be returned so that the final .then() will be in the route
+  // TODO fix this fucking mess
+  // creates a promise to be returned so that the final .then() will be in the route
   const promise = new Promise((resolve, reject) => {
     this.model("Game")
       .findById(gameID)
@@ -112,6 +112,6 @@ GameSchema.statics.start = function start(gameID) {
   return promise;
 };
 
-var Game = mongoose.model("Game", GameSchema);
+let Game = mongoose.model("Game", GameSchema);
 
 module.exports = Game;

@@ -1,5 +1,5 @@
-import db from "../db.js";
 import mongoose from "mongoose";
+import db from "../db.js";
 import shuffle from "../lib/fisher-yates-shuffle.js";
 
 const Schema = mongoose.Schema;
@@ -29,6 +29,6 @@ const cardSchema = new Schema({
 //     return promise;
 // }
 
-var Card = mongoose.model("Card", cardSchema);
+let Card = mongoose.model("Card", cardSchema);
 
 export default Card;

@@ -1,4 +1,4 @@
-//for postman test routes only
+// for postman test routes only
 // to be removed before production build
 
 import express from "express";

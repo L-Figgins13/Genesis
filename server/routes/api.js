@@ -10,7 +10,7 @@ import shuffle from "../lib/fisher-yates-shuffle.js";
 const router = express.Router();
 
 router.get("/games", (req, res, next) => {
-  Game.find({}).then(function(games) {
+  Game.find({}).then(games => {
     res.json(games);
   });
 });
@@ -29,7 +29,7 @@ router.get("/games/:id", (req, res, next) => {
     });
 });
 
-//maybe move most of this logic to the model????
+// maybe move most of this logic to the model????
 router.post("/games/create", (req, res, next) => {
   const newGame = new Game({ owner: req.body.owner, title: req.body.title });
   newGame.players.push({ user_id: req.user._id, username: req.user.username });
@@ -59,7 +59,7 @@ router.post("/games/join", (req, res, next) => {
     });
 });
 
-//we need to standardize coding style. i know its my fault
+// we need to standardize coding style. i know its my fault
 router.post("/games/start", (req, res, next) => {
   Game.start(req.body.gameID)
     .then(updatedGame => {
@@ -67,11 +67,11 @@ router.post("/games/start", (req, res, next) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ err: err });
+      res.status(500).json({ err });
     });
 });
 
-//----------- Start User (Profile) Routes-------------------
+// ----------- Start User (Profile) Routes-------------------
 
 router.get(
   "/users/:id",
@@ -93,12 +93,12 @@ router.get(
         const paths = avatars.map(avatar => avatar.imageURL);
         const data = {
           user: res.locals.user,
-          paths: paths
+          paths
         };
         res.json(data);
       })
       .catch(error => {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error });
       });
   }
 );
@@ -113,7 +113,7 @@ router.post(
         next();
       })
       .catch(err => {
-        res.json({ msg: `error in find` });
+        res.json({ msg: "error in find" });
       });
   },
 
@@ -136,14 +136,14 @@ router.post(
   }
 );
 
-//TODO shuffle shit to card model
+// TODO shuffle shit to card model
 
 router.get(
   "/test/deck",
   (req, res, next) => {
     Card.find({})
       .then(cards => {
-        let shuffled = shuffle(cards);
+        const shuffled = shuffle(cards);
         res.locals.shuffledDeck = shuffled;
         next();
       })

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import User from "../Models/Users.js";
 import { Strategy as PassportLocalStrategy } from "passport-local";
+import User from "../Models/Users.js";
 import config from "../../config/index.json";
 
 const strat = new PassportLocalStrategy(

@@ -129,7 +129,7 @@ const Wrapper = styled.div`
 `;
 export { Wrapper };
 
-const bgImage = styled.div`
+const BGImage = styled.div`
   background-image: url(${props => props.img});
   background-repeat: repeat;
   background-position: center center;
@@ -140,9 +140,9 @@ const bgImage = styled.div`
   margin: 0;
   padding: 0;
 `;
-export { bgImage };
+export { BGImage };
 
-const bgImageScroll = bgImage.extend`
+const BGImageScroll = BGImage.extend`
   -webkit-animation: 100s scroll infinite linear;
   -moz-animation: 100s scroll infinite linear;
   -o-animation: 100s scroll infinite linear;
@@ -194,7 +194,7 @@ const bgImageScroll = bgImage.extend`
     }
   }
 `;
-export { bgImageScroll };
+export { BGImageScroll };
 
 const FormHint = styled.div`
   color: #b22222;

@@ -1,6 +1,6 @@
 // check to make sure i am doing somethign twice.. later after this is done
-import User from "../Models/Users";
 import { Strategy as PassportLocalStrategy } from "passport-local";
+import User from "../Models/Users";
 
 const LocalStrategy = new PassportLocalStrategy(
   {
@@ -10,7 +10,7 @@ const LocalStrategy = new PassportLocalStrategy(
     passReqToCallback: true
   },
   (req, username, password, done) => {
-    const newUser = new User({ username: username, password: password });
+    const newUser = new User({ username, password });
     console.log("Creating New user", newUser);
     newUser.save(err => {
       if (err) {

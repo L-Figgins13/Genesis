@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { bgImage, LogoutButton } from "../../elements";
+import { BGImage, LogoutButton } from "../../elements";
 import img from "../../../static/img/profile/MapBorders.jpg";
 import button from "../../../static/img/profile/Join_Game_Button.png";
 import buttonHover from "../../../static/img/profile/Join_Game_Button_Hover.png";
@@ -119,9 +119,10 @@ const Profile = styled.div`
 
 export default function Stats(props) {
   return (
-    <bgImage img={img}>
+    <BGImage img={img}>
       <ProfileContainer>
         <Profile>
+          <ProfileLink to="/games" />
           <LogoutButton img={logout} onClick={props.handleLogout} />
           <form onSubmit={props.handleSubmit}>
             <ProfileLabel>
@@ -141,10 +142,9 @@ export default function Stats(props) {
                 {props.user.stats.losses}
               </ScoreLabel>
             </ScoreCard>
-            <ProfileLink to="/games" />
           </form>
         </Profile>
       </ProfileContainer>
-    </bgImage>
+    </BGImage>
   );
 }

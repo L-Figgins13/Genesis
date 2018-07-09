@@ -1,6 +1,6 @@
-import db from "../db.js";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import db from "../db.js";
 
 const Schema = mongoose.Schema;
 

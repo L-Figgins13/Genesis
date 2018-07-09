@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
 import GameTable from "./GameTable.jsx";
-import { bgImageScroll, LogoutButton } from "../../elements";
+import { BGImageScroll, LogoutButton } from "../../elements";
 
 import img from "../../../static/img/gamesfinder/MapNoBorders.jpg";
 import plate from "../../../static/img/gamesfinder/AspectRatioGames.png";
@@ -81,7 +81,7 @@ const InnerContainer = styled.div`
    </TableContainer> */
 
 const GameFinder = props => (
-  <bgImageScroll img={img}>
+  <BGImageScroll img={img}>
     <TableContainer>
       <LogoutButton img={logout} onClick={props.handleLogout} />
       <InnerContainer>
@@ -94,7 +94,7 @@ const GameFinder = props => (
       </InnerContainer>
       <GamesLink to="/games/create" />
     </TableContainer>
-  </bgImageScroll>
+  </BGImageScroll>
 );
 
 export default GameFinder;

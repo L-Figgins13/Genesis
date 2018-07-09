@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {
-  bgImage,
+  BGImage,
   FormLabel,
   FormButton,
   FormContainer,
@@ -29,7 +29,7 @@ const CreateButton = FormButton.extend`
   }
 `;
 
-const bgImageScroll = bgImage.extend`
+const BGImageScroll = BGImage.extend`
   -webkit-animation: 100s scroll infinite linear;
   -moz-animation: 100s scroll infinite linear;
   -o-animation: 100s scroll infinite linear;
@@ -84,7 +84,7 @@ const bgImageScroll = bgImage.extend`
 
 const SignupForm = function(props) {
   return (
-    <bgImageScroll img={img}>
+    <BGImageScroll img={img}>
       <FormContainer>
         <FormBG img={plate}>
           <form onSubmit={props.handleSubmit}>
@@ -130,7 +130,7 @@ const SignupForm = function(props) {
           </form>
         </FormBG>
       </FormContainer>
-    </bgImageScroll>
+    </BGImageScroll>
   );
 };
 

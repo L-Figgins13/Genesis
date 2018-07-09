@@ -7,7 +7,7 @@ import button from "../../../static/img/login/Submit_Button.png";
 import buttonHover from "../../../static/img/login/Submit_Button.png";
 import plate from "../../../static/img/gamesfinder/AspectRatioGames.png";
 
-const bgImageGame = styled.div`
+const BGImageGame = styled.div`
   background-image: url(${img});
   background-repeat: repeat;
   background-position: center center;
@@ -174,7 +174,7 @@ const Game = styled.div`
 
 const CreateGameForm = function(props) {
   return (
-    <bgImageGame>
+    <BGImageGame>
       <GameContainer>
         <Game>
           <form onSubmit={props.handleSubmit}>
@@ -189,7 +189,7 @@ const CreateGameForm = function(props) {
           </form>
         </Game>
       </GameContainer>
-    </bgImageGame>
+    </BGImageGame>
   );
 };
 
