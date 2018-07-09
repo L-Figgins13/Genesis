@@ -53,9 +53,9 @@ npm start
 
 ```
 
-   - **npm run watch-server** -  will start the server with nodemon watching for changes
-   - **npm run watch** - will start the frontend watch for changes
-   - **npm start** - starts the development application at localhost:3000 and the server at localhost:8000.
+   - npm run watch-server -  starts the server with nodemon watching.
+   - npm run watch - starts watching full project.
+   - npm start - starts development app at localhost:3000, server at localhost:8000.
 
 ```
 
@@ -68,7 +68,7 @@ Coming Soon
 
 **Webpack Configs**
 
-MERN uses Webpack for bundling modules. There are four types of Webpack configs provided:
+MERN GENESIS uses Webpack for bundling modules. There are four types of Webpack configs provided:
  - **webpack.config.dev.js** for development
  - **webpack.config.prod.js** for production
  - **webpack.config.server.js** for bundling server in production
@@ -78,7 +78,7 @@ The Webpack configuration is minimal and beginner-friendly. You can customise an
 
 **Server**
 
-MERN uses express web framework. Our app sits in server.js where we check for NODE_ENV.
+MERN GENESIS uses express web framework. Our app sits in server.js where we check for NODE_ENV.
 If NODE_ENV is development, we apply Webpack middlewares for bundling and Hot Module Replacement.
 
 
@@ -93,7 +93,7 @@ Add additional notes about how to deploy this on a live system
 * [MongoDB]( https://www.mongodb.com/) - NoSQL Database
 * [Express]( https://expressjs.com/) - Server Middleware
 * [React](https://reactjs.org/) - FrontEnd Web Technology
-* [NodeJS]( https://nodejs.org/en/) - npm and general project structure
+* [NodeJS]( https://nodejs.org/en/) - Npm and General Project Structure
 
 
 ## Contributing 
@@ -106,8 +106,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 
 ## Authors
-* **Logan Figgins** - *Initial work* - [MERN-GENESIS](https://github.com/L-Figgins13/Genesis/blob/master/README.md)
-* **Zack Watkins** - *Initial work* - [MERN-GENESIS](https://github.com/L-Figgins13/Genesis/blob/master/README.md)
+* **Logan Figgins** - *Designer & Developer* - [MERN-GENESIS](https://github.com/L-Figgins13)
+* **Zack Watkins** - *Designer & Developer* - [MERN-GENESIS](https://github.com/TheByteForge)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
