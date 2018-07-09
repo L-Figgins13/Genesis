@@ -1,13 +1,15 @@
 ![mern-genesis](static/img/MernLogo1.jpg)
 
 
-# Project Genesis
+# MERN Genesis
 [![HitCount](http://hits.dwyl.com/{L-Figgins13}/{Genesis}.svg)](http://hits.dwyl.com/{L-Figgins13}/{Genesis})
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
 [![Node version](https://img.shields.io/node/v/[NPM-MODULE-NAME].svg?style=flat)](http://nodejs.org/download/)
 [![Build Status](https://travis-ci.org/{L-Figgins13}/{Genesis}.png?branch=master)](https://travis-ci.org/{L-Figgins13}/{Genesis})
 
-Genesis is a scaffolding tool which aims to create a starting point for developing isometric JavaScript applications using the MERN technology stack (MongoDB, Express, React, Node). In addition to MERN, this scaffolding project also includes several other technologies to ease development time such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management. 
+**mern-genesis** is a scaffolding tool which aims to create a starting point for developing Isometric JavaScript Applications and Progressive Web Apps using the MERN technology stack (MongoDB, Express, React, Node). 
+
+In addition to MERN, this scaffolding project also includes several other technologies to ease development time, technologies such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management, among others. 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -61,7 +63,7 @@ npm start
 
 
 ## Running the tests
-Coming Soon
+- Coming Soon
 
 
 ## File Structure
@@ -87,7 +89,7 @@ This scaffolding uses material UI for rapid design prototyping and styled compon
 
 
 ## Deployment
-Add additional notes about how to deploy this on a live system
+- Coming Soon!
 
 ## Built With
 * [MongoDB]( https://www.mongodb.com/) - NoSQL Database
