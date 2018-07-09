@@ -3,9 +3,7 @@
 # Project Genesis
 [![HitCount](http://hits.dwyl.com/{L-Figgins13}/{Genesis}.svg)](http://hits.dwyl.com/{L-Figgins13}/{Genesis})
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
-![docs](http://inch-ci.org/github/dwyl/hapi-auth-jwt2)
 [![Node version](https://img.shields.io/node/v/[NPM-MODULE-NAME].svg?style=flat)](http://nodejs.org/download/)
-
 [![Build Status](https://travis-ci.org/{L-Figgins13}/{Genesis}.png?branch=master)](https://travis-ci.org/{L-Figgins13}/{Genesis})
 
 Genesis is a scaffolding tool which aims to create a starting point for developing isometric JavaScript applications using the MERN technology stack (MongoDB, Express, React, Node). In addition to MERN, this scaffolding project also includes several other technologies to ease development time such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management. 
@@ -47,12 +45,9 @@ npm start
 Note : Please make sure your MongoDB is running. For MongoDB installation guide see [this] https://docs.mongodb.org/v3.0/installation/ . Also npm6 is required to install dependencies properly.
 
 ### Available Commands
-1. npm run watch-server -  will start the server with nodemon watching for changes
-
-2. npm run watch - will start the frontend watch for changes
-
-3. npm start - starts the development application at localhost:3000 and the server at localhost:8000.
-
+   - **npm run watch-server** -  will start the server with nodemon watching for changes
+   - **npm run watch** - will start the frontend watch for changes
+   - **npm start** - starts the development application at localhost:3000 and the server at localhost:8000.
 
 ## Running the tests
 Coming Soon
