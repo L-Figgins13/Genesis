@@ -19,8 +19,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 For the project to work properly you will need:
 
-**-[MongoDB & (Optional) Mongoose](https://www.mongodb.com/)**
-**-[NodeJS (v8.11 or higher)](https://nodejs.org/en/)**
+[MongoDB & (Optional) Mongoose](https://www.mongodb.com/)
+
+[NodeJS (v8.11 or higher)](https://nodejs.org/en/)
 
 
 ### Installing
