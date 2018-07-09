@@ -7,7 +7,7 @@
 [![Node version](https://img.shields.io/node/v/[NPM-MODULE-NAME].svg?style=flat)](http://nodejs.org/download/)
 [![Build Status](https://travis-ci.org/{L-Figgins13}/{Genesis}.png?branch=master)](https://travis-ci.org/{L-Figgins13}/{Genesis})
 
-**mern-genesis** is a scaffolding tool which aims to create a starting point for developing Isometric JavaScript Applications and Progressive Web Apps using the MERN technology stack (MongoDB, Express, React, Node). 
+**mern-genesis** is a scaffolding tool which aims to create a starting point for developing **Isometric JavaScript Applications** and **Progressive Web Application**'s using the MERN technology stack (MongoDB, Express, React, Node). 
 
 In addition to MERN, this scaffolding project also includes several other technologies to ease development time, technologies such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management, among others. 
 
