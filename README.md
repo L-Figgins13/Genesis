@@ -1,4 +1,4 @@
-[[/static/img/mernlogo1.jpg | Mern-Genesis Logo]]
+[![mern-genesis](Genesis/static/img/MernLogo1.jpg)]
 
 # Project Genesis
 Genesis is a scaffolding tool which aims to create a starting point for developing isometric JavaScript applications using the MERN technology stack (MongoDB, Express, React, Node). In addition to MERN, this scaffolding project also includes several other technologies to ease development time such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management. 
