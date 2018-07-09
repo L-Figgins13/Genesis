@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Auth from "../../client/auth.js";
 import { Route, Switch, Redirect, BrowserRouter, Link } from "react-router-dom";
+import Auth from "../../client/auth.js";
 
 import TestArea from "../blocks/TestArea";
 

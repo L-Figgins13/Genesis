@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { injectGlobal } from "styled-components";
 
+import App from "./App.jsx";
+
 injectGlobal`
  /* Aspect Ratio Responsive Method */
  body {
@@ -98,8 +100,6 @@ injectGlobal`
 `;
 
 const contentNode = document.getElementById("contents");
-
-import App from "./App.jsx";
 ReactDOM.render(
   <BrowserRouter>
     <App />

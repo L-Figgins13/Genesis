@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
 import PropTypes from "prop-types";
-import Auth from "../client/auth.js";
 import {
   Route,
   Switch,
@@ -10,12 +9,13 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
+import Auth from "../client/auth.js";
 
-//need to be refractored still
+// need to be refractored still
 import Home from "./blocks/Home";
 import GamesList from "./container/GamesList.jsx";
 
-//import containers
+// import containers
 import CreateGame from "./container/CreateGame.jsx";
 import Game from "./container/Game.jsx";
 import Profile from "./container/Profile.jsx";
@@ -80,7 +80,7 @@ export default class App extends React.Component {
     this.setState({ authenticated: Auth.isUserAuthenticated() });
   }
 
-  //food
+  // food
   render() {
     return (
       <div>

@@ -1,18 +1,17 @@
 import React from "react";
-import Auth from "../../../client/auth.js";
-import path from "path";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import ReactPlayer from "react-player";
+import Auth from "../../../client/auth.js";
 import {
   Wrapper,
   StyledLink,
-  BG_Image,
+  bgImage,
   FormButton,
   Button
 } from "../../elements";
 import splash from "../../../static/img/backgrounds/Splash_Screen_BG.jpg";
 import logo from "../../../static/img/logo/Logo_Large.png";
-import ReactPlayer from "react-player";
 
 import audioFile from "../../../static/audio/Drums_Mix.mp3";
 import fxBell from "../../../static/audio/SoundFX/bell.wav";
@@ -65,26 +64,25 @@ export default class Home extends React.Component {
     this.state = {
       music: true,
       soundFXUrl: null,
-      fxPlaying: false,
-      volume: 0.8,
-      muted: false
+      fxPlaying: false
+      // muted: false,
     };
-  }
-
-  loadSound(url) {
-    this.setState({ soundUrl: url });
   }
 
   componentDidMount() {
     this.props.toggleAuthenticateStatus();
   }
 
+  loadSound(url) {
+    this.setState({ soundFXUrl: url });
+  }
+
   render() {
     return (
-      <BG_Image img={splash}>
+      <bgImage img={splash}>
         <Wrapper>
           <LogoArea>
-            <img width="100%" src={logo} />
+            <img alt="Pirate Party Logo" width="100%" src={logo} />
           </LogoArea>
           <OptionsBox>
             <h1>Developer Options:</h1>
@@ -135,7 +133,7 @@ export default class Home extends React.Component {
             </Button>
           </OptionsBox>
         </Wrapper>
-      </BG_Image>
+      </bgImage>
     );
   }
 }

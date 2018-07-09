@@ -3,10 +3,10 @@ import Auth from "../../client/auth.js";
 import "isomorphic-fetch";
 import validator from "validator";
 
-//import components
+// import components
 import LoginForm from "../blocks/LoginForm";
 
-//TODO NEEDS BOTH FRONT END FORM VALIDATION AND BACK END
+// TODO NEEDS BOTH FRONT END FORM VALIDATION AND BACK END
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -29,17 +29,14 @@ export default class Login extends React.Component {
     if (!validator.isAlphanumeric(form.username)) {
       this.setState({ showIncorrectUsernameOrPasswordHint: true });
       return false;
-    } else if (!validator.isAlphanumeric(form.password)) {
+    }
+    if (!validator.isAlphanumeric(form.password)) {
       this.setState({ showIncorrectUsernameOrPasswordHint: true });
       return false;
-    } else {
-      console.log("setting validated to true");
-      this.setState({ validated: true });
-      return true;
     }
-
-    console.log("this should mb not print");
-    return false;
+    console.log("setting validated to true");
+    this.setState({ validated: true });
+    return true;
   }
 
   handleInputChange(event) {

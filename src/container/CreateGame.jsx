@@ -9,7 +9,7 @@ import CreateGameForm from "../blocks/CreateGameForm";
 export default class CreateGame extends React.Component {
   constructor(props) {
     super(props);
-    //eventually the owner of the game with done automatically by determining whoever
+    // eventually the owner of the game with done automatically by determining whoever
     // the logged in user is. For now. its just going to be a field to test
     // all the databse logic
     this.state = {
@@ -34,7 +34,7 @@ export default class CreateGame extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.owner + " " + this.state.title);
+    console.log(`${this.state.owner} ${this.state.title}`);
     this.createGame();
   }
 
@@ -54,7 +54,7 @@ export default class CreateGame extends React.Component {
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
       .then(response => {
-        console.log("logging response object " + JSON.stringify(response));
+        console.log(`logging response object ${JSON.stringify(response)}`);
         if (response.msg === "ok") {
           console.log("Success:", response);
           this.setState({ redirect: true, game_id: response.game_id });

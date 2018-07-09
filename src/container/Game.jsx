@@ -4,9 +4,6 @@ import Auth from "../../client/auth.js";
 import "whatwg-fetch";
 import io from "socket.io-client";
 
-//Styles
-
-//components
 import Chat from "../blocks/Chat";
 import GameLobby from "../blocks/GameLobby";
 import { Button } from "../elements";
@@ -30,12 +27,12 @@ export default class Game extends React.Component {
       }
     };
 
-    //bind methods
+    // bind methods
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.startGame = this.startGame.bind(this);
 
-    //create sockets
+    // create sockets
     this.gameIO = io("localhost:3000");
     this.chatIO = io("localhost:3000/chat");
 
@@ -52,7 +49,7 @@ export default class Game extends React.Component {
     this.gameIO.on("USER_LEFT", data => {
       this.loadData()
         .then(gameID => {
-          console.log(" a Player: " + data.username + " has left the game");
+          console.log(` a Player: ${data.username} has left the game`);
         })
         .catch(error => {
           console.log("Error in USER_LEFT socket event");
@@ -65,8 +62,8 @@ export default class Game extends React.Component {
       this.setState({ chat });
     });
 
-    //now it updates the state itself so for a cleaner user experience
-    //and only sends messages to the other sockets so the user typing the message
+    // now it updates the state itself so for a cleaner user experience
+    // and only sends messages to the other sockets so the user typing the message
     // does not experience latency
     this.sendMessage = event => {
       event.preventDefault();
@@ -85,7 +82,7 @@ export default class Game extends React.Component {
 
       chat.messages.push(msg);
       chat.messageInput = "";
-      this.setState({ chat: chat });
+      this.setState({ chat });
     };
 
     this.sendMessage = this.sendMessage.bind(this);
@@ -100,7 +97,7 @@ export default class Game extends React.Component {
   }
 
   loadData() {
-    let promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       fetch(`/api/games/${this.props.match.params.id}`, {
         headers: {
           Authorization: `bearer ${Auth.getToken()}`
@@ -122,24 +119,24 @@ export default class Game extends React.Component {
     return promise;
   }
 
-  //rember to check here if there is an error
+  // rember to check here if there is an error
   handleInputChange(event) {
-    let chat = { ...this.state.chat };
+    const chat = { ...this.state.chat };
     console.log(chat);
     console.log(event.target.value);
     chat.messageInput = event.target.value;
     console.log(chat.messageInput);
-    this.setState({ chat: chat });
+    this.setState({ chat });
   }
 
   startGame(event) {
     console.log("attempting to start");
 
-    fetch(`/api/games/start`, {
-      method: `POST`,
+    fetch("/api/games/start", {
+      method: "POST",
       headers: {
         Authorization: `bearer ${Auth.getToken()}`,
-        "Content-Type": `application/json`
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         gameID: this.state.gameID

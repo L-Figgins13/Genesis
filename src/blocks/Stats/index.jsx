@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { BG_Image, LogoutButton } from "../../elements";
+import { bgImage, LogoutButton } from "../../elements";
 import img from "../../../static/img/profile/MapBorders.jpg";
 import button from "../../../static/img/profile/Join_Game_Button.png";
-import button_hover from "../../../static/img/profile/Join_Game_Button_Hover.png";
+import buttonHover from "../../../static/img/profile/Join_Game_Button_Hover.png";
 import plate from "../../../static/img/profile/AspectRatioProfile.png";
 import arrowLeft from "../../../static/img/icons/Arrow_Left_Button.png";
 import arrowLeftHover from "../../../static/img/icons/Arrow_Left_Button_Hover.png";
@@ -14,7 +14,6 @@ import arrowRight from "../../../static/img/icons/Arrow_Right_Button.png";
 import arrowRightHover from "../../../static/img/icons/Arrow_Right_Button_Hover.png";
 
 import logout from "../../../static/img/profile/Logout_Button.png";
-import logout_hover from "../../../static/img/profile/Logout_Button_Hover.png";
 
 const ScoreLabel = styled.label`
   background: brown;
@@ -78,7 +77,7 @@ const ProfileLink = styled(Link)`
 
   &:hover {
     transform: scale(1.1);
-    background-image: url(${button_hover});
+    background-image: url(${buttonHover});
   }
 `;
 
@@ -120,23 +119,32 @@ const Profile = styled.div`
 
 export default function Stats(props) {
   return (
-    <BG_Image img={img}>
+    <bgImage img={img}>
       <ProfileContainer>
         <Profile>
           <LogoutButton img={logout} onClick={props.handleLogout} />
           <form onSubmit={props.handleSubmit}>
-            <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+            <ProfileLabel>
+              {props.user.username}
+              's Profile
+            </ProfileLabel>
             <Avatar avatarUrl={props.user.currentAvatarUrl} />
             <Arrow id={1} right onClick={props.selectAvatar} />
             <Arrow id={2} left onClick={props.selectAvatar} />
             <ScoreCard>
-              <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel>
-              <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel>
+              <ScoreLabel>
+                Wins:
+                {props.user.stats.wins}
+              </ScoreLabel>
+              <ScoreLabel>
+                Losses:
+                {props.user.stats.losses}
+              </ScoreLabel>
             </ScoreCard>
             <ProfileLink to="/games" />
           </form>
         </Profile>
       </ProfileContainer>
-    </BG_Image>
+    </bgImage>
   );
 }

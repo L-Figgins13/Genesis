@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
 import {
-  BG_Image,
+  bgImage,
   FormLabel,
   FormButton,
   FormContainer,
   InputBox,
   FormBG,
-  FormHint,
-  LogoutButton
+  FormHint
 } from "../../elements";
 
 import img from "../../../static/img/login/MapNoBorders.jpg";
@@ -31,7 +29,7 @@ const CreateButton = FormButton.extend`
   }
 `;
 
-const BG_Image_Scroll = BG_Image.extend`
+const bgImageScroll = bgImage.extend`
   -webkit-animation: 100s scroll infinite linear;
   -moz-animation: 100s scroll infinite linear;
   -o-animation: 100s scroll infinite linear;
@@ -86,7 +84,7 @@ const BG_Image_Scroll = BG_Image.extend`
 
 const SignupForm = function(props) {
   return (
-    <BG_Image_Scroll img={img}>
+    <bgImageScroll img={img}>
       <FormContainer>
         <FormBG img={plate}>
           <form onSubmit={props.handleSubmit}>
@@ -132,7 +130,7 @@ const SignupForm = function(props) {
           </form>
         </FormBG>
       </FormContainer>
-    </BG_Image_Scroll>
+    </bgImageScroll>
   );
 };
 

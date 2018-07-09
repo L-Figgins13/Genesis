@@ -26,40 +26,40 @@ export default class Profile extends React.Component {
   }
 
   selectAvatar(event) {
-    let id = parseInt(event.target.id);
+    const id = parseInt(event.target.id);
 
     if (id === 1) {
-      let avatarID =
+      const avatarID =
         (this.state.user.avatarID + 1) %
         (this.state.avatarPaths.length + 1) ===
         0
           ? 1
           : (this.state.user.avatarID + 1) %
             (this.state.avatarPaths.length + 1);
-      let currentAvatarUrl = this.state.avatarPaths[avatarID - 1];
+      const currentAvatarUrl = this.state.avatarPaths[avatarID - 1];
 
-      let user = this.state.user;
+      const user = this.state.user;
       user.avatarID = avatarID;
       user.currentAvatarUrl = currentAvatarUrl;
 
-      let newState = this.state;
+      const newState = this.state;
       newState.user = user;
       this.setState(newState);
     } else {
-      let avatarID =
+      const avatarID =
         (this.state.user.avatarID - 1) %
         (this.state.avatarPaths.length + 1) ===
         0
           ? 4
           : (this.state.user.avatarID - 1) %
             (this.state.avatarPaths.length + 1);
-      let currentAvatarUrl = this.state.avatarPaths[avatarID - 1];
+      const currentAvatarUrl = this.state.avatarPaths[avatarID - 1];
 
-      let user = this.state.user;
+      const user = this.state.user;
       user.avatarID = avatarID;
       user.currentAvatarUrl = currentAvatarUrl;
 
-      let newState = this.state;
+      const newState = this.state;
       newState.user = user;
       this.setState(newState);
     }
@@ -75,7 +75,7 @@ export default class Profile extends React.Component {
         response
           .json()
           .then(data => {
-            let currentAvatarUrl = data.paths[data.user.avatarID - 1];
+            const currentAvatarUrl = data.paths[data.user.avatarID - 1];
 
             const newState = {
               user: {
@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
                   losses: data.user.stats.losses
                 },
                 avatarID: data.user.avatarID,
-                currentAvatarUrl: currentAvatarUrl
+                currentAvatarUrl
               },
               avatarPaths: data.paths
             };

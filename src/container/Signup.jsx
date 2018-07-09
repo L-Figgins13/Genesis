@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Auth from "../../client/auth.js";
 import validator from "validator";
-//import components
+import Auth from "../../client/auth.js";
+// import components
 import SignupForm from "../blocks/SignupForm";
 
 export default class Signup extends React.Component {
@@ -24,7 +24,7 @@ export default class Signup extends React.Component {
   }
 
   validateForm(form) {
-    //TODO ONLY SHOW 1 hint per a row at a time dfa
+    // TODO ONLY SHOW 1 hint per a row at a time dfa
     console.log(
       "username:",
       form.username,
@@ -37,22 +37,20 @@ export default class Signup extends React.Component {
     if (!validator.isAlphanumeric(form.username)) {
       this.setState({ showUsernameHint: true });
       return false;
-    } else if (
+    }
+    if (
       !validator.isAlphanumeric(form.password) ||
       !validator.isAlphanumeric(form.password2)
     ) {
       this.setState({ showValidPasswordHint: true });
       return false;
-    } else if (form.password !== form.password2) {
+    }
+    if (form.password !== form.password2) {
       this.setState({ showPasswordsDoNotMatchHint: true });
       return false;
-    } else {
-      this.setState({ validated: true });
-      return true;
     }
-
-    console.log("this should mb not print");
-    return false;
+    this.setState({ validated: true });
+    return true;
   }
 
   handleInputChange(event) {

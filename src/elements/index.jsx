@@ -6,13 +6,12 @@ import PropTypes from "prop-types";
 import mapNoBorders from "../../static/img/login/MapNoBorders.jpg";
 // import plate from '../../static/img/login/Aspect_Ratio_BG_Plate.png';
 
-//images
 import button from "../../static/img/login/Submit_Button.png";
-import button_hover from "../../static/img/login/Submit_Button_Hover.png";
+import buttonHover from "../../static/img/login/Submit_Button_Hover.png";
 import logoutImg from "../../static/img/icons/Logout_Button.png";
-import logoutImg_hover from "../../static/img/icons/Logout_Hover_Button.png";
+import logoutImgHover from "../../static/img/icons/Logout_Hover_Button.png";
 
-import logout_hover from "../../static/img/profile/Logout_Button_Hover.png";
+import logoutHover from "../../static/img/profile/Logout_Button_Hover.png";
 
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
@@ -130,7 +129,7 @@ const Wrapper = styled.div`
 `;
 export { Wrapper };
 
-const BG_Image = styled.div`
+const bgImage = styled.div`
   background-image: url(${props => props.img});
   background-repeat: repeat;
   background-position: center center;
@@ -141,9 +140,9 @@ const BG_Image = styled.div`
   margin: 0;
   padding: 0;
 `;
-export { BG_Image };
+export { bgImage };
 
-const BG_Image_Scroll = BG_Image.extend`
+const bgImageScroll = bgImage.extend`
   -webkit-animation: 100s scroll infinite linear;
   -moz-animation: 100s scroll infinite linear;
   -o-animation: 100s scroll infinite linear;
@@ -195,7 +194,7 @@ const BG_Image_Scroll = BG_Image.extend`
     }
   }
 `;
-export { BG_Image_Scroll };
+export { bgImageScroll };
 
 const FormHint = styled.div`
   color: #b22222;
@@ -235,7 +234,7 @@ const FormButton = styled.button`
 
   &:hover {
     transform: scale(1.1);
-    background-image: url(${button_hover});
+    background-image: url(${buttonHover});
   }
 `;
 FormButton.propTypes = {
@@ -336,7 +335,7 @@ const LogoutButton = FormButton.extend`
 
   &:hover {
     transform: scale(1.1);
-    background-image: url(${logout_hover});
+    background-image: url(${logoutHover});
   }
 `;
 

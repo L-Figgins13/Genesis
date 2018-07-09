@@ -1,13 +1,13 @@
-import GameTable from "./GameTable.jsx";
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
-import { BG_Image_Scroll, LogoutButton } from "../../elements";
+import GameTable from "./GameTable.jsx";
+import { bgImageScroll, LogoutButton } from "../../elements";
 
 import img from "../../../static/img/gamesfinder/MapNoBorders.jpg";
 import plate from "../../../static/img/gamesfinder/AspectRatioGames.png";
 import button from "../../../static/img/login/Submit_Button.png";
-import button_hover from "../../../static/img/login/Submit_Button.png";
+import buttonHover from "../../../static/img/login/Submit_Button.png";
 import logout from "../../../static/img/profile/Logout_Button.png";
 
 const GamesLink = styled(Link)`
@@ -28,7 +28,7 @@ const GamesLink = styled(Link)`
 
   &:hover {
     transform: scale(1.1);
-    background-image: url(${button_hover});
+    background-image: url(${buttonHover});
   }
 `;
 
@@ -73,30 +73,28 @@ const InnerContainer = styled.div`
   }
 `;
 
-/* <TableContainer>    
+/* <TableContainer>
           <Label fontSize='2rem' textAlign='center'>Games Lobby</Label>
             <StyledLink to= '/games/create'>Create A New Game</StyledLink>
             <GameTable games={props.games} joinGame={props.joinGame} />
             <Button>Join</Button>
    </TableContainer> */
 
-const GameFinder = props => {
-  return (
-    <BG_Image_Scroll img={img}>
-      <TableContainer>
-        <LogoutButton img={logout} onClick={props.handleLogout} />
-        <InnerContainer>
-          <GameTable
-            handleGameSelection={props.handleGameSelection}
-            games={props.games}
-            joinGame={props.joinGame}
-          />
-          {/* <Button>Join Game</Button> */}
-        </InnerContainer>
-        <GamesLink to="/games/create" />
-      </TableContainer>
-    </BG_Image_Scroll>
-  );
-};
+const GameFinder = props => (
+  <bgImageScroll img={img}>
+    <TableContainer>
+      <LogoutButton img={logout} onClick={props.handleLogout} />
+      <InnerContainer>
+        <GameTable
+          handleGameSelection={props.handleGameSelection}
+          games={props.games}
+          joinGame={props.joinGame}
+        />
+        {/* <Button>Join Game</Button> */}
+      </InnerContainer>
+      <GamesLink to="/games/create" />
+    </TableContainer>
+  </bgImageScroll>
+);
 
 export default GameFinder;

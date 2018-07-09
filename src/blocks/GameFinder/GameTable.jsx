@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Flex, Box } from "grid-styled";
 import styled from "styled-components";
 import GameRow from "./GameRow.jsx";
 

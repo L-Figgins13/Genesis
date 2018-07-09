@@ -194,7 +194,7 @@ const CreateGameForm = function(props) {
 };
 
 CreateGameForm.propTypes = {
-  owner: PropTypes.string.isRequired,
+  // owner: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
