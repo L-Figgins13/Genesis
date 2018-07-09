@@ -4,17 +4,19 @@
 [![HitCount](http://hits.dwyl.com/{L-Figgins13}/{Genesis}.svg)](http://hits.dwyl.com/{L-Figgins13}/{Genesis})
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
 ![docs](http://inch-ci.org/github/dwyl/hapi-auth-jwt2)
+[![Node version](https://img.shields.io/node/v/[NPM-MODULE-NAME].svg?style=flat)](http://nodejs.org/download/)
 
 [![Build Status](https://travis-ci.org/{L-Figgins13}/{Genesis}.png?branch=master)](https://travis-ci.org/{L-Figgins13}/{Genesis})
+
 Genesis is a scaffolding tool which aims to create a starting point for developing isometric JavaScript applications using the MERN technology stack (MongoDB, Express, React, Node). In addition to MERN, this scaffolding project also includes several other technologies to ease development time such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management. 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-*[Website] www.mern-genesis.github.io
+*![Website] (www.mern-genesis.github.io)
 
-*[Documentation] www.mern-genesis.github.io
+*![Documentation] (www.mern-genesis.github.io)
 
-*[Discussions] www.mern-genesis.github.io
+*![Discussions] (www.mern-genesis.github.io)
 
 ### Prerequisites
 What you will need to have installed for the project to work properly:
