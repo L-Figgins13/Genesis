@@ -61,7 +61,7 @@ Coming Soon
 
 ### File Structure
 
-##Webpack Configs
+**Webpack Configs**
 MERN uses Webpack for bundling modules. There are four types of Webpack configs provided:
  - **webpack.config.dev.js** for development
  - **webpack.config.prod.js** for production
@@ -70,13 +70,14 @@ MERN uses Webpack for bundling modules. There are four types of Webpack configs 
 
 The Webpack configuration is minimal and beginner-friendly. You can customise and add more features to it for production builds if you would like.
 
-##Server
+**Server**
 MERN uses express web framework. Our app sits in server.js where we check for NODE_ENV.
 If NODE_ENV is development, we apply Webpack middlewares for bundling and Hot Module Replacement.
 
 
 ### Front End Development
 This scaffolding uses material UI for rapid design prototyping and styled components for modern web component styling. More information on this will be added shortly.
+
 
 
 ## Deployment
@@ -89,7 +90,8 @@ Add additional notes about how to deploy this on a live system
 * [NodeJS]( https://nodejs.org/en/) - npm and general project structure
 
 
-## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+## Contributing 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 
