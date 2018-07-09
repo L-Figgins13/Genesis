@@ -4,8 +4,8 @@ import styled from "styled-components";
 const CINPUT = styled.input`
   width: 200px;
 `;
-//bleh
-const ChatInput = function(props) {
+
+const ChatInput = function ChatInput(props) {
   return (
     <form onSubmit={props.sendMessage}>
       <CINPUT

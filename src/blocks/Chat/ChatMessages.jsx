@@ -1,6 +1,4 @@
 import React from "react";
-import { Flex, Box } from "grid-styled";
-import styled from "styled-components";
 
 import Message from "./Message";
 

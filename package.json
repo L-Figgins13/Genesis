@@ -39,11 +39,17 @@
     "webpack-cli": "^3.0.2"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
     "file-loader": "^1.1.11",
     "husky": "^0.14.3",
     "image-webpack-loader": "^4.3.1",
     "nodemon": "^1.17.5",
     "prettier": "1.13.7",
+    "prettier-eslint": "^8.8.2",
     "pretty-quick": "^1.6.0",
     "webpack-dev-middleware": "^3.1.3",
     "webpack-dev-server": "^3.1.4"

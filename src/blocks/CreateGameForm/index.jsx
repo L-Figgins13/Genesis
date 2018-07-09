@@ -4,10 +4,10 @@ import styled from "styled-components";
 
 import img from "../../../static/img/backgrounds/Map_Borders.jpg";
 import button from "../../../static/img/login/Submit_Button.png";
-import button_hover from "../../../static/img/login/Submit_Button.png";
+import buttonHover from "../../../static/img/login/Submit_Button.png";
 import plate from "../../../static/img/gamesfinder/AspectRatioGames.png";
 
-const BG_Image_Game = styled.div`
+const bgImageGame = styled.div`
   background-image: url(${img});
   background-repeat: repeat;
   background-position: center center;
@@ -93,7 +93,7 @@ const GameButton = styled.button`
 
   &:hover {
     transform: scale(1.1);
-    background-image: url(${button_hover});
+    background-image: url(${buttonHover});
   }
 `;
 
@@ -174,7 +174,7 @@ const Game = styled.div`
 
 const CreateGameForm = function(props) {
   return (
-    <BG_Image_Game>
+    <bgImageGame>
       <GameContainer>
         <Game>
           <form onSubmit={props.handleSubmit}>
@@ -189,7 +189,7 @@ const CreateGameForm = function(props) {
           </form>
         </Game>
       </GameContainer>
-    </BG_Image_Game>
+    </bgImageGame>
   );
 };
 

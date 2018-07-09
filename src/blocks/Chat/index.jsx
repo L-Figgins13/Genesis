@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import ChatMessages from "./ChatMessages.jsx";
 import ChatInput from "./ChatInput.jsx";
 
