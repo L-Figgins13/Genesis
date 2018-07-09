@@ -1,6 +1,11 @@
 ![mern-genesis](static/img/MernLogo1.jpg)
 
 # Project Genesis
+[![HitCount](http://hits.dwyl.com/{L-Figgins13}/{Genesis}.svg)](http://hits.dwyl.com/{L-Figgins13}/{Genesis})
+[![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
+![docs](http://inch-ci.org/github/dwyl/hapi-auth-jwt2)
+
+[![Build Status](https://travis-ci.org/{L-Figgins13}/{Genesis}.png?branch=master)](https://travis-ci.org/{L-Figgins13}/{Genesis})
 Genesis is a scaffolding tool which aims to create a starting point for developing isometric JavaScript applications using the MERN technology stack (MongoDB, Express, React, Node). In addition to MERN, this scaffolding project also includes several other technologies to ease development time such as Socket.io for real time events, Material UI for quick design templating, and Redux for state management. 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -72,6 +77,7 @@ Add additional notes about how to deploy this on a live system
 * [NodeJS]( https://nodejs.org/en/) � npm and general project structure
 
 ## Contributing
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
