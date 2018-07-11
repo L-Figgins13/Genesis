@@ -6,8 +6,8 @@ const Player = (props) => {
     return (
         <div>
             <div>
-                <div>{props.player.user_id}</div>
-                <div>{props.player.username}</div>
+                {/* <div>{props.player.user_id}</div> */}
+                <div><h2>{props.player.username}</h2></div>
             </div>
         </div>
     )

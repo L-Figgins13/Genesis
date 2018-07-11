@@ -2,12 +2,17 @@ import GameTable from './GameTable.jsx';
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { Button, BG_Image_Scroll } from '../../elements';
+=======
+import { BG_Image_Scroll, LogoutButton } from '../../elements';
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
 
 import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
 import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
 import button from '../../../static/img/login/Submit_Button.png';
 import button_hover from '../../../static/img/login/Submit_Button.png';
+import logout from '../../../static/img/profile/Logout_Button.png';
 
 
 const GamesLink = styled(Link)`
@@ -35,10 +40,16 @@ const GamesLink = styled(Link)`
 const TableContainer = styled.div`
   /* border: 1px solid blue; */
   margin: 0vmin auto;
-  padding-top: 15vmin;
+  margin-top: 15vmin;
   width: var(--width);
   height: var(--height);
   text-align: center;
+  background-image: url(${plate});
+  /* background: red; */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* border: 1px solid blue; */
 `
 
 const InnerContainer = styled.div`
@@ -46,23 +57,16 @@ const InnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(${plate});
-  /* background: red; */
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  /* border: 1px solid blue; */
   font-size: 3.5vmin;
   color: #280408;
   margin: 5vmin auto;
   width: var(--width);
   height: var(--height);
+  overflow-y: scroll;
+  overflow-x: hidden;
 
-  table{
-    margin-top: 20vmin;
-    overflow-y: scroll;
-    overflow-x: wrap;
-  }
+    max-height: 350px;
+    border: 1px solid red;
 
   h3{
     padding-top: 4vmin;
@@ -79,18 +83,24 @@ const InnerContainer = styled.div`
             <StyledLink to= '/games/create'>Create A New Game</StyledLink>
             <GameTable games={props.games} joinGame={props.joinGame} />
             <Button>Join</Button>
-        </TableContainer> */
+   </TableContainer> */
 
 
 const GameFinder = (props) =>  {
     return(
         <BG_Image_Scroll img={img}>
           <TableContainer>
+          <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>  
             <InnerContainer>
                 <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
+<<<<<<< HEAD
                 <Button>Join Game</Button>
                 <GamesLink to= '/games/create'></GamesLink>
+=======
+                {/* <Button>Join Game</Button> */}
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
             </InnerContainer>
+            <GamesLink to= '/games/create'></GamesLink>
           </TableContainer>
         </BG_Image_Scroll>
     );

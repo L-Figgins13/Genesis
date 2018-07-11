@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 import io from "socket.io-client";
 
 //Styles
-import {Container, Row, Col} from 'react-grid-system';
+
 
 //components
 import Chat from '../blocks/Chat';
@@ -172,7 +172,11 @@ export default class Game extends React.Component {
                     messages={this.state.chat.messages} 
                     username={this.state.chat.username} 
                     value={this.state.chat.messageInput} 
+<<<<<<< HEAD
                 />
+=======
+                />         
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
             </div>
         )
     }

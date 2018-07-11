@@ -4,14 +4,47 @@ import styled from 'styled-components';
 
 import { BG_Image, LogoutButton } from '../../elements';
 import img from '../../../static/img/profile/MapBorders.jpg';
-import button from '../../../static/img/login/Submit_Button.png';
-import button_hover from '../../../static/img/login/Submit_Button_Hover.png';
+import button from '../../../static/img/profile/Join_Game_Button.png';
+import button_hover from '../../../static/img/profile/Join_Game_Button_Hover.png';
 import plate from '../../../static/img/profile/AspectRatioProfile.png';
+import arrowLeft from '../../../static/img/icons/Arrow_Left_Button.png';
+import arrowLeftHover from '../../../static/img/icons/Arrow_Left_Button_Hover.png';
+
+import arrowRight from '../../../static/img/icons/Arrow_Right_Button.png';
+import arrowRightHover from '../../../static/img/icons/Arrow_Right_Button_Hover.png';
+
+import logout from '../../../static/img/profile/Logout_Button.png';
+import logout_hover from '../../../static/img/profile/Logout_Button_Hover.png';
 
 
 const ScoreLabel = styled.label`
   background: brown;
   margin: 3vmin;
+`
+
+const Arrow = styled.div`
+  padding: 4vmin 4vmin;
+  margin: 0vmin 0vmin;
+  background-image: ${props=> props.left ? `url(${arrowLeft})` : `url(${arrowRight})`};
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &:hover {
+    transform: scale(1.1);
+    background-image: ${props=> props.left ? `url(${arrowLeftHover})` : `url(${arrowRightHover})`};
+  }
+`
+
+
+
+const Avatar = styled.div`
+  padding: 14vmin 14vmin;
+  /* background-image: url('/img/avatars/1_GeneralWu.jpg'); */
+  background-image: ${props => `url(${props.avatarUrl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
 `
 
 const ScoreCard = styled.div`
@@ -54,7 +87,7 @@ const ProfileLink = styled(Link)`
 const ProfileContainer = styled.div`
   /* border: 1px solid blue; */
   margin: 0vmin auto;
-  padding-top: 15vmin;
+  margin-top: 20vmin;
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -62,11 +95,9 @@ const ProfileContainer = styled.div`
 
 const Profile = styled.div`
   background-image: url(${plate});
-  /* background: red; */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: 1px solid blue; */
   font-size: 3.5vmin;
   color: #280408;
   margin: 5vmin auto;
@@ -94,9 +125,12 @@ export default function Stats(props) {
       <BG_Image img={img}>
         <ProfileContainer>
           <Profile>
-            <LogoutButton onClick={props.handleLogout}></LogoutButton>
+            <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
             <form onSubmit= {props.handleSubmit}>
               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+              <Avatar avatarUrl = {props.user.currentAvatarUrl} />
+              <Arrow id= {1} right onClick={props.selectAvatar} />
+              <Arrow id= {2}left onClick={props.selectAvatar} />
               <ScoreCard>
                 <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
                 <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 

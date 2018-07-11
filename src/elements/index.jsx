@@ -5,8 +5,14 @@ import PropTypes from 'prop-types';
 
 import mapNoBorders from '../../static/img/login/MapNoBorders.jpg';
 // import plate from '../../static/img/login/Aspect_Ratio_BG_Plate.png';
+
+//images
 import button from '../../static/img/login/Submit_Button.png';
 import button_hover from '../../static/img/login/Submit_Button_Hover.png';
+import logoutImg from '../../static/img/icons/Logout_Button.png';
+import logoutImg_hover from '../../static/img/icons/Logout_Hover_Button.png';
+
+import logout_hover from '../../static/img/profile/Logout_Button_Hover.png';
 
 const Button = styled.button`
   background: linear-gradient(to bottom, #8f34d9, #44009e);
@@ -137,7 +143,13 @@ const BG_Image =  styled.div`
 `
 export { BG_Image };
 
+<<<<<<< HEAD
 const BG_Image_Scroll = BG_Image.extend`
+=======
+
+const BG_Image_Scroll = BG_Image.extend`
+  
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
   -webkit-animation:100s scroll infinite linear;
   -moz-animation:100s scroll infinite linear;
   -o-animation:100s scroll infinite linear;
@@ -149,10 +161,14 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
+<<<<<<< HEAD
       background-position:0px 0px;
     }
     0%{
       background-position:-2500px 0px;
+=======
+      background-position:2500px 0px;
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -161,10 +177,14 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
+<<<<<<< HEAD
       background-position:0px 0px;
     }
     0%{
       background-position:-2500px 0px;
+=======
+      background-position:2500px 0px;
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -173,10 +193,14 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
+<<<<<<< HEAD
       background-position:0px 0px;
     }
     0%{
       background-position:-2500px 0px;
+=======
+      background-position:2500px 0px;
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -185,10 +209,14 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
+<<<<<<< HEAD
       background-position:0px 0px;
     }
     0%{
       background-position:-2500px 0px;
+=======
+      background-position:2500px 0px;
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -197,6 +225,7 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
+<<<<<<< HEAD
       background-position:0px 0px;
     }
     0%{
@@ -207,6 +236,13 @@ const BG_Image_Scroll = BG_Image.extend`
   `
 
   export { BG_Image_Scroll };
+=======
+      background-position:2500px 0px;
+    }
+  }
+`
+export { BG_Image_Scroll };
+>>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
 
 const FormHint =  styled.div`
   color: #B22222;
@@ -252,6 +288,7 @@ const FormButton =  styled.button`
 FormButton.propTypes = {
   marginTop: PropTypes.string
 }
+
 export { FormButton };
 
 const FormContainer = styled.div`
@@ -329,8 +366,26 @@ const FormBG = styled.div`
 export { FormBG };
 
 const LogoutButton = FormButton.extend`
-   margin: .5vmin auto;
-   height: 1vmin;
+  margin: 5vmin auto;
+  background-image: url(${props => props.img});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  background-color: Transparent;
+  box-sizing: border-box;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all .2s ease-in-out;
+
+  &:hover{
+    transform: scale(1.1);
+    background-image: url(${logout_hover});
+  }
 `
+
 
 export {LogoutButton};
