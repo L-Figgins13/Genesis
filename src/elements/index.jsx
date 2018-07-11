@@ -143,13 +143,7 @@ const BG_Image =  styled.div`
 `
 export { BG_Image };
 
-<<<<<<< HEAD
 const BG_Image_Scroll = BG_Image.extend`
-=======
-
-const BG_Image_Scroll = BG_Image.extend`
-  
->>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
   -webkit-animation:100s scroll infinite linear;
   -moz-animation:100s scroll infinite linear;
   -o-animation:100s scroll infinite linear;
@@ -161,14 +155,7 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
-<<<<<<< HEAD
-      background-position:0px 0px;
-    }
-    0%{
-      background-position:-2500px 0px;
-=======
       background-position:2500px 0px;
->>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -177,14 +164,7 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
-<<<<<<< HEAD
-      background-position:0px 0px;
-    }
-    0%{
-      background-position:-2500px 0px;
-=======
       background-position:2500px 0px;
->>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -193,14 +173,7 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
-<<<<<<< HEAD
-      background-position:0px 0px;
-    }
-    0%{
-      background-position:-2500px 0px;
-=======
       background-position:2500px 0px;
->>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -209,14 +182,7 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
-<<<<<<< HEAD
-      background-position:0px 0px;
-    }
-    0%{
-      background-position:-2500px 0px;
-=======
       background-position:2500px 0px;
->>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
     }
   }
 
@@ -225,24 +191,11 @@ const BG_Image_Scroll = BG_Image.extend`
       background-position:2500px 0px;
     }
     50%{
-<<<<<<< HEAD
-      background-position:0px 0px;
-    }
-    0%{
-      background-position:-2500px 0px;
-    }
-  }
-
-  `
-
-  export { BG_Image_Scroll };
-=======
       background-position:2500px 0px;
     }
   }
 `
 export { BG_Image_Scroll };
->>>>>>> ec05828a7be0f4b95e218fdfbaa50bb548042f6b
 
 const FormHint =  styled.div`
   color: #B22222;
