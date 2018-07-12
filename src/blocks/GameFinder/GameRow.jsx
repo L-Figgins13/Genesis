@@ -12,10 +12,10 @@ const Tr = styled.tr`
 
 const GameRow = (props) => (
     <Tr onClick={props.handleGameSelection}  id={props.game._id} tabIndex={0}>
-        <td> {props.game._id} </td>
+        {/* <td> {props.game._id} </td> */}
         <td> {props.game.title} </td>
         <td> {props.game.owner} </td>
-        <td> {props.game._id} </td>
+        <td></td>
         {/* <button id={props.game._id} onClick={props.joinGame}>Join</button> */}
     </Tr>
 );

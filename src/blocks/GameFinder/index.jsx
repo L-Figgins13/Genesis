@@ -4,21 +4,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, BG_Image_Scroll, LogoutButton } from '../../elements';
 
+import { Container, Row, Col } from 'react-grid-system';
+
 import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
 import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
-import button from '../../../static/img/login/Submit_Button.png';
-import button_hover from '../../../static/img/login/Submit_Button.png';
+import button from '../../../static/img/profile/Join_Game_Button.png';
+import button_hover from '../../../static/img/profile/Join_Game_Button_Hover.png';
+import create_button from '../../../static/img/signup/Create_Button.png';
+import create_button_hover from '../../../static/img/signup/Create_Button_Hover.png';
 import logout from '../../../static/img/profile/Logout_Button.png';
 
 
-const GamesLink = styled(Link)`
+const JoinLink = styled.button`
   cursor: pointer;
   text-decoration: none;
-  margin: 5vmin auto;
-  margin-top: 3vmin;
   border: none;
   font-size: 3vmin;
-  padding: 6vmin 20vmin;
   background-color: Transparent;
   box-sizing: border-box;
   background-image: url(${button});
@@ -26,6 +27,9 @@ const GamesLink = styled(Link)`
   background-repeat: no-repeat;
   background-size: contain;
   transition: all .2s ease-in-out;
+  width: 25vmin;
+  height: 25vmin;
+  padding: 0;
 
   &:hover{
     transform: scale(1.1);
@@ -33,19 +37,39 @@ const GamesLink = styled(Link)`
   }
 `
 
+const CreateLink = styled.button`
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-size: 3vmin;
+  background-color: Transparent;
+  box-sizing: border-box;
+  background-image: url(${create_button});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all .2s ease-in-out;
+  width: 25vmin;
+  height: 25vmin;
+  padding: 0;
+
+  &:hover{
+    transform: scale(1.1);
+    background-image: url(${create_button_hover});
+  }
+`
+
 const TableContainer = styled.div`
-  /* border: 1px solid blue; */
-  margin: 0vmin auto;
-  margin-top: 15vmin;
+  border: 1px solid blue; 
   width: var(--width);
   height: var(--height);
   text-align: center;
   background-image: url(${plate});
-  /* background: red; */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: 1px solid blue; */
+  padding-right: 10vmin;
+  padding-left: 10vmin;
 `
 
 const InnerContainer = styled.div`
@@ -53,21 +77,12 @@ const InnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 3.5vmin;
+  font-size: 4.5vmin;
   color: #280408;
-  margin: 5vmin auto;
-  width: var(--width);
-  height: var(--height);
   overflow-y: scroll;
   overflow-x: hidden;
-
-    max-height: 350px;
-    border: 1px solid red;
-
-  h3{
-    padding-top: 4vmin;
-    font-size: 2vmin;
-  }
+  max-height: 350px;
+  border: 1px solid red;
 
   @media only screen and (max-width: 670px) {
     width: 90%;
@@ -86,13 +101,32 @@ const GameFinder = (props) =>  {
     return(
         <BG_Image_Scroll img={img}>
           <TableContainer>
-          <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>  
-            <InnerContainer>
-                <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
-                <Button>Join Game</Button>
-                <GamesLink to= '/games/create'></GamesLink>
-            </InnerContainer>
-            <GamesLink to= '/games/create'></GamesLink>
+              <Container>
+                <Row>
+                  <Col xs={12}>
+                    <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>  
+                  </Col>
+
+                  <Col xs={12}>
+                    <InnerContainer>
+                      <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
+                    </InnerContainer>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col></Col>
+                  <Col xs={3}>
+                    <CreateLink to= '/games/create'></CreateLink>
+                  </Col>
+                  <Col></Col>
+                  <Col xs={3}> 
+                  <JoinLink></JoinLink>
+                  </Col>
+                  <Col></Col>
+                </Row>
+              </Container>
+            
           </TableContainer>
         </BG_Image_Scroll>
     );

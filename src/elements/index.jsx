@@ -297,7 +297,6 @@ const FormBG = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: 1px solid blue; */
   font-size: 2vmin;
   color: #280408;
   margin: 5vmin auto;
