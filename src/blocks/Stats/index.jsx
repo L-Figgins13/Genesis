@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import { Container, Row, Col } from 'react-grid-system';
 
 import { BG_Image, LogoutButton } from '../../elements';
 import img from '../../../static/img/profile/MapBorders.jpg';
@@ -23,8 +24,11 @@ const ScoreLabel = styled.label`
 `
 
 const Arrow = styled.div`
-  padding: 4vmin 4vmin;
-  margin: 0vmin 0vmin;
+  height: 10vmin;
+  width: 10vmin;
+  margin-top: 5vmin;
+  margin-left: -1.5vmin;
+  margin-right: -1.5vmin;
   background-image: ${props=> props.left ? `url(${arrowLeft})` : `url(${arrowRight})`};
   background-repeat: no-repeat;
   background-size: contain;
@@ -90,23 +94,25 @@ const ProfileContainer = styled.div`
   width: var(--width);
   height: var(--height);
   text-align: center;
+ 
 `
 
 const Profile = styled.div`
+  border: 1px  solid green;
   background-image: url(${plate});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
   font-size: 3.5vmin;
   color: #280408;
-  margin: 15vmin auto;
-  padding-top: 0vmin;
-  padding-bottom: 0vmin;
+  
   width: var(--width);
   height: var(--height);
 
+
   form{
-    margin-top: 0vmin;
+    display: flex;
+
   }
 
   h3{
@@ -119,14 +125,13 @@ const Profile = styled.div`
   }
 `
 
-const ProfileGrid = styled.div`
+const AvatarArea = styled.div`
   border: 1px solid red;
-  
   display: flex;
   justify-content: center;
   align-items: center;
-
 `
+
 
 
 export default function Stats(props) {
@@ -153,9 +158,45 @@ export default function Stats(props) {
       <BG_Image img={img}>
         <ProfileContainer>
           <Profile>
-            <ProfileGrid>
+            <Container>
+              <Row>
+                <Col xs={3}>
+                  col
+                </Col>
+                <Col xs={3}>
+                  col
+                </Col>
+                <Col xs={3}>
+                  col
+                </Col>
+                <Col xs={3}>
+                  <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
+                </Col>
+              </Row>
 
-            </ProfileGrid>
+              <Row>
+              <form onSubmit= {props.handleSubmit}>
+                <Col xs={6}>
+                <AvatarArea>
+                  <Arrow id= {2} left onClick={props.selectAvatar} />
+                  <Avatar avatarUrl = {props.user.currentAvatarUrl} />
+                  <Arrow id= {1} right onClick={props.selectAvatar} />
+                </AvatarArea>
+                </Col>
+                <Col>
+                  Information Area
+                </Col>
+              </form>
+              </Row>
+
+              {/* <form onSubmit= {props.handleSubmit}>
+               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+               <Avatar avatarUrl = {props.user.currentAvatarUrl} />
+               <Arrow id= {1} right onClick={props.selectAvatar} />
+               <Arrow id= {2} left onClick={props.selectAvatar} />
+               <ProfileLink to='/games'></ProfileLink>
+             </form> */}
+            </Container>
           </Profile>
         </ProfileContainer>
       </BG_Image>
