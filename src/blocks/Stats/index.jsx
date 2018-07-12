@@ -85,7 +85,6 @@ const ProfileLink = styled(Link)`
 `
 
 const ProfileContainer = styled.div`
-  /* border: 1px solid blue; */
   margin: 0vmin auto;
   margin-top: 0vmin;
   width: var(--width);
@@ -100,7 +99,7 @@ const Profile = styled.div`
   background-size: contain;
   font-size: 3.5vmin;
   color: #280408;
-  margin: 0vmin auto;
+  margin: 15vmin auto;
   padding-top: 0vmin;
   padding-bottom: 0vmin;
   width: var(--width);
@@ -120,23 +119,43 @@ const Profile = styled.div`
   }
 `
 
+const ProfileGrid = styled.div`
+  border: 1px solid red;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`
+
+
 export default function Stats(props) {
     return(
+      // <BG_Image img={img}>
+      //   <ProfileContainer>
+      //     <Profile>
+      //       <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
+      //       <form onSubmit= {props.handleSubmit}>
+      //         <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+      //         <Avatar avatarUrl = {props.user.currentAvatarUrl} />
+      //         <Arrow id= {1} right onClick={props.selectAvatar} />
+      //         <Arrow id= {2} left onClick={props.selectAvatar} />
+      //         <ScoreCard>
+      //           <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
+      //           <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 
+      //         </ScoreCard>
+      //         <ProfileLink to='/games'></ProfileLink>
+      //       </form>
+      //     </Profile>
+      //   </ProfileContainer>
+      // </BG_Image>
+
       <BG_Image img={img}>
         <ProfileContainer>
           <Profile>
-            <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
-            <form onSubmit= {props.handleSubmit}>
-              <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
-              <Avatar avatarUrl = {props.user.currentAvatarUrl} />
-              <Arrow id= {1} right onClick={props.selectAvatar} />
-              <Arrow id= {2} left onClick={props.selectAvatar} />
-              <ScoreCard>
-                <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
-                <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 
-              </ScoreCard>
-              <ProfileLink to='/games'></ProfileLink>
-            </form>
+            <ProfileGrid>
+
+            </ProfileGrid>
           </Profile>
         </ProfileContainer>
       </BG_Image>

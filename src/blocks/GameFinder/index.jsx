@@ -2,7 +2,7 @@ import GameTable from './GameTable.jsx';
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, BG_Image_Scroll, LogoutButtons } from '../../elements';
+import { Button, BG_Image_Scroll, LogoutButton } from '../../elements';
 
 import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
 import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
