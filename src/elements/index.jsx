@@ -143,9 +143,7 @@ const BG_Image =  styled.div`
 `
 export { BG_Image };
 
-
 const BG_Image_Scroll = BG_Image.extend`
-  
   -webkit-animation:100s scroll infinite linear;
   -moz-animation:100s scroll infinite linear;
   -o-animation:100s scroll infinite linear;

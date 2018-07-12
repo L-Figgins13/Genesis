@@ -2,7 +2,7 @@ import GameTable from './GameTable.jsx';
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BG_Image_Scroll, LogoutButton } from '../../elements';
+import { Button, BG_Image_Scroll, LogoutButtons } from '../../elements';
 
 import img from '../../../static/img/gamesfinder/MapNoBorders.jpg';
 import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
@@ -89,7 +89,8 @@ const GameFinder = (props) =>  {
           <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>  
             <InnerContainer>
                 <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
-                {/* <Button>Join Game</Button> */}
+                <Button>Join Game</Button>
+                <GamesLink to= '/games/create'></GamesLink>
             </InnerContainer>
             <GamesLink to= '/games/create'></GamesLink>
           </TableContainer>
