@@ -141,4 +141,4 @@ export default function Stats(props) {
         </ProfileContainer>
       </BG_Image>
     );
-}
+}``
