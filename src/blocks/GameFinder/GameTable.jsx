@@ -9,18 +9,23 @@ const Table = styled.table`
     width: 70%;
     font-size: 1.5vmin;
 
-    tr, td{
+    tr{
         border: 1px solid #000;
+        background: grey;
     }
     th{
+        background: darkslategrey;
+        border: 1px solid #000;
         padding: 1rem;
     }
     td{
+        border: 1px solid #000;
         padding: .75rem; 
     }
  
     tbody{
-      max-height: 100px;
+      border: 1px solid #000;
+      max-height: 250px;
     }
     
 `
@@ -39,8 +44,8 @@ function GameTable (props) {
         <Table>
             <thead>
                 <tr>
-                    <th>Game ID</th>
                     <th>Title</th>
+                    <th>Owner</th>
                     <th>Player</th>
                 </tr>
             </thead>

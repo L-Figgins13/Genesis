@@ -140,12 +140,13 @@ const BG_Image =  styled.div`
   height: 100vh;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 export { BG_Image };
 
-
 const BG_Image_Scroll = BG_Image.extend`
-  
   -webkit-animation:100s scroll infinite linear;
   -moz-animation:100s scroll infinite linear;
   -o-animation:100s scroll infinite linear;
@@ -296,7 +297,6 @@ const FormBG = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: 1px solid blue; */
   font-size: 2vmin;
   color: #280408;
   margin: 5vmin auto;
@@ -320,21 +320,27 @@ const FormBG = styled.div`
 `
 export { FormBG };
 
-const LogoutButton = FormButton.extend`
-  margin: 5vmin auto;
+const LogoutButton = styled.div`
   background-image: url(${props => props.img});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
   text-decoration: none;
-  margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  border: 1px solid red;
+  width: 10vmin;
+  height: 10vmin;
+  margin-left: 6vmin;
+  margin-top: 1.5vmin;
+  /* margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
+  margin-left: 6vmin; */
   background-color: Transparent;
-  box-sizing: border-box;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
   transition: all .2s ease-in-out;
+
+
 
   &:hover{
     transform: scale(1.1);

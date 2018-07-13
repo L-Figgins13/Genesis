@@ -69,7 +69,7 @@ export default class Home extends React.Component {
     }
 
     loadSound(url) {
-      this.setState( {soundUrl:url})
+      this.setState( {soundFXUrl:url})
     }
 
 
@@ -90,12 +90,14 @@ export default class Home extends React.Component {
                 {Auth.isUserAuthenticated() ? (<StyledLinkWarn to ='/games'>Games Page Quick Link</StyledLinkWarn>):(<StyledLinkWarn to='/login'>"YOU NEED TO LOGIN FIRST!"</StyledLinkWarn>)}
                 <h1>Audio Controls</h1>
                 {/* <audio preload="auto" ref="audio_tag" src="../../../static/audio/Drums_Mix.mp3" type="audio/mpeg" controls loop autoPlay/> */}
+                
                 <ReactPlayer 
                   url={audioFile}
                   playing={this.state.music}
                   onReady = {()=> {console.log('Should be Ready to play')}}
                   onStart = {()=> {console.log('Starting Drums_Mix.mp3')}}
                   controls
+                  loop
                   volume = {0.8}
                 />
                 <ReactPlayer
@@ -113,7 +115,7 @@ export default class Home extends React.Component {
                   () => {
                     this.setState({soundFXUrl:fxBell});
                     this.setState({fxPlaying:true});
-                    
+                    this.setState({muted:false});
                   }
                 } />
 
