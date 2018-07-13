@@ -11,28 +11,45 @@ import ReactPlayer from 'react-player';
 import audioFile from '../../../static/audio/Drums_Mix.mp3';
 import fxBell from '../../../static/audio/SoundFX/bell.wav';
 
-
-
-const LogoArea = styled.div`
-  /* border: 1px solid blue; */
+const LogoArea =  styled.div`
+  
+  background-image: url(${props => props.img});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: var(--width);
-  height: var(--height);
-  position: absolute;
+  height: 40vh;
+  width: 80%;
 `
+const ControlArea = styled.div`
+  
+  padding: 5vmin;
+`
+
+const ControlLinks = styled(Link)`
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 2.5rem;
+  padding: 5vmin;
+  &:hover{
+      transition: scale(1.09);
+      color: #ffb700;
+  }
+`
+
 const OptionsBox = styled.div`
-  /* border: 1px solid blue; */
-  display: flex;
+  
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 10vmin;
-  margin-bottom: 10vmin;
-  padding: 10vmin;
+  padding: 5vmin;
   border: 3px solid #280408;
   color: #280408;
+
   
   background: #ededed;
   opacity: 0.8;
@@ -82,11 +99,19 @@ export default class Home extends React.Component {
       return (
           <BG_Image img={splash}>
             <Wrapper>
-              <LogoArea><img width="100%" src={logo} ></img></LogoArea>
+              <LogoArea img={logo}>
+              </LogoArea>
+              <ControlArea>
+                <ControlLinks to ='/login'>Login</ControlLinks>
+                <ControlLinks to ='/signup'>Signup</ControlLinks>
+              </ControlArea>
+
+
+              {/* Need To Delete or Hide Toggle Eventually*/}
               <OptionsBox>
                 <h1>Developer Options:</h1>
-                <StyledLink to ='/login'>Login</StyledLink>
-                <StyledLink to ='/signup'>Signup</StyledLink>
+                <ControlLinks to ='/login'>Login</ControlLinks>
+                <ControlLinks to ='/signup'>Signup</ControlLinks>
                 {Auth.isUserAuthenticated() ? (<StyledLinkWarn to ='/games'>Games Page Quick Link</StyledLinkWarn>):(<StyledLinkWarn to='/login'>"YOU NEED TO LOGIN FIRST!"</StyledLinkWarn>)}
                 <h1>Audio Controls</h1>
                 {/* <audio preload="auto" ref="audio_tag" src="../../../static/audio/Drums_Mix.mp3" type="audio/mpeg" controls loop autoPlay/> */}
@@ -107,10 +132,6 @@ export default class Home extends React.Component {
                   onStart = {() => console.log('Bell fx playing')}
                   volume = {1.0}
                 />
-                  
-                
-
-
                 <FormButton onClick={
                   () => {
                     this.setState({soundFXUrl:fxBell});

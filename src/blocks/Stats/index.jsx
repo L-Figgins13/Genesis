@@ -176,14 +176,14 @@ export default function Stats(props) {
 
               <Row>
               <form onSubmit= {props.handleSubmit}>
-                <Col xs={6}>
+                <Col xs={12}>
                 <AvatarArea>
                   <Arrow id= {2} left onClick={props.selectAvatar} />
                   <Avatar avatarUrl = {props.user.currentAvatarUrl} />
                   <Arrow id= {1} right onClick={props.selectAvatar} />
                 </AvatarArea>
                 </Col>
-                <Col>
+                <Col xs={12}>
                   Information Area
                 </Col>
               </form>

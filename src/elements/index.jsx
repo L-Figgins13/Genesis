@@ -248,9 +248,7 @@ FormButton.propTypes = {
 export { FormButton };
 
 const FormContainer = styled.div`
-  /* border: 1px solid blue; */
-  margin: 0vmin auto;
-  padding-top: 15vmin;
+  border: 1px solid blue;
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -299,7 +297,7 @@ const FormBG = styled.div`
   background-size: contain;
   font-size: 2vmin;
   color: #280408;
-  margin: 5vmin auto;
+  margin: 0 auto;
   padding-top: 4vmin;
   padding-bottom: 5vmin;
   width: var(--width);
@@ -339,8 +337,6 @@ const LogoutButton = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   transition: all .2s ease-in-out;
-
-
 
   &:hover{
     transform: scale(1.1);
