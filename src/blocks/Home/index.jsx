@@ -4,12 +4,13 @@ import path from 'path';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Wrapper, StyledLink, BG_Image, FormButton, Button } from '../../elements';
-import splash from '../../../static/img/backgrounds/Splash_Screen_BG.jpg';
+import splash from '../../../static/img/backgrounds/Splash_Screen_BG2.jpg';
 import logo from '../../../static/img/logo/Logo_Large.png';
 import ReactPlayer from 'react-player';
 
 import audioFile from '../../../static/audio/Drums_Mix.mp3';
 import fxBell from '../../../static/audio/SoundFX/bell.wav';
+
 
 const LogoArea =  styled.div`
   
@@ -22,6 +23,19 @@ const LogoArea =  styled.div`
   align-items: center;
   height: 40vh;
   width: 80%;
+  animation: bouncey 2s ease-in-out infinite;
+
+  @keyframes bouncey{
+    0%{
+      background-size: 30%;
+    }
+    50%{
+      background-size: 35%;
+    }
+    100%{
+      background-size: 30%;
+    }
+  }
 `
 const ControlArea = styled.div`
   

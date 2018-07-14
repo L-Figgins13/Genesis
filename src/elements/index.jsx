@@ -223,7 +223,7 @@ export { FormLabel };
 const FormButton =  styled.button`
   cursor: pointer;
   text-decoration: none;
-  margin: 5vmin auto;
+  margin: 4vmin auto;
   margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
   border: none;
   font-size: 3vmin;
@@ -248,7 +248,7 @@ FormButton.propTypes = {
 export { FormButton };
 
 const FormContainer = styled.div`
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -325,11 +325,10 @@ const LogoutButton = styled.div`
   background-size: contain;
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid red;
-  width: 10vmin;
-  height: 10vmin;
-  margin-left: 6vmin;
-  margin-top: 1.5vmin;
+  width: 7.5vmin;
+  height: 7.5vmin;
+  /* margin-left: 6vmin;
+  margin-top: 1.5vmin; */
   /* margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
   margin-left: 6vmin; */
   background-color: Transparent;
