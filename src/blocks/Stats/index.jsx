@@ -66,11 +66,13 @@ const ProfileLabel =  styled.label`
   font-weight: 700;
 `
 
-const ProfileLink = styled(Link)`
+const ProfileLink = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 0vmin auto;
   margin-top: 0vmin;
+  height: 9vmin;
+  width: 9vmin;
   border: none;
   font-size: 3vmin;
   padding: 0vmin 0vmin;
@@ -174,8 +176,7 @@ export default function Stats(props) {
                 </Col>
               </Row>
 
-              <Row>
-              <form onSubmit= {props.handleSubmit}>
+              <Row> 
                 <Col xs={6}>
                 <AvatarArea>
                   <Arrow id= {2} left onClick={props.selectAvatar} />
@@ -186,7 +187,15 @@ export default function Stats(props) {
                 <Col>
                   Information Area
                 </Col>
-              </form>
+              
+              </Row>
+
+              <Row>
+                <Col xs = {6}>
+                  <ProfileLink
+                    onClick ={ () => props.history.push('/games') }
+                  />
+                </Col>
               </Row>
 
               {/* <form onSubmit= {props.handleSubmit}>

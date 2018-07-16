@@ -11,8 +11,11 @@ export default class GamesList extends React.Component {
         super(props);
         this.state = {
             games:[],
+            focusedGameID: '',
             activeIndex: -1,
-            join:-1}; 
+            join:-1
+        };
+
         this.joinGame = this.joinGame.bind(this);
         this.handleGameSelection = this.handleGameSelection.bind(this);
     }
@@ -23,53 +26,41 @@ export default class GamesList extends React.Component {
 
     handleGameSelection(event) {
         event.preventDefault();
-
-        console.log(event.currentTarget.id);
-        
-
-
-        console.log('Active Game id');
-
-
+        this.setState({focusedGameID: event.currentTarget.id})
     }
 
     joinGame(event) {
-        event.preventDefault();
-        const target = event.target;
-
-
-        console.log(focusedGame.id);
-
-    //     fetch('/api/games/join',{
-    //         method: 'POST',
-    //         headers: {
-    //             'Authorization' : `bearer ${Auth.getToken()}`,
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             game_id: target.id
-    //         })
-    //     })
-    //     .then(response => {
-    //         response.json()
-    //         .then(result => {
-    //             if(result.errCode === 0) {
-    //                 console.log(result.message);
-    //                 this.setState({join:target.id});
-    //             } else if (result.errCode === 1 || result.errCode === 2) {
-    //                 console.error(result.message);
-    //                 alert(result.message);
-    //             } else if (result.errcode === 3) {
-    //                 console.error(result.message);
-    //                 this.setState({join:target.id});
-    //             }
-    //         })     
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-
         
+        console.log('Attepting to join game ID:', this.state.focusedGameID);
+
+        fetch('/api/games/join',{
+            method: 'POST',
+            headers: {
+                'Authorization' : `bearer ${Auth.getToken()}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                game_id: this.state.focusedGameID
+            })
+        })
+        .then(response => {
+            response.json()
+            .then(result => {
+                if(result.errCode === 0) {
+                    console.log(result.message);
+                    this.setState({join:focusedGameID});
+                } else if (result.errCode === 1 || result.errCode === 2) {
+                    console.error(result.message);
+                    alert(result.message);
+                } else if (result.errcode === 3) {
+                    console.error(result.message);
+                    // this.setState({join:target.id});
+                }
+            })     
+        })
+        .catch(error => {
+            console.log(error);
+        })       
      }
 
     loadData() {
@@ -113,7 +104,8 @@ export default class GamesList extends React.Component {
             <GameFinder 
                 games={this.state.games} 
                 joinGame={this.joinGame}
-                handleGameSelection ={this.handleGameSelection} 
+                handleGameSelection ={this.handleGameSelection}
+                history= {this.props.history} 
             />
         );
     }
