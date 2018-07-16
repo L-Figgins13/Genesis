@@ -147,54 +147,54 @@ const BG_Image =  styled.div`
 export { BG_Image };
 
 const BG_Image_Scroll = BG_Image.extend`
-  -webkit-animation:100s scroll infinite linear;
-  -moz-animation:100s scroll infinite linear;
-  -o-animation:100s scroll infinite linear;
-  -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
+  -webkit-animation:40s scroll infinite linear;
+  -moz-animation:40s scroll infinite linear;
+  -o-animation:40s scroll infinite linear;
+  -ms-animation:40s scroll infinite linear;
+  animation:40s scroll infinite linear;
 
   @-webkit-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+    0%{
+      background-position:-2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    100%{
+      background-position: 2500px 0px;
     }
   }
 
   @-moz-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+    0%{
+      background-position:-2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    100%{
+      background-position: 2500px 0px;
     }
   }
 
   @-o-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+    0%{
+      background-position:-2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    100%{
+      background-position: 2500px 0px;
     }
   }
 
   @-ms-keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+    0%{
+      background-position:-2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    100%{
+      background-position: 2500px 0px;
     }
   }
 
   @keyframes scroll{
-    100%{
-      background-position:2500px 0px;
+    0%{
+      background-position:-2500px 0px;
     }
-    50%{
-      background-position:2500px 0px;
+    100%{
+      background-position: 2500px 0px;
     }
   }
 `
@@ -223,7 +223,7 @@ export { FormLabel };
 const FormButton =  styled.button`
   cursor: pointer;
   text-decoration: none;
-  margin: 5vmin auto;
+  margin: 4vmin auto;
   margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
   border: none;
   font-size: 3vmin;
@@ -249,8 +249,6 @@ export { FormButton };
 
 const FormContainer = styled.div`
   /* border: 1px solid blue; */
-  margin: 0vmin auto;
-  padding-top: 15vmin;
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -299,7 +297,7 @@ const FormBG = styled.div`
   background-size: contain;
   font-size: 2vmin;
   color: #280408;
-  margin: 5vmin auto;
+  margin: 0 auto;
   padding-top: 4vmin;
   padding-bottom: 5vmin;
   width: var(--width);
@@ -327,11 +325,10 @@ const LogoutButton = styled.div`
   background-size: contain;
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid red;
-  width: 10vmin;
-  height: 10vmin;
-  margin-left: 6vmin;
-  margin-top: 1.5vmin;
+  width: 7.5vmin;
+  height: 7.5vmin;
+  /* margin-left: 6vmin;
+  margin-top: 1.5vmin; */
   /* margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
   margin-left: 6vmin; */
   background-color: Transparent;
@@ -339,8 +336,6 @@ const LogoutButton = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   transition: all .2s ease-in-out;
-
-
 
   &:hover{
     transform: scale(1.1);

@@ -120,14 +120,14 @@ export default class Profile extends React.Component {
         console.log(' la click');
     }
 
-    //you might not want to pass history like this. need to check
+    //you might not want to pass history liek this. check best practices
     render(){
         return (
            <div>
                <Stats 
                     user={this.state.user}
                     handleLogout = {this.handleLogout}
-                    avatarUrl = {this.state.currentAvatarUrl}
+                    avatarUrl = {this.state.user.currentAvatarUrl}
                     selectAvatar = {this.selectAvatar}
                     history = {this.props.history} 
                />
