@@ -11,7 +11,7 @@ export default class GamesList extends React.Component {
         super(props);
         this.state = {
             games:[],
-            focusedGameID: '',
+            focusedGameID: null,
             activeIndex: -1,
             join:-1
         };
@@ -26,6 +26,7 @@ export default class GamesList extends React.Component {
 
     handleGameSelection(event) {
         event.preventDefault();
+        console.log(event.currentTarget.id);
         this.setState({focusedGameID: event.currentTarget.id})
     }
 
@@ -48,7 +49,7 @@ export default class GamesList extends React.Component {
             .then(result => {
                 if(result.errCode === 0) {
                     console.log(result.message);
-                    this.setState({join:focusedGameID});
+                    this.setState({join:this.state.focusedGameID});
                 } else if (result.errCode === 1 || result.errCode === 2) {
                     console.error(result.message);
                     alert(result.message);
