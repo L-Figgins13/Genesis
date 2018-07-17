@@ -56,28 +56,30 @@ GameSchema.statics.join = function join(gameID, user) {
             if(game.players.length >= constants.MAX_PLAYERS) {
                 data.message = 'Game is Full';
                 data.errCode = 1;
-                return reject(data);
-                Logger(data, 'Data: ');
+                reject(data);
+            
             } else if (game.hasStarted) {
                 data.message = 'Sorry the Game Has Already Started';
                 data.errCode = 2;
                 reject(data);
-                Logger(data, 'Data: ');
+                
+
             } else if (game.players.some(x => x.user_id === player.user_id)) {
                 data.message = 'ERROR: Player already exists in game';
                 data.errCode = 3;
                 reject(data);
-                Logger(data, 'Data: ');
-            } else { 
-                this.model('Game').findByIdAndUpdate(gameID, {$push: {players: player}})
-                    .then(updatedGame => {
-                        data.message = `Player ${player.username} has succesfully joined the game`;
-                        data.success = true;
-                        data.player = player;
+                
+            } else {
+                
+                data.message = `Player ${player.username} has succesfully joined the game`;
+                data.success = true;
+                data.player = player;
 
-                        resolve(data);
-                        Logger(data, 'Data: ');
-                    })
+                game.players.push(player);
+                game.save()
+                .then(updatedGame => {
+                    resolve(data);
+                })        
             }   
         })
     });
@@ -112,4 +114,4 @@ GameSchema.statics.start = function start(gameID) {
 
 var Game = mongoose.model('Game', GameSchema);
 
-module.exports = Game;
+export default Game;
