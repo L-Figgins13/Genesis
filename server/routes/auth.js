@@ -10,13 +10,14 @@ router.post('/signup', (req, res, next) => {
  passport.authenticate('local-signup', (err)=>{ 
 
     console.log('Code executing in server side /signup route');
-
-        if(err) {
+        
+        //this is error code for when mongo tries to save a unique field twice
+        if(err.name === 'MongoError' && err.code === 11000) {
             console.log(err);
 
-           return res.status(400).json({
-                success:false,
-                message: 'error in signup post',
+           return res.status(500).json({
+                success: false,
+                message: 'Username Already Taken!',
             })
         }
 

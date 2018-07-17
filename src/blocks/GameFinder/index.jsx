@@ -117,11 +117,15 @@ const GameFinder = (props) =>  {
                 <Row>
                   <Col></Col>
                   <Col xs={3}>
-                    <CreateLink to= '/games/create'></CreateLink>
+                    <CreateLink
+                      onClick={()=>{props.history.push('/games/create')}}
+                    />
                   </Col>
                   <Col></Col>
                   <Col xs={3}> 
-                  <JoinLink></JoinLink>
+                  <JoinLink
+                    onClick={props.joinGame}
+                  />
                   </Col>
                   <Col></Col>
                 </Row>

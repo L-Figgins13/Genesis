@@ -26,6 +26,7 @@ export default class Profile extends React.Component {
         this.selectAvatar = this.selectAvatar.bind(this);
     }
 
+    //this can be cleaned up a bit
     selectAvatar(event) {
         let id = parseInt(event.target.id);
 
@@ -33,7 +34,6 @@ export default class Profile extends React.Component {
             let avatarID = ((this.state.user.avatarID + 1) % (this.state.avatarPaths.length + 1) === 0) 
                 ? 1 : (this.state.user.avatarID + 1) % (this.state.avatarPaths.length + 1) ;
             let currentAvatarUrl = this.state.avatarPaths[avatarID - 1];
-            
             
             let user = this.state.user;
             user.avatarID = avatarID;
@@ -95,9 +95,6 @@ export default class Profile extends React.Component {
         
     componentDidUpdate(prevProps, prevState) {
             if(this.state.user.AvatarID !== prevState.user.avatarID) {
-                console.log('hello from inside component did Update');
-                console.log('PrevState', prevState.user.avatarID);
-                console.log('This.state', this.state.user.avatarID);
                 fetch('/api/users/saveAvatarSelection', {
                     method: 'POST',
                     headers: {
@@ -123,14 +120,16 @@ export default class Profile extends React.Component {
         console.log(' la click');
     }
 
+    //you might not want to pass history liek this. check best practices
     render(){
         return (
            <div>
                <Stats 
                     user={this.state.user}
                     handleLogout = {this.handleLogout}
-                    avatarUrl = {this.state.currentAvatarUrl}
-                    selectAvatar = {this.selectAvatar} 
+                    avatarUrl = {this.state.user.currentAvatarUrl}
+                    selectAvatar = {this.selectAvatar}
+                    history = {this.props.history} 
                />
            </div>
         )

@@ -3,77 +3,105 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-grid-system';
 
-import { BG_Image, LogoutButton } from '../../elements';
-import img from '../../../static/img/profile/MapBorders.jpg';
+import Statistics from './Statistics.jsx';
+import { BG_Image_Scroll, FormButton, LogoutButton } from '../../elements';
+import img from '../../../static/img/login/MapNoBorders.jpg';
+
 import button from '../../../static/img/profile/Join_Game_Button.png';
 import button_hover from '../../../static/img/profile/Join_Game_Button_Hover.png';
+
 import plate from '../../../static/img/profile/AspectRatioProfile.png';
+
 import arrowLeft from '../../../static/img/icons/Arrow_Left_Button.png';
 import arrowLeftHover from '../../../static/img/icons/Arrow_Left_Button_Hover.png';
-
 import arrowRight from '../../../static/img/icons/Arrow_Right_Button.png';
 import arrowRightHover from '../../../static/img/icons/Arrow_Right_Button_Hover.png';
 
 import logout from '../../../static/img/profile/Logout_Button.png';
 import logout_hover from '../../../static/img/profile/Logout_Button_Hover.png';
 
+// const ScoreLabel = styled.label`
+//   background: brown;
+//   margin: 3vmin;
+// `
+// `
+// const ScoreCard = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   padding: 0vmin;
+// `
+// const ProfileLabel =  styled.label`
+//   display: block;
+//   margin: 0vmin auto;
+//   font-size: 2vmin;
+//   font-weight: 700;
+// `
 
-const ScoreLabel = styled.label`
-  background: brown;
-  margin: 3vmin;
+
+const ContainerProfile = styled.div`
+  width: var(--width);
+  height: var(--height);
+  background-image: url(${props => props.img});
+  background-position: center center;
+  background-size: contain;
+  /* border: 1px solid orange; */
+  padding: 15vmin;
+  margin-left: -5vmin;
 `
-
+const Avatar = styled.div`
+  /* border: 1px solid purple; */
+  /* background-image: url('../../../static/img/avatars/1_GeneralWu.jpg'); */
+  background-image:${props => `url(${props.avatar})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 20vmin 10vmin 15vmin 10vmin;
+`
+const AvatarArea = styled.div`
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const Arrow = styled.div`
-  height: 10vmin;
-  width: 10vmin;
-  margin-top: 5vmin;
-  margin-left: -1.5vmin;
-  margin-right: -1.5vmin;
+  height: 20vmin;
+  width: 20vmin;
   background-image: ${props=> props.left ? `url(${arrowLeft})` : `url(${arrowRight})`};
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center center;
+  transition: all .2s ease-in-out;
+  z-index: 2;
 
   &:hover {
     transform: scale(1.1);
     background-image: ${props=> props.left ? `url(${arrowLeftHover})` : `url(${arrowRightHover})`};
-  }
-`
+   }
+ `
 
-
-
-const Avatar = styled.div`
-  padding: 10vmin 10vmin;
-  /* background-image: url('/img/avatars/1_GeneralWu.jpg'); */
-  background-image: ${props => `url(${props.avatarUrl})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  
-`
-
-const ScoreCard = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 0vmin;
-`
-
-const ProfileLabel =  styled.label`
-  display: block;
-  margin: 0vmin auto;
-  font-size: 2vmin;
-  font-weight: 700;
-`
-
-const ProfileLink = styled(Link)`
+const ProfileLink = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 0vmin auto;
   margin-top: 0vmin;
+  height: 9vmin;
+  width: 9vmin;
   border: none;
   font-size: 3vmin;
   padding: 0vmin 0vmin;
+  `
+  
+const ProfileJoin = styled(Link)`
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vmin;
+  padding-top: 6vmin;
+  padding-bottom: 6vmin;
+  cursor: pointer;
   background-color: Transparent;
   box-sizing: border-box;
   background-image: url(${button});
@@ -88,117 +116,71 @@ const ProfileLink = styled(Link)`
   }
 `
 
-const ProfileContainer = styled.div`
-  margin: 0vmin auto;
-  margin-top: 0vmin;
-  width: var(--width);
-  height: var(--height);
-  text-align: center;
- 
+const ProfileLogoutButton = LogoutButton.extend`
+   position: relative;
+   top: -22vmin;
+   left: 85vmin;
+   padding: 2.5vmin;
 `
 
-const Profile = styled.div`
-  border: 1px  solid green;
-  background-image: url(${plate});
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  font-size: 3.5vmin;
-  color: #280408;
-  
-  width: var(--width);
-  height: var(--height);
-
-
-  form{
-    display: flex;
-
-  }
-
-  h3{
-    padding-top: 4vmin;
-    font-size: 2vmin;
-  }
-
-  @media only screen and (max-width: 670px) {
-    width: 90%;
-  }
+const ProfileItems = styled.div`
+margin-left: -2vmin;
+margin-top: -3.5vmin;
 `
-
-const AvatarArea = styled.div`
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-
 
 export default function Stats(props) {
     return(
-      // <BG_Image img={img}>
-      //   <ProfileContainer>
-      //     <Profile>
-      //       <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
-      //       <form onSubmit= {props.handleSubmit}>
-      //         <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
-      //         <Avatar avatarUrl = {props.user.currentAvatarUrl} />
-      //         <Arrow id= {1} right onClick={props.selectAvatar} />
-      //         <Arrow id= {2} left onClick={props.selectAvatar} />
-      //         <ScoreCard>
-      //           <ScoreLabel>Wins: {props.user.stats.wins}</ScoreLabel> 
-      //           <ScoreLabel>Losses: {props.user.stats.losses}</ScoreLabel> 
-      //         </ScoreCard>
-      //         <ProfileLink to='/games'></ProfileLink>
-      //       </form>
-      //     </Profile>
-      //   </ProfileContainer>
-      // </BG_Image>
-
-      <BG_Image img={img}>
-        <ProfileContainer>
-          <Profile>
-            <Container>
-              <Row>
-                <Col xs={3}>
-                  col
-                </Col>
-                <Col xs={3}>
-                  col
-                </Col>
-                <Col xs={3}>
-                  col
-                </Col>
-                <Col xs={3}>
-                  <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>
-                </Col>
-              </Row>
-
-              <Row>
-              <form onSubmit= {props.handleSubmit}>
-                <Col xs={6}>
+      <BG_Image_Scroll img={img}>
+        <ProfileLogoutButton img={logout} onClick={props.handleLogout}></ProfileLogoutButton>
+        <ContainerProfile img={plate}>
+          <Container>
+            <ProfileItems>
+            <Row>
+              <Col xs={6}>
                 <AvatarArea>
-                  <Arrow id= {2} left onClick={props.selectAvatar} />
-                  <Avatar avatarUrl = {props.user.currentAvatarUrl} />
-                  <Arrow id= {1} right onClick={props.selectAvatar} />
+                  <Arrow id= {1} left onClick={props.selectAvatar} />
+                    <Avatar avatar={props.avatarUrl}/>
+                  <Arrow id= {2} right onClick={props.selectAvatar} />
                 </AvatarArea>
-                </Col>
-                <Col>
-                  Information Area
-                </Col>
-              </form>
-              </Row>
-
-              {/* <form onSubmit= {props.handleSubmit}>
-               <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
-               <Avatar avatarUrl = {props.user.currentAvatarUrl} />
-               <Arrow id= {1} right onClick={props.selectAvatar} />
-               <Arrow id= {2} left onClick={props.selectAvatar} />
-               <ProfileLink to='/games'></ProfileLink>
-             </form> */}
-            </Container>
-          </Profile>
-        </ProfileContainer>
-      </BG_Image>
+              </Col>
+              <Col xs={6}>
+               <Statistics
+                 user={props.user}
+               />
+              </Col>
+            </Row>
+            </ProfileItems>
+          </Container>
+          <ProfileJoin to='/games'/>
+        </ContainerProfile>
+      </BG_Image_Scroll>
     );
 }
+
+
+// </Col>
+// <Col>
+//   Information Area
+// </Col>
+
+// </Row>
+
+// <Row>
+// <Col xs = {6}>
+//   <ProfileLink
+//     onClick ={ () => props.history.push('/games') }
+//   />
+// </Col>
+// </Row>
+
+// {/* <form onSubmit= {props.handleSubmit}>
+// <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
+// <Avatar avatarUrl = {props.user.currentAvatarUrl} />
+// <Arrow id= {1} right onClick={props.selectAvatar} />
+// <Arrow id= {2} left onClick={props.selectAvatar} />
+// <ProfileLink to='/games'></ProfileLink>
+// </form> */}
+// </Container>
+// </Profile>
+// </ProfileContainer>
+// </BG_Image>
