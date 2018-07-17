@@ -11,7 +11,7 @@ const StatsSchema = new Schema({
 })
 
 const UserSchema = new Schema({
-    username: String,
+    username: {type:String, unique:true},
     password: String,
     avatarID: {type: Number, default: 1 },
     stats: {type:StatsSchema, default: StatsSchema}
