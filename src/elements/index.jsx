@@ -57,19 +57,6 @@ const Label = styled.label`
   a{
     color: #73247C;
   }
-
-  /* @media (min-width: 375px) {
-    background: red;
-  }
-  @media only screen and (min-width : 768px) {
-    background: violet;
-  }
-  @media only screen and (min-width : 992px) {
-    background: red;
-  }
-  @media only screen and (min-width : 1200px) {
-    background: black;
-  } */
 `
 export { Label };
 
@@ -201,14 +188,14 @@ const BG_Image_Scroll = BG_Image.extend`
 export { BG_Image_Scroll };
 
 const FormHint =  styled.div`
+  border: 3px solid #B22222;
   color: #B22222;
-  margin-bottom: 3vmin;
-  padding: 1vmin;
-  position: absolute;
-  top: 41%;
-  left: 39%;
-  z-index: 2;
-  font-size: 2vmin; 
+  background: #fff3dd;
+  padding-top: 1.5vmin;
+  padding-bottom: 1.5vmin;
+  width: 51%;
+  font-size: 2vmin;
+  font-weight: bold;
 `
 export { FormHint };
 
@@ -223,7 +210,7 @@ export { FormLabel };
 const FormButton =  styled.button`
   cursor: pointer;
   text-decoration: none;
-  margin: 4vmin auto;
+  margin: 2vmin auto;
   margin-top: ${props => props.marginTop ? props.marginTop : '5vmin'};
   border: none;
   font-size: 3vmin;
@@ -304,11 +291,15 @@ const FormBG = styled.div`
   height: var(--height);
 
   form{
-    margin-top: 9vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10vmin;
   }
 
   h3{
-    padding-top: 4vmin;
+    padding-top: 2vmin;
     font-size: 2vmin;
   }
 
