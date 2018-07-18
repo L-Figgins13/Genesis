@@ -6,12 +6,13 @@ import {Container, Row, Col}  from 'react-grid-system';
 const User = styled.div`
     font-weight: bold;
     font-size: 2vmin;
-    background: red;
+    background: #17202A;
+    color: #fff;
     display: flex;
     padding: 1vmin;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 100%;  
 `
 
 const UserMessage = styled.div`
@@ -21,40 +22,36 @@ const UserMessage = styled.div`
     display: flex;
     align-items: center;
     padding: 1.5vmin;
-    background: orange;
+    background: #F2F3F4;
+    border: 1px solid #17202A;
 `
 
 const UserInput = styled.div`
-    background: yellow;
-    width: 100vmin;
-    height: 40px;
+    background: #B2BABB;
+    width: 100%;
+    height: 5vh;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
-    padding: .5vmin;
+    padding: .25vmin;
 `
-
-const Bleh = styled.div`
-    overflow-y: auto;
+const MessageBlock = styled.div`
+    width: 100%;
 `
 
 function Message(props) {
     return (
-        <Row>
-            <Col xs= {12}>
-            
-                <UserInput>
-                    <User>
-                        {props.username + ": "}
-                    </User>
-                    <UserMessage>
-                        {props.message}
-                    </UserMessage>
-                </UserInput>
-            
-             </Col>
-         </Row>
+        <MessageBlock>
+            <UserInput>
+                <User>
+                    {props.username + ": "}
+                </User>
+                <UserMessage>
+                    {props.message}
+                </UserMessage>
+            </UserInput>
+        </MessageBlock>  
     )
 }
 

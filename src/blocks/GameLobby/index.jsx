@@ -7,38 +7,18 @@ import plank from '../../../static/img/gamelobby/Aspect_Ratio_GameLobby.png';
 import { Container, Row, Col } from 'react-grid-system';
 import Chat from '../Chat/index.jsx';
 
-const GameArea = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(${props => props.img});
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
+const LobbyContainer = styled.div`
   width: var(--width);
   height: var(--height);
-
-  h1{
-    margin: 2vmin;
-    font-weight: bold;
-  }
-
-  h2{
-    font-size: 3vmin;
-  }
-
+  background-image: url(${plank});
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-top: -40vmin;
   @media only screen and (max-width: 670px) {
     width: 90%;
   }
 `
-const GameContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 1px solid red;
-`
-
 
 const GameLobby = (props) => {
   return (
@@ -58,13 +38,20 @@ const GameLobby = (props) => {
     // />
     // </BG_Image_Scroll>
 
-    <Chat
-      handleInputChange={props.handleInputChange} 
-      sendMessage={props.sendMessage}  
-      messages={props.messages} 
-      username={props.username} 
-      value={props.value} 
-    />
+  <BG_Image_Scroll img={img}>
+    <LobbyContainer>
+      
+      <PlayerArea players={props.players} /> 
+      
+      <Chat
+        handleInputChange={props.handleInputChange} 
+        sendMessage={props.sendMessage}  
+        messages={props.messages} 
+        username={props.username} 
+        value={props.value} 
+      />
+    </LobbyContainer>
+  </BG_Image_Scroll>
   )
 }
 

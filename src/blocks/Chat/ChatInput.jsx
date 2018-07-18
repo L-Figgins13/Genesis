@@ -1,19 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InputBox } from '../../elements';
+import { FormLabel, InputBox } from '../../elements';
 
 const ChatStyledInput = InputBox.extend`
-    padding: 2vmin;
-    margin-top: 3vmin;
-    margin-bottom: 3vmin;
-    width: 100%;
+    ::placeholder { opacity: .25; }
+    :-ms-input-placeholder { opacity: .25; }
+    ::-ms-input-placeholder { opacity: .25; }
+    border: 1px solid #17202A;
+    width: 45vw;
 `
 
 const ChatInput = function(props) {
     return (
      <form onSubmit = {props.sendMessage}>
+        <FormLabel>Message: </FormLabel>
         <ChatStyledInput 
-            style={{zIndex:1}}
+            placeholder = "Enter Your Message"
             type = "text"
             value = {props.value}
             onChange={props.handleInputChange}

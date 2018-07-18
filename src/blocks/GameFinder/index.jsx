@@ -2,7 +2,7 @@ import GameTable from './GameTable.jsx';
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, BG_Image_Scroll, LogoutButton } from '../../elements';
+import { BG_Image_Scroll, LogoutButton } from '../../elements';
 
 import { Container, Row, Col } from 'react-grid-system';
 
@@ -14,6 +14,9 @@ import create_button from '../../../static/img/signup/Create_Button.png';
 import create_button_hover from '../../../static/img/signup/Create_Button_Hover.png';
 import logout from '../../../static/img/profile/Logout_Button.png';
 
+const LogoutGames = LogoutButton.extend`
+  border: 1px solid red;
+`
 
 const JoinLink = styled.button`
   cursor: pointer;
@@ -60,7 +63,6 @@ const CreateLink = styled.button`
 `
 
 const TableContainer = styled.div`
-  border: 1px solid blue; 
   width: var(--width);
   height: var(--height);
   text-align: center;
@@ -104,7 +106,7 @@ const GameFinder = (props) =>  {
               <Container>
                 <Row>
                   <Col xs={12}>
-                    <LogoutButton img={logout} onClick={props.handleLogout}></LogoutButton>  
+                    <LogoutGames img={logout} onClick={props.handleLogout}></LogoutGames>  
                   </Col>
 
                   <Col xs={12}>

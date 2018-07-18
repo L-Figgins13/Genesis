@@ -66,7 +66,6 @@ export default class App extends React.Component {
         this.setState({authenticated: Auth.isUserAuthenticated()})
     }
     
-    //food
     render() {
        return(
        <div>

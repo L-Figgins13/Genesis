@@ -1,6 +1,6 @@
 
 const constants = {
-    MAX_PLAYERS: 2,
+    MAX_PLAYERS: 4,
 }
 
 

@@ -3,19 +3,19 @@ import styled from 'styled-components';
 import ChatMessages from './ChatMessages.jsx';
 import ChatInput from './ChatInput.jsx';
 
-
-
 const ChatContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: grey;
-    width: 80vw;
-    max-height: 500px;
-    padding-top: 3vmin;
-    padding-bottom: 3vmin; 
-   
+    background: #EAEAEA;
+    border: 1px solid #17202A;
+    height: 40vh;
+    /* max-height: 500px; */
+
+    form{
+        margin: 2.5vmin;
+    }
 `
 
  const Chat = function(props) {
