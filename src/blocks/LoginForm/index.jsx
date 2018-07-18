@@ -23,9 +23,6 @@ const LoginForm = function (props) {
                 value = {props.username} 
                 onChange = {props.handleInputChange}
             />
-            {props.showIncorrectUsernameOrPasswordHint && 
-              <FormHint>Incorrect Username or Password</FormHint>
-            } 
           <FormLabel>Password</FormLabel>
           <InputBox 
                 name = "password" 
@@ -33,6 +30,9 @@ const LoginForm = function (props) {
                 value = {props.password} 
                 onChange = {props.handleInputChange}
             />
+            {props.showIncorrectUsernameOrPasswordHint && 
+              <FormHint>Incorrect Username or Password</FormHint>
+            } 
             <h3>Dont Have An Account? <StyledLink to ='/signup'>Create An Account.</StyledLink></h3>
             <FormButton type = "submit"></FormButton>
         </form>

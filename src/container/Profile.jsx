@@ -4,7 +4,6 @@ import Auth from '../../client/auth.js';
 
 const PATHS = [];
 
-
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);

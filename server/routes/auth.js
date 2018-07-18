@@ -12,7 +12,7 @@ router.post('/signup', (req, res, next) => {
     console.log('Code executing in server side /signup route');
         
         //this is error code for when mongo tries to save a unique field twice
-        if(err.name === 'MongoError' && err.code === 11000) {
+        if( err && err.name === 'MongoError' && err.code === 11000) {
             console.log(err);
 
            return res.status(500).json({

@@ -27,13 +27,13 @@ const LogoArea =  styled.div`
 
   @keyframes bouncey{
     0%{
-      background-size: 30%;
+      background-size: 25%;
     }
     50%{
-      background-size: 35%;
+      background-size: 30%;
     }
     100%{
-      background-size: 30%;
+      background-size: 25%;
     }
   }
 `

@@ -45,7 +45,6 @@ export default class Signup extends React.Component {
             return true;
         }
 
-        console.log('this should mb not print');
         return false;
     }
 
