@@ -74,12 +74,10 @@ If you would like to contribute to Pirate Party install the zipped source file a
 **Webpack Configs**
 
 MERN GENESIS uses Webpack for bundling modules. There are four types of Webpack configs provided:
- - **webpack.config.dev.js** for development
- - **webpack.config.prod.js** for production
+ - **webpack.config.js** for development
  - **webpack.config.server.js** for bundling server in production
- - **webpack.config.babel.js** for babel-plugin-webpack-loaders for server rendering of assets included through webpack.
 
-The Webpack configuration is minimal and beginner-friendly. You can customise and add more features to it for production builds if you would like.
+
 
 **Server**
 
@@ -93,7 +91,7 @@ If NODE_ENV is development, we apply Webpack middlewares for bundling and Hot Mo
 * [NodeJS]( https://nodejs.org/en/) - Npm and General Project Structure
 * [Socket.io]( https://www.socket.io) - Real-Time Events
 * [Styled Components](https://github.com/styled-components/styled-components) - General Component Styling
-* [Material UI](https://material-ui.com/) - Design Prototyping
+* [Swagger Ui](https://swagger.io/) - API documentation
 
 ## Contributing 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
