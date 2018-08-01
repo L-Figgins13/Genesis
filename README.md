@@ -1,4 +1,4 @@
-![PirateParty](static/img/PiratePartyLogo.jpg)
+![PirateParty](/static/img/logo/Logo_Large.png)
 
 
 # MERN Pirate Party
