@@ -67,6 +67,19 @@ module.exports = {
                         name: `[path][name].[ext]?[hash]`
                     }
                 }
+            },
+
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    },
+                    
+                ]
             }
 
         ],
