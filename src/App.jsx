@@ -6,7 +6,7 @@ import {Route, Switch, BrowserRouter,Link, Redirect, withRouter} from 'react-rou
 
 //need to be refractored still
 import Home from './blocks/Home';
-import SwaggerAPI from './blocks/Swagger'
+// import SwaggerAPI from './blocks/Swagger';
 import GamesList from './container/GamesList.jsx';
 
 
@@ -81,7 +81,7 @@ export default class App extends React.Component {
              
              <LoggedOutRoute path="/login" component={Login} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
              <LoggedOutRoute path="/signup" component={Signup} toggleAuthenticateStatus={()=>this.toggleAuthenticateStatus()} />
-             <LoggedOutRoute exact path= "/docs/api" component= {SwaggerAPI} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} />
+             {/* <LoggedOutRoute exact path= "/docs/api" component= {SwaggerAPI} toggleAuthenticateStatus={()=> this.toggleAuthenticateStatus()} /> */}
              
          </Switch>   
        </div>

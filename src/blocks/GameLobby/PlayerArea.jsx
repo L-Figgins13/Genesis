@@ -6,7 +6,8 @@ import { Container, Row, Col } from 'react-grid-system';
 import plank from '../../../static/img/gamelobby/Aspect_Ratio_GameLobby.png';
 
 const PlayerContainer = styled.div`
-    background-image: url(${plank});
+    /* background-image: url(${plank}); */
+    /* background-color: red; */
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;

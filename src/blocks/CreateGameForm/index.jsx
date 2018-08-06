@@ -174,22 +174,22 @@ const Game = styled.div`
 
 const CreateGameForm = function (props) {
     return (    
-              <BG_Image_Game>
-                <GameContainer>
-                  <Game>
-                    <form onSubmit= {props.handleSubmit}>
-                      <GameLabel>Create A Game Title: </GameLabel>
-                      <InputBox
-                        name = "title" 
-                        type = "text" 
-                        value = {props.title} 
-                        onChange = {props.handleInputChange}
-                      />
-                      <GameButton type = "submit"></GameButton>
-                    </form>
-                  </Game>
-                  </GameContainer>
-                </BG_Image_Game>
+      <BG_Image_Game>
+        <GameContainer>
+          <Game>
+            <form onSubmit= {props.handleSubmit}>
+              <GameLabel>Create A Game Title: </GameLabel>
+              <InputBox
+                name = "title" 
+                type = "text" 
+                value = {props.title} 
+                onChange = {props.handleInputChange}
+              />
+              <GameButton type = "submit"></GameButton>
+            </form>
+          </Game>
+          </GameContainer>
+        </BG_Image_Game>
     )
 }
 

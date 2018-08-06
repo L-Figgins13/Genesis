@@ -52,7 +52,7 @@
     "start": "nodemon -w dist dist/server.bundle.js",
     "compile-server": "webpack --config webpack.server-config.js",
     "compile": "webpack",
-    "watch": "webpack-dev-server --open",
+    "watch": "webpack-dev-server",
     "watch-server": "webpack --config webpack.server-config.js --watch",
     "dev-all": "npm run watch & npm run watch-server & npm start",
     "populateCards": "node ./lib/populateCardDataBase.js",

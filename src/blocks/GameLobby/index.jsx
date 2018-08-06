@@ -8,16 +8,13 @@ import { Container, Row, Col } from 'react-grid-system';
 import Chat from '../Chat/index.jsx';
 
 const LobbyContainer = styled.div`
-  width: var(--width);
-  height: var(--height);
-  background-image: url(${plank});
+  width: 90vw;
+  height: 90vh;
+  background: yellow;
+  /* background-image: url(${plank}); */
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  margin-top: -40vmin;
-  @media only screen and (max-width: 670px) {
-    width: 90%;
-  }
 `
 
 const GameLobby = (props) => {
