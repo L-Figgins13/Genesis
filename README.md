@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 * [Discussions](www.pirateparty.github.io/forum)
 
 ### In-Game Screenshots
-![Home Page](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/images/PirateParty-Home.jpg)
+![Home Page](https://raw.githubusercontent.com/L-Figgins13/Genesis/static/img/In-Game.jpg)
 
 ### RoadMap
 
