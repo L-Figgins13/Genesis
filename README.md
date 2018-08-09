@@ -19,8 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### In-Game Screenshots
 
 **Splash Page**
-![Splash Page](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Home.jpg)
-<img src="https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Home.jpg" width="667" height="479">
+![Splash Page]<img src="https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Home.jpg" width="334" height="240">
 
 **Login**
 ![Login](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Login.jpg)
