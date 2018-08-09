@@ -18,16 +18,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### In-Game Screenshots
 
-##Splash Page
-![Splash Page](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Home.jpg)
+**Splash Page**
+![Splash Page](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Home.jpg | height="479")
 
-##Login
+**Login**
 ![Login](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Login.jpg)
 
-##Signup
+**Signup**
 ![Signup](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/PirateParty-Signup.jpg)
 
-##Main Game Page
+**Main Game Page**
 ![Main Game](https://raw.githubusercontent.com/L-Figgins13/Genesis/master/static/img/In-Game.jpg)
 
 ### RoadMap
