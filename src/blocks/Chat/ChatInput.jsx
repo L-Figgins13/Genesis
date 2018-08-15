@@ -7,7 +7,7 @@ const ChatStyledInput = InputBox.extend`
     :-ms-input-placeholder { opacity: .25; }
     ::-ms-input-placeholder { opacity: .25; }
     border: 1px solid #17202A;
-    width: 45vw;
+    width: 100%;
 `
 
 const ChatInput = function(props) {

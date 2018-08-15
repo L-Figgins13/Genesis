@@ -11,8 +11,6 @@ const PlayerContainer = styled.div`
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: var(--width);
-    height: var(--height);
     border: 1px solid red;
     display: flex;
     justify-content: center;
@@ -24,13 +22,7 @@ const PlayerArea = (props) => {
     const playerRows = players.map(player => <Player key={player._id} player = {player}/>)
 
     return(
-        <PlayerContainer>
-            <Container>
-                <Row>
-                    {playerRows}
-                </Row>
-            </Container>
-        </PlayerContainer>
+      <div>{playerRows}</div>
     )
 }
 

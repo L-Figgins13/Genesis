@@ -13,7 +13,8 @@ const MessageContainer = styled.div`
     background: darkgrey;
     overflow-y: scroll;
     overflow-x: hidden;
-    width: 100%;
+    
+    
     height: 35vh;
     border: 1px solid #17202A;
 `

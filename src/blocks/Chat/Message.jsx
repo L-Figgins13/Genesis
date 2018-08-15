@@ -13,13 +13,14 @@ const User = styled.div`
     justify-content: center;
     align-items: center;
     height: 100%;  
+    overflow-wrap: break-word;
 `
 
 const UserMessage = styled.div`
     font-size: 1.75vmin;
     width: 100%;
     height: 100%;
-    display: flex;
+    overflow-wrap: break-word;
     align-items: center;
     padding: 1.5vmin;
     background: #F2F3F4;
@@ -35,9 +36,11 @@ const UserInput = styled.div`
     justify-content: center; 
     align-items: center;
     padding: .25vmin;
+    overflow-wrap: break-word;
 `
 const MessageBlock = styled.div`
     width: 100%;
+    overflow-wrap: break-word;
 `
 
 function Message(props) {
