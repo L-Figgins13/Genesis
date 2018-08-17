@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import {injectGlobal} from 'styled-components';
 
+import { setConfiguration } from 'react-grid-system';
+setConfiguration({ gutterWidth: 0 });
+
 injectGlobal`
  /* Aspect Ratio Responsive Method */
  body {

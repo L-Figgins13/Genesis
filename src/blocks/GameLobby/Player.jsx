@@ -1,38 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import PlayerDetails from './PlayerDetails.jsx';
 import {Col} from 'react-grid-system';
-import avatarPlate from '../../../static/img/avatars/avatarPlate.png';
-import plate from '../../../static/img/gamesfinder/AspectRatioGames.png';
 
-const PlayerBadge = styled.div`
-  background-image: url(${avatarPlate});
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 10vh;
-  width: 20vw;
-  margin: 5vmin;
+
+
+const PlayerWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    background: darkgrey;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    -webkit-box-shadow: 0px 8px 17px -6px rgba(0,0,0,0.88);
+    -moz-box-shadow: 0px 8px 17px -6px rgba(0,0,0,0.88);
+    box-shadow: 0px 8px 17px -6px rgba(0,0,0,0.88);
 `
 
-const PlayerName = styled.h1`
-    font-size: 2vmin;
-    color: #fff;
-    font-weight: bold;
-    background-color: brown;
-    position: relative;
-    top: 2.2vmin;
-    left: 3vmin;
-    width: 6vw;
-    overflow-x: hidden;
+const PlayerAvatar = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: ${ props=> `url(${props.avatarURL})`};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 400px;
+    height: 150px;
 `
+
 
 const Player = (props) => {
     return (
         <Col xs={6} align="center">
-            <PlayerBadge>
-                {/* <div>{props.player.user_id}</div> */}
-                <PlayerName>{props.player.username}</PlayerName>
-            </PlayerBadge>
+            <PlayerWrapper>
+                <PlayerAvatar
+                    avatarURL={props.player.avatarURL}
+                />
+                <PlayerDetails
+                    player = {props.player}
+                />                
+            </PlayerWrapper>
         </Col>
     )
 }

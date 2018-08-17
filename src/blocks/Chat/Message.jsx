@@ -3,7 +3,7 @@ import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 import {Container, Row, Col}  from 'react-grid-system';
 
-const User = styled.div`
+const UserName = styled.div`
     font-weight: bold;
     font-size: 2vmin;
     background: #17202A;
@@ -24,10 +24,10 @@ const UserMessage = styled.div`
     align-items: center;
     padding: 1.5vmin;
     background: #F2F3F4;
-    border: 1px solid #17202A;
+    border: 1px solid black;
 `
 
-const UserInput = styled.div`
+const MessageWrapper = styled.div`
     background: #B2BABB;
     width: 100%;
     height: 5vh;
@@ -38,23 +38,17 @@ const UserInput = styled.div`
     padding: .25vmin;
     overflow-wrap: break-word;
 `
-const MessageBlock = styled.div`
-    width: 100%;
-    overflow-wrap: break-word;
-`
 
-function Message(props) {
+const Message = (props) => {
     return (
-        <MessageBlock>
-            <UserInput>
-                <User>
-                    {props.username + ": "}
-                </User>
-                <UserMessage>
-                    {props.message}
-                </UserMessage>
-            </UserInput>
-        </MessageBlock>  
+        <MessageWrapper>
+            <UserName>
+                {props.username + ": "}
+            </UserName>
+            <UserMessage>
+                {props.message}
+            </UserMessage>
+        </MessageWrapper>      
     )
 }
 

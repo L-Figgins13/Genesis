@@ -15,6 +15,7 @@ import logoutImg_hover from '../../static/img/icons/Logout_Hover_Button.png';
 import logout_hover from '../../static/img/profile/Logout_Button_Hover.png';
 
 const Button = styled.button`
+  outline: none;
   background: linear-gradient(to bottom, #8f34d9, #44009e);
   cursor: pointer;
   color: #fff;
@@ -208,6 +209,7 @@ const FormLabel =  styled.label`
 export { FormLabel };
 
 const FormButton =  styled.button`
+  outline: none;
   cursor: pointer;
   text-decoration: none;
   margin: 2vmin auto;

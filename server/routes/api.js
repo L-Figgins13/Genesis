@@ -29,8 +29,26 @@ router.get('/games/:id', (req,res,next) => {
 
 //maybe move most of this logic to the model????
 router.post('/games/create' , (req, res, next) => {
+
+    Avatar.findOne({avatarNumber: req.user.avatarID})
+    .then(avatar => {
+        Logger(avatar, 'Avatar Returned From database');
+        res.locals.avatar = avatar;
+        next();
+    })
+    .catch(error => {
+        console.log(error);
+    })  
+},
+(req, res, next) => {
+
     const newGame = new Game({owner: req.body.owner, title: req.body.title});
-    newGame.players.push({user_id:req.user._id, username: req.user.username});
+    newGame.players.push({
+        user_id:req.user._id, 
+        username: req.user.username,
+        avatarID: res.locals.avatar.avatarNumber,
+        avatarURL: res.locals.avatar.imageURL
+    });
 
     newGame.save()
     .then(doc => {
@@ -41,12 +59,28 @@ router.post('/games/create' , (req, res, next) => {
         console.log(err);
         res.status(500).json({msg:err});
     })
+
 });
 
-router.post('/games/join', (req,res,next) => {
-    Logger(req.body.game_id, 'Game ID FROM REQUEST');
+router.post('/games/join', (req,res,next) => { 
+   
     
-    Game.join(req.body.game_id, req.user)
+    Avatar.findOne({avatarNumber: req.user.avatarID})
+    .then(avatar => {
+        Logger(avatar, 'Avatar Returned From database');
+        res.locals.avatar = avatar;
+        next();
+    })
+    .catch(error => {
+        console.log(error);
+    })    
+},
+
+(req, res, next) => {
+    const user =  req.user;
+    user.avatarURL = res.locals.avatar.imageURL;
+
+    Game.join(req.body.game_id, user)
     .then(result => {
         // broadcast(req.app.get('io'), req.body.game_id, 'PLAYER_JOINED', data);
         res.status(200).json(result);
@@ -55,7 +89,7 @@ router.post('/games/join', (req,res,next) => {
         Logger(JSON.stringify(error), 'Error in /games/join');
         res.json(error);
     })
-});
+})
 
 //we need to standardize coding style. i know its my fault
 router.post('/games/start', (req, res, next) => {

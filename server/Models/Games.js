@@ -22,7 +22,9 @@ const CardSchema = new Schema({
 const PlayerSchema = new Schema({
     user_id: String,
     username: String,
-    health: {type:Number, default: 100},
+    avatarID: {type: Number},
+    avatarURL: {type: String},
+    health: {type:Number, default: 100}
 })
 
 const GameSchema = new Schema({
@@ -38,6 +40,8 @@ GameSchema.statics.join = function join(gameID, user) {
     const player = {
         user_id: user._id,
         username: user.username,
+        avatarID: user.avatarID,
+        avatarURL: user.avatarURL
     }
     //TODO fix this fucking mess
     //creates a promise to be returned so that the final .then() will be in the route

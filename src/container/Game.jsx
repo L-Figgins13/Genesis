@@ -162,18 +162,15 @@ export default class Game extends React.Component {
     }
 
     render() {
-        return(
-            <div>   
-                <GameLobby 
-                    players={this.state.players} 
-                    handleInputChange={this.handleInputChange} 
-                    sendMessage={this.sendMessage}  
-                    messages={this.state.chat.messages} 
-                    username={this.state.chat.username} 
-                    value={this.state.chat.messageInput} 
-                />
-                
-            </div>
+        return(   
+            <GameLobby 
+                players={this.state.players} 
+                handleInputChange={this.handleInputChange} 
+                sendMessage={this.sendMessage}  
+                messages={this.state.chat.messages} 
+                username={this.state.chat.username} 
+                value={this.state.chat.messageInput} 
+            />      
         )
     }
 }
