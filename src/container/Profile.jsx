@@ -122,7 +122,7 @@ export default class Profile extends React.Component {
     //you might not want to pass history liek this. check best practices
     render(){
         return (
-           <div>
+           
                <Stats 
                     user={this.state.user}
                     handleLogout = {this.handleLogout}
@@ -130,7 +130,7 @@ export default class Profile extends React.Component {
                     selectAvatar = {this.selectAvatar}
                     history = {this.props.history} 
                />
-           </div>
+           
         )
     }
 }   

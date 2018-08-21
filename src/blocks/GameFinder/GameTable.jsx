@@ -6,8 +6,9 @@ import GameRow from './GameRow.jsx';
 
 
 const Table = styled.table`
-    width: 70%;
+    width: 100%;
     font-size: 1.5vmin;
+    outline: none;
 
     tr{
         border: 1px solid #000;
@@ -25,7 +26,10 @@ const Table = styled.table`
  
     tbody{
       border: 1px solid #000;
-      max-height: 250px;
+    }
+
+    @media only screen and (max-width: 420px) {
+    font-size: 1rem;
     }
     
 `

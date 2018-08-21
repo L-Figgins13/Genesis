@@ -10,10 +10,19 @@ const ChatStyledInput = InputBox.extend`
     width: 100%;
 `
 
+const ChatInputContainer = styled.div`
+    border: 1px solid black;
+    background-color: #17202A;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+`
+
 const ChatInput = function(props) {
     return (
+    <ChatInputContainer>
      <form onSubmit = {props.sendMessage}>
-        <FormLabel>Message: </FormLabel>
         <ChatStyledInput 
             placeholder = "Enter Your Message"
             type = "text"
@@ -21,6 +30,7 @@ const ChatInput = function(props) {
             onChange={props.handleInputChange}
         />
      </form>
+     </ChatInputContainer>
     )
 }
 

@@ -17,54 +17,47 @@ import logout from '../../../static/img/profile/Logout_Button.png';
 const LogoutGames = LogoutButton.extend`
   border: 1px solid red;
 `
-
-const JoinLink = styled.button`
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  font-size: 3vmin;
-  background-color: Transparent;
-  box-sizing: border-box;
-  background-image: url(${button});
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: all .2s ease-in-out;
-  width: 25vmin;
-  height: 25vmin;
-  padding: 0;
-
-  &:hover{
-    transform: scale(1.1);
-    background-image: url(${button_hover});
-  }
+const LogoutContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `
 
-const CreateLink = styled.button`
+const GameFinderTable = styled.div`
+ 
+ 
+  border: 5px solid purple;
+  max-height: 40vh;
+  width: 90%;
+  overflow-y: scroll;
+`
+
+const GameLink = styled.button`
+  outline: none;
   cursor: pointer;
   text-decoration: none;
   border: none;
   font-size: 3vmin;
-  background-color: Transparent;
+  background-color: red;
   box-sizing: border-box;
-  background-image: url(${create_button});
+  /* background-image: url(${create_button}); */
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   transition: all .2s ease-in-out;
-  width: 25vmin;
-  height: 25vmin;
-  padding: 0;
+  width: 10vw;
+  height: 5vh;
 
   &:hover{
     transform: scale(1.1);
-    background-image: url(${create_button_hover});
+    /* background-image: url(${create_button_hover}); */
   }
 `
 
 const TableContainer = styled.div`
   width: var(--width);
   height: var(--height);
+
   text-align: center;
   background-image: url(${plate});
   background-position: center center;
@@ -72,6 +65,7 @@ const TableContainer = styled.div`
   background-size: contain;
   padding-right: 10vmin;
   padding-left: 10vmin;
+  border: 2px solid black;
 `
 
 const InnerContainer = styled.div`
@@ -98,41 +92,76 @@ const InnerContainer = styled.div`
             <Button>Join</Button>
    </TableContainer> */
 
+const StyledCol = styled(Col)`
+  border: 1px solid blue;
+`
+
+const StyledRow = styled(Row)`
+  border: 1px solid orange;
+  height: 20vh;
+`
 
 const GameFinder = (props) =>  {
     return(
+        // <BG_Image_Scroll img={img}>
+        //   <TableContainer>
+        //       <Container>
+        //         <Row>
+        //           <Col xs={12}>
+        //             <LogoutGames img={logout} onClick={props.handleLogout}></LogoutGames>  
+        //           </Col>
+
+        //           <Col xs={12}>
+        //             <InnerContainer>
+        //               <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
+        //             </InnerContainer>
+        //           </Col>
+        //         </Row>
+
+        //         <Row>
+        //           <Col></Col>
+        //           <Col xs={3}>
+        //             <CreateLink
+        //               onClick={()=>{props.history.push('/games/create')}}
+        //             />
+        //           </Col>
+        //           <Col></Col>
+        //           <Col xs={3}> 
+        //           <JoinLink
+        //             onClick={props.joinGame}
+        //           />
+        //           </Col>
+        //           <Col></Col>
+        //         </Row>
+        //       </Container>
+            
+        //   </TableContainer>
+        // </BG_Image_Scroll>
+
         <BG_Image_Scroll img={img}>
           <TableContainer>
-              <Container>
-                <Row>
-                  <Col xs={12}>
-                    <LogoutGames img={logout} onClick={props.handleLogout}></LogoutGames>  
-                  </Col>
-
-                  <Col xs={12}>
-                    <InnerContainer>
-                      <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
-                    </InnerContainer>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col></Col>
-                  <Col xs={3}>
-                    <CreateLink
-                      onClick={()=>{props.history.push('/games/create')}}
-                    />
-                  </Col>
-                  <Col></Col>
-                  <Col xs={3}> 
-                  <JoinLink
-                    onClick={props.joinGame}
-                  />
-                  </Col>
-                  <Col></Col>
-                </Row>
-              </Container>
-            
+            <StyledRow>
+              <StyledCol xs={12}>
+                <LogoutContainer>
+                  <LogoutGames img={logout} onClick={props.handleLogout}></LogoutGames> 
+                </LogoutContainer>
+              </StyledCol>
+              <StyledCol xs={12}>
+                <GameFinderTable>
+                  <GameTable handleGameSelection={props.handleGameSelection} games={props.games} joinGame={props.joinGame} />
+                </GameFinderTable>
+              </StyledCol>
+              <StyledCol xs={6}>
+                <GameLink onClick={()=>{props.history.push('/games/create')}}>
+                  Create Game
+                </GameLink>
+              </StyledCol>
+              <StyledCol xs={6}>
+                <GameLink onClick={props.joinGame}>
+                  Join Game
+                </GameLink>
+              </StyledCol>
+            </StyledRow>
           </TableContainer>
         </BG_Image_Scroll>
     );

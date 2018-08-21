@@ -6,17 +6,11 @@ import {Container, Row, Column } from 'react-grid-system';
 import Message from './Message';
 
 const MessageContainer = styled.div`
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;  
-    flex-direction: column;
-    background: darkgrey;
+    background: #99A3A4;
     overflow-y: scroll;
     overflow-x: hidden;
-    
-    
-    height: 35vh;
-    border: 1px solid #17202A;
+    height: 69vh;
+    border: 1px solid black;
 `
 
 const ChatMessages = (props) => {

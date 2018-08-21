@@ -20,26 +20,6 @@ import arrowRightHover from '../../../static/img/icons/Arrow_Right_Button_Hover.
 import logout from '../../../static/img/profile/Logout_Button.png';
 import logout_hover from '../../../static/img/profile/Logout_Button_Hover.png';
 
-// const ScoreLabel = styled.label`
-//   background: brown;
-//   margin: 3vmin;
-// `
-// `
-// const ScoreCard = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-direction: column;
-//   padding: 0vmin;
-// `
-// const ProfileLabel =  styled.label`
-//   display: block;
-//   margin: 0vmin auto;
-//   font-size: 2vmin;
-//   font-weight: 700;
-// `
-
-
 const ContainerProfile = styled.div`
   width: var(--width);
   height: var(--height);
@@ -51,8 +31,6 @@ const ContainerProfile = styled.div`
   margin-left: -5vmin;
 `
 const Avatar = styled.div`
-  /* border: 1px solid purple; */
-  /* background-image: url('../../../static/img/avatars/1_GeneralWu.jpg'); */
   background-image:${props => `url(${props.avatar})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -60,7 +38,6 @@ const Avatar = styled.div`
   padding: 20vmin 10vmin 15vmin 10vmin;
 `
 const AvatarArea = styled.div`
-  /* border: 1px solid green; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +71,6 @@ const ProfileLink = styled.button`
   `
   
 const ProfileJoin = styled(Link)`
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,31 +132,3 @@ export default function Stats(props) {
       </BG_Image_Scroll>
     );
 }
-
-
-// </Col>
-// <Col>
-//   Information Area
-// </Col>
-
-// </Row>
-
-// <Row>
-// <Col xs = {6}>
-//   <ProfileLink
-//     onClick ={ () => props.history.push('/games') }
-//   />
-// </Col>
-// </Row>
-
-// {/* <form onSubmit= {props.handleSubmit}>
-// <ProfileLabel>{props.user.username}'s Profile</ProfileLabel>
-// <Avatar avatarUrl = {props.user.currentAvatarUrl} />
-// <Arrow id= {1} right onClick={props.selectAvatar} />
-// <Arrow id= {2} left onClick={props.selectAvatar} />
-// <ProfileLink to='/games'></ProfileLink>
-// </form> */}
-// </Container>
-// </Profile>
-// </ProfileContainer>
-// </BG_Image>
